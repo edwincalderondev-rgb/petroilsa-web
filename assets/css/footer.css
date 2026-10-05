@@ -1,0 +1,80 @@
+/* ============================================
+   SITE FOOTER — presente en prácticamente todas las páginas
+   (incluye los tabs de mapa Bogotá/Santa Marta).
+   ============================================ */
+.site-footer{background:var(--navy-deep); color:#fff; position:relative;}
+.footer-top-line{height:4px; background:var(--flow-gradient);}
+.footer-main{display:grid; grid-template-columns:1.2fr 0.8fr 1.2fr 1.4fr; gap:40px; padding:70px 32px 50px;}
+.footer-brand img{height:40px; margin-bottom:18px;}
+.footer-brand p{color:#94a3b8; font-size:.88rem; line-height:1.6; margin-bottom:20px;}
+.footer-social{display:flex; gap:12px;}
+.footer-social a{
+  width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center;
+  justify-content:center; color:#fff; transition:background .2s, transform .2s;
+}
+.footer-social a:hover{background:var(--teal); transform:translateY(-2px);}
+.site-footer h4{font-size:1.05rem; color:#fff; margin-bottom:20px; font-weight:600;}
+.footer-links li{margin-bottom:10px;}
+.footer-links a{color:#94a3b8; font-size:.9rem; transition:color .2s;}
+.footer-links a:hover{color:var(--teal-light);}
+/* Subgrupo dentro de una columna ("Instalaciones" en Enlaces, "Aseguramiento de
+   la calidad" en Sostenibilidad). Mismo tamaño que el h4 de la columna pero con
+   una línea separadora, para que se lea como un bloque aparte sin abrir otra
+   columna en el grid. */
+.footer-links-col .footer-sub,
+.footer-contact .footer-sub{
+  margin-top:26px; padding-top:18px; border-top:1px solid rgba(255,255,255,.1);
+  font-size:.95rem; margin-bottom:14px;
+}
+/* Tercera columna (2026-10-01): Sostenibilidad arriba y, tras la línea de
+   .footer-sub, "Aseguramiento de la calidad": PQRSF (que salió de la barra
+   inferior), el correo y el botón de WhatsApp. Las direcciones que vivían en esta
+   columna pasaron a escribirse bajo el mapa (.map-address). */
+.footer-reach{margin-top:16px;}
+.footer-contact p{display:flex; gap:10px; color:#94a3b8; font-size:.86rem; margin-bottom:14px; line-height:1.4;}
+.footer-contact p svg{flex-shrink:0; margin-top:2px; color:var(--teal-light);}
+.footer-contact p a{color:inherit; transition:color .2s;}
+.footer-contact p a:hover{color:var(--teal-light);}
+.wa-btn{
+  display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#fff; font-size:.85rem; font-weight:600;
+  padding:10px 16px; border-radius:20px; margin-top:10px; transition:opacity .2s;
+}
+.wa-btn:hover{opacity:.9;}
+.footer-map .map-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+.map-tab{
+  background:rgba(255,255,255,.1); border:none; color:#94a3b8; font-size:.75rem; padding:6px 12px; border-radius:6px; transition:.2s;
+}
+.map-tab.active, .map-tab:hover{background:var(--teal); color:#fff;}
+.map-frame-wrap{height:140px; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,.15);}
+.map-frame-wrap iframe{width:100%; height:100%; border:0;}
+.map-gmaps-link{display:inline-flex; align-items:center; gap:4px; color:var(--teal-light); font-size:.78rem; margin-top:8px;}
+.map-gmaps-link:hover{text-decoration:underline; text-underline-offset:3px;}
+/* Dirección de la sede activa, justo debajo de "Abrir en Google Maps". Los tres
+   <span> están en el HTML y footer-map.js deja visible solo el de la pestaña
+   elegida; el fundido corre solo, porque un elemento que deja de estar oculto
+   arranca de nuevo su animación. */
+.map-address{
+  display:flex; align-items:flex-start; gap:8px; margin-top:10px;
+  color:#94a3b8; font-size:.8rem; line-height:1.45;
+}
+.map-address svg{flex-shrink:0; margin-top:2px; color:var(--teal-light);}
+.map-address span{animation:mapAddressIn .35s ease both;}
+.map-address span[hidden]{display:none;}
+@keyframes mapAddressIn{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;}}
+@media (prefers-reduced-motion:reduce){.map-address span{animation:none;}}
+
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1); padding:24px 32px; display:flex; justify-content:space-between;
+  align-items:center; color:#64748b; font-size:.82rem; flex-wrap:wrap; gap:14px;
+}
+.footer-bottom-links{display:flex; gap:20px;}
+.footer-bottom-links a{color:#64748b; transition:color .2s;}
+.footer-bottom-links a:hover{color:#fff;}
+
+/* RESPONSIVE */
+@media (max-width:1080px){
+  .footer-main{grid-template-columns:1fr 1fr; gap:32px;}
+}
+@media (max-width:720px){
+  .footer-main{grid-template-columns:1fr;}
+}

@@ -1,0 +1,72 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "hero.desc": { "es": "Petroil 40 A MAX. (Contenido de ejemplo — pendiente ficha oficial con la descripción, aplicaciones y parámetros reales de este producto).", "en": "Petroil 40 A MAX. (Sample content — pending the official data sheet with this product's real description, applications and parameters.)", "pt": "Petroil 40 A MAX. (Conteúdo de exemplo — pendente a ficha técnica oficial com a descrição, aplicações e parâmetros reais deste produto.)" },
+
+  "ctas.cotizar": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "ctas.asesor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.miniValue": { "es": "Ej.", "en": "Ex.", "pt": "Ex." },
+  "visual.miniLabel": { "es": "Datos de ejemplo", "en": "Sample data", "pt": "Dados de exemplo" },
+
+  "stat.value": { "es": "Por definir", "en": "To be defined", "pt": "A definir" },
+  "stat.label1": { "es": "Parámetro principal (dato de ejemplo)", "en": "Main parameter (sample data)", "pt": "Parâmetro principal (dado de exemplo)" },
+  "stat.label2": { "es": "Parámetro secundario (dato de ejemplo)", "en": "Secondary parameter (sample data)", "pt": "Parâmetro secundário (dado de exemplo)" },
+  "stat.label3": { "es": "Parámetro adicional (dato de ejemplo)", "en": "Additional parameter (sample data)", "pt": "Parâmetro adicional (dado de exemplo)" },
+
+  "banner.example": { "es": "Este producto tiene datos como ejemplo, aún no cuenta con ficha técnica oficial cargada. Los parámetros y textos de esta página son <strong>datos de ejemplo</strong> para mantener la estructura del sitio — debemos concretar detalles como multimedia, datos tecnicos, etc, por lo tanto queda en borrador hasta que tengamos la información real 100% disponible.", "en": "This product currently has sample data only; its official data sheet has not been loaded yet. The parameters and text on this page are <strong>sample data</strong> used to keep the site's structure in place — details such as media and technical data are still pending, so this page remains a draft until the real information is 100% available.", "pt": "Este produto ainda tem dados de exemplo e não conta com a ficha técnica oficial carregada. Os parâmetros e textos desta página são <strong>dados de exemplo</strong> para manter a estrutura do site — ainda faltam definir detalhes como multimídia e dados técnicos, por isso a página permanece em rascunho até que as informações reais estejam 100% disponíveis." },
+
+  "description.prose": { "es": "<em>Esta página usa contenido de ejemplo porque el documento fuente no incluyó una ficha detallada de Petroil 40 A MAX. Reemplaza este texto por la descripción técnica oficial del producto.</em>", "en": "<em>This page uses sample content because the source document did not include a detailed data sheet for Petroil 40 A MAX. Replace this text with the product's official technical description.</em>", "pt": "<em>Esta página usa conteúdo de exemplo porque o documento de origem não incluiu uma ficha detalhada do Petroil 40 A MAX. Substitua este texto pela descrição técnica oficial do produto.</em>" },
+
+  "sections.aplicaciones": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "sections.caracteristicas": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "sections.precauciones": { "es": "Precauciones y manejo", "en": "Precautions and handling", "pt": "Precauções e manuseio" },
+  "sections.datoEjemplo": { "es": "Dato de ejemplo", "en": "Sample data", "pt": "Dado de exemplo" },
+
+  "benefit1.title": { "es": "Aplicación principal (ejemplo)", "en": "Main application (example)", "pt": "Aplicação principal (exemplo)" },
+  "benefit1.desc": { "es": "Ejemplo: describe aquí el tipo de motores o procesos donde se recomienda usar Petroil 40 A MAX.", "en": "Example: describe here the type of engines or processes where using Petroil 40 A MAX is recommended.", "pt": "Exemplo: descreva aqui o tipo de motores ou processos em que se recomenda usar o Petroil 40 A MAX." },
+  "benefit2.title": { "es": "Beneficio destacado (ejemplo)", "en": "Key benefit (example)", "pt": "Benefício destacado (exemplo)" },
+  "benefit2.desc": { "es": "Ejemplo: describe aquí el beneficio de rendimiento o ahorro asociado al producto.", "en": "Example: describe here the performance or savings benefit associated with the product.", "pt": "Exemplo: descreva aqui o benefício de desempenho ou economia associado ao produto." },
+
+  "table.parametro": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Parámetro 1", "en": "Parameter 1", "pt": "Parâmetro 1" },
+  "table.row2": { "es": "Parámetro 2", "en": "Parameter 2", "pt": "Parâmetro 2" },
+  "table.row3": { "es": "Parámetro 3", "en": "Parameter 3", "pt": "Parâmetro 3" },
+  "table.value": { "es": "Por confirmar", "en": "To be confirmed", "pt": "A confirmar" },
+
+  "precautions.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "precautions.text": { "es": "Clasificación pendiente de confirmar según la norma 321 de la NFPA. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "Classification pending confirmation under NFPA standard 321. Check the official safety data sheet (MSDS) before handling or transporting this product.", "pt": "Classificação pendente de confirmação de acordo com a norma 321 da NFPA. Verifique a ficha de segurança (MSDS) oficial antes de manuseá-lo ou transportá-lo." },
+  "precautions.casLabel": { "es": "Número CAS:", "en": "CAS number:", "pt": "Número CAS:" },
+  "precautions.casValue": { "es": "Por confirmar", "en": "To be confirmed", "pt": "A confirmar" },
+
+  "sidebar.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "sidebar.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "sidebar.quoteText": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 40 · A MAX.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch conditions for Petroil 40 · A MAX.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 40 · A MAX." },
+  "sidebar.fastTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "sidebar.codigoLabel": { "es": "Código", "en": "Code", "pt": "Código" },
+  "sidebar.categoriaLabel": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "sidebar.categoriaValue": { "es": "Por confirmar", "en": "To be confirmed", "pt": "A confirmar" },
+  "sidebar.estadoLabel": { "es": "Estado de ficha", "en": "Data sheet status", "pt": "Status da ficha" },
+  "sidebar.estadoValue": { "es": "Pendiente de datos oficiales", "en": "Pending official data", "pt": "Pendente de dados oficiais" },
+  "sidebar.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "sidebar.advisorText": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers about availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quoteStrip.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quoteStrip.title": { "es": "¿Te interesa Petroil 40 · A MAX?", "en": "Interested in Petroil 40 · A MAX?", "pt": "Interessado no Petroil 40 · A MAX?" },
+  "quoteStrip.text": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us how much volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos o volume que você precisa, com que frequência e onde deseja recebê-lo. Um consultor comercial entrará em contato com a cotação e a ficha técnica oficial do produto." },
+  "quoteStrip.wa": { "es": "WhatsApp +57 311 333 7046", "en": "WhatsApp +57 311 333 7046", "pt": "WhatsApp +57 311 333 7046" },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreCombustibles": { "es": "Más en Combustibles →", "en": "More in Fuels →", "pt": "Mais em Combustíveis →" },
+  "related.viewAll": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "related.more": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" },
+  "related.familyCombustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "related.familyEspecializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+
+  "rel1.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre e alto desempenho." },
+  "rel2.desc": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto desempenho e confiabilidade na estrada." },
+  "rel3.desc": { "es": "Materia prima para procesos industriales.", "en": "Raw material for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+  "rel4.desc": { "es": "Aditivo para la optimización de combustibles.", "en": "Additive for fuel optimization.", "pt": "Aditivo para otimização de combustíveis." }
+}

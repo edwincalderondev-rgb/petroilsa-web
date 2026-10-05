@@ -1,0 +1,108 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "nav.portafolio": { "es": "Portafolio", "en": "Portfolio", "pt": "Portfólio" },
+  "nav.aplicaciones": { "es": "Aplicaciones", "en": "Applications", "pt": "Aplicações" },
+  "nav.catalogo": { "es": "Catálogo", "en": "Catalog", "pt": "Catálogo" },
+  "nav.hablemos": { "es": "Hablemos", "en": "Let's talk", "pt": "Vamos conversar" },
+
+  "hero.lead": { "es": "Combustibles y soluciones diseñadas para impulsar industrias en movimiento.", "en": "Fuels and solutions designed to power industries in motion.", "pt": "Combustíveis e soluções projetados para impulsionar indústrias em movimento." },
+  "hero.note": { "es": "Un portafolio confiable, eficiente y adaptable a las necesidades de cada operación.", "en": "A reliable, efficient portfolio that adapts to the needs of every operation.", "pt": "Um portfólio confiável, eficiente e adaptável às necessidades de cada operação." },
+  "hero.tag": { "es": "Energía que impulsa el progreso", "en": "Energy that drives progress", "pt": "Energia que impulsiona o progresso" },
+
+  "portfolio.eyebrow": { "es": "Nuestro portafolio", "en": "Our portfolio", "pt": "Nosso portfólio" },
+  "portfolio.title": { "es": "Soluciones energéticas<br>para cada necesidad", "en": "Energy solutions<br>for every need", "pt": "Soluções energéticas<br>para cada necessidade" },
+  "portfolio.desc": { "es": "Ofrecemos una amplia gama de combustibles, derivados y productos especializados, con altos estándares de calidad y un enfoque en la eficiencia y la sostenibilidad.", "en": "We offer a wide range of fuels, derivatives and specialized products, with high quality standards and a focus on efficiency and sustainability.", "pt": "Oferecemos uma ampla gama de combustíveis, derivados e produtos especializados, com altos padrões de qualidade e foco na eficiência e na sustentabilidade." },
+  "portfolio.aside": { "es": "Trabajamos de la mano con diferentes industrias para proveer soluciones confiables que se adaptan a sus retos y contribuyen al desarrollo de un futuro más seguro y eficiente.", "en": "We work hand in hand with different industries to provide reliable solutions that adapt to their challenges and contribute to a safer, more efficient future.", "pt": "Trabalhamos ao lado de diferentes indústrias para fornecer soluções confiáveis que se adaptam aos seus desafios e contribuem para um futuro mais seguro e eficiente." },
+
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "family.combustibles.desc": { "es": "Soluciones para transporte, industria y generación.", "en": "Solutions for transport, industry and power generation.", "pt": "Soluções para transporte, indústria e geração de energia." },
+  "family.fuelOils": { "es": "Fuel Oils", "en": "Fuel Oils", "pt": "Óleos Combustíveis" },
+  "family.fuelOils.desc": { "es": "Altos rendimientos para procesos industriales.", "en": "High performance for industrial processes.", "pt": "Alto desempenho para processos industriais." },
+  "family.marine": { "es": "Marine", "en": "Marine", "pt": "Marine" },
+  "family.marine.desc": { "es": "Soluciones para el sector marítimo.", "en": "Solutions for the marine sector.", "pt": "Soluções para o setor marítimo." },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "family.especializados.desc": { "es": "Aditivos y mejoradores para un mayor desempeño.", "en": "Additives and improvers for greater performance.", "pt": "Aditivos e melhoradores para maior desempenho." },
+  "family.todos": { "es": "Todos", "en": "All", "pt": "Todos" },
+
+  "sectors.eyebrow": { "es": "Por aplicación", "en": "By application", "pt": "Por aplicação" },
+  "sectors.title": { "es": "Energía para<br>cada sector", "en": "Energy for<br>every sector", "pt": "Energia para<br>cada setor" },
+  "sectors.desc": { "es": "Nuestros productos están diseñados para responder a las necesidades específicas de diferentes industrias y operaciones.", "en": "Our products are designed to meet the specific needs of different industries and operations.", "pt": "Nossos produtos são projetados para atender às necessidades específicas de diferentes indústrias e operações." },
+
+  "sector.industria": { "es": "Industria", "en": "Industry", "pt": "Indústria" },
+  "sector.generacion": { "es": "Generación", "en": "Generation", "pt": "Geração" },
+  "sector.transporte": { "es": "Transporte", "en": "Transport", "pt": "Transporte" },
+  "sector.maritimo": { "es": "Marítimo", "en": "Marine", "pt": "Marítimo" },
+  "sector.construccion": { "es": "Construcción", "en": "Construction", "pt": "Construção" },
+  "sector.otros": { "es": "Otros", "en": "Other", "pt": "Outros" },
+
+  "catalog.eyebrow": { "es": "Explora nuestros productos", "en": "Explore our products", "pt": "Explore nossos produtos" },
+  "catalog.title": { "es": "Un portafolio que se adapta<br>a tu operación", "en": "A portfolio that adapts<br>to your operation", "pt": "Um portfólio que se adapta<br>à sua operação" },
+  "catalog.searchLabel": { "es": "Buscar productos", "en": "Search products", "pt": "Buscar produtos" },
+  "catalog.sectorLabel": { "es": "Filtrar por sector", "en": "Filter by sector", "pt": "Filtrar por setor" },
+  "catalog.allProducts": { "es": "Todos los productos", "en": "All products", "pt": "Todos os produtos" },
+  "catalog.empty.title": { "es": "Sin resultados", "en": "No results", "pt": "Nenhum resultado" },
+  "catalog.empty.desc": { "es": "Ajusta la búsqueda o elige otra familia para ver más productos del portafolio.", "en": "Adjust your search or choose another family to see more products in the portfolio.", "pt": "Ajuste a busca ou escolha outra família para ver mais produtos do portfólio." },
+  "catalog.count.none": { "es": "Ningún producto coincide con la búsqueda.", "en": "No products match your search.", "pt": "Nenhum produto corresponde à busca." },
+  "catalog.count.one": { "es": "{n} producto encontrado", "en": "{n} product found", "pt": "{n} produto encontrado" },
+  "catalog.count.many": { "es": "{n} productos encontrados", "en": "{n} products found", "pt": "{n} produtos encontrados" },
+  "catalog.count.page": { "es": " · página {page} de {total}", "en": " · page {page} of {total}", "pt": " · página {page} de {total}" },
+  "catalog.page.prev": { "es": "Página anterior", "en": "Previous page", "pt": "Página anterior" },
+  "catalog.page.next": { "es": "Página siguiente", "en": "Next page", "pt": "Próxima página" },
+  "catalog.page.goto": { "es": "Ir a la página {n}", "en": "Go to page {n}", "pt": "Ir para a página {n}" },
+
+  "products.viewProduct": { "es": "Ver producto →", "en": "View product →", "pt": "Ver produto →" },
+  "products.inDevelopment": { "es": "En desarrollo", "en": "In development", "pt": "Em desenvolvimento" },
+
+  "products.p40.name": { "es": "Petroil 40 A MAX", "en": "Petroil 40 A MAX", "pt": "Petroil 40 A MAX" },
+  "products.p40.desc": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+
+  "products.p5010.name": { "es": "ULSD Premium", "en": "ULSD Premium", "pt": "ULSD Premium" },
+  "products.p5010.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre e alto desempenho." },
+
+  "products.p60.name": { "es": "Nafta Virgen", "en": "Virgin Naphtha", "pt": "Nafta Virgem" },
+  "products.p60.desc": { "es": "Materia prima para procesos industriales.", "en": "Feedstock for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+
+  "products.p90.name": { "es": "Gasolina premium", "en": "Premium gasoline", "pt": "Gasolina Premium" },
+  "products.p90.desc": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto desempenho e confiabilidade na estrada." },
+
+  "products.p100.name": { "es": "Mejorador de IFOS", "en": "IFO Improver", "pt": "Melhorador de IFOS" },
+  "products.p100.desc": { "es": "Aditivo para la optimización de combustibles.", "en": "Additive for fuel optimization.", "pt": "Aditivo para a otimização de combustíveis." },
+
+  "products.p250.name": { "es": "Fuel Oil #4", "en": "Fuel Oil #4", "pt": "Óleo Combustível nº 4" },
+  "products.p250.desc": { "es": "Solución para generación de energía e industria.", "en": "A solution for power generation and industry.", "pt": "Solução para geração de energia e indústria." },
+
+  "products.p300.name": { "es": "VLS Fuel Oil", "en": "VLS Fuel Oil", "pt": "VLS Fuel Oil" },
+  "products.p300.desc": { "es": "Fuel oil de muy bajo azufre y alta estabilidad.", "en": "Very low sulfur fuel oil with high stability.", "pt": "Óleo combustível de muito baixo teor de enxofre e alta estabilidade." },
+
+  "products.p500.name": { "es": "Marine MGO F.O.4", "en": "Marine MGO F.O.4", "pt": "Marine MGO F.O.4" },
+  "products.p500.desc": { "es": "Combustible marino de alto rendimiento.", "en": "High-performance marine fuel.", "pt": "Combustível marítimo de alto desempenho." },
+
+  "products.p800g.name": { "es": "Green", "en": "Green", "pt": "Green" },
+  "products.p800g.desc": { "es": "Soluciones más limpias para uso industrial.", "en": "Cleaner solutions for industrial use.", "pt": "Soluções mais limpas para uso industrial." },
+
+  "products.p800hcl.name": { "es": "Petroil 800 HCl", "en": "Petroil 800 HCl", "pt": "Petroil 800 HCl" },
+  "products.p800hcl.desc": { "es": "Producto especializado para procesos industriales.", "en": "Specialized product for industrial processes.", "pt": "Produto especializado para processos industriais." },
+
+  "products.p87r.name": { "es": "Gasolina Corriente", "en": "Regular Gasoline", "pt": "Gasolina Comum" },
+  "products.p87r.desc": { "es": "Gasolina de uso corriente para vehículos livianos.", "en": "Regular-grade gasoline for light vehicles.", "pt": "Gasolina comum para veículos leves." },
+
+  "products.rf110.name": { "es": "RF 110+ Racing Fuel", "en": "RF 110+ Racing Fuel", "pt": "RF 110+ Racing Fuel" },
+  "products.rf110.desc": { "es": "Alto octanaje formulado para competencia.", "en": "High octane, formulated for racing.", "pt": "Alta octanagem formulada para competição." },
+
+  "products.rf100.name": { "es": "100+ Racing Fuel", "en": "100+ Racing Fuel", "pt": "100+ Racing Fuel" },
+  "products.rf100.desc": { "es": "Combustible de competencia de alto desempeño.", "en": "High-performance racing fuel.", "pt": "Combustível de competição de alto desempenho." },
+
+  "products.p230.name": { "es": "230 MS · Varsol", "en": "230 MS · Varsol", "pt": "230 MS · Varsol" },
+  "products.p230.desc": { "es": "Solvente para uso industrial y de construcción.", "en": "Solvent for industrial and construction use.", "pt": "Solvente para uso industrial e de construção." },
+
+  "products.p70.name": { "es": "70 Kerosene", "en": "70 Kerosene", "pt": "70 Querosene" },
+  "products.p70.desc": { "es": "Kerosene para usos industriales y térmicos.", "en": "Kerosene for industrial and thermal uses.", "pt": "Querosene para usos industriais e térmicos." },
+
+  "contact.eyebrow": { "es": "¿No encuentras lo que buscas?", "en": "Can't find what you're looking for?", "pt": "Não encontrou o que procura?" },
+  "contact.desc": { "es": "Nuestro equipo está listo para asesorarte y ayudarte a encontrar la mejor solución para tu operación.", "en": "Our team is ready to advise you and help you find the best solution for your operation.", "pt": "Nossa equipe está pronta para orientar você e ajudá-lo a encontrar a melhor solução para a sua operação." },
+  "contact.cta": { "es": "Solicitar información", "en": "Request information", "pt": "Solicitar informações" },
+  "contact.feature1": { "es": "Asesoría especializada", "en": "Specialized advisory", "pt": "Consultoria especializada" },
+  "contact.feature2": { "es": "Soluciones a la medida", "en": "Tailored solutions", "pt": "Soluções sob medida" },
+  "contact.feature3": { "es": "Acompañamiento en todo el proceso", "en": "Support throughout the process", "pt": "Acompanhamento em todo o processo" }
+}

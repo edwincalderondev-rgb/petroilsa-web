@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contacto | Solicita tu cotización | Petroil S.A.</title>
+<meta name="description" content="Solicita una cotización o información técnica de los combustibles Petroil. Déjanos tus datos y un asesor comercial te contacta por WhatsApp o correo.">
+<link rel="canonical" href="https://petroilsa.com/contacto.html">
+<meta property="og:site_name" content="Petroil S.A.">
+<meta property="og:locale" content="es_CO">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contacto | Solicita tu cotización">
+<meta property="og:description" content="Solicita una cotización o información técnica de los combustibles Petroil. Déjanos tus datos y un asesor comercial te contacta por WhatsApp o correo.">
+<meta property="og:url" content="https://petroilsa.com/contacto.html">
+<meta property="og:image" content="https://petroilsa.com/assets/img/og/og-planta.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="270x270" href="assets/img/cropped-favicon-petroil-270x270.png">
+<link rel="apple-touch-icon" href="assets/img/cropped-favicon-petroil-270x270.png">
+<meta name="theme-color" content="#080C41">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/header-nav.css">
+  <link rel="stylesheet" href="assets/css/article.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/contacto.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/aira.css">
+  <link rel="stylesheet" href="assets/css/cursor.css">
+</head>
+<body data-i18n-page="assets/i18n/contacto.json">
+
+<a href="#main" class="skip-link">Saltar al contenido</a>
+<div class="scroll-track" id="scrollTrack">
+  <div class="scroll-progress" id="scrollProgress"></div>
+</div>
+
+<header class="navbar" id="siteHeader">
+  <div class="navbar-top">
+    <div class="navbar-top-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
+      </a>
+      <div class="nav-utility">
+        <a href="productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
+        <a href="nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+        <a href="sostenibilidad/sgi.html" class="portal-link" data-i18n="nav.sgi" data-i18n-title="nav.sgi.title" title="Sistema de Gestión Integrado">SGI</a>
+        <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
+        <div class="lang-select" id="langSelect">
+          <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+            <span class="lang-current" data-lang-current>ES</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-dropdown">
+            <a href="#" data-lang="en">English</a>
+            <a href="#" data-lang="es">Español</a>
+            <a href="#" data-lang="pt">Português</a>
+          </div>
+        </div>
+        <a href="contacto.html" class="btn-contacto" aria-current="page" data-i18n="nav.contacto">Contacto</a>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-route">
+    <a href="index.html" class="route-logo" id="routeLogo" aria-hidden="true" tabindex="-1">
+      <img src="assets/img/Petroil-logo-blanco.png" alt="" decoding="async">
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página">
+      <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+      <a href="#formulario" class="route-link" data-section="#formulario">
+        <span class="route-label" data-i18n="route.solicitud">Solicitud</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#canales" class="route-link" data-section="#canales">
+        <span class="route-label" data-i18n="route.canales">Canales directos</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+      <a href="#contacto" class="route-link" data-section="#contacto">
+        <span class="route-label" data-i18n="route.ubicacion">Ubicación</span>
+        <span class="route-node" aria-hidden="true"></span>
+      </a>
+    </nav>
+  </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+  <div class="drawer-top">
+    <span class="drawer-logo-wrap">
+      <img src="assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
+    </span>
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)">
+    <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+    <a href="#formulario" class="drawer-link" data-section="#formulario"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="route.solicitud">Solicitud</span></a>
+    <a href="#canales" class="drawer-link" data-section="#canales"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="route.canales">Canales directos</span></a>
+    <a href="#contacto" class="drawer-link" data-section="#contacto"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="route.ubicacion">Ubicación</span></a>
+  </nav>
+  <div class="drawer-footer">
+    <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    <a href="productos.html" class="drawer-portal" data-i18n="nav.productos">Productos</a>
+    <a href="nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
+    <a href="sostenibilidad/sgi.html" class="drawer-portal" data-i18n="nav.sgi">SGI</a>
+    <a href="contacto.html" class="btn-contacto" aria-current="page" data-i18n="nav.contacto">Contacto</a>
+    <div class="lang-select drawer-lang" id="langSelectDrawer">
+      <button class="lang-btn" id="langBtnDrawer" aria-haspopup="true" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+        <span class="lang-current" data-lang-current>ES</span>
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="lang-dropdown">
+        <a href="#" data-lang="en">English</a>
+        <a href="#" data-lang="es">Español</a>
+        <a href="#" data-lang="pt">Português</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="page-hero-bg" aria-hidden="true"><img src="assets/img/Petroil_fotosplanta_29.jpg" alt="" loading="eager" fetchpriority="high" decoding="async"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="container">
+      <div class="breadcrumb"><a href="index.html" data-i18n="breadcrumb.home">Inicio</a> / <span data-i18n="nav.contacto">Contacto</span></div>
+      <span class="eyebrow" style="color:var(--teal-light);" data-i18n="hero.eyebrow">Contacto comercial</span>
+      <h1 style="margin-top:12px;" data-i18n="hero.h1">Hablemos de tu operación</h1>
+      <p data-i18n="hero.lead">Solicita una cotización o la ficha técnica oficial de nuestros combustibles. Déjanos tus datos y un asesor comercial de Petroil te responde con volumen, disponibilidad y condiciones de despacho.</p>
+    </div>
+  </section>
+
+  <section class="ct-wrap">
+    <div class="container ct-grid">
+
+      <div id="formulario">
+        <form class="ct-form" id="contactForm" novalidate>
+          <!-- data-only="comercial" / "empleo": contacto.js muestra solo los bloques
+               del modo activo. "Trabaja con nosotros" pasa el formulario a modo
+               empleo (perfil profesional + hoja de vida adjunta en el correo); las
+               otras tres opciones son el modo comercial de siempre. -->
+          <div class="ct-form-head">
+            <h2 data-only="comercial" data-i18n="form.head.h">Solicita tu cotización</h2>
+            <h2 data-only="empleo" data-i18n="job.head.h" hidden>Trabaja con nosotros</h2>
+            <p data-only="comercial" data-i18n-html="form.head.p">Los campos marcados con <span style="color:var(--teal); font-weight:600;">*</span> son obligatorios. Al terminar podrás revisar tu solicitud y enviarla por WhatsApp, Gmail u Outlook con un solo clic.</p>
+            <p data-only="empleo" data-i18n-html="job.head.p" hidden>Cuéntanos quién eres y en qué área te gustaría aportar. Los campos marcados con <span style="color:var(--teal); font-weight:600;">*</span> son obligatorios; tu hoja de vida la adjuntas en el correo que se abre al final.</p>
+          </div>
+
+          <fieldset class="ct-step">
+            <legend class="ct-legend"><span class="num">01</span><span data-i18n="form.step1.legend">¿Qué necesitas?</span> <span class="req" style="color:var(--teal);">*</span></legend>
+            <div class="ct-types">
+              <label class="ct-chip">
+                <input type="radio" name="tipo" value="Cotización" required checked>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span data-i18n="tipo.cotizacion">Cotización</span></span>
+              </label>
+              <label class="ct-chip">
+                <input type="radio" name="tipo" value="Información técnica">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.1"/></svg><span data-i18n="tipo.informacion">Información técnica</span></span>
+              </label>
+              <label class="ct-chip">
+                <input type="radio" name="tipo" value="Otra consulta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1.1-4.2A8 8 0 1121 12z"/></svg><span data-i18n="tipo.otra">Otra consulta</span></span>
+              </label>
+              <label class="ct-chip">
+                <input type="radio" name="tipo" value="Trabaja con nosotros">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18M11 13v2h2v-2"/></svg><span data-i18n="tipo.empleo">Trabaja con nosotros</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="ct-step">
+            <legend class="ct-legend"><span class="num">02</span><span data-i18n="form.step2.legend">Tus datos</span></legend>
+            <div class="ct-fields">
+              <div class="ct-field">
+                <label for="ctNombre"><span data-i18n="form.nombre">Nombre completo</span> <span class="req">*</span></label>
+                <input id="ctNombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: María Fernanda Rojas" data-i18n-placeholder="form.nombre.ph" required>
+              </div>
+              <div class="ct-field" data-only="comercial">
+                <label for="ctEmpresa"><span data-i18n="form.empresa">Empresa</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <input id="ctEmpresa" name="empresa" type="text" autocomplete="organization" placeholder="Ej: Transportes del Caribe S.A.S." data-i18n-placeholder="form.empresa.ph">
+              </div>
+              <div class="ct-field">
+                <label for="ctCorreo"><span data-i18n="form.correo">Correo electrónico</span> <span class="req">*</span></label>
+                <input id="ctCorreo" name="correo" type="email" autocomplete="email" placeholder="nombre@empresa.com" required>
+              </div>
+              <div class="ct-field">
+                <label for="ctTelefono"><span data-i18n="form.telefono">Teléfono / celular</span> <span class="req">*</span></label>
+                <input id="ctTelefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ej: +57 300 000 0000" pattern="[0-9+\(\)\s\-]{7,20}" title="Solo números, espacios y los signos + ( ) -" data-i18n-placeholder="form.telefono.ph" required>
+              </div>
+              <div class="ct-field ct-field--full">
+                <label for="ctCiudad"><span data-only="comercial" data-i18n="form.ciudad">Ciudad / lugar de entrega</span><span data-only="empleo" data-i18n="job.ciudad" hidden>Ciudad de residencia</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <input id="ctCiudad" name="ciudad" type="text" autocomplete="address-level2" placeholder="Ej: Santa Marta, Magdalena" data-i18n-placeholder="form.ciudad.ph">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ct-step" id="ctStepProductos" data-only="comercial">
+            <legend class="ct-legend"><span class="num">03</span><span data-i18n="form.step3.legend">Producto(s) de interés</span></legend>
+            <div class="ct-products" id="ctProductos">
+              <div class="ct-family">
+                <span class="ct-family-title" data-i18n="family.combustibles">Combustibles</span>
+                <div class="ct-family-grid">
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-40" data-label="P-40 · Petroil 40 A MAX"><span><b>P-40</b><small>40 A MAX</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-50/10" data-label="P-50/10 · ULSD Premium"><span><b>P-50/10</b><small>ULSD Premium</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-90" data-label="P-90 · Gasolina premium"><span><b>P-90</b><small>Gasolina premium</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-87 R" data-label="P-87 R · Gasolina Corriente"><span><b>P-87 R</b><small>Gasolina Corriente</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="RF-110+" data-label="RF-110+ · Racing Fuel"><span><b>RF-110+</b><small>Racing Fuel</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="RF-100+" data-label="RF-100+ · Racing Fuel"><span><b>RF-100+</b><small>Racing Fuel</small></span></label>
+                </div>
+              </div>
+              <div class="ct-family">
+                <span class="ct-family-title">Fuel Oils</span>
+                <div class="ct-family-grid">
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-250" data-label="P-250 · Fuel Oil #4"><span><b>P-250</b><small>Fuel Oil #4</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-800 G" data-label="P-800 G · Green"><span><b>P-800 G</b><small>Green</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-800 HCl" data-label="P-800 HCl"><span><b>P-800 HCl</b><small>Uso industrial</small></span></label>
+                </div>
+              </div>
+              <div class="ct-family">
+                <span class="ct-family-title">Marine</span>
+                <div class="ct-family-grid">
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-300" data-label="P-300 · VLS Fuel Oil"><span><b>P-300</b><small>VLS Fuel Oil</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-500" data-label="P-500 · Marine MGO F.O.4"><span><b>P-500</b><small>Marine MGO F.O.4</small></span></label>
+                </div>
+              </div>
+              <div class="ct-family">
+                <span class="ct-family-title" data-i18n="family.especializados">Especializados</span>
+                <div class="ct-family-grid">
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-60" data-label="P-60 · Nafta Virgen"><span><b>P-60</b><small>Nafta Virgen</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-100" data-label="P-100 · Mejorador de IFOS"><span><b>P-100</b><small>Mejorador de IFOS</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-230" data-label="P-230 · 230 MS Varsol"><span><b>P-230</b><small>230 MS · Varsol</small></span></label>
+                  <label class="ct-chip"><input type="checkbox" name="productos" value="P-70" data-label="P-70 · Kerosene"><span><b>P-70</b><small>Kerosene</small></span></label>
+                </div>
+              </div>
+            </div>
+            <p class="ct-error" id="ctProductosError" role="alert" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+              <span data-i18n="form.productos.error">Selecciona al menos un producto (o elige «Otra consulta» en el paso 1).</span>
+            </p>
+          </fieldset>
+
+          <fieldset class="ct-step" id="ctStepDetalles" data-only="comercial">
+            <legend class="ct-legend"><span class="num">04</span><span data-i18n="form.step4.legend">Detalles de la solicitud</span></legend>
+            <div class="ct-fields">
+              <div class="ct-field ct-field--full">
+                <label for="ctVolumen"><span data-i18n="form.volumen">Volumen estimado y frecuencia</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <input id="ctVolumen" name="volumen" type="text" placeholder="Ej: 10.000 galones mensuales" data-i18n-placeholder="form.volumen.ph">
+              </div>
+              <div class="ct-field ct-field--full">
+                <label for="ctMensaje"><span data-i18n="form.mensaje">Mensaje</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <textarea id="ctMensaje" name="mensaje" rows="4" placeholder="Cuéntanos sobre tu operación, uso del combustible o cualquier detalle que debamos conocer..." data-i18n-placeholder="form.mensaje.ph"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Modo empleo. Los fieldsets van disabled mientras no se use el modo:
+               un campo deshabilitado no se valida, así que sus "required" no
+               bloquean una cotización. contacto.js los habilita al elegir
+               "Trabaja con nosotros". Los value de los <option> van en español
+               a propósito: son lo que llega escrito en el correo. -->
+          <fieldset class="ct-step" id="ctStepPerfil" data-only="empleo" hidden disabled>
+            <legend class="ct-legend"><span class="num">03</span><span data-i18n="job.step3.legend">Tu perfil profesional</span></legend>
+            <div class="ct-fields">
+              <div class="ct-field">
+                <label for="ctProfesion"><span data-i18n="job.profesion">Profesión u oficio</span> <span class="req">*</span></label>
+                <input id="ctProfesion" name="profesion" type="text" autocomplete="organization-title" placeholder="Ej: Ingeniera química" data-i18n-placeholder="job.profesion.ph" required>
+              </div>
+              <div class="ct-field">
+                <label for="ctFormacion"><span data-i18n="job.formacion">Nivel de formación</span> <span class="req">*</span></label>
+                <select id="ctFormacion" name="formacion" required>
+                  <option value="" data-i18n="job.select">Selecciona una opción</option>
+                  <option value="Bachiller" data-i18n="job.formacion.o1">Bachiller</option>
+                  <option value="Técnico" data-i18n="job.formacion.o2">Técnico</option>
+                  <option value="Tecnólogo" data-i18n="job.formacion.o3">Tecnólogo</option>
+                  <option value="Profesional universitario" data-i18n="job.formacion.o4">Profesional universitario</option>
+                  <option value="Especialización" data-i18n="job.formacion.o5">Especialización</option>
+                  <option value="Maestría o doctorado" data-i18n="job.formacion.o6">Maestría o doctorado</option>
+                </select>
+              </div>
+              <div class="ct-field">
+                <label for="ctArea"><span data-i18n="job.area">Área de interés</span> <span class="req">*</span></label>
+                <select id="ctArea" name="area" required>
+                  <option value="" data-i18n="job.select">Selecciona una opción</option>
+                  <option value="Operaciones y producción" data-i18n="job.area.o1">Operaciones y producción</option>
+                  <option value="Mantenimiento" data-i18n="job.area.o2">Mantenimiento</option>
+                  <option value="Laboratorio y calidad" data-i18n="job.area.o3">Laboratorio y calidad</option>
+                  <option value="HSEQ (seguridad, salud y ambiente)" data-i18n="job.area.o4">HSEQ (seguridad, salud y ambiente)</option>
+                  <option value="Comercial y ventas" data-i18n="job.area.o5">Comercial y ventas</option>
+                  <option value="Logística y despachos" data-i18n="job.area.o6">Logística y despachos</option>
+                  <option value="Administrativa y financiera" data-i18n="job.area.o7">Administrativa y financiera</option>
+                  <option value="Tecnología" data-i18n="job.area.o8">Tecnología</option>
+                  <option value="Prácticas o pasantía" data-i18n="job.area.o9">Prácticas o pasantía</option>
+                  <option value="Otra" data-i18n="job.area.o10">Otra</option>
+                </select>
+              </div>
+              <div class="ct-field">
+                <label for="ctExperiencia"><span data-i18n="job.experiencia">Experiencia</span> <span class="req">*</span></label>
+                <select id="ctExperiencia" name="experiencia" required>
+                  <option value="" data-i18n="job.select">Selecciona una opción</option>
+                  <option value="Sin experiencia" data-i18n="job.experiencia.o1">Sin experiencia</option>
+                  <option value="Menos de 1 año" data-i18n="job.experiencia.o2">Menos de 1 año</option>
+                  <option value="De 1 a 3 años" data-i18n="job.experiencia.o3">De 1 a 3 años</option>
+                  <option value="De 3 a 5 años" data-i18n="job.experiencia.o4">De 3 a 5 años</option>
+                  <option value="De 5 a 10 años" data-i18n="job.experiencia.o5">De 5 a 10 años</option>
+                  <option value="Más de 10 años" data-i18n="job.experiencia.o6">Más de 10 años</option>
+                </select>
+              </div>
+              <div class="ct-field">
+                <label for="ctSede"><span data-i18n="job.sede">Sede de preferencia</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <select id="ctSede" name="sede">
+                  <option value="" data-i18n="job.sede.o0">Sin preferencia</option>
+                  <option value="Refinería Santa Marta" data-i18n="job.sede.o1">Refinería Santa Marta</option>
+                  <option value="Oficina Bogotá" data-i18n="job.sede.o2">Oficina Bogotá</option>
+                  <option value="Barranquilla" data-i18n="job.sede.o3">Barranquilla</option>
+                </select>
+              </div>
+              <div class="ct-field">
+                <label for="ctPerfilUrl"><span data-i18n="job.url">LinkedIn o portafolio</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <input id="ctPerfilUrl" name="perfilUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://www.linkedin.com/in/…">
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="ct-step" id="ctStepHdv" data-only="empleo" hidden disabled>
+            <legend class="ct-legend"><span class="num">04</span><span data-i18n="job.step4.legend">Tu hoja de vida</span></legend>
+            <div class="ct-attach">
+              <span class="ct-attach-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 01-8.5-8.5l9.2-9.2a4 4 0 015.7 5.7l-9.2 9.2a2 2 0 01-2.8-2.8l8.5-8.5"/></svg></span>
+              <div>
+                <b data-i18n="job.attach.h">Tu hoja de vida se adjunta en el correo</b>
+                <p data-i18n-html="job.attach.p">Este formulario no sube archivos. Al pulsar <b>«Adjuntar HDV y enviar»</b> eliges tu correo (Gmail, Outlook u otro) y se abre un mensaje con tu postulación ya escrita: solo tienes que <b>adjuntar tu hoja de vida</b> —en PDF, idealmente— y presionar «Enviar».</p>
+              </div>
+            </div>
+            <div class="ct-fields">
+              <div class="ct-field ct-field--full">
+                <label for="ctPresentacion"><span data-i18n="job.presentacion">Presentación breve</span> <span class="opt" data-i18n="form.opcional">(opcional)</span></label>
+                <textarea id="ctPresentacion" name="presentacion" rows="4" placeholder="En pocas líneas: tu experiencia, qué te motiva a trabajar en Petroil y tu disponibilidad." data-i18n-placeholder="job.presentacion.ph"></textarea>
+              </div>
+            </div>
+          </fieldset>
+
+          <label class="ct-check">
+            <input type="checkbox" name="privacidad" required>
+            <span data-i18n-html="form.privacidad">He leído y acepto la
+              <a href="legal/politica-datos.html" target="_blank" rel="noopener">política de tratamiento de datos personales</a>
+              de Petroil S.A. y autorizo el uso de mis datos para atender esta solicitud. <span style="color:var(--teal); font-weight:600;">*</span></span>
+          </label>
+
+          <div class="ct-actions">
+            <button class="ct-submit" type="submit">
+              <span data-only="comercial" data-i18n="form.submit">Revisar y enviar solicitud</span>
+              <svg data-only="comercial" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg data-only="empleo" hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.4 11.1l-9.2 9.2a6 6 0 01-8.5-8.5l9.2-9.2a4 4 0 015.7 5.7l-9.2 9.2a2 2 0 01-2.8-2.8l8.5-8.5"/></svg>
+              <span data-only="empleo" data-i18n="job.submit" hidden>Adjuntar HDV y enviar</span>
+            </button>
+            <span class="ct-channels-hint">
+              <span data-only="comercial"><span class="ct-dot wa" aria-hidden="true"></span>WhatsApp</span>
+              <span class="ct-dot gm" aria-hidden="true"></span>Gmail
+              <span class="ct-dot ol" aria-hidden="true"></span>Outlook
+            </span>
+          </div>
+          <p class="ct-note" data-only="comercial" data-i18n="form.note">Antes de enviar verás el mensaje completo. Se abrirá el canal que elijas con todo ya redactado: solo tienes que presionar «Enviar».</p>
+          <p class="ct-note" data-only="empleo" data-i18n="job.note" hidden>Tu hoja de vida no pasa por esta página ni queda guardada en ningún servidor: viaja adjunta en tu propio correo, directo a Petroil.</p>
+        </form>
+
+        <div class="ct-success" id="ctSuccess" role="status" hidden>
+          <div class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h2 id="ctSuccessTitle" tabindex="-1" data-i18n="success.title">¡Tu solicitud está lista!</h2>
+          <p id="ctSuccessText"></p>
+          <p class="ct-success-ref" data-only="comercial" data-i18n-html="success.ref">Referencia de tu solicitud: <b id="ctSuccessRef"></b></p>
+          <p class="ct-success-ref" data-only="empleo" data-i18n-html="job.success.ref" hidden>Referencia de tu postulación: <b id="ctSuccessRefJob"></b></p>
+          <p data-i18n="success.notOpened">¿No se abrió nada? Puede que tu navegador haya bloqueado la ventana nueva: usa los botones de abajo.</p>
+          <div class="ct-success-actions">
+            <button type="button" class="ct-success-primary" id="ctReopen"><span data-i18n="success.reopen">Abrir de nuevo</span></button>
+            <button type="button" id="ctOtherChannel" data-i18n="success.otherChannel">Elegir otro canal</button>
+            <button type="button" id="ctReset" data-i18n="success.reset">Hacer otra solicitud</button>
+          </div>
+        </div>
+      </div>
+
+      <dialog class="ct-review" id="ctReview" aria-labelledby="ctReviewTitle">
+        <div class="ct-review-card">
+          <div class="ct-review-head">
+            <div>
+              <span class="eyebrow" data-i18n="review.eyebrow">Paso final</span>
+              <h2 id="ctReviewTitle"><span data-only="comercial" data-i18n="review.title">Revisa tu solicitud</span><span data-only="empleo" data-i18n="job.review.title" hidden>Revisa tu postulación</span></h2>
+              <p data-only="comercial" data-i18n-html="review.ref">Referencia <b id="ctRef">PTL-000000-0000</b> · Así llegará a nuestro equipo comercial.</p>
+              <p data-only="empleo" data-i18n-html="job.review.ref" hidden>Referencia <b id="ctRefJob">TAL-000000-0000</b> · Así llegará a Petroil, con tu hoja de vida adjunta.</p>
+            </div>
+            <button type="button" class="ct-review-close" data-close aria-label="Cerrar y seguir editando">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+
+          <pre class="ct-preview" id="ctPreview"></pre>
+
+          <div class="ct-attach ct-attach--compact" data-only="empleo" hidden>
+            <span class="ct-attach-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 01-8.5-8.5l9.2-9.2a4 4 0 015.7 5.7l-9.2 9.2a2 2 0 01-2.8-2.8l8.5-8.5"/></svg></span>
+            <p data-i18n-html="job.review.attach">Cuando se abra el correo, <b>adjunta tu hoja de vida</b> con el clip 📎 antes de presionar «Enviar».</p>
+          </div>
+
+          <p class="ct-review-label"><span data-only="comercial" data-i18n="review.channelLabel">¿Por dónde quieres enviarla?</span><span data-only="empleo" data-i18n="job.review.channelLabel" hidden>¿Con qué correo quieres enviarla?</span></p>
+          <!-- Sin WhatsApp en modo empleo: la hoja de vida viaja por correo. -->
+          <button type="button" class="ct-channel ct-channel--wa" data-channel="whatsapp" data-only="comercial" autofocus>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+            <span><b data-i18n="channel.wa.label">Enviar por WhatsApp</b><small data-i18n="channel.wa.desc">Respuesta más rápida · +57 311 333 7046</small></span>
+          </button>
+
+          <div class="ct-channel-grid">
+            <button type="button" class="ct-channel" data-channel="gmail">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M2 6.5V18a1.5 1.5 0 001.5 1.5H6V10l-4-3.5z"/><path fill="#34A853" d="M18 19.5h2.5A1.5 1.5 0 0022 18V6.5L18 10z"/><path fill="#FBBC04" d="M18 5v5l4-3.5V6a1.5 1.5 0 00-2.4-1.2z"/><path fill="#EA4335" d="M6 10V5l6 4.5L18 5v5l-6 4.5z"/><path fill="#C5221F" d="M2 6v.5L6 10V5l-1.6-1.2A1.5 1.5 0 002 5z"/></svg>
+              <span><b>Gmail</b><small data-i18n="channel.gmail.desc">Correo de Google</small></span>
+            </button>
+            <button type="button" class="ct-channel" data-channel="outlook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="5" width="13" height="14" rx="1.5" fill="#28A8EA"/><path d="M9 8.5l6.5 4.5L22 8.5" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="2" y="7" width="10" height="10" rx="1.5" fill="#0364B8"/><ellipse cx="7" cy="12" rx="2.4" ry="2.9" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+              <span><b>Outlook.com</b><small data-i18n="channel.outlook.desc">Hotmail · Outlook personal</small></span>
+            </button>
+            <button type="button" class="ct-channel" data-channel="outlook365">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="5" width="13" height="14" rx="1.5" fill="#1490DF"/><path d="M9 8.5l6.5 4.5L22 8.5" fill="none" stroke="#fff" stroke-width="1.3"/><rect x="2" y="7" width="10" height="10" rx="1.5" fill="#0A2767"/><ellipse cx="7" cy="12" rx="2.4" ry="2.9" fill="none" stroke="#fff" stroke-width="1.6"/></svg>
+              <span><b data-i18n="channel.outlook365.label">Outlook empresarial</b><small data-i18n="channel.outlook365.desc">Cuenta de Microsoft 365</small></span>
+            </button>
+            <button type="button" class="ct-channel" data-channel="mailto">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg>
+              <span><b data-i18n="channel.mailto.label">Otra app de correo</b><small data-i18n="channel.mailto.desc">La predeterminada del equipo</small></span>
+            </button>
+          </div>
+
+          <div class="ct-review-foot">
+            <button type="button" class="ct-link" id="ctCopy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 011-1h10"/></svg>
+              <span data-i18n="review.copyText">Copiar texto</span>
+            </button>
+            <button type="button" class="ct-link" data-close data-i18n="review.keepEditing">← Seguir editando</button>
+          </div>
+        </div>
+      </dialog>
+
+      <aside class="ct-side" id="canales" aria-label="Canales de contacto directo">
+        <div class="ct-card dark">
+          <span class="eyebrow" data-i18n="advisor.eyebrow">Asesor comercial</span>
+          <h3 data-i18n="advisor.h">¿Prefieres hablar directamente?</h3>
+          <p data-i18n="advisor.p">Escríbenos por WhatsApp y un asesor te atiende de forma personalizada.</p>
+          <a class="ct-advisor-phone" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20de%20la%20p%C3%A1gina%20de%20contacto%20de%20Petroil%20y%20quiero%20hablar%20con%20un%20asesor%20comercial." target="_blank" rel="noopener">+57 311 333 7046</a>
+          <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20de%20la%20p%C3%A1gina%20de%20contacto%20de%20Petroil%20y%20quiero%20hablar%20con%20un%20asesor%20comercial." target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9z"/></svg>
+            <span data-i18n="advisor.cta">Chatear con un asesor</span>
+          </a>
+        </div>
+
+        <div class="ct-card">
+          <h3 data-i18n="channels.h">Canales de atención</h3>
+          <ul class="ct-channels">
+            <li>
+              <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 7l8 6 8-6"/></svg></span>
+              <div><b data-i18n="channels.correo">Correo</b><a href="mailto:contacto@petroilsa.com">contacto@petroilsa.com</a></div>
+            </li>
+            <li>
+              <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <div><b data-i18n="footer.mapTab.bogota">Oficina Bogotá</b><span>Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702.</span></div>
+            </li>
+            <li>
+              <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21V9l6 3V9l6 3V6l6 3v12H3z"/></svg></span>
+              <div><b data-i18n="footer.mapTab.santamarta">Refinería Santa Marta</b><span>Cra. 57A No. 30–399, Km 1 Sector Mamatoco.</span></div>
+            </li>
+            <li>
+              <span class="icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 7h18v12H3z"/></svg></span>
+              <div><b data-i18n="channels.pqrsf">Peticiones, quejas y reclamos</b><a href="legal/pqrsf.html" data-i18n="channels.pqrsf.link">Radicar una PQRSF →</a></div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ct-card confidential">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+          <p data-i18n="confidential.p">Tus datos se usan únicamente para responder esta solicitud, conforme a la Ley 1581 de 2012 de protección de datos personales.</p>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="contacto">
+  <div class="footer-top-line"></div>
+  <div class="container footer-main">
+    <div class="footer-brand">
+      <img src="assets/img/Petroil-logo-blanco.png" alt="Petroil S.A.">
+      <p data-i18n="footer.tagline">Mejorando el aire que respiramos. Refinería de hidrocarburos comprometida con combustibles más limpios y eficientes.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/profile.php?id=100090207642425" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.4 13.4 6 14.7 6H17V2.1C16.6 2 15.3 2 14 2c-3 0-5 1.8-5 5.2V10H6v4h3v8h4z"/></svg></a>
+        <a href="https://www.linkedin.com/company/petroilsa/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
+        <a href="https://www.instagram.com/petroilsa/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://www.youtube.com/@petroilsa" aria-label="YouTube" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.2c-.3-1-1-1.7-2-2C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.5.5c-1 .3-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.2c.3 1 1 1.7 2 2 1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5c1-.3 1.7-1 2-2 .5-1.6.5-5.2.5-5.2zM9.7 15.4V8.6L15.8 12l-6.1 3.4z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <h4 data-i18n="footer.linksHeading">Enlaces</h4>
+      <ul class="footer-links">
+        <li><a href="productos.html" data-i18n="nav.productos">Productos</a></li>
+        <li><a href="index.html#servicios" data-i18n="nav.servicios">Servicios</a></li>
+        <li><a href="index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
+        <li><a href="index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
+        <li><a href="nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
+        <!-- Portal de clientes oculto hasta su salida a producción: <li><a href="portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+      </ul>
+      <h4 class="footer-sub" data-i18n="footer.instalacionesHeading">Instalaciones</h4>
+      <ul class="footer-links">
+        <li><a href="instalaciones/refineria-santa-marta.html" data-i18n="footer.link.santaMarta">Refinería Santa Marta</a></li>
+        <li><a href="instalaciones/esquivensa-barranquilla.html" data-i18n="footer.link.esquivensa">Esquivensa Barranquilla</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4 data-i18n="footer.sostenibilidadHeading">Sostenibilidad</h4>
+      <ul class="footer-links">
+        <li><a href="sostenibilidad/sgi.html" data-i18n="footer.link.sgi">SGI</a></li>
+        <li><a href="sostenibilidad/compromiso-social.html" data-i18n="footer.link.compromisoSocial">Compromiso social</a></li>
+        <li><a href="sostenibilidad/responsabilidad-ambiental.html" data-i18n="footer.link.ambiental">Ambiente</a></li>
+      </ul>
+      <h4 class="footer-sub" data-i18n="footer.calidadHeading">Aseguramiento de la calidad</h4>
+      <ul class="footer-links">
+        <li><a href="legal/pqrsf.html" data-i18n="footer.link.pqrsf">PQRSF</a></li>
+      </ul>
+      <div class="footer-reach">
+        <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg><a href="mailto:contacto@petroilsa.com" data-i18n="footer.email">contacto@petroilsa.com</a></p>
+        <a class="wa-btn" href="https://wa.me/573113337046?text=%C2%A1Hola!%20Vengo%20del%20sitio%20web%20de%20Petroil%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
+          <span data-i18n="footer.whatsapp">WhatsApp: +57 311 333 7046</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer-map">
+      <h4 data-i18n="footer.mapHeading">Ubicación</h4>
+      <div class="map-tabs">
+        <button class="map-tab active" type="button" data-map="bogota" aria-pressed="true" data-i18n="footer.mapTab.bogota">Oficina Bogotá</button>
+        <button class="map-tab" type="button" data-map="santamarta" aria-pressed="false" data-i18n="footer.mapTab.santamarta">Refinería Santa Marta</button>
+        <button class="map-tab" type="button" data-map="esquivensa" aria-pressed="false" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
+      </div>
+      <div class="map-frame-wrap">
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386"
+          title="Mapa de ubicación de Petroil"></iframe>
+      </div>
+      <a class="map-gmaps-link" id="gmapsLink" href="https://maps.app.goo.gl/X6YV8dd6fGqJEsPR6" target="_blank" rel="noopener">
+        <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <!-- La dirección de la sede activa: footer-map.js muestra el <span> cuyo
+           data-map-address coincide con la pestaña elegida y oculta los otros dos.
+           Van los tres en el HTML (y no escritos desde el JS) para que i18n.js
+           los traduzca como cualquier otro texto. -->
+      <p class="map-address" id="mapAddress" aria-live="polite">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span data-map-address="bogota" data-i18n="footer.address.bogota">Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span>
+        <span data-map-address="santamarta" data-i18n="footer.address.santamarta" hidden>Cra. 57A No. 30–399, Km 1 Sector Mamatoco, Santa Marta, Colombia.</span>
+        <span data-map-address="esquivensa" data-i18n="footer.address.esquivensa" hidden>Esquivensa, Cl. 1c #5-231 a 5-1, Zona Franca, Barranquilla, Colombia.</span>
+      </p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span data-i18n="footer.copyright">© 2026 Petroil S.A. Todos los derechos reservados.</span>
+    <div class="footer-bottom-links">
+      <span data-i18n="footer.bottomTagline">Comprometidos con el medio ambiente</span>
+      <a href="legal/politica-datos.html" data-i18n="footer.link.privacidad">Política de protección de datos</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ALA DE SABLE · asistente virtual (assets/css/aira.css + assets/js/aira.js)
+     Se llamó AIRA hasta el 2026-10-01: el código conserva el prefijo
+     aira-* / #aira / AIRA_KB para no tocar 29 páginas por un nombre.
+     Responde por coincidencia de palabras clave contra la base de
+     conocimiento de assets/js/aira-kb.js. Sin API ni backend.
+     data-base = prefijo de los enlaces de la base: '' en la raíz,
+     '../' si algún día se monta en una subcarpeta.
+     ═══════════════════════════════════════════════════════════ -->
+<div id="aira" data-base="">
+
+  <div class="aira-teaser" id="airaTeaser">
+    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso">✕</button>
+    <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
+  </div>
+
+  <button class="aira-launcher" id="airaLauncher" type="button"
+          aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil"
+          aria-expanded="false" aria-controls="airaPanel">
+    <span class="aira-launcher-dot" aria-hidden="true"></span>
+    <img class="aira-launcher-avatar" src="assets/img/ala-de-sable.webp" alt="" width="86" height="94" decoding="async">
+  </button>
+
+  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con Ala de Sable, asistente virtual de Petroil" aria-hidden="true">
+
+    <div class="aira-head">
+      <div class="aira-head-avatar">
+        <img src="assets/img/ala-de-sable.webp" alt="" width="52" height="57" decoding="async">
+        <span class="aira-online" aria-hidden="true"></span>
+      </div>
+      <div class="aira-head-txt">
+        <strong>Ala de Sable</strong>
+        <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
+      </div>
+      <div class="aira-head-actions">
+        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" title="Reiniciar conversación">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="aira-note">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      <span data-i18n="aira.note">Asistente automático: responde con información publicada en este sitio.</span>
+    </div>
+
+    <!-- role="log" + aria-live: los lectores de pantalla anuncian cada
+         respuesta nueva sin que el usuario pierda el foco del campo. -->
+    <div class="aira-log" id="airaLog" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+    <div class="aira-chips" id="airaChips" hidden></div>
+
+    <div class="aira-foot">
+      <form class="aira-form" id="airaForm" autocomplete="off">
+        <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para Ala de Sable</label>
+        <input class="aira-input" id="airaInput" type="text" name="q"
+               placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder"
+               enterkeyhint="send" maxlength="200">
+        <button class="aira-send" type="submit" aria-label="Enviar pregunta">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <p class="aira-credit" data-i18n="aira.credit">¿Necesitas a una persona? Escríbenos al +57 311 333 7046</p>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/contacto.js"></script>
+<script src="assets/js/footer-map.js"></script>
+<script src="assets/js/aira-kb.js"></script>
+<script src="assets/js/aira.js"></script>
+<script src="assets/js/cursor.js"></script>
+<script src="assets/js/hero-particles.js"></script>
+<script src="assets/js/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+/* ============================================
+   CONTACTO (contacto.html) — formulario de solicitud de cotización /
+   información + canales directos con el área comercial.
+   Hero: reutiliza .page-hero de article.css (misma foto + degradado que el
+   resto de páginas internas). Paleta: solo tokens de base.css; el único
+   color fuera de manual es --warn, para los mensajes de error del
+   formulario (misma excepción funcional que los avisos del sitio) y el
+   verde de WhatsApp (#25D366), que ya usa .wa-btn en footer.css.
+   ============================================ */
+
+#formulario, #canales{scroll-margin-top:210px;}
+
+.ct-wrap{padding:64px 0 100px; background:var(--mist);}
+.ct-grid{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,.9fr); gap:32px; align-items:start;}
+
+/* ---------- Formulario ---------- */
+.ct-form, .ct-success{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:36px;
+  box-shadow:var(--shadow-soft);
+}
+.ct-form-head{margin-bottom:28px;}
+.ct-form-head h2{font-size:1.5rem; color:var(--navy);}
+.ct-form-head p{color:var(--steel); font-size:.92rem; margin-top:8px; line-height:1.6;}
+
+.ct-step{border:none; margin:0 0 30px; padding:0; min-width:0;}
+.ct-legend{
+  display:flex; align-items:center; gap:10px; padding:0; margin-bottom:16px;
+  font-size:.95rem; font-weight:600; color:var(--navy);
+}
+.ct-legend .num{
+  font-size:.72rem; font-weight:600; color:var(--teal); border:1px solid var(--line);
+  border-radius:20px; padding:2px 10px;
+}
+
+.ct-fields{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.ct-field{display:flex; flex-direction:column; gap:6px; min-width:0;}
+.ct-field--full{grid-column:1/-1;}
+.ct-field label{font-size:.82rem; font-weight:600; color:var(--navy);}
+.ct-field label .opt{font-weight:400; color:var(--steel);}
+.ct-field label .req{color:var(--teal);}
+.ct-field input, .ct-field textarea, .ct-field select{
+  border:1.5px solid var(--line); border-radius:10px; padding:11px 14px; font-family:inherit; font-size:.92rem;
+  color:var(--ink); background:#fff; transition:border-color .2s, box-shadow .2s; width:100%;
+}
+/* Flecha propia para que los <select> del perfil profesional se vean como
+   los demás campos y no como el control gris del sistema. */
+.ct-field select{
+  appearance:none; -webkit-appearance:none; padding-right:40px; cursor:pointer;
+  background:#fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23154772' stroke-width='2.2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 14px center/14px no-repeat;
+}
+.ct-field select:invalid{color:var(--steel);}
+.ct-field input:focus, .ct-field textarea:focus, .ct-field select:focus{
+  outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(21,71,114,.15);
+}
+.ct-field textarea{resize:vertical; min-height:110px;}
+/* Solo se marca en rojo/ámbar después de que el usuario tocó el campo */
+.ct-field input:user-invalid, .ct-field textarea:user-invalid, .ct-field select:user-invalid{border-color:var(--warn);}
+
+/* Aviso "tu hoja de vida se adjunta en el correo" (modo empleo, paso 04 y
+   diálogo de revisión). Es la respuesta a la duda de "¿dónde adjunto la HDV?"
+   ANTES de que aparezca, para que nadie deje de pulsar el botón por eso. */
+.ct-attach{
+  display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding:16px 18px;
+  background:linear-gradient(135deg, rgba(53,154,204,.1), rgba(29,89,73,.08));
+  border:1px solid rgba(53,154,204,.35); border-radius:14px;
+}
+.ct-attach-ico{
+  width:38px; height:38px; flex-shrink:0; border-radius:11px; display:grid; place-items:center;
+  background:var(--navy); color:var(--amber);
+}
+.ct-attach-ico svg{width:19px; height:19px;}
+.ct-attach b{display:block; color:var(--navy); font-size:.9rem; margin-bottom:3px;}
+.ct-attach p{font-size:.83rem; color:var(--steel); line-height:1.55;}
+.ct-attach p b{display:inline; font-size:inherit; margin:0;}
+.ct-attach--compact{margin:0 0 18px; padding:12px 14px; align-items:center;}
+.ct-attach--compact .ct-attach-ico{width:32px; height:32px; border-radius:9px;}
+.ct-attach--compact p{color:var(--ink);}
+[data-ct-mode="empleo"] .ct-preview{border-left-color:var(--teal);}
+
+/* Modos comercial / empleo (contacto.js): los bloques del modo inactivo
+   llevan el atributo hidden, pero varios tienen display:flex propio
+   (.ct-field, .ct-attach, .ct-channel) que lo anularía. */
+.ct-wrap [hidden]{display:none !important;}
+
+/* Tipo de solicitud (radios) y productos (checkboxes) como "chips".
+   Cuatro opciones desde que entró "Trabaja con nosotros": rejilla 2 × 2. */
+.ct-types{display:grid; grid-template-columns:repeat(2,1fr); gap:10px;}
+.ct-chip{position:relative; cursor:pointer;}
+.ct-chip input{position:absolute; opacity:0; width:1px; height:1px;}
+.ct-chip > span{
+  display:flex; align-items:center; gap:8px; height:100%;
+  border:1.5px solid var(--line); border-radius:12px; padding:11px 14px;
+  font-size:.84rem; font-weight:500; color:var(--steel); background:#fff;
+  transition:border-color .2s, background .2s, color .2s;
+}
+.ct-chip > span svg{width:18px; height:18px; flex-shrink:0; color:var(--teal-light);}
+.ct-chip:hover > span{border-color:var(--teal-light);}
+.ct-chip input:focus-visible + span{outline:3px solid var(--teal-light); outline-offset:2px;}
+.ct-chip input:checked + span{border-color:var(--teal); background:rgba(21,71,114,.07); color:var(--navy); font-weight:600;}
+.ct-chip input:checked + span svg{color:var(--teal);}
+
+.ct-products{border:1.5px solid transparent; border-radius:14px; transition:border-color .2s;}
+.ct-products.is-invalid{border-color:var(--warn); padding:12px;}
+.ct-family + .ct-family{margin-top:16px;}
+.ct-family-title{
+  display:block; font-size:.68rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--steel); margin-bottom:8px;
+}
+.ct-family-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
+.ct-family-grid .ct-chip > span{flex-direction:column; align-items:flex-start; gap:1px; padding:9px 12px;}
+.ct-chip b{font-size:.82rem; color:var(--navy);}
+.ct-chip small{font-size:.72rem; line-height:1.3;}
+/* Marca visual del check en los productos seleccionados */
+.ct-family-grid .ct-chip > span::after{
+  content:''; position:absolute; top:9px; right:10px; width:14px; height:14px; border-radius:50%;
+  border:1.5px solid var(--line); background:#fff; transition:.2s;
+}
+.ct-family-grid .ct-chip input:checked + span::after{
+  border-color:var(--teal); background:var(--teal) url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/9px no-repeat;
+}
+
+.ct-error{display:flex; align-items:center; gap:8px; margin-top:10px; font-size:.8rem; font-weight:500; color:#92400e;}
+/* display:flex anularía el atributo hidden: se restituye explícitamente */
+.ct-error[hidden], .ct-form[hidden], .ct-success[hidden]{display:none;}
+.ct-error svg{width:16px; height:16px; color:var(--warn); flex-shrink:0;}
+
+.ct-check{display:flex; align-items:flex-start; gap:10px; font-size:.84rem; color:var(--steel); line-height:1.5; margin:4px 0 26px;}
+.ct-check input{margin-top:4px; width:16px; height:16px; accent-color:var(--teal); flex-shrink:0;}
+.ct-check a{color:var(--teal); font-weight:600; text-decoration:underline; text-underline-offset:2px;}
+
+.ct-actions{display:flex; flex-wrap:wrap; align-items:center; gap:12px;}
+.ct-submit{
+  display:inline-flex; align-items:center; gap:10px; border:none; border-radius:30px; padding:15px 28px;
+  background:var(--navy); color:#fff; font-weight:700; font-size:.95rem;
+  box-shadow:0 12px 24px -12px rgba(8,12,65,.6); transition:transform .18s ease, background .2s ease;
+}
+.ct-submit:hover{transform:translateY(-2px); background:var(--teal);}
+.ct-submit svg{width:18px; height:18px;}
+.ct-channels-hint{display:inline-flex; align-items:center; flex-wrap:wrap; gap:6px; font-size:.78rem; color:var(--steel);}
+.ct-dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-left:6px;}
+.ct-dot.wa{background:#25D366;} .ct-dot.gm{background:#EA4335;} .ct-dot.ol{background:#0364B8;}
+.ct-note{font-size:.76rem; color:var(--steel); margin-top:16px; line-height:1.55;}
+
+/* Panel posterior al envío */
+.ct-success{text-align:center; padding:56px 32px;}
+.ct-success:not([hidden]){animation:popIn .3s ease-out;}
+.ct-success .check-circle{
+  width:66px; height:66px; border-radius:50%; background:rgba(37,211,102,.14); color:#1a9e4b;
+  display:flex; align-items:center; justify-content:center; margin:0 auto 18px;
+}
+.ct-success .check-circle svg{width:30px; height:30px;}
+.ct-success h2{font-size:1.4rem; color:var(--navy); margin-bottom:10px;}
+.ct-success p{color:var(--steel); font-size:.93rem; max-width:460px; margin:0 auto 8px; line-height:1.6;}
+.ct-success-actions{display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:24px;}
+.ct-success-ref{font-size:.86rem !important;}
+.ct-success-ref b{color:var(--teal); letter-spacing:.02em;}
+.ct-success-actions .ct-success-primary{background:var(--navy); border-color:var(--navy); color:#fff;}
+.ct-success-actions .ct-success-primary:hover{background:var(--teal); border-color:var(--teal); color:#fff;}
+
+/* ---------- Diálogo "Revisa tu solicitud" ---------- */
+.ct-review{
+  border:none; padding:0; background:transparent; width:min(640px, calc(100vw - 32px)); max-height:calc(100dvh - 32px);
+  overflow:visible;
+}
+.ct-review::backdrop{background:rgba(8,12,65,.6); backdrop-filter:blur(3px);}
+.ct-review[open]{animation:popIn .25s ease-out;}
+.ct-review-card{
+  background:#fff; border-radius:20px; padding:28px; max-height:calc(100dvh - 32px); overflow-y:auto;
+  box-shadow:0 30px 70px -20px rgba(8,12,65,.55);
+}
+.ct-review-head{display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:16px;}
+.ct-review-head .eyebrow{display:block; margin-bottom:4px;}
+.ct-review-head h2{font-size:1.35rem; color:var(--navy);}
+.ct-review-head p{font-size:.82rem; color:var(--steel); margin-top:4px;}
+.ct-review-head p b{color:var(--teal);}
+.ct-review-close{
+  flex-shrink:0; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--navy);
+  display:flex; align-items:center; justify-content:center; transition:.2s;
+}
+.ct-review-close:hover{background:var(--mist); border-color:var(--teal-light);}
+.ct-review-close svg{width:18px; height:18px;}
+.ct-preview{
+  margin:0 0 20px; padding:16px 18px; max-height:230px; overflow-y:auto; white-space:pre-wrap; word-break:break-word;
+  font-family:inherit; font-size:.8rem; line-height:1.6; color:var(--ink);
+  background:var(--mist); border:1px solid var(--line); border-left:3px solid #25D366; border-radius:12px;
+}
+.ct-review-label{font-size:.86rem; font-weight:600; color:var(--navy); margin-bottom:10px;}
+.ct-channel{
+  display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px 14px;
+  background:#fff; border:1.5px solid var(--line); border-radius:12px; color:var(--navy);
+  transition:border-color .2s, box-shadow .2s, transform .15s;
+}
+.ct-channel:hover{border-color:var(--teal-light); box-shadow:0 10px 22px -14px rgba(8,12,65,.35); transform:translateY(-1px);}
+.ct-channel svg{width:26px; height:26px; flex-shrink:0;}
+.ct-channel b{display:block; font-size:.88rem;}
+.ct-channel small{display:block; font-size:.72rem; color:var(--steel); line-height:1.3;}
+.ct-channel--wa{background:#25D366; border-color:#25D366; color:#fff; padding:14px 18px; margin-bottom:10px;}
+.ct-channel--wa small{color:rgba(255,255,255,.85);}
+.ct-channel--wa:hover{border-color:#1ebe5b; background:#1ebe5b;}
+.ct-channel-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.ct-review-foot{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-top:18px; padding-top:14px; border-top:1px solid var(--line);}
+.ct-link{
+  display:inline-flex; align-items:center; gap:6px; background:none; border:none; padding:6px 0;
+  font-size:.84rem; font-weight:600; color:var(--teal);
+}
+.ct-link:hover{color:var(--navy);}
+.ct-link svg{width:16px; height:16px;}
+body:has(.ct-review[open]){overflow:hidden;}
+.ct-success-actions button{
+  background:none; border:1.5px solid var(--line); color:var(--navy); padding:11px 22px; border-radius:24px;
+  font-weight:600; font-size:.86rem; transition:.2s;
+}
+.ct-success-actions button:hover{border-color:var(--teal); color:var(--teal);}
+
+/* ---------- Columna lateral: canales ---------- */
+.ct-side{display:flex; flex-direction:column; gap:16px; position:sticky; top:190px;}
+.ct-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px;}
+.ct-card h3{font-size:1rem; color:var(--navy); margin-bottom:8px;}
+.ct-card p{font-size:.84rem; color:var(--steel); line-height:1.55;}
+.ct-card.dark{background:var(--navy); border-color:var(--navy); color:#fff; position:relative; overflow:hidden;}
+.ct-card.dark::before{
+  content:''; position:absolute; right:-60px; top:-60px; width:180px; height:180px; border-radius:50%;
+  background:radial-gradient(circle, rgba(53,154,204,.35), transparent 70%);
+}
+.ct-card.dark h3{color:#fff;}
+.ct-card.dark p{color:#cbd5e1;}
+.ct-card .eyebrow{display:block; margin-bottom:8px;}
+.ct-card.dark .eyebrow{color:var(--teal-light);}
+.ct-advisor-phone{display:block; font-size:1.35rem; font-weight:700; color:#fff; margin:14px 0 4px; letter-spacing:.01em;}
+.ct-card.dark .wa-btn{width:100%; justify-content:center; margin-top:14px; position:relative;}
+.ct-channels li{display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed var(--line);}
+.ct-channels li:last-child{border-bottom:none; padding-bottom:0;}
+.ct-channels li:first-child{padding-top:4px;}
+.ct-channels .icon-wrap{
+  width:36px; height:36px; min-width:36px; border-radius:10px; background:rgba(21,71,114,.08); color:var(--teal);
+  display:flex; align-items:center; justify-content:center;
+}
+.ct-channels .icon-wrap svg{width:17px; height:17px;}
+.ct-channels b{display:block; font-size:.84rem; color:var(--navy);}
+.ct-channels span, .ct-channels a{font-size:.82rem; color:var(--steel); line-height:1.45;}
+.ct-channels a:hover{color:var(--teal);}
+.ct-card.confidential{display:flex; gap:12px; align-items:flex-start; background:rgba(21,71,114,.06); border-color:rgba(21,71,114,.2);}
+.ct-card.confidential svg{width:22px; height:22px; color:var(--teal); flex-shrink:0;}
+.ct-card.confidential p{font-size:.8rem;}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .ct-family-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:980px){
+  .ct-grid{grid-template-columns:1fr;}
+  .ct-side{position:relative; top:0;}
+}
+@media (max-width:720px){
+  #formulario, #canales{scroll-margin-top:90px;}
+  .ct-wrap{padding:40px 0 70px;}
+  .ct-form, .ct-success{padding:24px 20px;}
+  .ct-fields, .ct-types{grid-template-columns:1fr;}
+  .ct-family-grid{grid-template-columns:1fr 1fr;}
+  .ct-submit{width:100%; justify-content:center;}
+  .ct-review-card{padding:22px 18px;}
+  .ct-channel-grid{grid-template-columns:1fr;}
+}
+@media (max-width:420px){
+  .ct-family-grid{grid-template-columns:1fr;}
+}

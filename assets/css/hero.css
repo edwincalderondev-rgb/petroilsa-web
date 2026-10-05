@@ -1,0 +1,101 @@
+/* ============================================
+   HERO DE VIDEO — compartido por index.html y nosotros/quienes-somos.html
+   (las dos únicas páginas con el hero de video de fondo + partículas).
+   ============================================ */
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  padding: 110px 0 60px;
+  background: var(--navy-deep);
+  color: #fff;
+}
+.hero-bg-media {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Antes con rgba() sueltos (navy-deep/navy/teal viejos, con espacios
+     tras cada coma — por eso se me escapó en la primera pasada de la
+     migración de paleta: el grep no toleraba esa variante de formato).
+     Ahora en paleta oficial, misma fórmula que .page-hero (article.css)
+     y .qs-hero-media (quienes-somos.css): azul oscuro → petróleo → cielo. */
+  background: linear-gradient(
+    135deg,
+    rgba(8, 12, 65, 0.88) 0%,
+    rgba(21, 71, 114, 0.78) 55%,
+    rgba(53, 154, 204, 0.45) 100%
+  );
+}
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.particle {
+  position: absolute; bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(53,154,204,.8), rgba(53,154,204,0) 70%);
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: .9; }
+  /* --rise: cuánto sube la partícula. 620px por defecto (el hero); los
+     contenedores data-particles más altos o más bajos lo ajustan. */
+  100% { transform: translateY(calc(-1 * var(--rise, 620px))) scale(1.4); opacity: 0; }
+}
+.hero-inner {
+  position: relative;
+  z-index: 4;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.hero-content { max-width: 760px; }
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  line-height: 1.08;
+  margin-top: 16px;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.hero h1 b { color: var(--teal-light); font-weight: 700; }
+.hero p.lead {
+  margin-top: 22px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  max-width: 640px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+.hero-ctas {
+  display: flex; gap: 14px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.hero-badge{
+  display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+  padding:6px 14px; border-radius:30px; font-size:.78rem; margin-bottom:16px;
+}
+.hero-badge .pulse-dot{width:7px; height:7px; border-radius:50%; background:var(--teal-light); animation:pulse 1.6s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(1.4);}}
+
+/* RESPONSIVE (agrupado con el resto del hero, en vez de vivir aparte) */
+@media (max-width:980px){
+  .hero-inner{justify-content:center; text-align:center;}
+  .hero-content{max-width:100%;}
+  .hero-ctas{justify-content:center;}
+}

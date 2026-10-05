@@ -1,0 +1,71 @@
+{
+  "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+
+  "hero.badge1": { "es": "Gasolina Corriente", "en": "Regular Gasoline", "pt": "Gasolina Comum" },
+  "hero.badge3": { "es": "Primera en Colombia", "en": "First in Colombia", "pt": "Primeira na Colômbia" },
+  "hero.title": { "es": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>", "en": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>", "pt": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>" },
+  "hero.lead": { "es": "Primera Gasolina Corriente producida en Colombia, con RON 87.", "en": "The first regular gasoline produced in Colombia, with RON 87.", "pt": "Primeira gasolina comum produzida na Colômbia, com RON 87." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+  "cta.whatsappNumber": { "es": "WhatsApp +57 311 333 7046", "en": "WhatsApp +57 311 333 7046", "pt": "WhatsApp +57 311 333 7046" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini2": { "es": "Azufre (ejemplo)", "en": "Sulfur (sample)", "pt": "Enxofre (exemplo)" },
+  "visual.mini3": { "es": "Corriente en Colombia", "en": "Regular gasoline in Colombia", "pt": "Comum na Colômbia" },
+
+  "stat.label1": { "es": "Octanaje", "en": "Octane rating", "pt": "Octanagem" },
+  "stat.label2": { "es": "Contenido de azufre (dato de ejemplo, referencia Norma 40444)", "en": "Sulfur content (sample data, referencing Resolution 40444)", "pt": "Teor de enxofre (dado de exemplo, referência Norma 40444)" },
+  "stat.label3": { "es": "Primera Gasolina Corriente producida en Colombia", "en": "The first regular gasoline produced in Colombia", "pt": "Primeira gasolina comum produzida na Colômbia" },
+
+  "banner.example": { "es": "Este producto tiene datos como ejemplo, aún no cuenta con ficha técnica oficial cargada. Los parámetros y textos de esta página son <strong>datos de ejemplo</strong> para mantener la estructura del sitio — debemos concretar detalles como multimedia, datos tecnicos, etc, por lo tanto queda en borrador hasta que tengamos la información real 100% disponible.", "en": "This product currently has sample data — no official data sheet has been loaded yet. The parameters and text on this page are <strong>sample data</strong> used to keep the site's structure in place — details such as media and technical data still need to be finalized, so this page remains a draft until the real information is 100% available.", "pt": "Este produto ainda tem dados de exemplo, pois não conta com uma ficha técnica oficial carregada. Os parâmetros e textos desta página são <strong>dados de exemplo</strong> para manter a estrutura do site — ainda precisamos definir detalhes como multimídia, dados técnicos etc., por isso ela permanece em rascunho até que tenhamos a informação real 100% disponível." },
+
+  "section.desc": { "es": "Descripción", "en": "Description", "pt": "Descrição" },
+  "desc.p1": { "es": "Petroil 87 R es la primera Gasolina Corriente producida en Colombia, con RON 87.", "en": "Petroil 87 R is the first regular gasoline produced in Colombia, with RON 87.", "pt": "O Petroil 87 R é a primeira gasolina comum produzida na Colômbia, com RON 87." },
+  "desc.p2": { "es": "<em>El resto de esta descripción es un ejemplo — reemplázala por el texto técnico oficial cuando esté disponible.</em> Formulada para motores a gasolina de uso general, ofrece un desempeño estable y una combustión adecuada para el parque automotor corriente del país.", "en": "<em>The rest of this description is a sample — replace it with the official technical text when available.</em> Formulated for general-use gasoline engines, it offers stable performance and combustion suited to the country's everyday vehicle fleet.", "pt": "<em>O restante desta descrição é um exemplo — substitua-o pelo texto técnico oficial quando estiver disponível.</em> Formulada para motores a gasolina de uso geral, oferece desempenho estável e combustão adequada para a frota de veículos comuns do país." },
+
+  "section.benefits": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "benefit1.title": { "es": "Uso general (ejemplo)", "en": "General use (sample)", "pt": "Uso geral (exemplo)" },
+  "benefit1.desc": { "es": "Ejemplo: recomendada para motores a gasolina de uso general en vehículos particulares y de carga liviana.", "en": "Example: recommended for general-use gasoline engines in passenger vehicles and light-duty cargo vehicles.", "pt": "Exemplo: recomendada para motores a gasolina de uso geral em veículos particulares e de carga leve." },
+  "benefit2.title": { "es": "Desempeño estable (ejemplo)", "en": "Stable performance (sample)", "pt": "Desempenho estável (exemplo)" },
+  "benefit2.desc": { "es": "Ejemplo: combustión estable que favorece la vida útil del motor.", "en": "Example: stable combustion that helps extend engine life.", "pt": "Exemplo: combustão estável que favorece a vida útil do motor." },
+
+  "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Octanaje (RON)", "en": "Octane rating (RON)", "pt": "Octanagem (RON)" },
+  "table.row2": { "es": "Contenido de Azufre (ppm) (ejemplo)", "en": "Sulfur content (ppm) (sample)", "pt": "Teor de enxofre (ppm) (exemplo)" },
+
+  "section.safety": { "es": "Precauciones y manejo", "en": "Precautions and handling", "pt": "Precauções e manuseio" },
+  "badge.example": { "es": "Dato de ejemplo", "en": "Sample data", "pt": "Dado de exemplo" },
+  "safety.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "safety.text": { "es": "Como toda gasolina, se clasifica como líquido inflamable clase IB de acuerdo con la norma 321 de la NFPA. Manipular conforme a los protocolos de almacenamiento y transporte de combustibles líquidos vigentes.", "en": "Like all gasoline, it is classified as a Class IB flammable liquid under NFPA 321. Handle it according to the current storage and transport protocols for liquid fuels.", "pt": "Como toda gasolina, é classificada como líquido inflamável classe IB conforme a norma 321 da NFPA. Manuseie conforme os protocolos vigentes de armazenamento e transporte de combustíveis líquidos." },
+  "safety.cas": { "es": "Número CAS: <span class=\"cas\">86290-81-5</span>", "en": "CAS Number: <span class=\"cas\">86290-81-5</span>", "pt": "Número CAS: <span class=\"cas\">86290-81-5</span>" },
+
+  "sidebar.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "sidebar.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "sidebar.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 87 R · Gasolina Corriente.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 87 R · Gasolina Corriente.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 87 R · Gasolina Corriente." },
+  "sidebar.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "sidebar.codeLabel": { "es": "Código", "en": "Code", "pt": "Código" },
+  "sidebar.categoryLabel": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "sidebar.octaneLabel": { "es": "Octanaje", "en": "Octane rating", "pt": "Octanagem" },
+  "sidebar.sulfurLabel": { "es": "Azufre (ejemplo)", "en": "Sulfur (sample)", "pt": "Enxofre (exemplo)" },
+  "sidebar.distinctionLabel": { "es": "Distinción", "en": "Distinction", "pt": "Distinção" },
+  "sidebar.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "sidebar.advisorText": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 87 R · Gasolina Corriente?", "en": "Interested in Petroil 87 R · Gasolina Corriente?", "pt": "Interessado no Petroil 87 R · Gasolina Corriente?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial vai contatá-lo com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreFamily": { "es": "Más en Combustibles →", "en": "More in Fuels →", "pt": "Mais em Combustíveis →" },
+  "related.viewAll": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "rel1.desc": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel2.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre de alto desempenho." },
+  "rel3.desc": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto desempenho e confiabilidade na estrada." },
+  "rel4.desc": { "es": "Materia prima para procesos industriales.", "en": "Raw material for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+  "rel.moreLink": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

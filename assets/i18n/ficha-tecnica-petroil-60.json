@@ -1,0 +1,70 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "Petroil 60 · Nafta Virgen", "en": "Petroil 60 · Nafta Virgen", "pt": "Petroil 60 · Nafta Virgem" },
+
+  "hero.badge1": { "es": "Nafta Virgen", "en": "Virgin Naphtha", "pt": "Nafta Virgem" },
+  "hero.badge2": { "es": "Uso Industrial", "en": "Industrial use", "pt": "Uso industrial" },
+  "hero.badge3": { "es": "Diluyente de crudos", "en": "Crude oil diluent", "pt": "Diluente de petróleo bruto" },
+  "hero.title": { "es": "Petroil 60 <span class=\"pds-title-sub\">Nafta Virgen</span>", "en": "Petroil 60 <span class=\"pds-title-sub\">Virgin Naphtha</span>", "pt": "Petroil 60 <span class=\"pds-title-sub\">Nafta Virgem</span>" },
+  "hero.desc": { "es": "Destilado liviano con alto contenido de alifáticos, ideal para la producción de disolventes, pinturas, resinas y acrílicos, además de ser un excelente diluyente para crudos pesados.", "en": "A light distillate with a high aliphatic content, ideal for producing solvents, paints, resins and acrylics, and also an excellent diluent for heavy crude oils.", "pt": "Destilado leve com alto teor de alifáticos, ideal para a produção de solventes, tintas, resinas e acrílicos, além de ser um excelente diluente para petróleos pesados." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini1": { "es": "API", "en": "API", "pt": "API" },
+  "visual.mini2": { "es": "Inflamación (típ.)", "en": "Flash point (typ.)", "pt": "Inflamação (típ.)" },
+  "visual.mini3value": { "es": "Alifáticos", "en": "Aliphatics", "pt": "Alifáticos" },
+  "visual.mini3": { "es": "Alto contenido", "en": "High content", "pt": "Alto teor" },
+
+  "stat.label1": { "es": "Gravedad API", "en": "API gravity", "pt": "Gravidade API" },
+  "stat.label2": { "es": "Punto de inflamación (típico)", "en": "Flash point (typical)", "pt": "Ponto de inflamação (típico)" },
+  "stat.value3": { "es": "Alto", "en": "High", "pt": "Alto" },
+  "stat.label3": { "es": "Contenido de alifáticos", "en": "Aliphatic content", "pt": "Teor de alifáticos" },
+
+  "desc.p1": { "es": "Es un destilado liviano con alto contenido de alifáticos e ideal para la producción de disolventes, pinturas, resinas, acrílicos y, además, es un excelente diluyente para crudos pesados.", "en": "It is a light distillate with a high aliphatic content, ideal for producing solvents, paints, resins and acrylics, and it is also an excellent diluent for heavy crude oils.", "pt": "É um destilado leve com alto teor de alifáticos, ideal para a produção de solventes, tintas, resinas e acrílicos, além de ser um excelente diluente para petróleos pesados." },
+
+  "section.appsTitle": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "benefit1.title": { "es": "Uso en la industria química", "en": "Use in the chemical industry", "pt": "Uso na indústria química" },
+  "benefit1.desc": { "es": "Es ideal para la industria química: pinturas, resinas, pegantes, disolventes y diluyentes en el sector de Oil & Gas.", "en": "It is ideal for the chemical industry: paints, resins, adhesives, solvents and diluents in the Oil & Gas sector.", "pt": "É ideal para a indústria química: tintas, resinas, adesivos, solventes e diluentes no setor de Oil & Gas." },
+
+  "section.techTitle": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "API", "en": "API", "pt": "API" },
+  "table.row2": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de inflamação, °C" },
+  "table.row3": { "es": "Densidad, Kg/m³ (dato de ejemplo)", "en": "Density, kg/m³ (sample data)", "pt": "Densidade, kg/m³ (dado de exemplo)" },
+
+  "section.precautionsTitle": { "es": "Precauciones y manejo <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dato de ejemplo</span>", "en": "Precautions and handling <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Sample data</span>", "pt": "Precauções e manuseio <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dado de exemplo</span>" },
+  "precaution.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "precaution.text": { "es": "Al ser un destilado liviano de alto contenido de alifáticos, se estima una clasificación como líquido inflamable clase IB según la norma 321 de la NFPA. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "Being a light distillate with a high aliphatic content, it is estimated to be classified as a Class IB flammable liquid under NFPA 321. Check the official safety data sheet (MSDS) before handling or transporting it.", "pt": "Por ser um destilado leve de alto teor de alifáticos, estima-se uma classificação como líquido inflamável classe IB conforme a norma 321 da NFPA. Verifique a ficha de segurança (FISPQ) oficial antes do manuseio ou transporte." },
+  "precaution.casLabel": { "es": "Número CAS:", "en": "CAS Number:", "pt": "Número CAS:" },
+
+  "side.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "side.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "side.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 60 · Nafta Virgen.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 60 · Virgin Naphtha.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho do Petroil 60 · Nafta Virgem." },
+  "side.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "quick.label1": { "es": "Código", "en": "Code", "pt": "Código" },
+  "quick.label2": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "quick.label3": { "es": "API", "en": "API", "pt": "API" },
+  "quick.label4": { "es": "Punto de inflamación", "en": "Flash point", "pt": "Ponto de inflamação" },
+  "quick.label5": { "es": "Uso principal", "en": "Primary use", "pt": "Uso principal" },
+  "quick.value5": { "es": "Industria química", "en": "Chemical industry", "pt": "Indústria química" },
+  "side.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "side.advisorDesc": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas sobre disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 60 · Nafta Virgen?", "en": "Interested in Petroil 60 · Virgin Naphtha?", "pt": "Interessado no Petroil 60 · Nafta Virgem?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often, and where you'll receive it. A sales advisor will contact you with the quote and the product's official data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial vai contatá-lo com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreLink": { "es": "Más en Especializados →", "en": "More in Specialized →", "pt": "Mais em Especializados →" },
+  "related.viewAllLink": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "rel.desc1": { "es": "Aditivo para la optimización de combustibles.", "en": "Additive for fuel optimization.", "pt": "Aditivo para a otimização de combustíveis." },
+  "rel.desc2": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel.desc3": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre de alto desempenho." },
+  "rel.desc4": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto rendimento e confiabilidade na estrada." },
+  "products.viewSheet": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

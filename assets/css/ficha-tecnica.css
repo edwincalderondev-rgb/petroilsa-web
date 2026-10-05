@@ -1,0 +1,270 @@
+/* ============================================
+   PRODUCT DATA SHEET (Ficha técnica de producto)
+   ============================================ */
+
+/* Hero: texto + tarjeta flotante del producto */
+.pds-hero{padding-bottom:64px;}
+.pds-hero-grid{display:flex; align-items:center; justify-content:space-between; gap:44px; flex-wrap:wrap;}
+.pds-hero-text{flex:1 1 480px; max-width:640px;}
+/* Título: "Petroil 50 10" y, en su propio renglón, la línea del producto
+   ("ULSD Premium"). Desde el 2026-10-01 va sin el guion largo que los unía
+   en una sola línea; la clase también vive en el hero.title de cada JSON. */
+.pds-title-sub{display:block; color:var(--teal-light);}
+.pds-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+.pds-badge{
+  font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  padding:5px 13px; border-radius:20px; border:1px solid rgba(255,255,255,.28); color:#dbe6ec; background:rgba(255,255,255,.06);
+}
+.pds-badge.accent{background:rgba(53,154,204,.18); border-color:rgba(53,154,204,.55); color:var(--teal-light);}
+.pds-hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+.pds-hero-visual{flex:0 0 300px; position:relative; display:flex; justify-content:center;}
+.pds-visual-glow{
+  position:absolute; inset:-50px; background:radial-gradient(circle, rgba(53,154,204,.38), transparent 68%);
+  filter:blur(6px); z-index:0;
+}
+.pds-visual-card{
+  position:relative; z-index:1; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(8px); border-radius:20px; padding:30px 30px 24px; text-align:center;
+  animation:pillarFloat 6s ease-in-out infinite; box-shadow:0 30px 60px -20px rgba(8,12,65,.6);
+}
+.pds-visual-card img{width:370px; height:170px; object-fit:contain; margin:0 auto 16px; filter:drop-shadow(0 18px 20px rgba(8,12,65,.5));}
+.pds-visual-card .pds-code{font-family:'Poppins',sans-serif; font-weight:700; font-size:1.35rem; color:#fff; letter-spacing:.02em;}
+.pds-visual-card .pds-code-label{font-size:.72rem; color:#9fb4c2; margin-top:4px; letter-spacing:.03em;}
+.pds-visual-card .pds-divider{height:1px; background:rgba(255,255,255,.15); margin:16px 0;}
+.pds-visual-mini{display:flex; justify-content:center; gap:18px;}
+.pds-visual-mini div{text-align:center;}
+.pds-visual-mini b{display:block; font-family:'Poppins',sans-serif; font-weight:600; font-size:.92rem; color:var(--teal-light);}
+.pds-visual-mini span{font-size:.64rem; color:#9fb4c2;}
+
+/* Layout principal: contenido + barra lateral */
+.pds-layout{padding:70px 0 100px; background:#fff;}
+/* minmax(0,1fr) y no 1fr: la tabla técnica tiene min-width:660px (con
+   scroll horizontal propio) y con 1fr la columna no podía encogerse por
+   debajo de eso, desbordando toda la página en móvil. */
+.pds-grid{display:grid; grid-template-columns:minmax(0,1fr) 328px; gap:50px; align-items:start;}
+.pds-section{margin-bottom:56px;}
+.pds-section:last-child{margin-bottom:0;}
+.pds-section-title{display:flex; align-items:center; gap:12px; margin-bottom:22px;}
+.pds-section-title .num{
+  font-family:'Poppins',sans-serif; font-size:.76rem; font-weight:600; color:var(--teal); border:1px solid var(--line);
+  border-radius:20px; padding:3px 11px; flex-shrink:0;
+}
+.pds-section-title h2{font-size:1.5rem; color:var(--navy);}
+
+/* Aplicaciones y beneficios */
+.pds-benefits{display:flex; flex-direction:column; gap:14px;}
+.pds-benefit{display:flex; gap:16px; padding:20px 22px; background:var(--mist); border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
+.pds-benefit:hover{border-color:var(--teal-light);}
+.pds-benefit .icon-wrap{width:40px; height:40px; min-width:40px; border-radius:10px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center;}
+.pds-benefit .icon-wrap svg{width:19px; height:19px;}
+.pds-benefit h4{font-size:.96rem; color:var(--navy); margin-bottom:4px;}
+.pds-benefit p{color:var(--steel); font-size:.9rem; line-height:1.55;}
+
+/* Tabla de características técnicas */
+.pds-table-wrap{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft);}
+.pds-table-scroll{overflow-x:auto;}
+table.pds-table{width:100%; border-collapse:collapse; min-width:660px;}
+table.pds-table thead th{
+  background:var(--navy); color:#fff; font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;
+  font-weight:600; padding:15px 18px; text-align:left; white-space:nowrap;
+}
+table.pds-table thead th.pds-num-head{text-align:center;}
+table.pds-table td{padding:13px 18px; font-size:.87rem; color:var(--ink); border-bottom:1px solid var(--line);}
+table.pds-table td.pds-param{color:var(--navy); font-weight:600;}
+table.pds-table td.pds-unit{color:var(--steel); white-space:nowrap;}
+table.pds-table td.pds-method{color:var(--steel); font-size:.8rem; white-space:nowrap;}
+table.pds-table td.pds-num{font-family:'Poppins',sans-serif; text-align:center; color:var(--navy); font-weight:600;}
+table.pds-table td.pds-num.empty{color:var(--line); font-weight:400;}
+table.pds-table tbody tr:nth-child(even):not(.pds-group){background:var(--mist);}
+table.pds-table tbody tr.pds-group td{
+  background:var(--navy-deep); color:#fff; font-weight:600; letter-spacing:.04em; font-family:'Poppins',sans-serif;
+  font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; padding:10px 18px;
+}
+table.pds-table tbody tr:not(.pds-group):hover td{background:rgba(21,71,114,.08);}
+table.pds-table tbody tr:last-child td{border-bottom:none;}
+
+/* Tarjeta de seguridad / CAS — usa --warn (aviso de precaución), no
+   --amber: --amber ahora es verde lima, un color de marca/CTA, no de
+   advertencia. Mezclarlos aquí dejaría el ícono lima y el fondo naranja. */
+.pds-safety{display:flex; gap:16px; padding:22px 24px; border-radius:14px; background:rgba(232,135,30,.09); border:1px solid rgba(232,135,30,.32);}
+.pds-safety .icon-wrap{width:42px; height:42px; min-width:42px; border-radius:12px; background:var(--warn); color:#fff; display:flex; align-items:center; justify-content:center;}
+.pds-safety .icon-wrap svg{width:20px; height:20px;}
+.pds-safety h4{color:var(--navy); font-size:.96rem; margin-bottom:6px;}
+.pds-safety p{color:var(--steel); font-size:.86rem; line-height:1.55;}
+.pds-safety .cas{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:.02em; color:var(--navy);}
+
+/* Barra lateral */
+.pds-side{display:flex; flex-direction:column; gap:16px; position:sticky; top:100px;}
+.pds-side-card{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:24px;}
+.pds-side-card h4{font-size:.94rem; color:var(--navy); margin-bottom:8px;}
+.pds-side-card p{font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:16px;}
+/* Tarjeta de cotización (reemplaza a la antigua "Descargar PDF": por
+   decisión de dirección las fichas técnicas ya no se descargan, se
+   solicitan al área comercial desde contacto.html). */
+.pds-side-card.quote{
+  background:linear-gradient(150deg, var(--navy) 0%, var(--teal) 100%); border-color:transparent; color:#fff;
+  box-shadow:0 22px 40px -22px rgba(8,12,65,.6);
+}
+.pds-side-card.quote h4{color:#fff; font-size:1.02rem; line-height:1.35;}
+.pds-side-card.quote p{color:#dbe6ec;}
+.pds-side-eyebrow{
+  display:inline-block; font-size:.66rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--navy); background:var(--amber); padding:3px 10px; border-radius:20px; margin-bottom:12px;
+}
+.btn-quote{
+  width:100%; justify-content:center; display:inline-flex; align-items:center; gap:8px; background:var(--amber);
+  color:var(--navy) !important; padding:13px 18px; border-radius:30px; font-weight:700; font-size:.9rem; transition:.2s ease;
+}
+.btn-quote svg{width:16px; height:16px;}
+.btn-quote:hover{background:#fff; transform:translateY(-2px);}
+.pds-side-card.dark{background:var(--navy); color:#fff;}
+.pds-side-card.dark h4{color:#fff;}
+.pds-side-card.dark p{color:#cbd5e1;}
+.pds-side-card .wa-btn{width:100%; justify-content:center;}
+.pds-side-list li{display:flex; justify-content:space-between; gap:10px; font-size:.82rem; color:var(--steel); padding:9px 0; border-bottom:1px dashed var(--line);}
+.pds-side-list li:last-child{border-bottom:none;}
+.pds-side-list b{color:var(--navy); font-weight:700; white-space:nowrap;}
+
+/* Franja de cotización (antes de los relacionados) */
+.pds-quote{
+  position:relative; overflow:hidden; margin-top:74px; padding:40px 44px; border-radius:20px; color:#fff;
+  background:linear-gradient(120deg, var(--navy) 0%, var(--navy) 45%, var(--teal) 100%);
+  display:flex; align-items:center; justify-content:space-between; gap:36px; flex-wrap:wrap;
+}
+.pds-quote::before{
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:.5;
+  background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);
+}
+.pds-quote > *{position:relative;}
+.pds-quote-text{flex:1 1 420px; max-width:620px;}
+.pds-quote .eyebrow{color:var(--teal-light); display:block; margin-bottom:10px;}
+.pds-quote h3{font-size:clamp(1.35rem,2.4vw,1.8rem); color:#fff; line-height:1.25;}
+.pds-quote p{color:#dbe6ec; font-size:.95rem; line-height:1.6; margin-top:12px;}
+.pds-quote-actions{display:flex; flex-direction:column; align-items:stretch; gap:12px; flex:0 0 auto;}
+.pds-quote-actions .btn-primary{justify-content:center;}
+.pds-quote-wa{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; color:#fff; font-weight:600; font-size:.88rem;
+  padding:12px 20px; border-radius:30px; border:1.5px solid rgba(255,255,255,.4); transition:.2s ease;
+}
+.pds-quote-wa svg{width:16px; height:16px; color:#25D366;}
+.pds-quote-wa:hover{background:#fff; color:var(--navy);}
+
+/* Productos relacionados — clases propias (.pds-rel-*). Antes se
+   reutilizaban .products-grid/.product-card, pero sus estilos viven en
+   home.css / productos.css, que las fichas no cargan: las tarjetas salían
+   sin estilo (imágenes a tamaño natural apiladas). */
+.pds-related{margin-top:64px;}
+.pds-related-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
+.pds-related-head .eyebrow{display:block; margin-bottom:6px;}
+.pds-related-head h3{font-size:1.45rem; color:var(--navy);}
+.pds-related-links{display:flex; gap:22px; flex-wrap:wrap;}
+.pds-related-links a{font-size:.86rem; font-weight:600; color:var(--teal); transition:color .2s;}
+.pds-related-links a:hover{color:var(--navy);}
+.pds-rel-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px;}
+.pds-rel-card{
+  display:flex; flex-direction:column; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.pds-rel-card:hover{transform:translateY(-6px); border-color:var(--teal-light); box-shadow:0 18px 38px -18px rgba(8,12,65,.34);}
+.pds-rel-media{
+  position:relative; height:150px; display:flex; align-items:center; justify-content:center; padding:16px; overflow:hidden;
+  background:linear-gradient(180deg,#F7FBFD,#EDF3F8);
+}
+.pds-rel-media img{max-height:100%; max-width:100%; width:auto; object-fit:contain; transition:transform .35s ease;}
+.pds-rel-card:hover .pds-rel-media img{transform:scale(1.08);}
+.pds-rel-tag{
+  position:absolute; top:10px; left:10px; font-size:.6rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  background:var(--navy); color:#fff; padding:4px 9px; border-radius:20px;
+}
+.pds-rel-body{display:flex; flex-direction:column; flex-grow:1; padding:18px 18px 20px;}
+.pds-rel-family{font-size:.64rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--steel);}
+.pds-rel-code{font-size:1.08rem; font-weight:700; color:var(--navy); margin-top:6px;}
+.pds-rel-name{font-size:.82rem; font-weight:500; color:var(--teal-light);}
+.pds-rel-desc{font-size:.78rem; line-height:1.5; color:var(--steel); margin-top:8px;}
+.pds-rel-more{margin-top:auto; padding-top:14px; font-size:.8rem; font-weight:600; color:var(--teal);}
+.pds-rel-card:hover .pds-rel-more{color:var(--navy);}
+
+/* Fichas "comerciales" (bondades y usos, sin tabla técnica) */
+.pds-benefits--grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
+.pds-benefits--grid .pds-benefit{flex-direction:column; gap:12px;}
+.pds-lead{color:var(--steel); font-size:.95rem; margin-bottom:14px;}
+.pds-apps{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;}
+.pds-apps li{
+  display:flex; align-items:center; gap:12px; padding:13px 16px; border:1px solid var(--line); border-radius:12px;
+  background:#fff; color:var(--navy); font-size:.9rem; font-weight:500; line-height:1.35; transition:border-color .2s ease;
+}
+.pds-apps li:hover{border-color:var(--teal-light);}
+.pds-apps svg{width:34px; height:34px; min-width:34px; padding:7px; border-radius:9px; background:rgba(53,154,204,.12); color:var(--teal);}
+.pds-highlights{display:flex; flex-direction:column; gap:2px; border:1px solid var(--line); border-radius:14px; padding:8px 22px; background:var(--mist);}
+.pds-highlights li{position:relative; padding:12px 0 12px 32px; color:var(--ink); font-size:.92rem; line-height:1.5; border-bottom:1px dashed var(--line);}
+.pds-highlights li:last-child{border-bottom:none;}
+.pds-highlights li::before{
+  content:''; position:absolute; left:0; top:13px; width:20px; height:20px; border-radius:50%; background:var(--navy);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C7F547' stroke-width='3'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E");
+  background-size:13px; background-repeat:no-repeat; background-position:center;
+}
+
+/* Hero con el ave emblema de fondo. Usa un recorte propio por ave
+   (assets/img/aves/hero-*.jpg, 1400x1120) con la cabeza del ave arriba y a
+   la derecha del centro: así queda sobre la tarjeta del producto y lejos del
+   texto. El velo es denso a la izquierda (texto) y ligero a la derecha.
+   Para un ave nueva, recorta la foto con ese mismo encuadre en vez de
+   ajustar object-position aquí. */
+.pds-hero--bird .page-hero-bg img{
+  position:absolute; top:0; right:0; left:auto; width:72%; height:100%; object-fit:cover; object-position:center 35%;
+  filter:brightness(1.12) saturate(1.2);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 38%); mask-image:linear-gradient(90deg, transparent 0%, #000 38%);
+  animation:pdsBirdIn 1.4s ease-out both;
+}
+.pds-hero--bird .page-hero-bg::after{
+  background:
+    linear-gradient(180deg, rgba(8,12,65,0) 60%, rgba(8,12,65,.85) 100%),
+    linear-gradient(90deg, rgba(8,12,65,.95) 0%, rgba(8,12,65,.86) 32%, rgba(8,12,65,.26) 56%, rgba(8,12,65,.04) 100%);
+}
+@keyframes pdsBirdIn{from{opacity:0; transform:scale(1.05);} to{opacity:1; transform:none;}}
+/* Fotos con fondo claro (cielo, fondo blanco): se oscurecen para que no
+   rompan el hero oscuro. */
+.pds-hero--light .page-hero-bg img{filter:brightness(.8) saturate(1.2);}
+@media (prefers-reduced-motion:reduce){.pds-hero--bird .page-hero-bg img{animation:none;}}
+
+/* Ave emblema del producto */
+.pds-emblem{
+  margin-top:74px; display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); border-radius:20px; overflow:hidden;
+  background:var(--navy); color:#fff; box-shadow:0 30px 60px -30px rgba(8,12,65,.55);
+}
+.pds-emblem-media{position:relative; min-height:340px;}
+.pds-emblem-media img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:40% 35%;}
+.pds-emblem-text{padding:48px 52px; display:flex; flex-direction:column; justify-content:center;}
+.pds-emblem .eyebrow{color:var(--amber); display:block; margin-bottom:10px;}
+.pds-emblem h3{font-size:clamp(1.5rem,2.6vw,2.1rem); color:#fff; line-height:1.2;}
+.pds-emblem p{color:#dbe6ec; font-size:.98rem; line-height:1.7; margin-top:16px;}
+
+@media (max-width:980px){
+  .pds-hero--bird .page-hero-bg img{
+    top:-40px; right:auto; left:50%; width:max(100%,600px); height:auto; margin-left:calc(max(100%,600px) / -2);
+    -webkit-mask-image:linear-gradient(180deg, #000 55%, transparent 92%); mask-image:linear-gradient(180deg, #000 55%, transparent 92%);
+  }
+  .pds-hero--bird .page-hero-bg::after{background:linear-gradient(180deg, rgba(8,12,65,.3) 0%, rgba(8,12,65,.45) 35%, rgba(8,12,65,.9) 62%, rgba(8,12,65,.95) 100%);}
+  .pds-emblem{grid-template-columns:1fr;}
+  .pds-emblem-media{min-height:300px;}
+  .pds-emblem-text{padding:36px 30px;}
+  .pds-grid{grid-template-columns:minmax(0,1fr);}
+  .pds-side{position:relative; top:0; flex-direction:row; flex-wrap:wrap;}
+  .pds-side-card{flex:1 1 260px;}
+  .pds-hero-grid{flex-direction:column; text-align:center;}
+  .pds-hero-text{max-width:100%;}
+  .pds-badges, .pds-hero-ctas{justify-content:center;}
+  .pds-hero-visual{order:-1;}
+  .pds-rel-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:720px){
+  .pds-benefit{flex-direction:column;}
+  .pds-benefits--grid, .pds-apps{grid-template-columns:1fr;}
+  .pds-side{flex-direction:column;}
+  .pds-visual-card img{width:100%; max-width:370px;}
+  .pds-quote{padding:30px 24px;}
+  .pds-quote-actions{width:100%;}
+}
+@media (max-width:460px){
+  .pds-rel-grid{grid-template-columns:1fr;}
+}

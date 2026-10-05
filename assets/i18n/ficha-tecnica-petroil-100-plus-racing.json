@@ -1,0 +1,77 @@
+{
+  "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "Petroil 100+ · Racing Fuel", "en": "Petroil 100+ · Racing Fuel", "pt": "Petroil 100+ · Racing Fuel" },
+
+  "hero.badge1": { "es": "Racing Fuel", "en": "Racing Fuel", "pt": "Racing Fuel" },
+  "hero.badge2": { "es": "Alto desempeño", "en": "High performance", "pt": "Alto desempenho" },
+  "hero.title": { "es": "Petroil 100+ <span class=\"pds-title-sub\">Racing Fuel</span>", "en": "Petroil 100+ <span class=\"pds-title-sub\">Racing Fuel</span>", "pt": "Petroil 100+ <span class=\"pds-title-sub\">Racing Fuel</span>" },
+  "hero.desc": { "es": "Combustible de la línea Racing Fuel de Petroil, formulado para motores de alto desempeño y competencia. (Contenido de ejemplo — pendiente ficha oficial).", "en": "A fuel from Petroil's Racing Fuel line, formulated for high-performance and competition engines. (Sample content — pending the official data sheet).", "pt": "Combustível da linha Racing Fuel da Petroil, formulado para motores de alto desempenho e competição. (Conteúdo de exemplo — pendente ficha oficial)." },
+
+  "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
+  "cta.advisor": { "es": "Hablar con un asesor", "en": "Talk to an advisor", "pt": "Falar com um consultor" },
+
+  "visual.codeLabel": { "es": "CÓDIGO DE PRODUCTO", "en": "PRODUCT CODE", "pt": "CÓDIGO DO PRODUTO" },
+  "visual.mini1": { "es": "Octanaje objetivo", "en": "Target octane", "pt": "Octanagem alvo" },
+  "visual.mini2": { "es": "Datos de ejemplo", "en": "Sample data", "pt": "Dados de exemplo" },
+  "visual.mini3": { "es": "Línea de producto", "en": "Product line", "pt": "Linha de produto" },
+
+  "stat.label1": { "es": "Octanaje objetivo (RON, referencial)", "en": "Target octane (RON, for reference)", "pt": "Octanagem alvo (RON, referencial)" },
+  "stat.num2": { "es": "Alto", "en": "High", "pt": "Alto" },
+  "stat.label2": { "es": "Rendimiento en competencia (dato de ejemplo)", "en": "Racing performance (sample data)", "pt": "Desempenho em competição (dado de exemplo)" },
+  "stat.label3": { "es": "Línea de producto", "en": "Product line", "pt": "Linha de produto" },
+
+  "banner.example": { "es": "Este producto tiene datos como ejemplo, aún no cuenta con ficha técnica oficial cargada. Los parámetros y textos de esta página son <strong>datos de ejemplo</strong> para mantener la estructura del sitio — debemos concretar detalles como multimedia, datos tecnicos, etc, por lo tanto queda en borrador hasta que tengamos la información real 100% disponible.", "en": "This product currently shows sample data — its official technical data sheet has not been uploaded yet. The parameters and text on this page are <strong>sample data</strong> used to keep the site's structure consistent — details such as media and technical data are still pending, so this page remains a draft until the real information is 100% available.", "pt": "Este produto tem dados de exemplo e ainda não possui ficha técnica oficial carregada. Os parâmetros e textos desta página são <strong>dados de exemplo</strong> para manter a estrutura do site — ainda precisamos definir detalhes como multimídia, dados técnicos etc., por isso permanece em rascunho até que tenhamos a informação real 100% disponível." },
+
+  "section.appsTitle": { "es": "Aplicaciones y beneficios", "en": "Applications and benefits", "pt": "Aplicações e benefícios" },
+  "section.techTitle": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
+  "section.precautionsTitle": { "es": "Precauciones y manejo <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dato de ejemplo</span>", "en": "Precautions and handling <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Sample data</span>", "pt": "Precauções e manuseio <span class=\"pds-badge\" style=\"border-color:rgba(232,135,30,.5); color:var(--warn); background:rgba(232,135,30,.1); margin-left:8px; vertical-align:middle;\">Dado de exemplo</span>" },
+
+  "desc.p1": { "es": "Petroil 100+ Racing Fuel forma parte de la línea de combustibles de competencia de Petroil, formulado para motores de alto desempeño.", "en": "Petroil 100+ Racing Fuel is part of Petroil's competition fuel line, formulated for high-performance engines.", "pt": "Petroil 100+ Racing Fuel faz parte da linha de combustíveis de competição da Petroil, formulado para motores de alto desempenho." },
+  "desc.p2": { "es": "Esta descripción y los valores técnicos son de ejemplo — reemplázalos por la ficha oficial cuando esté disponible.", "en": "This description and the technical values are sample content — replace them with the official data sheet once available.", "pt": "Esta descrição e os valores técnicos são de exemplo — substitua-os pela ficha oficial quando estiver disponível." },
+
+  "benefit1.title": { "es": "Alto desempeño (ejemplo)", "en": "High performance (sample)", "pt": "Alto desempenho (exemplo)" },
+  "benefit1.desc": { "es": "Ejemplo: formulado para maximizar la potencia en motores de competencia.", "en": "Sample: formulated to maximize power in competition engines.", "pt": "Exemplo: formulado para maximizar a potência em motores de competição." },
+  "benefit2.title": { "es": "Motores de alta compresión (ejemplo)", "en": "High-compression engines (sample)", "pt": "Motores de alta compressão (exemplo)" },
+  "benefit2.desc": { "es": "Ejemplo: adecuado para motores de alta relación de compresión.", "en": "Sample: suitable for engines with a high compression ratio.", "pt": "Exemplo: adequado para motores de alta taxa de compressão." },
+
+  "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.row1": { "es": "Octanaje objetivo (RON)", "en": "Target octane (RON)", "pt": "Octanagem alvo (RON)" },
+  "table.row2": { "es": "Densidad, Kg/m³", "en": "Density, Kg/m³", "pt": "Densidade, Kg/m³" },
+  "table.row3": { "es": "Punto de Inflamación, °C", "en": "Flash Point, °C", "pt": "Ponto de Fulgor, °C" },
+  "value.tbc": { "es": "Por confirmar", "en": "To be confirmed", "pt": "A confirmar" },
+
+  "precaution.title": { "es": "Clasificación NFPA (dato de ejemplo)", "en": "NFPA Classification (sample data)", "pt": "Classificação NFPA (dado de exemplo)" },
+  "precaution.text": { "es": "Se estima una clasificación como líquido inflamable clase IA/IB según la norma 321 de la NFPA, propia de combustibles de alto octanaje. Verificar con hoja de seguridad (MSDS) oficial antes de su manejo o transporte.", "en": "An estimated classification as a Class IA/IB flammable liquid is expected under NFPA 321, typical of high-octane fuels. Verify with the official safety data sheet (MSDS) before handling or transport.", "pt": "Estima-se uma classificação como líquido inflamável classe IA/IB segundo a norma 321 da NFPA, própria de combustíveis de alta octanagem. Verificar com a ficha de segurança (FISPQ/MSDS) oficial antes do manuseio ou transporte." },
+  "precaution.casLabel": { "es": "Número CAS:", "en": "CAS Number:", "pt": "Número CAS:" },
+
+  "side.quoteEyebrow": { "es": "Cotización", "en": "Quote", "pt": "Cotação" },
+  "side.quoteTitle": { "es": "¿Necesitas la ficha técnica oficial o una cotización?", "en": "Need the official technical data sheet or a quote?", "pt": "Precisa da ficha técnica oficial ou de uma cotação?" },
+  "side.quoteDesc": { "es": "Nuestro equipo comercial te comparte el documento técnico y una propuesta con volumen, disponibilidad y condiciones de despacho de Petroil 100+ · Racing Fuel.", "en": "Our sales team will share the technical document and a proposal covering volume, availability and dispatch terms for Petroil 100+ · Racing Fuel.", "pt": "Nossa equipe comercial compartilha o documento técnico e uma proposta com volume, disponibilidade e condições de despacho da Petroil 100+ · Racing Fuel." },
+  "side.quickTitle": { "es": "Ficha rápida", "en": "Quick facts", "pt": "Ficha rápida" },
+  "quick.label1": { "es": "Código", "en": "Code", "pt": "Código" },
+  "quick.label2": { "es": "Categoría", "en": "Category", "pt": "Categoria" },
+  "quick.label3": { "es": "Octanaje objetivo", "en": "Target octane", "pt": "Octanagem alvo" },
+  "quick.label4": { "es": "Uso", "en": "Use", "pt": "Uso" },
+  "quick.value4": { "es": "Competencia / alto desempeño", "en": "Racing / high performance", "pt": "Competição / alto desempenho" },
+  "side.advisorTitle": { "es": "Habla con un asesor", "en": "Talk to an advisor", "pt": "Fale com um consultor" },
+  "side.advisorDesc": { "es": "Resuelve dudas de disponibilidad, volumen y despacho directamente por WhatsApp.", "en": "Get answers on availability, volume and dispatch directly on WhatsApp.", "pt": "Tire dúvidas de disponibilidade, volume e despacho diretamente pelo WhatsApp." },
+
+  "quote.eyebrow": { "es": "Cotización · ficha técnica oficial", "en": "Quote · official technical data sheet", "pt": "Cotação · ficha técnica oficial" },
+  "quote.title": { "es": "¿Te interesa Petroil 100+ · Racing Fuel?", "en": "Interested in Petroil 100+ · Racing Fuel?", "pt": "Interessado na Petroil 100+ · Racing Fuel?" },
+  "quote.desc": { "es": "Cuéntanos qué volumen necesitas, con qué frecuencia y dónde lo recibes. Un asesor comercial te contacta con la cotización y la ficha técnica oficial del producto.", "en": "Tell us what volume you need, how often and where you'll receive it. A sales advisor will contact you with the quote and the product's official technical data sheet.", "pt": "Conte-nos qual volume você precisa, com que frequência e onde vai recebê-lo. Um consultor comercial entrará em contato com a cotação e a ficha técnica oficial do produto." },
+
+  "related.eyebrow": { "es": "Sigue explorando", "en": "Keep exploring", "pt": "Continue explorando" },
+  "related.title": { "es": "Otros combustibles Petroil", "en": "Other Petroil fuels", "pt": "Outros combustíveis Petroil" },
+  "related.moreLink": { "es": "Más en Combustibles →", "en": "More in Fuels →", "pt": "Mais em Combustíveis →" },
+  "related.viewAllLink": { "es": "Ver todo el portafolio →", "en": "View the full portfolio →", "pt": "Ver todo o portfólio →" },
+
+  "family.combustibles": { "es": "Combustibles", "en": "Fuels", "pt": "Combustíveis" },
+  "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
+
+  "rel.desc1": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "rel.desc2": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low-sulfur diesel.", "pt": "Diesel ultra baixo teor de enxofre de alto desempenho." },
+  "rel.desc3": { "es": "Alto rendimiento y confiabilidad en carretera.", "en": "High performance and reliability on the road.", "pt": "Alto desempenho e confiabilidade na estrada." },
+  "rel.desc4": { "es": "Materia prima para procesos industriales.", "en": "Raw material for industrial processes.", "pt": "Matéria-prima para processos industriais." },
+
+  "products.viewSheet": { "es": "Conocer más →", "en": "Learn more →", "pt": "Saiba mais →" }
+}

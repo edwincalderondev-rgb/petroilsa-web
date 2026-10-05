@@ -1,0 +1,562 @@
+/* ============================================================
+   ALA DE SABLE · Asistente virtual de Petroil — widget de chat
+   ------------------------------------------------------------
+   Se llamó AIRA hasta el 2026-10-01; hoy se presenta como «Ala de
+   Sable», el colibrí de Santa Marta (Campylopterus phainopeplus).
+   El prefijo .aira-* / #aira se conservó a propósito: cambiar el
+   nombre visible no justifica tocar el marcado de 29 páginas.
+   Todo el componente vive bajo el prefijo .aira-* y dentro de
+   #aira. Es el único chat del sitio: la maqueta vieja (.chat-*,
+   chatbot.css/chatbot.js) se retiró al borrar su última página.
+
+   Paleta: solo los 8 colores oficiales de base.css, más --warn
+   para la franja de aviso (ver CLAUDE.md). Los fallbacks del
+   var() son por si el widget se monta en una página que no
+   cargue base.css.
+
+   Capas (z-index): launcher 1100, panel 1150. Ambos POR DEBAJO
+   del drawer móvil (1400) y su overlay (1300), igual que el chat
+   anterior, para que el menú siga tapando al chat y no al revés.
+   ============================================================ */
+
+#aira{
+  --a-navy:var(--brand-navy,#080C41);
+  --a-blue:var(--brand-blue,#3499CC);
+  --a-petrol:var(--brand-petrol,#154772);
+  --a-green:var(--brand-green,#1D5949);
+  --a-lime:var(--brand-lime,#C7F547);
+  --a-sky:var(--brand-sky,#359ACC);
+  --a-white:var(--brand-white,#FBFEFF);
+  --a-gray:var(--brand-gray,#BEBEBE);
+  --a-ink:var(--ink,#0D1B24);
+  --a-steel:var(--steel,#5C6B73);
+  --a-line:var(--line,#DCE4E6);
+  --a-warn:var(--warn,#E8871E);
+
+  --a-radius:22px;
+  --a-shadow:0 26px 70px -18px rgba(8,12,65,.45), 0 8px 24px -12px rgba(8,12,65,.3);
+  /* El degradado de cabecera es el MISMO lenguaje del hero
+     (navy → petrol → sky). Reutilizarlo evita inventar una paleta
+     local, que es justo el error que documenta CLAUDE.md. */
+  --a-head:linear-gradient(135deg, var(--a-navy) 0%, var(--a-petrol) 58%, var(--a-sky) 140%);
+  /* Círculo detrás del colibrí (lanzador, cabecera y burbujas): el azul cielo
+     oficial (#359ACC) con transparencia sobre el blanco de marca, que se pone
+     como background-color. Sin color-mix(): con var() un valor no soportado
+     deja el fondo transparente y no hay declaración de respaldo que valga. */
+  --a-bird-sky:radial-gradient(circle at 34% 28%, rgba(251,254,255,.95) 0%, rgba(53,154,204,.2) 46%, rgba(53,154,204,.58) 100%);
+
+  font-family:'Poppins',system-ui,sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════
+   1 · LANZADOR FLOTANTE
+   ════════════════════════════════════════════════════════ */
+/* El avatar es «Ala de Sable», el colibrí de Santa Marta, RECORTADO (WebP con
+   transparencia, assets/img/ala-de-sable.webp) — no una foto cuadrada. Por eso
+   NO lleva border-radius ni object-fit:cover: recortaría el pico. El ave
+   cruza el círculo en diagonal y sobresale a propósito (cabeza y pico arriba a
+   la izquierda, cola abajo a la derecha); el círculo es un "cielo" claro para
+   que las alas, casi negras, no se pierdan como pasaba sobre el navy. */
+.aira-launcher{
+  position:fixed; right:24px; bottom:24px; z-index:1100;
+  width:62px; height:62px; padding:0; border:none; border-radius:50%;
+  background-color:var(--a-white); background-image:var(--a-bird-sky);
+  cursor:pointer;
+  display:grid; place-items:center;
+  box-shadow:0 14px 34px -10px rgba(8,12,65,.55), 0 0 0 1px rgba(8,12,65,.1) inset;
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease;
+}
+.aira-launcher:hover{transform:translateY(-3px) scale(1.06);}
+.aira-launcher:active{transform:scale(.97);}
+
+.aira-launcher-avatar{
+  position:absolute; z-index:2; pointer-events:none;
+  /* max-width:none — base.css limita toda imagen al 100 % de su caja, y el
+     ave es justo más grande que el círculo. */
+  width:86px; height:auto; max-width:none; left:-17px; top:-14px;
+  filter:drop-shadow(0 5px 8px rgba(8,12,65,.4));
+  transform-origin:52% 58%;
+  animation:aira-hover 4.6s ease-in-out infinite;
+}
+/* "Aleteo" en el sitio: un colibrí nunca está del todo quieto. Solo mueve
+   transform, compuesto por GPU. */
+@keyframes aira-hover{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-3px) rotate(-3deg);}
+}
+.aira-launcher:hover .aira-launcher-avatar{animation-duration:1.6s;}
+
+/* Aura giratoria: un cónico recortado a anillo con mask. Solo anima
+   `rotate` sobre un pseudo-elemento compuesto por GPU, así que no
+   provoca reflow aunque quede girando de fondo toda la sesión. */
+.aira-launcher::before{
+  content:''; position:absolute; inset:-4px; border-radius:50%;
+  background:conic-gradient(from 0deg, transparent 0deg, var(--a-lime) 70deg, var(--a-sky) 150deg, transparent 220deg);
+  -webkit-mask:radial-gradient(circle, transparent 0 66%, #000 68%);
+          mask:radial-gradient(circle, transparent 0 66%, #000 68%);
+  animation:aira-spin 6s linear infinite;
+  opacity:.9;
+}
+/* Onda expansiva: llama la atención sin ser un parpadeo. */
+.aira-launcher::after{
+  content:''; position:absolute; inset:0; border-radius:50%;
+  border:2px solid var(--a-sky); opacity:0;
+  animation:aira-ping 3.4s ease-out infinite;
+}
+@keyframes aira-spin{to{transform:rotate(360deg);}}
+@keyframes aira-ping{
+  0%{transform:scale(1); opacity:.55;}
+  70%,100%{transform:scale(1.7); opacity:0;}
+}
+
+/* Punto de "mensaje nuevo" que aparece con el teaser. */
+.aira-launcher.has-badge .aira-launcher-dot{transform:scale(1);}
+.aira-launcher-dot{
+  position:absolute; top:2px; right:2px; z-index:3;
+  width:14px; height:14px; border-radius:50%;
+  background:var(--a-lime); border:2.5px solid var(--a-navy);
+  transform:scale(0); transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* Al abrir el chat el lanzador se apaga: en escritorio queda al lado
+   del panel y competiría visualmente con él. */
+#aira.open .aira-launcher{transform:scale(.85); opacity:.55;}
+#aira.open .aira-launcher::after{animation:none;}
+
+/* ── Teaser: burbuja de enganche ─────────────────────────── */
+.aira-teaser{
+  position:fixed; right:100px; bottom:34px; z-index:1100;
+  max-width:232px; padding:13px 34px 13px 16px;
+  background:#fff; color:var(--a-ink); border-radius:16px 16px 4px 16px;
+  border:1px solid var(--a-line); box-shadow:0 16px 38px -14px rgba(8,12,65,.4);
+  font-size:.82rem; line-height:1.45; text-align:left; cursor:pointer;
+  opacity:0; transform:translateY(10px) scale(.92); pointer-events:none;
+  transition:opacity .4s ease, transform .4s cubic-bezier(.34,1.56,.64,1);
+}
+.aira-teaser.show{opacity:1; transform:none; pointer-events:auto;}
+.aira-teaser b{color:var(--a-petrol);}
+.aira-teaser-x{
+  position:absolute; top:6px; right:6px; width:22px; height:22px; border:none;
+  background:transparent; color:var(--a-steel); border-radius:50%; font-size:.9rem;
+  line-height:1; display:grid; place-items:center; cursor:pointer;
+}
+.aira-teaser-x:hover{background:var(--a-white); color:var(--a-navy);}
+
+/* ════════════════════════════════════════════════════════
+   2 · PANEL
+   ════════════════════════════════════════════════════════ */
+.aira-panel{
+  position:fixed; right:24px; bottom:100px; z-index:1150;
+  width:396px; height:min(648px, calc(100vh - 148px));
+  display:flex; flex-direction:column; overflow:hidden;
+  background:#fff; border-radius:var(--a-radius);
+  border:1px solid rgba(8,12,65,.1); box-shadow:var(--a-shadow);
+  opacity:0; transform:translateY(18px) scale(.96);
+  transform-origin:bottom right; pointer-events:none;
+  /* visibility:hidden (y no solo opacity:0) saca del orden de
+     tabulación el campo de texto y los botones del panel cerrado: con
+     pointer-events:none el ratón no los alcanzaba, pero el teclado sí
+     caía dentro de un chat invisible. El retardo de .34s en la
+     transición mantiene el panel visible mientras se desvanece; al
+     abrir, el delay vuelve a 0 para que aparezca de inmediato. */
+  visibility:hidden;
+  transition:opacity .3s ease, transform .34s cubic-bezier(.22,.61,.36,1), visibility 0s linear .34s;
+}
+#aira.open .aira-panel{
+  opacity:1; transform:none; pointer-events:auto; visibility:visible;
+  transition:opacity .3s ease, transform .34s cubic-bezier(.22,.61,.36,1), visibility 0s linear 0s;
+}
+
+/* ── Cabecera ─────────────────────────────────────────────── */
+.aira-head{
+  position:relative; flex-shrink:0; padding:15px 16px;
+  background:var(--a-head); color:#fff;
+  display:flex; align-items:center; gap:12px;
+}
+/* Malla de luz: dos radiales suaves que rompen el plano del
+   degradado y dan sensación de profundidad sin usar imágenes. */
+.aira-head::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(120px 80px at 88% -10%, rgba(199,245,71,.34), transparent 70%),
+    radial-gradient(160px 120px at 8% 120%, rgba(53,154,204,.42), transparent 70%);
+}
+.aira-head > *{position:relative; z-index:1;}
+
+/* El círculo lo pinta el contenedor y el colibrí se sale de él, igual que en
+   el lanzador. Sobresale menos de lo que mide el padding de la cabecera
+   (15px), así que el overflow:hidden del panel nunca le corta el pico. */
+.aira-head-avatar{
+  position:relative; width:42px; height:42px; flex-shrink:0; border-radius:50%;
+  background-color:var(--a-white); background-image:var(--a-bird-sky);
+  box-shadow:0 0 0 2px rgba(255,255,255,.35);
+}
+.aira-head-avatar img{
+  position:absolute; width:54px; height:auto; max-width:none; left:-9px; top:-9px;
+  filter:drop-shadow(0 3px 5px rgba(8,12,65,.35)); pointer-events:none;
+}
+.aira-head-avatar .aira-online{
+  position:absolute; right:-1px; bottom:-1px; width:11px; height:11px; border-radius:50%;
+  background:var(--a-lime); border:2.5px solid var(--a-petrol);
+}
+.aira-head-txt{flex-grow:1; min-width:0; line-height:1.25;}
+.aira-head-txt strong{display:block; font-size:1rem; font-weight:700; letter-spacing:.02em;}
+.aira-head-txt span{
+  display:flex; align-items:center; gap:5px;
+  font-size:.7rem; font-weight:400; opacity:.82;
+}
+.aira-head-txt span::before{
+  content:''; width:5px; height:5px; border-radius:50%; background:var(--a-lime);
+  box-shadow:0 0 0 3px rgba(199,245,71,.25);
+}
+.aira-head-actions{display:flex; gap:4px; flex-shrink:0;}
+.aira-icon-btn{
+  width:32px; height:32px; display:grid; place-items:center;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.16);
+  color:#fff; border-radius:9px; cursor:pointer; padding:0;
+  transition:background .18s ease, transform .18s ease;
+}
+.aira-icon-btn:hover{background:rgba(255,255,255,.26); transform:translateY(-1px);}
+
+/* ── Aviso ────────────────────────────────────────────────── */
+/* Naranja --warn a propósito: es un aviso, no un color de marca. */
+.aira-note{
+  flex-shrink:0; display:flex; align-items:center; gap:7px;
+  padding:7px 16px; font-size:.68rem; line-height:1.35; font-weight:500;
+  background:rgba(232,135,30,.12); color:#8a4d09;
+  border-bottom:1px solid rgba(232,135,30,.22);
+}
+.aira-note svg{flex-shrink:0; opacity:.8;}
+
+/* ── Conversación ─────────────────────────────────────────── */
+.aira-log{
+  /* overflow-x:hidden — nada en la conversación debe scrollear en
+     horizontal; sin esto, cualquier contenido ancho (una tabla, una
+     URL larga) saca una barra fea a lo ancho del panel. */
+  /* position:relative — hace del log el offsetParent de las filas:
+     aira.js (focusAnswer) usa row.offsetTop para anclar arriba el
+     principio de una respuesta larga. Sin esto el cálculo se mide
+     contra otro ancestro y el anclaje cae donde no es. */
+  position:relative;
+  flex-grow:1; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain;
+  padding:16px 14px 6px;
+  display:flex; flex-direction:column; gap:12px;
+  background:
+    radial-gradient(520px 320px at 100% 0%, rgba(53,154,204,.07), transparent 70%),
+    linear-gradient(180deg, var(--a-white) 0%, #fff 34%);
+  scrollbar-width:thin; scrollbar-color:var(--a-gray) transparent;
+}
+.aira-log::-webkit-scrollbar{width:7px;}
+.aira-log::-webkit-scrollbar-thumb{background:rgba(8,12,65,.16); border-radius:4px;}
+.aira-log::-webkit-scrollbar-thumb:hover{background:rgba(8,12,65,.3);}
+
+.aira-row{display:flex; align-items:flex-end; gap:8px; animation:aira-in .34s cubic-bezier(.22,.61,.36,1) both;}
+.aira-row.user{justify-content:flex-end;}
+@keyframes aira-in{from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;}}
+
+/* Avatar de cada respuesta: la caja (34×37) es más grande que el círculo
+   (28px, pintado como fondo radial abajo a la derecha) para que el colibrí
+   recortado asome por arriba y por la izquierda sin un contenedor extra —
+   aira.js lo genera como un <img> suelto y así se queda. */
+.aira-msg-avatar{
+  width:34px; height:37px; flex-shrink:0; object-fit:contain; object-position:center;
+  background:radial-gradient(circle 14px at 19px 23px, rgba(251,254,255,.98) 0%, rgba(53,154,204,.25) 60%, rgba(53,154,204,.55) 96%, transparent 100%);
+  filter:drop-shadow(0 2px 3px rgba(8,12,65,.25));
+}
+
+.aira-bubble{
+  position:relative; max-width:86%;
+  padding:11px 14px 8px; border-radius:16px;
+  font-size:.845rem; line-height:1.56;
+}
+.aira-bubble.bot{
+  background:#fff; color:var(--a-ink);
+  border:1px solid rgba(8,12,65,.09); border-bottom-left-radius:5px;
+  box-shadow:0 4px 16px -8px rgba(8,12,65,.24);
+}
+.aira-bubble.user{
+  background:linear-gradient(135deg, var(--a-petrol), var(--a-navy));
+  color:#fff; border-bottom-right-radius:5px; max-width:82%;
+  box-shadow:0 6px 18px -8px rgba(21,71,114,.7);
+}
+.aira-bubble p{margin:0 0 8px;}
+.aira-bubble p:last-of-type{margin-bottom:0;}
+.aira-bubble b{font-weight:600; color:var(--a-navy);}
+.aira-bubble.user b{color:var(--a-lime);}
+.aira-bubble ul{margin:6px 0 8px; padding:0; list-style:none; display:flex; flex-direction:column; gap:5px;}
+.aira-bubble li{position:relative; padding-left:15px; font-size:.82rem;}
+.aira-bubble li::before{
+  content:''; position:absolute; left:0; top:.58em;
+  width:6px; height:6px; border-radius:2px; background:var(--a-lime);
+  box-shadow:0 0 0 1.5px rgba(21,71,114,.3);
+}
+
+.aira-answer-title{
+  display:block; margin-bottom:7px; padding-bottom:6px;
+  font-size:.67rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--a-petrol); border-bottom:1px solid rgba(21,71,114,.14);
+}
+.aira-hedge{font-size:.78rem; color:var(--a-steel); font-style:italic;}
+
+.aira-time{
+  display:block; margin-top:5px;
+  font-size:.62rem; letter-spacing:.04em; opacity:.45; text-align:right;
+}
+.aira-bubble.user .aira-time{opacity:.6;}
+
+/* ── Indicador de escritura ───────────────────────────────── */
+.aira-typing{display:flex; gap:4px; padding:13px 15px;}
+.aira-typing span{
+  width:7px; height:7px; border-radius:50%; background:var(--a-sky);
+  animation:aira-dot 1.3s ease-in-out infinite;
+}
+.aira-typing span:nth-child(2){animation-delay:.18s;}
+.aira-typing span:nth-child(3){animation-delay:.36s;}
+@keyframes aira-dot{0%,60%,100%{transform:translateY(0); opacity:.35;} 30%{transform:translateY(-5px); opacity:1;}}
+
+/* ── Menú de temas (bienvenida) ───────────────────────────── */
+/* minmax(0,1fr) y no 1fr: con 1fr el ancho mínimo de la columna es el
+   min-content, y como los subtítulos van en nowrap eso empujaba la
+   rejilla fuera de la burbuja (y sacaba una barra de scroll horizontal
+   en el log). minmax(0,…) permite que la columna se encoja y el
+   text-overflow:ellipsis haga su trabajo. */
+.aira-topics{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:7px; margin-top:10px;}
+.aira-topic{
+  display:flex; align-items:center; gap:8px; text-align:left; min-width:0;
+  padding:9px 10px; border-radius:12px; cursor:pointer;
+  background:var(--a-white); border:1px solid rgba(8,12,65,.1);
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.aira-topic:hover{
+  transform:translateY(-2px); border-color:var(--a-sky);
+  box-shadow:0 8px 18px -10px rgba(21,71,114,.55);
+}
+.aira-topic-ico{
+  width:30px; height:30px; flex-shrink:0; border-radius:9px; display:grid; place-items:center;
+  background:linear-gradient(135deg, var(--a-petrol), var(--a-sky)); color:#fff;
+}
+.aira-topic-txt{display:flex; flex-direction:column; min-width:0; line-height:1.25;}
+.aira-topic-txt b{font-size:.76rem; font-weight:600; color:var(--a-navy);}
+.aira-topic-txt em{
+  font-size:.63rem; font-style:normal; color:var(--a-steel);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* ── Lista de sugerencias dentro de una respuesta ─────────── */
+.aira-suggest{display:flex; flex-direction:column; gap:5px; margin-top:8px;}
+.aira-sug{
+  text-align:left; padding:8px 12px; border-radius:10px; cursor:pointer;
+  font-size:.78rem; font-weight:500; color:var(--a-petrol);
+  background:var(--a-white); border:1px solid rgba(21,71,114,.18);
+  transition:background .16s ease, color .16s ease, transform .16s ease;
+}
+.aira-sug::after{content:' →'; opacity:.5;}
+.aira-sug:hover{background:var(--a-petrol); color:#fff; transform:translateX(3px);}
+/* Las opciones que sobran de las 4 visibles se pliegan con [hidden].
+   La regla es explícita porque el display:none del navegador lo
+   pisaría cualquier display que se le pusiera a .aira-sug. */
+.aira-sug[hidden]{display:none;}
+
+/* "Ver N más" / "Ver menos": es un control de la lista, no otra
+   sugerencia — sin borde ni flecha, para que no compita con ellas. */
+.aira-sug-more{
+  align-self:flex-start; margin-top:1px; padding:5px 2px;
+  background:none; border:none; cursor:pointer;
+  font-family:inherit; font-size:.72rem; font-weight:600;
+  color:var(--a-petrol); text-decoration:underline; text-underline-offset:3px;
+  transition:color .16s ease;
+}
+.aira-sug-more::after{
+  content:''; display:inline-block; margin-left:6px;
+  width:5px; height:5px; vertical-align:2px;
+  border-right:1.6px solid currentColor; border-bottom:1.6px solid currentColor;
+  transform:rotate(45deg); transition:transform .18s ease;
+}
+.aira-sug-more[aria-expanded="true"]::after{transform:rotate(-135deg); vertical-align:4px;}
+.aira-sug-more:hover{color:var(--a-navy);}
+
+/* ── Tarjetas de navegación ───────────────────────────────── */
+.aira-links{display:flex; flex-direction:column; gap:6px; margin-top:10px;}
+.aira-link{
+  display:flex; align-items:center; gap:9px; padding:9px 11px;
+  border-radius:12px; text-decoration:none;
+  background:linear-gradient(135deg, rgba(21,71,114,.06), rgba(53,154,204,.09));
+  border:1px solid rgba(21,71,114,.18);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.aira-link:hover{
+  transform:translateY(-2px); border-color:var(--a-sky);
+  box-shadow:0 10px 20px -12px rgba(21,71,114,.8);
+}
+.aira-link-ico{
+  width:28px; height:28px; flex-shrink:0; border-radius:8px; display:grid; place-items:center;
+  background:var(--a-navy); color:var(--a-lime);
+}
+.aira-link-label{
+  flex-grow:1; min-width:0; font-size:.78rem; font-weight:600; color:var(--a-navy);
+  line-height:1.3;
+}
+.aira-link-go{flex-shrink:0; color:var(--a-petrol); display:grid; place-items:center; transition:transform .18s ease;}
+.aira-link:hover .aira-link-go{transform:translateX(3px);}
+
+/* ── Voto de utilidad ─────────────────────────────────────── */
+.aira-feedback{
+  display:flex; align-items:center; gap:5px; margin-top:9px; padding-top:7px;
+  border-top:1px dashed rgba(8,12,65,.12);
+  font-size:.68rem; color:var(--a-steel);
+}
+.aira-fb{
+  width:25px; height:25px; border-radius:7px; border:1px solid transparent;
+  background:transparent; cursor:pointer; font-size:.82rem; line-height:1;
+  transition:background .16s ease, transform .16s ease;
+}
+.aira-fb:hover{background:var(--a-white); border-color:var(--a-line); transform:scale(1.12);}
+.aira-fb-done{color:var(--a-green); font-weight:600;}
+.aira-fb-done a{color:var(--a-petrol); text-decoration:underline;}
+
+/* ════════════════════════════════════════════════════════
+   3 · CHIPS DE SUGERENCIA + ENTRADA
+   ════════════════════════════════════════════════════════ */
+.aira-chips{
+  flex-shrink:0; display:flex; gap:6px; padding:9px 14px 4px;
+  overflow-x:auto; scrollbar-width:none;
+  /* El degradado del borde derecho insinúa que hay más chips que
+     los visibles, sin ocupar espacio con una flecha. */
+  -webkit-mask:linear-gradient(90deg,#000 0, #000 calc(100% - 22px), transparent 100%);
+          mask:linear-gradient(90deg,#000 0, #000 calc(100% - 22px), transparent 100%);
+}
+.aira-chips::-webkit-scrollbar{display:none;}
+.aira-chip{
+  flex-shrink:0; padding:7px 13px; border-radius:999px; cursor:pointer;
+  font-size:.74rem; font-weight:500; white-space:nowrap;
+  color:var(--a-petrol); background:#fff; border:1px solid rgba(21,71,114,.25);
+  transition:background .16s ease, color .16s ease, transform .16s ease, border-color .16s ease;
+}
+.aira-chip:hover{
+  background:var(--a-lime); color:var(--a-navy); border-color:var(--a-lime);
+  transform:translateY(-2px);
+}
+
+.aira-foot{
+  flex-shrink:0; padding:8px 14px 12px; background:#fff;
+  border-top:1px solid var(--a-line);
+}
+.aira-form{
+  display:flex; align-items:center; gap:7px;
+  background:var(--a-white); border:1.5px solid var(--a-line);
+  border-radius:999px; padding:4px 4px 4px 15px;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.aira-form:focus-within{
+  border-color:var(--a-sky); box-shadow:0 0 0 3px rgba(53,154,204,.16);
+}
+.aira-input{
+  flex-grow:1; min-width:0; border:none; background:transparent; outline:none;
+  font-family:inherit; font-size:.84rem; color:var(--a-ink); padding:8px 0;
+}
+.aira-input::placeholder{color:var(--a-steel); opacity:.72;}
+.aira-send{
+  width:38px; height:38px; flex-shrink:0; border:none; border-radius:50%; cursor:pointer;
+  display:grid; place-items:center; color:var(--a-navy);
+  background:linear-gradient(135deg, var(--a-lime), #b4e93a);
+  box-shadow:0 5px 14px -5px rgba(199,245,71,.9);
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease;
+}
+.aira-send:hover{transform:scale(1.09) rotate(-8deg);}
+.aira-send:active{transform:scale(.94);}
+
+.aira-credit{
+  margin-top:7px; text-align:center;
+  font-size:.62rem; color:var(--a-steel); opacity:.78;
+}
+
+/* ════════════════════════════════════════════════════════
+   4 · RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+
+/* Tablet / pantallas cortas: el panel se ajusta al alto disponible. */
+@media (max-height:720px) and (min-width:721px){
+  .aira-panel{height:calc(100vh - 130px); bottom:92px;}
+}
+
+/* Móvil: hoja a pantalla completa. 100dvh (no 100vh) para que la
+   barra de direcciones de Safari/Chrome móvil no recorte el input. */
+@media (max-width:720px){
+  .aira-launcher{right:16px; bottom:16px; width:56px; height:56px;}
+  .aira-launcher-avatar{width:78px; left:-15px; top:-12px;}
+  .aira-teaser{right:82px; bottom:24px; max-width:200px; font-size:.78rem;}
+
+  .aira-panel{
+    right:0; left:0; bottom:0; top:0;
+    width:100%; height:100dvh; max-height:100dvh;
+    border-radius:0; border:none;
+    transform:translateY(100%); transform-origin:bottom center;
+  }
+  #aira.open .aira-panel{transform:none;}
+  /* En pantalla completa el lanzador queda debajo del panel y solo
+     estorba: se oculta y se cierra con la ✕ de la cabecera. */
+  #aira.open .aira-launcher,
+  #aira.open .aira-teaser{opacity:0; pointer-events:none;}
+
+  .aira-head{padding:14px 14px calc(14px + env(safe-area-inset-top,0px)); padding-top:calc(14px + env(safe-area-inset-top,0px));}
+  .aira-log{padding:14px 12px 4px;}
+  .aira-bubble{max-width:90%; font-size:.86rem;}
+  .aira-bubble.user{max-width:86%;}
+  .aira-foot{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));}
+  /* 16px evita el zoom automático de iOS al enfocar el campo. */
+  .aira-input{font-size:16px;}
+}
+
+@media (max-width:360px){
+  .aira-topics{grid-template-columns:1fr;}
+  .aira-topic-txt em{white-space:normal;}
+}
+
+/* ════════════════════════════════════════════════════════
+   5 · ACCESIBILIDAD
+   ════════════════════════════════════════════════════════ */
+#aira :focus-visible{outline:3px solid var(--a-lime); outline-offset:2px;}
+#aira button{font-family:inherit;}
+/* El campo de texto se excluye: .aira-form:focus-within ya dibuja un
+   anillo azul alrededor de toda la píldora, y superponerle el contorno
+   lima daba dos marcos de foco concéntricos sobre el mismo control.
+   Va prefijado con #aira para ganarle en especificidad a la regla
+   genérica de arriba (un id pesa más que dos clases). */
+#aira .aira-input:focus-visible{outline:none;}
+
+/* Sin animación para quien la pidió desactivada: el widget sigue
+   funcionando igual, solo aparece y desaparece sin transición.
+   El JS además pone el retardo de "escribiendo" en 0. */
+@media (prefers-reduced-motion:reduce){
+  .aira-launcher,
+  .aira-launcher::before,
+  .aira-launcher::after,
+  .aira-launcher-avatar,
+  .aira-panel,
+  .aira-row,
+  .aira-typing span,
+  .aira-teaser{
+    animation:none !important;
+    transition:opacity .12s linear !important;
+  }
+  .aira-launcher:hover,
+  .aira-topic:hover,
+  .aira-link:hover,
+  .aira-chip:hover,
+  .aira-sug:hover,
+  .aira-send:hover{transform:none;}
+  #aira.open .aira-panel{transform:none;}
+}
+
+/* Modo alto contraste de Windows: los degradados desaparecen y los
+   bordes de las burbujas se pierden. Se fuerzan bordes visibles. */
+@media (forced-colors:active){
+  .aira-panel, .aira-bubble, .aira-link, .aira-chip, .aira-topic{border:1px solid CanvasText;}
+}
+
+/* Etiqueta solo para lectores de pantalla (base.css no trae una
+   utilidad equivalente y el campo de texto necesita un <label>). */
+.aira-sr{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}

@@ -1,0 +1,575 @@
+/* ============================================
+   BARRA DE PROGRESO LÍQUIDA
+   Simula un líquido que avanza horizontalmente según el scroll: se agita
+   (wobble) al reanudar el movimiento y se estabiliza tras ~1s de quietud.
+   ============================================ */
+.scroll-track{
+  position:fixed; top:0; left:0; right:0; height:6px; z-index:1200;
+  background:rgba(255,255,255,.5); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(8,12,65,.06);
+  /* En escritorio (y cualquier ancho donde se vea la barra de navegación
+     completa de "Servicios a ¿Quiénes somos?") esta barra líquida superior
+     se oculta: tener dos barras de navegación a la vez es redundante. Solo
+     reaparece en el breakpoint (720px) donde esa barra se reemplaza por el
+     menú hamburguesa/drawer, ya que ahí es la única referencia de avance
+     visible. Ver el media query al final del archivo. */
+  display:none;
+}
+.scroll-progress{
+  position:relative; height:100%; width:0%; overflow:visible;
+  background:linear-gradient(90deg, var(--route-navy) 0%, var(--route-blue) 45%, var(--route-sky) 100%);
+  box-shadow:0 0 10px rgba(53,154,204,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:width .22s cubic-bezier(.22,1.4,.36,1);
+  transform-origin:left center;
+}
+/* Menisco: la "gota" que va a la cabeza del líquido */
+.scroll-progress::after{
+  content:''; position:absolute; top:50%; right:0; width:14px; height:14px; border-radius:50%;
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-sky) 55%, var(--route-blue) 100%);
+  transform:translate(50%, -50%); box-shadow:0 0 0 4px rgba(53,154,204,.16), 0 2px 8px rgba(8,12,65,.35);
+  transition:box-shadow .3s ease, background .3s ease;
+}
+/* Mientras hay scroll activo, la gota "respira" (pulso sutil) */
+.scroll-progress.is-scrolling::after{ animation:liquidPulse 1.1s ease-in-out infinite; }
+/* Al reanudar el movimiento tras estar quieto, el líquido se desestabiliza
+   en la dirección del scroll (sube o baja de nivel momentáneamente) */
+.scroll-progress.wobble-down{ animation:liquidWobbleDown .55s cubic-bezier(.34,1.8,.4,1) both; }
+.scroll-progress.wobble-up{ animation:liquidWobbleUp .55s cubic-bezier(.34,1.8,.4,1) both; }
+/* Estable (≈1s sin scroll): la gota deja de pulsar y el brillo baja de intensidad */
+.scroll-progress.is-settled{ box-shadow:0 0 6px rgba(53,154,204,.25), inset 0 1px 0 rgba(255,255,255,.2); }
+.scroll-progress.is-settled::after{ animation:none; box-shadow:0 0 0 3px rgba(53,154,204,.12), 0 1px 4px rgba(8,12,65,.25); }
+/* Al llegar al final, se corona con el verde-lima de la paleta (nunca naranja) */
+.scroll-progress.is-complete{
+  background:linear-gradient(90deg, var(--route-navy) 0%, var(--route-blue) 38%, var(--route-sky) 76%, var(--route-lime) 100%);
+}
+.scroll-progress.is-complete::after{
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-lime) 55%, var(--route-sky) 100%);
+  box-shadow:0 0 0 4px rgba(199,245,71,.28), 0 2px 10px rgba(8,12,65,.35);
+}
+
+@keyframes liquidPulse{
+  0%,100%{ transform:translate(50%, -50%) scale(1); }
+  50%{ transform:translate(50%, -50%) scale(1.2); }
+}
+@keyframes liquidPulseV{
+  0%,100%{ transform:translate(-50%, 50%) scale(1); }
+  50%{ transform:translate(-50%, 50%) scale(1.2); }
+}
+@keyframes liquidWobbleDown{
+  0%{ transform:scaleY(1); }
+  30%{ transform:scaleY(2.2); }
+  60%{ transform:scaleY(.65); }
+  100%{ transform:scaleY(1); }
+}
+@keyframes liquidWobbleUp{
+  0%{ transform:scaleY(1); }
+  30%{ transform:scaleY(.5); }
+  60%{ transform:scaleY(1.7); }
+  100%{ transform:scaleY(1); }
+}
+
+/* ============================================
+   NAVBAR — "Petroil Energy Route"
+   Header sticky de dos franjas: identidad/utilidad arriba,
+   ruta energética de navegación abajo. En móvil, drawer lateral.
+   ============================================ */
+header.navbar{
+  position:sticky; top:0; z-index:1000;
+}
+
+/* Franja superior: logo protagonista + utilidades, efecto vidrio.
+   position+z-index (aunque ya está en flujo normal, no cambia el layout)
+   es necesario porque backdrop-filter crea su propio contexto de apilamiento:
+   sin esto, el desplegable de idioma (.lang-dropdown) queda atrapado dentro
+   de la capa de .navbar-top y .navbar-route —que también tiene
+   backdrop-filter y va después en el DOM— pinta por encima suyo entero,
+   sin importar el z-index interno del dropdown. */
+.navbar-top{
+  position:relative; z-index:2;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border-bottom:1px solid rgba(8,12,65,.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.6),
+    0 1px 0 rgba(8,12,65,.04),
+    0 22px 40px -26px rgba(8,12,65,.35);
+  transition:background .3s ease, box-shadow .3s ease;
+}
+.navbar-top-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  max-width:1200px; margin:0 auto; padding:0 32px;
+  transition:padding .3s ease;
+}
+.nav-logo{display:flex; align-items:center; border-radius:10px; transition:transform .2s ease;}
+.nav-logo img{height:120px; transition:height .3s ease;}
+.nav-logo:hover{transform:scale(1.03);}
+.nav-logo:active{transform:scale(.97);}
+.nav-utility{display:flex; align-items:center; gap:22px;}
+.portal-link{
+  font-size:.88rem; font-weight:600; color:var(--route-navy); position:relative; padding:8px 10px; border-radius:8px;
+  transition:color .2s ease, background .2s ease;
+}
+.portal-link::after{
+  content:''; position:absolute; left:10px; right:10px; bottom:3px; height:2px; width:0; background:var(--route-sky); transition:width .2s ease;
+}
+.portal-link:hover, .portal-link:focus-visible{color:var(--route-blue); background:rgba(53,154,204,.08);}
+.portal-link:hover::after, .portal-link:focus-visible::after{width:calc(100% - 20px);}
+.portal-link:active{transform:scale(.97);}
+
+/* Franja inferior: ruta energética de navegación.
+   Degradado azul de arriba hacia abajo, reutilizando exactamente los
+   mismos tonos que el drawer móvil (navy -> azul profundo -> azul
+   petróleo) para que ambas superficies oscuras del sitio luzcan como
+   parte del mismo sistema visual. Al ser opaco ya no necesita el
+   desenfoque de vidrio (backdrop-filter) que tenía antes. */
+   /* aca puedo modificar el desvanecido del 2 navbar el inferior cambiando
+   el .9 .85 .85 son los valores de opacidad de cada color del degradado, el primero
+   es el azul oscuro del logo, el segundo es el azul petróleo y el tercero es el azul cielo. */
+.navbar-route{
+  background:linear-gradient(
+    180deg,
+    rgba(8,12,65,.90) 0%,
+    rgba(17,64,118,.85) 75%,
+    rgba(21,71,114,.85) 100%
+  );
+
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+
+  border-bottom:1px solid rgba(8,12,65,.35);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 12px 22px -18px rgba(8,12,65,.45);
+}
+.nav-links{
+  position:relative; display:flex; align-items:flex-start; justify-content:center;
+  gap:52px; max-width:1200px; margin:0 auto; padding:0 32px;
+  /* ====== AJUSTE MANUAL DE GROSOR ======
+     Para engrosar o adelgazar la línea de la ruta (escritorio), cambia
+     SOLO este valor. --route-line-y la posiciona verticalmente y la
+     calcula JS en tiempo real a partir del centro real de los círculos
+     (measureCenters(), en nav.js), así que la línea siempre
+     atraviesa los nodos sin importar el grosor que pongas aquí. */
+  --route-line-thickness: 4px;
+  --route-line-y: 49px; /* valor de respaldo antes de que JS la mida */
+}
+/* Línea base (recorrido completo): degradado permanente de Servicios
+   (azul oscuro del logo) a ¿Quiénes somos? (azul cielo), en baja opacidad
+   para dar dinamismo constante a la ruta. La línea de avance real
+   (.route-fill-line), en opacidad plena, se dibuja encima y sigue
+   marcando el progreso del scroll con total claridad. Ambas atraviesan
+   los círculos (no pasan entre el texto y el nodo): se posicionan con
+   --route-line-y, el centro vertical real de los nodos. */
+.nav-links::before{
+  content:''; position:absolute; left:var(--route-line-start, 32px); right:32px;
+  top:var(--route-line-y); height:var(--route-line-thickness);
+  transform:translateY(-50%);
+  transition:left .34s cubic-bezier(.4,0,.2,1);
+  border-radius:calc(var(--route-line-thickness) / 2);
+  background:linear-gradient(90deg,
+    rgba(53,154,204,.4) 0%,
+    rgba(251,254,255,.4) 100%);
+  z-index:0;
+}
+/* Línea de avance: un elemento real que JS ajusta en píxeles exactos entre
+   el centro de cada nodo (y, ahora, también en los tramos antes de
+   "Servicios" y después de "¿Quiénes somos?", que se llenan según el
+   scroll real de la página completa) para que el líquido "viaje" con la
+   misma lógica que la barra superior. */
+.route-fill-line{
+  position:absolute; left:0; top:var(--route-line-y);
+  height:var(--route-line-thickness); width:0; z-index:0;
+  transform:translateY(-50%);
+  background:linear-gradient(90deg, var(--route-navy) 0%, var(--route-blue) 45%, var(--route-sky) 100%);
+  border-radius:calc(var(--route-line-thickness) / 2);
+  box-shadow:0 0 8px rgba(53,154,204,.4), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:width .3s cubic-bezier(.22,1.3,.36,1), left .3s ease, box-shadow .3s ease;
+}
+/* Menisco: la misma "gota" a la cabeza del líquido que en la barra superior.
+   Al "chocar" contra un nodo (clase .at-node, activada por JS cuando la
+   punta cae dentro del radio del círculo) se pone verde-lima un instante,
+   y retoma el azul en cuanto sigue de largo hacia el siguiente nodo. */
+.route-fill-line::after{
+  content:''; position:absolute; top:50%; right:0; width:16px; height:16px; border-radius:50%;
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-sky) 55%, var(--route-blue) 100%);
+  transform:translate(50%, -50%); box-shadow:0 0 0 4px rgba(53,154,204,.16), 0 2px 8px rgba(8,12,65,.35);
+  transition:box-shadow .25s ease, background .25s ease;
+}
+.route-fill-line.is-scrolling::after{ animation:liquidPulse 1.1s ease-in-out infinite; }
+.route-fill-line.is-settled{ box-shadow:0 0 5px rgba(53,154,204,.22), inset 0 1px 0 rgba(255,255,255,.2); }
+.route-fill-line.is-settled::after{ animation:none; box-shadow:0 0 0 3px rgba(53,154,204,.12), 0 1px 4px rgba(8,12,65,.25); }
+.route-fill-line.at-node::after{
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-lime) 55%, var(--route-green) 100%);
+  box-shadow:0 0 0 4px rgba(199,245,71,.3), 0 2px 10px rgba(8,12,65,.35);
+}
+.route-link{
+  position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;
+  gap:10px; padding:14px 3px 15px; color:rgba(251,254,255,.78); text-align:center; border-radius:10px;
+  transition:transform .15s ease;
+}
+.route-label{
+  font-size:.87rem; font-weight:500; white-space:nowrap;
+  transition:color .2s ease, transform .2s ease;
+}
+.route-node{
+  width:11px; height:11px; border-radius:50%;
+  background:var(--white); border:2px solid var(--line);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+/* Degradado por posición en estado de reposo (aún no visitado): de azul
+   cielo a blanco "negativo" de marca, para que siga siendo visible en
+   todo el trayecto del degradado oscuro de fondo (un tono que fuera
+   oscuro en el extremo "Servicios" se perdería contra la franja). Los
+   estados :hover/.passed/.current/.at-node definidos más abajo tienen
+   mayor especificidad y siguen mandando sobre este color de base. */
+.route-link:nth-of-type(1) .route-node{border-color:#359ACC;}
+.route-link:nth-of-type(2) .route-node{border-color:#67B3D9;}
+.route-link:nth-of-type(3) .route-node{border-color:#98CCE6;}
+.route-link:nth-of-type(4) .route-node{border-color:#CAE5F2;}
+.route-link:nth-of-type(5) .route-node{border-color:#FBFEFF;}
+.route-link:hover .route-label,
+.route-link:focus-visible .route-label{
+  color:var(--route-sky); transform:translateY(-2px);
+}
+.route-link:hover .route-node,
+.route-link:focus-visible .route-node{
+  border-color:var(--route-sky); background:var(--route-sky);
+  box-shadow:0 0 0 6px rgba(53,154,204,.16);
+  transform:scale(1.25);
+}
+.route-link:focus-visible{outline:none;}
+.route-link:active{transform:scale(.96);}
+
+/* Ya visitado: el nodo queda "lleno" de líquido azul al pasar esa zona */
+.route-link.passed .route-label{color:rgba(251,254,255,.94);}
+.route-link.passed .route-node{
+  background:var(--route-sky); border-color:var(--route-sky);
+  box-shadow:0 0 0 4px rgba(53,154,204,.12);
+}
+/* Zona activa: núcleo verde-lima con halo azul (reemplaza el naranja) */
+.route-link.current .route-label{color:var(--route-white-neg); font-weight:600;}
+.route-link.current .route-node{
+  background:var(--route-lime); border-color:var(--route-sky);
+  box-shadow:0 0 0 6px rgba(53,154,204,.22), 0 0 0 2px rgba(8,12,65,.15) inset;
+  transform:scale(1.3);
+}
+/* Pequeño "ping" al hacer clic sobre un tramo de la ruta */
+.route-link.pulse .route-node::after,
+.drawer-link.pulse .drawer-node::after{
+  content:''; position:absolute; inset:-6px; border-radius:50%;
+  border:2px solid var(--route-sky); opacity:1; transform:scale(.4);
+  animation:routePing .5s ease-out forwards;
+}
+/* Sincronía exacta con la gota: mientras la punta de la línea está sobre
+   este círculo (misma condición de píxeles que .route-fill-line.at-node),
+   el nodo se pone del mismo verde-lima vívido. Va después de .current y
+   .passed a propósito, para que siempre gane cuando coincide y nunca se
+   vea un círculo "atrás" de su gota. */
+.route-link.at-node .route-label{color:var(--route-white-neg); font-weight:600;}
+.route-link.at-node .route-node{
+  background:var(--route-lime); border-color:var(--route-green);
+  box-shadow:0 0 0 6px rgba(199,245,71,.32), 0 0 0 2px rgba(29,89,73,.2) inset;
+  transform:scale(1.3);
+}
+.route-node, .drawer-node{position:relative;}
+
+.route-link .badge-soon{margin-left:6px;}
+
+@keyframes routePing{
+  to{ opacity:0; transform:scale(1.9); }
+}
+
+/* Header compacto al hacer scroll (sin saltos: transiciones sobre padding/transform) */
+header.navbar.navbar-scrolled .navbar-top-inner{padding:2px 32px;}
+header.navbar.navbar-scrolled .nav-logo img{height:96px;}
+
+header.navbar.navbar-scrolled .navbar-top{
+  background:rgba(255,255,255,.94);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 16px 34px -18px rgba(8,12,65,.32), 0 2px 0 rgba(8,12,65,.05);
+}
+
+/* ============================================
+   RETIRADA DE LA FRANJA BLANCA (2026-09-22, a todo el sitio el 2026-09-28)
+   Segundo escalón del header, después del modo compacto: si el visitante
+   sigue bajando, el header ENTERO se desliza hacia arriba exactamente la
+   altura de .navbar-top, de modo que la franja blanca sale por encima del
+   viewport y la ruta oscura queda pegada al tope. Al mismo tiempo aparece
+   el logotipo en versión negativa (blanco/gris) dentro de la franja
+   oscura, que es la única identidad visible mientras dura ese estado.
+
+   Se hace con transform y NO colapsando la altura de .navbar-top: el
+   header sigue ocupando en el flujo lo mismo de siempre, así que no hay
+   reflow, ni cambia el alto del documento, ni se produce el micro-salto
+   del scroll que provoca animar una altura. La distancia exacta viaja en
+   --navbar-top-h, que nav.js mantiene al día con un ResizeObserver (la
+   franja mide ~121px en reposo y ~101px ya compacta).
+
+   OJO: los estilos base del logotipo (absoluto + invisible) van FUERA de
+   cualquier media query a propósito. Cuando vivían dentro del @media, en
+   la franja donde este no aplicaba el <a> se quedaba sin estilo ninguno:
+   un logotipo de 220px de ancho, en flujo normal, dentro de la barra
+   oscura. Aquí solo se acota el ESTADO (.navbar-hidetop), nunca el
+   ocultamiento.
+   ============================================ */
+.navbar-route{position:relative;}
+
+/* El logotipo negativo va absoluto, no como un ítem más del flex: así los
+   tramos de la ruta no se mueven ni un píxel al aparecer o desaparecer, y
+   no hay que recolocar los nodos en cada transición.
+
+   El left parte del borde de contenido de .nav-links (contenedor de
+   1200px con 32px de padding) MÁS 37px, para que el logotipo gris arranque
+   justo donde arrancaba el azul al que sustituye: los dos PNG no están
+   recortados igual — cropped-logo-petroil.png lleva un 20% de
+   transparencia a la izquierda (a 96px de alto son esos 37px) y
+   Petroil-logo-blanco.png no lleva ninguna. Sin la compensación el
+   logotipo "saltaría" hacia la izquierda al cambiar de estado, justo lo
+   contrario del efecto buscado (el mismo logo que se vuelve gris).
+
+   No pueden tener el mismo tamaño: el logo azul mide ~108px de ancho de
+   dibujo útil, que traducidos a este PNG darían 73px de alto y no caben en
+   una franja de 71px. Se queda en 72px de ancho (≈48 de alto). */
+.route-logo{
+  position:absolute; top:50%; z-index:2;
+  left:max(69px, calc((100% - 1200px) / 2 + 69px));
+  opacity:0; pointer-events:none;
+  transform:translateY(-50%) translateX(-12px) scale(.92);
+  transition:opacity .34s ease .06s, transform .38s cubic-bezier(.22,1.2,.36,1) .06s;
+}
+.route-logo img{display:block; width:var(--route-logo-w, 72px); height:auto;}
+
+/* El estado solo existe donde hay barra de ruta que dejar a la vista: por
+   debajo de 721px .navbar-route está oculta y la franja blanca ES el
+   header entero, así que retirarla dejaría la página sin ninguna barra.
+   El resto de la decisión (¿cabe el logotipo sin chocar con el primer
+   tramo de ESTA ruta, en ESTE idioma?) no se puede escribir como un
+   breakpoint: la mide nav.js página por página. */
+@media (min-width:721px){
+  header.navbar{
+    transition:transform .45s cubic-bezier(.4,0,.2,1);
+  }
+  header.navbar.navbar-hidetop{
+    transform:translateY(calc(-1 * var(--navbar-top-h, 101px)));
+  }
+  header.navbar.navbar-hidetop .route-logo{
+    opacity:1; pointer-events:auto;
+    transform:translateY(-50%) translateX(0) scale(1);
+  }
+  /* La línea de la ruta arranca DESPUÉS del logotipo, nunca por debajo.
+     measureCenters() (nav.js) lee este left ya calculado, así que el
+     tramo de líquido previo al primer nodo se recorta solo. */
+  header.navbar.navbar-hidetop .nav-links{
+    --route-line-start: calc(69px + var(--route-logo-w, 72px) + 24px);
+  }
+}
+
+.badge-soon{
+  font-family:'Poppins',sans-serif; font-size:.6rem; letter-spacing:.08em; background:var(--route-lime);
+  color:var(--route-navy); padding:2px 6px; border-radius:20px; margin-left:6px; vertical-align:middle; font-weight:700;
+}
+.lang-select{position:relative;}
+.lang-btn{
+  background:rgba(255,255,255,.5); border:1px solid var(--line); border-radius:20px; padding:7px 13px; font-size:.85rem; color:var(--route-navy);
+  display:flex; align-items:center; gap:6px; transition:border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+.lang-btn:hover{border-color:var(--route-sky); box-shadow:0 6px 16px -8px rgba(53,154,204,.35);}
+.lang-btn:active{transform:scale(.96);}
+.lang-dropdown{
+  display:none; position:absolute; top:calc(100% + 8px); right:0; background:#fff; border:1px solid var(--line);
+  border-radius:10px; box-shadow:0 18px 34px -14px rgba(8,12,65,.3); min-width:130px; overflow:hidden; z-index:10;
+}
+.lang-select.open .lang-dropdown{display:block;}
+.lang-dropdown a{display:block; padding:9px 14px; font-size:.85rem; transition:background .15s ease;}
+.lang-dropdown a:hover{background:var(--mist); color:var(--route-blue);}
+.lang-dropdown a.active{color:var(--route-blue); font-weight:600;}
+.btn-contacto{
+  background:var(--route-navy); color:#fff !important; padding:11px 22px; border-radius:30px; font-weight:600; font-size:.88rem;
+  box-shadow:0 10px 22px -10px rgba(8,12,65,.55);
+  transition:background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.btn-contacto:hover{background:var(--route-sky); box-shadow:0 14px 28px -10px rgba(53,154,204,.55); transform:translateY(-2px);}
+.btn-contacto:active{transform:translateY(0) scale(.97);}
+
+.hamburger{
+  display:none; background:none; border:none; padding:10px;
+  width:44px; height:44px; align-items:center; justify-content:center; border-radius:10px;
+  transition:background .2s ease, transform .15s ease;
+}
+.hamburger:hover{background:rgba(8,12,65,.06);}
+.hamburger:active{transform:scale(.93);}
+.hamburger:focus-visible{outline:3px solid var(--route-sky); outline-offset:2px;}
+.hamburger span{display:block; width:22px; height:2px; background:var(--route-navy); margin:4px auto; transition:transform .25s ease, opacity .25s ease;}
+.hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* Overlay + drawer lateral (móvil) */
+.nav-overlay{
+  position:fixed; inset:0; background:rgba(8,12,65,.55); backdrop-filter:blur(2px);
+  opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:1300;
+}
+.nav-overlay.open{opacity:1; pointer-events:auto;}
+
+.nav-drawer{
+  position:fixed; top:0; right:0; width:min(84vw,340px); height:100dvh; z-index:1400;
+  background:linear-gradient(160deg, var(--route-navy) 0%, #0c2f56 55%, var(--route-blue) 100%);
+  transform:translateX(100%);
+  /* visibility:hidden al estar cerrado: solo desplazado fuera de pantalla,
+     sus enlaces seguían recibiendo foco con Tab (también en escritorio) y el
+     usuario de teclado "desaparecía" en elementos invisibles. El retraso de
+     .32s mantiene visible la animación de cierre; al abrir cambia al
+     instante, así nav.js puede enfocar el primer enlace. */
+  visibility:hidden;
+  transition:transform .32s cubic-bezier(.22,1.1,.36,1), visibility 0s linear .32s;
+  display:flex; flex-direction:column; overflow-y:auto;
+  box-shadow:-20px 0 46px -18px rgba(0,0,0,.5);
+}
+.nav-drawer.open{transform:translateX(0); visibility:visible; transition-delay:0s;}
+.drawer-top{
+  display:flex; align-items:center; justify-content:space-between; padding:18px 20px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.drawer-logo-wrap{
+  background:rgba(255,255,255,.94); border-radius:8px; padding:6px 12px; display:inline-flex; align-items:center;
+  box-shadow:0 8px 18px -8px rgba(0,0,0,.35);
+}
+.drawer-logo{height:32px; display:block;}
+.drawer-close{
+  background:none; border:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+  color:#fff; border-radius:10px; transition:background .2s ease, transform .15s ease;
+}
+.drawer-close:hover{background:rgba(255,255,255,.12);}
+.drawer-close:active{transform:scale(.9);}
+.drawer-close:focus-visible{outline:3px solid var(--route-lime); outline-offset:2px;}
+.drawer-close svg{width:20px; height:20px;}
+
+.drawer-route{
+  position:relative; display:flex; flex-direction:column; padding:22px 24px 8px; gap:2px;
+  /* ====== AJUSTE MANUAL DE GROSOR (móvil) ======
+     Mismo mecanismo que en escritorio: cambia solo --route-line-thickness.
+     --route-line-x la calcula JS a partir del centro real de los círculos. */
+  --route-line-thickness: 3px;
+  --route-line-x: 28px; /* valor de respaldo antes de que JS la mida */
+}
+/* Línea base: degradado sutil en el mismo tono que la línea de avance
+   (.route-fill-line-v), para que el drawer móvil sea coherente con el
+   dinamismo de la ruta de escritorio. Atraviesa los círculos (se alinea
+   con --route-line-x, el centro horizontal real de los nodos). */
+.drawer-route::before{
+  content:''; position:absolute; left:var(--route-line-x); top:26px; bottom:26px;
+  width:var(--route-line-thickness); transform:translateX(-50%);
+  border-radius:calc(var(--route-line-thickness) / 2);
+  background:linear-gradient(180deg, rgba(53,154,204,.3) 0%, rgba(199,245,71,.35) 100%);
+}
+/* Línea de avance vertical: elemento real que JS ajusta en píxeles exactos
+   entre el centro de cada nodo (y, además, en los tramos antes del primer
+   ítem y después del último, igual que en escritorio), con el mismo
+   menisco viajero que la barra superior. */
+.route-fill-line-v{
+  position:absolute; left:var(--route-line-x); top:0;
+  width:var(--route-line-thickness); height:0; z-index:0;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg, var(--route-sky) 0%, var(--route-lime) 100%);
+  border-radius:calc(var(--route-line-thickness) / 2);
+  box-shadow:0 0 8px rgba(53,154,204,.35);
+  transition:height .3s cubic-bezier(.22,1.3,.36,1), top .3s ease, box-shadow .3s ease;
+}
+.route-fill-line-v::after{
+  content:''; position:absolute; left:50%; bottom:0; width:14px; height:14px; border-radius:50%;
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-lime) 55%, var(--route-sky) 100%);
+  transform:translate(-50%, 50%); box-shadow:0 0 0 4px rgba(199,245,71,.2), 0 2px 8px rgba(8,12,65,.4);
+  transition:box-shadow .25s ease, background .25s ease;
+}
+.route-fill-line-v.is-scrolling::after{ animation:liquidPulseV 1.1s ease-in-out infinite; }
+.route-fill-line-v.is-settled::after{ animation:none; box-shadow:0 0 0 3px rgba(199,245,71,.15), 0 1px 4px rgba(8,12,65,.3); }
+.route-fill-line-v.at-node::after{
+  background:radial-gradient(circle at 35% 32%, #ffffff, var(--route-lime) 55%, var(--route-green) 100%);
+  box-shadow:0 0 0 4px rgba(199,245,71,.32), 0 2px 10px rgba(8,12,65,.4);
+}
+.drawer-link{
+  position:relative; z-index:1; display:flex; align-items:center; gap:16px; min-height:44px;
+  padding:10px 8px; color:#dbe6ec; font-size:.98rem; font-weight:500; border-radius:10px;
+  transition:color .2s ease, background .2s ease, transform .15s ease;
+}
+.drawer-node{
+  width:12px; height:12px; border-radius:50%; flex:0 0 auto;
+  background:var(--route-navy); border:2px solid rgba(255,255,255,.35);
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.drawer-link:hover, .drawer-link:focus-visible{color:#fff; background:rgba(255,255,255,.06); transform:translateX(4px);}
+.drawer-link:hover .drawer-node,
+.drawer-link:focus-visible .drawer-node{
+  border-color:var(--route-sky); background:var(--route-sky);
+  box-shadow:0 0 0 6px rgba(53,154,204,.22); transform:scale(1.2);
+}
+.drawer-link:active{transform:translateX(4px) scale(.98);}
+.drawer-link:focus-visible{outline:none;}
+
+/* Ya visitado */
+.drawer-link.passed{color:#eef4f6;}
+.drawer-link.passed .drawer-node{
+  background:var(--route-sky); border-color:var(--route-sky);
+  box-shadow:0 0 0 4px rgba(53,154,204,.18);
+}
+/* Zona activa */
+.drawer-link.current{color:#fff; font-weight:600;}
+.drawer-link.current .drawer-node{
+  background:var(--route-lime); border-color:var(--route-sky);
+  box-shadow:0 0 0 6px rgba(53,154,204,.28);
+  transform:scale(1.2);
+}
+.drawer-link .badge-soon{margin-left:2px;}
+
+.drawer-footer{
+  margin-top:auto; padding:20px 24px 28px; border-top:1px solid rgba(255,255,255,.12);
+  display:flex; flex-direction:column; gap:14px;
+}
+.drawer-portal{color:#dbe6ec; font-size:.92rem; font-weight:600; transition:color .2s ease;}
+.drawer-portal:hover, .drawer-portal:focus-visible{color:#7fc4e3;}
+.drawer-footer .btn-contacto{text-align:center;}
+.drawer-lang .lang-btn{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#fff; width:100%; justify-content:space-between;}
+.drawer-lang .lang-btn:hover{border-color:var(--route-sky); box-shadow:none;}
+.drawer-lang .lang-dropdown{
+  position:static; display:block; box-shadow:none; border:none; background:rgba(255,255,255,.06);
+  border-radius:10px; margin-top:8px; max-height:0; overflow:hidden; transition:max-height .2s ease; padding:0;
+}
+.drawer-lang.open .lang-dropdown{max-height:160px; padding:4px 0;}
+.drawer-lang .lang-dropdown a{color:#dbe6ec;}
+.drawer-lang .lang-dropdown a.active{color:var(--route-sky);}
+.drawer-lang .lang-dropdown a:hover{background:rgba(255,255,255,.08);}
+
+body.nav-drawer-open{overflow:hidden;}
+
+@media (prefers-reduced-motion: reduce){
+  .nav-drawer, .nav-overlay, .route-label, .route-node, .drawer-node, .hamburger span,
+  header.navbar, .route-logo, .nav-links::before,
+  .navbar-top, .navbar-top-inner, .nav-logo img, .nav-logo, .btn-contacto, .lang-btn,
+  .portal-link, .hamburger, .drawer-close, .drawer-link,
+  .scroll-progress, .scroll-progress::after, .route-fill-line, .route-fill-line::after,
+  .route-fill-line-v, .route-fill-line-v::after{
+    transition:none !important; animation:none !important;
+  }
+}
+
+/* RESPONSIVE — reglas de nav/header/drawer que en el archivo original
+   vivían en el bloque "RESPONSIVE" general; se agrupan aquí junto al resto
+   del componente. */
+@media (max-width:720px){
+  /* Franja inferior (ruta energética) y utilidades de escritorio se
+     ocultan; el header queda como una sola fila (logo + hamburger) y
+     toda la navegación pasa al drawer lateral (#navDrawer). */
+  .navbar-route{display:none;}
+  /* Sin la barra de ruta visible, la barra líquida superior vuelve a
+     mostrarse: aquí sí es la única referencia de avance de scroll. */
+  .scroll-track{display:block;}
+  .nav-utility .portal-link,
+  .nav-utility .lang-select,
+  .nav-utility .btn-contacto{display:none;}
+  .navbar-top-inner{padding:14px 20px;}
+  .nav-logo img{height:44px;}
+  .hamburger{display:flex;}
+}

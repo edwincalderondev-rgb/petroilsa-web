@@ -1,0 +1,211 @@
+/* ============================================
+   SGI — sostenibilidad/sgi.html
+
+   Se carga DESPUÉS de article.css, del que esta página reutiliza
+   .page-hero, .article-wrap, .article-grid--full, .prose, .process-flow,
+   .stat-row/.stat-card, .doc-card, .iso-row y .photo-gallery (+ su visor).
+   Aquí solo viven los bloques propios: pilares certificados, alcance,
+   normas para visitantes y la rejilla de documentos.
+
+   Colores: únicamente alias de la paleta oficial declarada en base.css
+   (--brand-* y sus alias históricos). El único hex fuera de manual es
+   --warn, reservado a avisos/prohibiciones — ver CLAUDE.md.
+   ============================================ */
+
+/* Cada bloque es una parada del scroll-spy de la ruta del navbar
+   (.route-link[data-section]): por eso son <section id> y no solo <h2 id>,
+   el observador necesita una altura real que vigilar. Mismo patrón que
+   .ra-block de responsabilidad-ambiental.css. */
+.sgi-block{scroll-margin-top:150px;}
+.sgi-block + .sgi-block{margin-top:72px;}
+
+/* Medida de lectura: sin la columna del TOC (navegación duplicada del
+   navbar inferior) la prosa ocuparía los ~1.136 px del contenedor. Los
+   bloques visuales sí usan todo el ancho. */
+/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
+   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
+   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
+   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
+.sgi-block > p,
+.sgi-block > blockquote{max-width:54rem;}
+.prose .sgi-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
+
+/* ── INFOGRAFÍA DE PROPÓSITOS ───────────────────────────────────────────
+   La figura es también la única .photo-gallery de la página, así que
+   gallery.js la vuelve ampliable (el texto de la lámina es pequeño en
+   móvil). Con una sola imagen el visor se dibuja sin flechas ni
+   miniaturas. Estas reglas anulan la rejilla de 3 columnas y el
+   recorte a 230 px de alto que .photo-gallery aplica a las fotos. */
+.sgi-figure{margin:28px 0 8px;}
+.sgi-figure.photo-gallery{display:block;}
+.sgi-figure .photo-gallery-item{display:block; width:100%; border-radius:16px;}
+.sgi-figure.photo-gallery img{
+  height:auto; object-fit:contain; border-radius:16px;
+  border:1px solid var(--line); background:#fff;
+}
+.prose .sgi-figure figcaption{
+  margin-top:12px; font-size:.82rem; line-height:1.55; color:var(--steel);
+}
+
+/* ── PILARES CERTIFICADOS ───────────────────────────────────────────────
+   --c     = acento de la tarjeta (franja superior); puede ser un color
+             claro de la paleta porque solo pinta superficie.
+   --c-ink = versión legible del mismo acento, para el icono, la norma y
+             el borde de hover (lima o cielo sobre blanco no dan contraste
+             suficiente). Mismo patrón que .ra-plan y .pq-c--*. */
+.sgi-pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:26px 0 8px;}
+.sgi-pillar{
+  --c:var(--brand-petrol); --c-ink:var(--brand-petrol);
+  position:relative; overflow:hidden; display:flex; flex-direction:column;
+  padding:24px 20px; background:#fff; border:1px solid var(--line);
+  border-radius:16px; transition:.25s ease;
+}
+.sgi-pillar::before{content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--c);}
+.sgi-pillar:hover{border-color:var(--c-ink); transform:translateY(-3px); box-shadow:var(--shadow-soft);}
+.sgi-pillar--calidad{--c:var(--brand-navy);  --c-ink:var(--brand-navy);}
+.sgi-pillar--ambiente{--c:var(--brand-lime); --c-ink:var(--brand-green);}
+.sgi-pillar--sst{--c:var(--brand-sky);       --c-ink:var(--brand-petrol);}
+.sgi-pillar-ico{
+  width:42px; height:42px; border-radius:12px; background:var(--c-ink); color:#fff;
+  display:flex; align-items:center; justify-content:center; margin-bottom:14px;
+}
+.sgi-pillar-ico svg{width:19px; height:19px;}
+.sgi-pillar-norm{
+  font-family:'Poppins',sans-serif; font-size:.64rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--c-ink); margin-bottom:7px;
+}
+.sgi-pillar h3{font-size:1rem; line-height:1.3; color:var(--navy); margin-bottom:8px;}
+.sgi-pillar p{font-size:.84rem; line-height:1.55; color:var(--steel); margin:0;}
+/* margin-top:auto alinea el pie de las tres tarjetas aunque los textos
+   tengan distinto largo. */
+.sgi-pillar-cert{
+  margin-top:auto; padding-top:14px; border-top:1px solid var(--line);
+  font-size:.74rem; line-height:1.5; color:var(--steel);
+}
+.sgi-pillar-cert b{display:block; color:var(--navy); font-weight:600;}
+
+/* ── ALCANCE CERTIFICADO ────────────────────────────────────────────────
+   Cita literal del alcance que aparece en los tres certificados. */
+.sgi-scope{
+  margin:18px 0 0; padding:20px 22px; border-radius:16px;
+  background:var(--mist); border:1px solid var(--line);
+  border-left:3px solid var(--brand-petrol);
+}
+.sgi-scope-eyebrow{
+  display:block; font-family:'Poppins',sans-serif; font-size:.66rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--brand-petrol); margin-bottom:8px;
+}
+.prose .sgi-scope p{margin:0; font-size:.9rem; line-height:1.6; color:var(--ink);}
+.prose .sgi-scope p + p{margin-top:8px; font-size:.82rem; color:var(--steel);}
+
+/* ── INDICADORES ────────────────────────────────────────────────────────
+   Tres tarjetas desde el 2026-10-01 (récord de días sin accidentes,
+   incidentes ambientales registrados y récord anual de auditorías). */
+.stat-row.sgi-stats{grid-template-columns:repeat(3,1fr);}
+.prose .sgi-stats-note{font-size:.8rem; line-height:1.55; color:var(--steel); margin:0;}
+
+/* ── NORMAS PARA VISITANTES ─────────────────────────────────────────────
+   Contenido transcrito de la cartilla SG-SGI-GUI-005 para que sea texto
+   real (buscable, traducible y legible en móvil); la lámina original se
+   ofrece aparte en .sgi-cartilla. */
+.sgi-rules{display:grid; grid-template-columns:repeat(2,1fr); align-items:start; gap:16px; margin:24px 0 0;}
+.sgi-rule{
+  --c-ink:var(--brand-petrol);
+  padding:22px 20px; background:var(--mist);
+  border:1px solid var(--line); border-radius:16px;
+}
+.sgi-rule-head{display:flex; gap:12px; align-items:center; margin-bottom:6px;}
+.sgi-rule-ico{
+  width:36px; height:36px; min-width:36px; border-radius:10px;
+  background:var(--c-ink); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+}
+.sgi-rule-ico svg{width:17px; height:17px;}
+.sgi-rule h3{font-size:.98rem; line-height:1.3; color:var(--navy);}
+/* Los dos selectores llevan .prose delante para ganarle a `.prose ul li`
+   y `.prose ul li::before` (el punto azul por defecto de la prosa). */
+.prose .sgi-rule ul{margin:0;}
+.prose .sgi-rule ul li{font-size:.86rem; line-height:1.55; margin-bottom:8px; padding-left:22px;}
+.prose .sgi-rule ul li:last-child{margin-bottom:0;}
+.prose .sgi-rule ul li::before{top:7px; width:6px; height:6px; background:var(--c-ink);}
+.sgi-rule-note{margin-top:12px; font-size:.78rem; line-height:1.5; color:var(--steel); font-style:italic;}
+/* Prohibiciones: --warn es el color reservado a avisos y precauciones,
+   ninguno de los 8 colores del manual lee como "advertencia". */
+.sgi-rule--prohibiciones{
+  --c-ink:var(--warn);
+  background:rgba(232,135,30,.06); border-color:rgba(232,135,30,.32);
+}
+.sgi-rule--prohibiciones h3{color:#8a4a06;}
+
+/* ── CARTILLA (lámina original) ─────────────────────────────────────────
+   La lámina es 1.483 × 3.840 px: en el visor a pantalla completa cabría
+   entera pero el texto quedaría ilegible, así que la tarjeta muestra la
+   cabecera recortada y abre la imagen a tamaño real en otra pestaña. */
+.prose a.sgi-cartilla{
+  display:flex; gap:22px; align-items:center; flex-wrap:wrap;
+  margin-top:20px; padding:20px; color:inherit; font-weight:400;
+  background:#fff; border:1px solid var(--line); border-radius:18px;
+  transition:.25s ease;
+}
+.prose a.sgi-cartilla:hover{
+  border-color:var(--teal); transform:translateY(-2px); box-shadow:var(--shadow-soft);
+}
+.sgi-cartilla-preview{
+  flex:0 0 auto; width:170px; height:230px; overflow:hidden;
+  border-radius:12px; border:1px solid var(--line); background:var(--mist);
+}
+.sgi-cartilla-preview img{width:100%; height:100%; object-fit:cover; object-position:top; display:block;}
+.sgi-cartilla-body{flex:1; min-width:240px;}
+.sgi-cartilla-tag{
+  display:block; font-family:'Poppins',sans-serif; font-size:.64rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--teal); margin-bottom:7px;
+}
+.sgi-cartilla-body h3{font-size:1rem; line-height:1.3; color:var(--navy); margin-bottom:8px;}
+.prose .sgi-cartilla-body p{font-size:.85rem; line-height:1.55; color:var(--steel); margin:0;}
+.sgi-cartilla-cta{
+  display:inline-flex; align-items:center; gap:8px; margin-top:14px;
+  font-family:'Poppins',sans-serif; font-size:.85rem; font-weight:600; color:var(--teal);
+  transition:gap .2s ease;
+}
+.prose a.sgi-cartilla:hover .sgi-cartilla-cta{gap:12px;}
+.sgi-cartilla-cta svg{width:15px; height:15px;}
+
+/* ── DOCUMENTOS DEL SISTEMA ─────────────────────────────────────────────
+   .doc-card viene de article.css; aquí solo pasa a ser enlace y a vivir
+   en una rejilla de dos columnas. */
+.sgi-docs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:24px 0 0;}
+.prose a.doc-card{color:inherit; font-weight:400; margin-bottom:0;}
+.prose a.doc-card:hover{color:inherit; transform:translateY(-2px); box-shadow:var(--shadow-soft);}
+.sgi-doc-body{flex:1; min-width:0;}
+.sgi-doc-meta{
+  display:block; margin-top:4px; font-family:'Poppins',sans-serif;
+  font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--steel);
+}
+.sgi-doc-arrow{
+  flex-shrink:0; width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--teal); background:rgba(21,71,114,.08); transition:.2s ease;
+}
+.sgi-doc-arrow svg{width:15px; height:15px;}
+.prose a.doc-card:hover .sgi-doc-arrow{background:var(--teal); color:#fff;}
+.prose .sgi-docs-note{margin:16px 0 0; font-size:.78rem; line-height:1.55; color:var(--steel); font-style:italic;}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width:1080px){
+  .sgi-pillars{grid-template-columns:1fr;}
+}
+@media (max-width:980px){
+  /* article.css deja .stat-row en una sola columna a partir de aquí; las
+     tres tarjetas caben en fila hasta los 620 px. */
+  .stat-row.sgi-stats{grid-template-columns:repeat(3,1fr);}
+}
+@media (max-width:820px){
+  .sgi-block + .sgi-block{margin-top:56px;}
+  .sgi-rules{grid-template-columns:1fr;}
+  .sgi-docs{grid-template-columns:1fr;}
+}
+@media (max-width:620px){
+  .stat-row.sgi-stats{grid-template-columns:1fr;}
+  .prose a.sgi-cartilla{flex-direction:column; align-items:flex-start;}
+  .sgi-cartilla-preview{width:100%; height:180px;}
+}

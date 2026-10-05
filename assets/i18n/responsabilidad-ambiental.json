@@ -1,0 +1,45 @@
+{
+  "//ra": "sostenibilidad/responsabilidad-ambiental.html. Los textos de ra.hero.lead y ra.section1.body son los párrafos oficiales que entregó la empresa (2026-09-18), y ra.section1.quote es la frase que dirección pidió usar. Los cuatro ra.plan* son los instrumentos que la empresa nombró (Plan de Manejo Ambiental, Plan de Seguimiento y Monitoreo, Plan de Contingencias y Licencia Ambiental): el nombre es suyo, la línea de descripción se desprende de esos mismos párrafos. Los tres ra.criteria* son las palabras prevención/control/mitigación del párrafo de enfoque. La página NO lleva cifras ni gráficos: se retiró el de emisiones por ser de ejemplo — si dirección entrega indicadores reales, van en una sección nueva; no se inventan aquí.",
+
+  "ra.nav.enfoque": { "es": "Nuestro enfoque", "en": "Our approach", "pt": "Nossa abordagem" },
+  "ra.nav.instrumentos": { "es": "Instrumentos de gestión", "en": "Management instruments", "pt": "Instrumentos de gestão" },
+  "ra.nav.certificacion": { "es": "Certificación ambiental", "en": "Environmental certification", "pt": "Certificação ambiental" },
+
+  "ra.breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "ra.breadcrumb.current": { "es": "Responsabilidad ambiental", "en": "Environmental responsibility", "pt": "Responsabilidade ambiental" },
+
+  "ra.eyebrow": { "es": "Gestión y sostenibilidad", "en": "Management and sustainability", "pt": "Gestão e sustentabilidade" },
+  "ra.hero.title": { "es": "Responsabilidad ambiental", "en": "Environmental responsibility", "pt": "Responsabilidade ambiental" },
+  "ra.hero.lead": { "es": "Implementamos medidas de manejo, monitoreo y seguimiento ambiental orientadas a la prevención, control y mitigación de impactos, garantizando el cumplimiento de las obligaciones establecidas en nuestra Licencia Ambiental y Plan de Manejo Ambiental.", "en": "We implement environmental management, monitoring and follow-up measures aimed at the prevention, control and mitigation of impacts, ensuring compliance with the obligations set out in our Environmental Licence and Environmental Management Plan.", "pt": "Implementamos medidas de manejo, monitoramento e acompanhamento ambiental orientadas à prevenção, ao controle e à mitigação de impactos, garantindo o cumprimento das obrigações estabelecidas em nossa Licença Ambiental e no Plano de Manejo Ambiental." },
+
+  "ra.section1.title": { "es": "Nuestro enfoque ambiental", "en": "Our environmental approach", "pt": "Nossa abordagem ambiental" },
+  "ra.section1.body": { "es": "Desarrollamos nuestras operaciones bajo criterios de responsabilidad ambiental, mediante la implementación de medidas de manejo, programas de monitoreo y acciones de seguimiento orientadas a la prevención, control y mitigación de los impactos asociados a la actividad de refinación.", "en": "We carry out our operations under environmental responsibility criteria, through management measures, monitoring programmes and follow-up actions aimed at the prevention, control and mitigation of the impacts associated with refining activity.", "pt": "Desenvolvemos nossas operações sob critérios de responsabilidade ambiental, mediante a implementação de medidas de manejo, programas de monitoramento e ações de acompanhamento orientadas à prevenção, ao controle e à mitigação dos impactos associados à atividade de refino." },
+  "ra.section1.quote": { "es": "Mejorar el aire que respiramos implica controlar, monitorear y gestionar responsablemente los procesos que forman parte de nuestra operación.", "en": "Improving the air we breathe means controlling, monitoring and responsibly managing the processes that are part of our operation.", "pt": "Melhorar o ar que respiramos implica controlar, monitorar e gerenciar de forma responsável os processos que fazem parte da nossa operação." },
+
+  "ra.criteria.heading": { "es": "Toda medida se orienta a", "en": "Every measure is aimed at", "pt": "Toda medida se orienta a" },
+  "ra.criteria1.word": { "es": "Prevención", "en": "Prevention", "pt": "Prevenção" },
+  "ra.criteria1.desc": { "es": "Actuar sobre la causa antes de que el impacto se produzca.", "en": "Acting on the cause before the impact occurs.", "pt": "Atuar sobre a causa antes que o impacto ocorra." },
+  "ra.criteria2.word": { "es": "Control", "en": "Control", "pt": "Controle" },
+  "ra.criteria2.desc": { "es": "Mantener la operación dentro de los límites establecidos.", "en": "Keeping the operation within the established limits.", "pt": "Manter a operação dentro dos limites estabelecidos." },
+  "ra.criteria3.word": { "es": "Mitigación", "en": "Mitigation", "pt": "Mitigação" },
+  "ra.criteria3.desc": { "es": "Reducir los efectos de aquello que no puede evitarse.", "en": "Reducing the effects of what cannot be avoided.", "pt": "Reduzir os efeitos daquilo que não pode ser evitado." },
+
+  "ra.section2.title": { "es": "Instrumentos de gestión ambiental", "en": "Environmental management instruments", "pt": "Instrumentos de gestão ambiental" },
+  "ra.section2.intro": { "es": "Nuestra gestión ambiental se apoya en cuatro instrumentos que enmarcan la operación de la refinería y las obligaciones que cumplimos.", "en": "Our environmental management rests on four instruments that frame the refinery's operation and the obligations we comply with.", "pt": "Nossa gestão ambiental se apoia em quatro instrumentos que enquadram a operação da refinaria e as obrigações que cumprimos." },
+
+  "ra.plan1.tag": { "es": "Manejo", "en": "Management", "pt": "Manejo" },
+  "ra.plan1.title": { "es": "Plan de Manejo Ambiental", "en": "Environmental Management Plan", "pt": "Plano de Manejo Ambiental" },
+  "ra.plan1.desc": { "es": "Reúne las medidas de manejo con las que prevenimos, controlamos y mitigamos los impactos de la actividad de refinación.", "en": "It brings together the management measures with which we prevent, control and mitigate the impacts of refining activity.", "pt": "Reúne as medidas de manejo com as quais prevenimos, controlamos e mitigamos os impactos da atividade de refino." },
+  "ra.plan2.tag": { "es": "Monitoreo", "en": "Monitoring", "pt": "Monitoramento" },
+  "ra.plan2.title": { "es": "Plan de Seguimiento y Monitoreo", "en": "Follow-up and Monitoring Plan", "pt": "Plano de Acompanhamento e Monitoramento" },
+  "ra.plan2.desc": { "es": "Define los programas de monitoreo y las acciones de seguimiento con que verificamos el desempeño ambiental de la operación.", "en": "It defines the monitoring programmes and follow-up actions with which we verify the environmental performance of the operation.", "pt": "Define os programas de monitoramento e as ações de acompanhamento com que verificamos o desempenho ambiental da operação." },
+  "ra.plan3.tag": { "es": "Contingencia", "en": "Contingency", "pt": "Contingência" },
+  "ra.plan3.title": { "es": "Plan de Contingencias", "en": "Contingency Plan", "pt": "Plano de Contingências" },
+  "ra.plan3.desc": { "es": "Establece la respuesta prevista ante emergencias que puedan afectar el entorno de la refinería.", "en": "It sets out the planned response to emergencies that could affect the refinery's surroundings.", "pt": "Estabelece a resposta prevista diante de emergências que possam afetar o entorno da refinaria." },
+  "ra.plan4.tag": { "es": "Autorización", "en": "Authorisation", "pt": "Autorização" },
+  "ra.plan4.title": { "es": "Licencia Ambiental", "en": "Environmental Licence", "pt": "Licença Ambiental" },
+  "ra.plan4.desc": { "es": "Fija las obligaciones ambientales bajo las que opera la refinería y cuyo cumplimiento garantizamos.", "en": "It sets the environmental obligations under which the refinery operates and whose compliance we guarantee.", "pt": "Fixa as obrigações ambientais sob as quais a refinaria opera e cujo cumprimento garantimos." },
+
+  "ra.isoText": { "es": "Nuestra gestión ambiental está certificada bajo la norma ISO 14001:2015, dentro del Sistema de Gestión Integrado que también cubre calidad (ISO 9001:2015) y seguridad y salud en el trabajo (ISO 45001:2018).", "en": "Our environmental management is certified under the ISO 14001:2015 standard, within the Integrated Management System that also covers quality (ISO 9001:2015) and occupational health and safety (ISO 45001:2018).", "pt": "Nossa gestão ambiental é certificada pela norma ISO 14001:2015, dentro do Sistema de Gestão Integrado que também cobre qualidade (ISO 9001:2015) e segurança e saúde no trabalho (ISO 45001:2018)." },
+  "ra.cert.link": { "es": "Conocer el Sistema de Gestión Integrado", "en": "Explore the Integrated Management System", "pt": "Conhecer o Sistema de Gestão Integrado" }
+}
