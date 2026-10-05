@@ -1,29 +1,6 @@
-/* ============================================================
-   INSTALACIONES — instalaciones/refineria-santa-marta.html y
-   instalaciones/esquivensa-barranquilla.html (2026-10-01)
-   ------------------------------------------------------------
-   Hoja compartida por las dos páginas de planta. Se carga DESPUÉS de
-   article.css (de ahí salen --ph-gradient y .photo-gallery, que usa
-   gallery.js) y de hero.css (.hero-badge, .pulse-dot, burbujeo).
-
-   Paleta: solo tokens de base.css. Los rgba() que aparecen son los
-   mismos tres colores del degradado oficial (navy 8,12,65 · petróleo
-   21,71,114 · cielo 53,154,204) con transparencia, no tonos nuevos.
-
-   Sin .reveal a propósito, como compromiso-social y ambiental: el
-   contenido nunca depende del IntersectionObserver. El único JS de la
-   página (instalaciones.js) anima las cifras y el reproductor, y todo
-   se ve completo aunque no corra.
-   ============================================================ */
-
-/* Los anclas del navbar inferior caen bajo el header sticky. */
 .inst-sec[id], .inst-film[id]{scroll-margin-top:150px;}
-
-/* ════════════════ 1 · HERO DE VIDEO ════════════════ */
 .inst-hero{
   position:relative; overflow:hidden; isolation:isolate;
-  /* Alto de pantalla menos el header (franja blanca 121 px + ruta 72 px):
-     así la franja de cifras se ve completa sin hacer scroll. */
   min-height:max(600px, calc(100svh - 194px));
   display:flex; flex-direction:column; justify-content:flex-end;
   padding:56px 0 0; color:#fff;
@@ -32,14 +9,9 @@
 .inst-hero-media{position:absolute; inset:0; z-index:0; overflow:hidden;}
 .inst-hero-media video,
 .inst-hero-media img{width:100%; height:100%; object-fit:cover; display:block;}
-/* Dos capas: el degradado oficial cargado a la izquierda (donde va el
-   texto) y un fundido a navy abajo, para que las cifras se lean sobre
-   cualquier fotograma del video. */
 .inst-hero-media::after{
   content:''; position:absolute; inset:0;
-  background:
-    linear-gradient(180deg, rgba(8,12,65,.55) 0%, rgba(8,12,65,.08) 32%, rgba(8,12,65,.38) 62%, rgba(8,12,65,.94) 100%),
-    linear-gradient(100deg, rgba(8,12,65,.82) 0%, rgba(21,71,114,.5) 46%, rgba(53,154,204,.05) 100%);
+  background:linear-gradient(180deg, rgba(8,12,65,.55) 0%, rgba(8,12,65,.08) 32%, rgba(8,12,65,.38) 62%, rgba(8,12,65,.94) 100%), linear-gradient(100deg, rgba(8,12,65,.82) 0%, rgba(21,71,114,.5) 46%, rgba(53,154,204,.05) 100%);
 }
 .inst-hero .hero-particles{z-index:1;}
 .inst-hero-inner{position:relative; z-index:2; width:100%; padding-bottom:36px;}
@@ -70,9 +42,6 @@
   background:var(--navy); color:var(--amber);
 }
 .inst-play-ico svg{width:10px; height:10px; margin-left:2px;}
-
-/* Cifras clave: fila de "stat tiles" de cristal al pie del hero.
-   Valor arriba (semibold, cifras proporcionales), etiqueta debajo. */
 .inst-kpis{
   position:relative; z-index:2; display:grid; grid-template-columns:repeat(4, 1fr);
   padding:0 max(0px, calc((100% - 1200px) / 2));
@@ -91,9 +60,6 @@
   display:block; width:34px; height:3px; border-radius:2px; margin-bottom:14px;
   background:linear-gradient(90deg, var(--teal-light), var(--amber));
 }
-
-
-/* ════════════════ 2 · SECCIONES ════════════════ */
 .inst-sec{position:relative; padding:104px 0;}
 .inst-sec--plain{background:#fff;}
 .inst-sec--mist{background:var(--mist);}
@@ -102,20 +68,14 @@
 .inst-head h2{font-size:clamp(1.8rem, 3.2vw, 2.6rem); color:var(--navy); line-height:1.15;}
 .inst-head p{margin-top:16px; color:var(--steel); font-size:1.02rem; line-height:1.7; text-wrap:pretty;}
 .inst-head h2{text-wrap:balance;}
-
-/* Bloque foto + texto */
 .inst-split{display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:64px; align-items:start;}
 .inst-split--rev .inst-split-media{order:2;}
-/* sticky: la foto acompaña la lectura de la columna de texto, que es más
-   larga. isolation: el marco degradado (::before, z-index:-1) se queda
-   detrás de la foto pero por delante del fondo de la sección. */
 .inst-split-media{position:sticky; top:170px; isolation:isolate;}
 .inst-photo{
   position:relative; border-radius:22px; overflow:hidden; aspect-ratio:4/3;
   box-shadow:0 40px 80px -40px rgba(8,12,65,.55);
 }
 .inst-photo img{width:100%; height:100%; object-fit:cover;}
-/* Marco desplazado detrás de la foto: da profundidad sin otra imagen. */
 .inst-split-media::before{
   content:''; position:absolute; inset:28px -22px -22px 28px; border-radius:24px; z-index:-1;
   background:linear-gradient(135deg, var(--teal-light), var(--amber));
@@ -141,11 +101,7 @@
 .inst-prose > p{color:#33434c; font-size:1rem; line-height:1.75; margin-bottom:16px;}
 .inst-prose > p:last-child{margin-bottom:0;}
 .inst-prose b{color:var(--navy);}
-
-/* Hechos oficiales: lista con marcador de "check" */
 .inst-facts{margin-top:26px; display:grid; gap:12px;}
-/* "> li": el primer hecho lleva dentro otra lista (la línea de tiempo) que
-   no debe heredar el aspecto de tarjeta. */
 .inst-facts > li{
   display:flex; gap:12px; align-items:flex-start; padding:14px 16px; border-radius:14px;
   background:var(--mist); border:1px solid var(--line); font-size:.88rem; line-height:1.55; color:#33434c;
@@ -153,10 +109,6 @@
 .inst-sec--mist .inst-facts > li{background:#fff;}
 .inst-facts > li > svg{width:20px; height:20px; flex-shrink:0; margin-top:1px; color:var(--teal);}
 .inst-facts b{color:var(--navy);}
-
-/* Línea de tiempo de la licencia de refinación y sus resoluciones
-   (2007 → 2023 → abril 2025): fecha a la izquierda, acto a la derecha,
-   unidos por un hilo con el degradado de marca. La última va resaltada. */
 .inst-milestones{list-style:none; margin:12px 0 2px; padding:0; position:relative; display:grid; gap:12px;}
 .inst-milestones::before{
   content:''; position:absolute; left:5px; top:8px; bottom:8px; width:2px; border-radius:2px;
@@ -170,8 +122,6 @@
 .inst-milestones li:last-child::before{background:var(--amber); border-color:var(--teal);}
 .inst-milestones time{font-size:.74rem; font-weight:600; color:var(--teal); white-space:nowrap; padding-top:2px;}
 .inst-milestones span{color:#33434c; line-height:1.5;}
-
-/* ════════════════ 3 · TARJETAS CON FOTO ════════════════ */
 .inst-features{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;}
 .inst-features--4{grid-template-columns:repeat(4, 1fr);}
 .inst-feature{
@@ -196,8 +146,6 @@
 .inst-feature p{font-size:.88rem; color:var(--steel); line-height:1.62;}
 .inst-feature-link{margin-top:auto; padding-top:16px; font-size:.84rem; font-weight:600; color:var(--teal); display:inline-flex; gap:6px; align-items:center;}
 .inst-feature-link:hover{color:var(--navy);}
-
-/* ════════════════ 4 · PELÍCULA (recorrido aéreo) ════════════════ */
 .inst-film{
   position:relative; overflow:hidden; padding:110px 0; color:#fff;
   background-color:var(--navy); background-image:var(--ph-gradient);
@@ -234,8 +182,6 @@
 .inst-film-frame.is-playing .inst-film-poster,
 .inst-film-poster[hidden]{display:none;}
 .inst-film-note{max-width:1040px; margin:18px auto 0; font-size:.78rem; color:#a9c1cf; text-align:center;}
-
-/* ════════════════ 5 · BANDA DE CERTIFICACIÓN ════════════════ */
 .inst-cert{
   position:relative; overflow:hidden; border-radius:26px; padding:46px 48px; color:#fff;
   background-color:var(--navy); background-image:var(--ph-gradient);
@@ -246,9 +192,6 @@
 .inst-cert .eyebrow{color:var(--amber);}
 .inst-cert h3{font-size:clamp(1.35rem, 2.2vw, 1.75rem); margin:10px 0 12px; line-height:1.25;}
 .inst-cert p{color:#cfe0e9; font-size:.92rem; line-height:1.65; max-width:620px;}
-/* Las normas van siempre con su año (9001:2015, 14001:2015, 45001:2018). */
-/* Ancho fijo por insignia: con columnas flexibles la rejilla tomaba el ancho
-   de la etiqueta más larga y le quitaba espacio al título. */
 .inst-cert-badges{display:grid; grid-template-columns:repeat(3, 134px); gap:12px;}
 .inst-iso{
   padding:14px 10px 16px; border-radius:18px; text-align:center;
@@ -258,10 +201,6 @@
 .inst-iso b{display:block; font-size:1.12rem; line-height:1.1; color:#fff; white-space:nowrap;}
 .inst-iso span{display:block; margin-top:6px; font-size:.68rem; line-height:1.35; color:#cfe0e9;}
 .inst-cert-links{display:flex; gap:12px; flex-wrap:wrap; margin-top:22px;}
-
-/* ════════════════ 6 · GALERÍA "BENTO" ════════════════ */
-/* Reutiliza .photo-gallery (gallery.js la convierte en visor); aquí solo
-   cambia la rejilla: tiles de tamaños distintos en vez de la fila de 3. */
 .inst-sec .photo-gallery.inst-gallery{
   grid-template-columns:repeat(4, 1fr); grid-auto-rows:210px; gap:14px; margin:0;
 }
@@ -269,19 +208,12 @@
 .inst-gallery > img{height:100%; border-radius:16px;}
 .inst-gallery img{height:100% !important; border-radius:16px;}
 .inst-gallery .photo-gallery-item::after{border-radius:16px;}
-/* Patrones cerrados (sin huecos) para cada número de fotos. Los hijos son
-   los <img> y, cuando corre gallery.js, los <button> que los envuelven:
-   :nth-child sirve para los dos casos.
-   · 10 fotos, 4 columnas: dos tiles de 2 × 2 en diagonal (1.ª y 7.ª).
-   · 7 fotos, 4 columnas: un 2 × 2 y dos franjas anchas al pie. */
 .inst-gallery--10 > :nth-child(1),
 .inst-gallery--10 > :nth-child(7),
 .inst-gallery--7 > :nth-child(1){grid-column:span 2; grid-row:span 2;}
 .inst-gallery--7 > :nth-child(6),
 .inst-gallery--7 > :nth-child(7){grid-column:span 2;}
 .inst-gallery-credit{margin-top:16px; font-size:.76rem; color:var(--steel); text-align:right;}
-
-/* ════════════════ 7 · UBICACIÓN ════════════════ */
 .inst-location{display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr); gap:28px; align-items:stretch;}
 .inst-loc-card{
   position:relative; overflow:hidden; border-radius:22px; padding:38px 36px; color:#fff;
@@ -299,8 +231,6 @@
 .inst-loc-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:auto; padding-top:8px;}
 .inst-map{position:relative; min-height:420px; border-radius:22px; overflow:hidden; border:1px solid var(--line); background:var(--mist);}
 .inst-map iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
-
-/* ════════════════ 8 · CIERRE ════════════════ */
 .inst-cta{
   position:relative; overflow:hidden; padding:96px 0; color:#fff; text-align:center;
   background-color:var(--navy); background-image:var(--ph-gradient);
@@ -310,7 +240,6 @@
 .inst-cta h2{font-size:clamp(1.8rem, 3.4vw, 2.7rem); max-width:820px; margin:0 auto; line-height:1.15; text-wrap:balance;}
 .inst-cta p{max-width:660px; margin:18px auto 0; color:#cfe0e9; line-height:1.7; text-wrap:pretty;}
 .inst-cta-actions{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:30px;}
-/* Tarjeta hacia la otra planta */
 .inst-next{
   display:grid; grid-template-columns:200px minmax(0,1fr) auto; gap:26px; align-items:center;
   max-width:820px; margin:54px auto 0; padding:14px 26px 14px 14px; text-align:left;
@@ -327,12 +256,6 @@
   background:var(--amber); color:var(--navy);
 }
 .inst-next-arrow svg{width:20px; height:20px;}
-
-/* ════════════════ 9 · ESQUIVENSA: CAPACIDADES ════════════════ */
-/* Barra de parte-todo: patio 1 + patio 2 = 166.100 bbl. Dos pasos de la
-   misma rampa azul (petróleo → cielo, validados como rampa ordinal sobre
-   blanco), 2px de separación del color de fondo, extremos redondeados y
-   leyenda con los valores escritos: el color nunca es el único canal. */
 .inst-capacity{
   background:#fff; border:1px solid var(--line); border-radius:22px; padding:34px 36px;
   box-shadow:0 24px 50px -36px rgba(8,12,65,.4);
@@ -352,7 +275,6 @@
 }
 .inst-bar-seg--1{background:var(--teal);}
 .inst-bar-seg--2{background:var(--teal-light); color:var(--navy);}
-/* Tooltip de cada segmento (hover y foco de teclado). */
 .inst-bar-seg::after{
   content:attr(data-tip); position:absolute; left:50%; bottom:calc(100% + 10px); transform:translate(-50%, 4px);
   padding:8px 12px; border-radius:10px; background:var(--navy); color:#fff; font-size:.74rem; font-weight:500;
@@ -361,9 +283,6 @@
 }
 .inst-bar-seg:hover::after,
 .inst-bar-seg:focus-visible::after{opacity:1; transform:translate(-50%, 0);}
-/* El segmento pequeño queda pegado al borde derecho: su tooltip centrado
-   se salía de la tarjeta (y, aunque invisible, abría scroll horizontal en
-   el celular). Se ancla a la derecha del segmento. */
 .inst-bar-seg--2::after{left:auto; right:0; transform:translate(0, 4px);}
 .inst-bar-seg--2:hover::after{transform:none;}
 .inst-legend{display:flex; gap:26px; flex-wrap:wrap; margin-top:16px;}
@@ -391,8 +310,6 @@
 .inst-figure{margin:0;}
 .inst-figure img{width:100%; height:auto; border-radius:20px; box-shadow:0 30px 60px -36px rgba(8,12,65,.5);}
 .inst-figure figcaption{margin-top:12px; font-size:.8rem; color:var(--steel); line-height:1.5;}
-
-/* ════════════════ 10 · RESPONSIVE ════════════════ */
 @media (max-width:1080px){
   .inst-features--4{grid-template-columns:repeat(2, 1fr);}
   .inst-split{gap:48px;}
@@ -407,8 +324,6 @@
   .inst-split-media{position:relative; top:auto; max-width:640px; margin:0 auto 20px; width:100%;}
   .inst-features{grid-template-columns:repeat(2, 1fr);}
   .inst-cert{grid-template-columns:1fr; padding:38px 32px;}
-  /* Dos columnas: la primera foto a todo el ancho y, en la de 10, también
-     la última (1 + 8 + 1 = 6 filas exactas); en la de 7, 1 + 6 = 4 filas. */
   .inst-sec .photo-gallery.inst-gallery{grid-template-columns:1fr 1fr; grid-auto-rows:200px;}
   .inst-gallery--10 > :nth-child(7),
   .inst-gallery--7 > :nth-child(6),
@@ -431,8 +346,6 @@
   .inst-split-media::before{inset:18px -10px -10px 18px;}
   .inst-split--rev .inst-split-media::before{inset:18px 18px -10px -10px;}
   .inst-sec .photo-gallery.inst-gallery{grid-auto-rows:150px; gap:10px;}
-  /* La etiqueta dentro del segmento pequeño de la barra ya no cabe: la
-     leyenda (con los valores escritos) y el tooltip la sustituyen. */
   .inst-bar-seg--2 .inst-bar-txt{display:none;}
   .inst-cert{padding:32px 24px;}
   .inst-cert-badges{grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px;}
@@ -451,9 +364,6 @@
   .inst-kpis{grid-template-columns:1fr 1fr;}
   .inst-kpi-label{font-size:.74rem;}
 }
-
-/* Movimiento reducido: sin tirones de zoom ni flecha animada. El video
-   del hero lo pausa instalaciones.js y se queda el póster. */
 @media (prefers-reduced-motion:reduce){
   .inst-feature, .inst-feature-media img, .inst-next, .inst-film-play{transition:none;}
   .inst-feature:hover, .inst-next:hover{transform:none;}

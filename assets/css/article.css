@@ -1,18 +1,5 @@
-/* ============================================
-   INNER PAGE HERO (SGI, Compromiso, Ambiental, PQRSF, Política, Noticias)
-   + layout de artículo (TOC + prosa) y componentes reutilizados en esas
-   páginas: icon-grid, process-flow, stat-row, doc-card, chart-wrap,
-   photo-gallery, disclaimer.
-   ============================================ */
-/* Degradado en paleta 100% oficial de marca (azul oscuro → azul petróleo →
-   azul cielo), como custom property para no repetirlo. Lo usan el fondo
-   propio de .page-hero (páginas sin foto, como las fichas técnicas),
-   .page-hero-bg::after (páginas con foto) y los paneles oscuros de las
-   páginas de sostenibilidad. Vive en :root —y no dentro de .page-hero—
-   justamente para que esos paneles no tengan que volver a escribir los
-   rgba() a mano (ver CLAUDE.md: ya pasó con --route-*, --pb-* e --ib-*). */
 :root{
-  --ph-gradient: linear-gradient(135deg, rgba(8,12,65,.93) 0%, rgba(21,71,114,.85) 55%, rgba(53,154,204,.42) 100%);
+  --ph-gradient:linear-gradient(135deg, rgba(8,12,65,.93) 0%, rgba(21,71,114,.85) 55%, rgba(53,154,204,.42) 100%);
 }
 .page-hero{
   position:relative; overflow:hidden; padding:158px 0 74px; color:#fff;
@@ -20,13 +7,6 @@
   background-image:var(--ph-gradient);
   background-size:cover; background-position:center;
 }
-/* Fondo fotográfico OPCIONAL. Es un <img> real dentro de .page-hero-bg —
-   nunca un url() metido en una custom property (background-image:var(...)):
-   un url() relativo dentro de una custom property se resuelve contra la
-   hoja CSS, no contra el HTML, así que la foto se perdía en silencio y solo
-   quedaba el degradado (bug real, confirmado renderizando en Edge y ya
-   corregido primero en productos.html). Las páginas sin foto (fichas
-   técnicas) no incluyen este div y se quedan con el degradado de arriba. */
 .page-hero-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
 .page-hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
 .page-hero-bg::after{content:''; position:absolute; inset:0; background:var(--ph-gradient);}
@@ -45,34 +25,14 @@
 .page-hero .hero-graphic{
   position:absolute; right:-40px; bottom:-60px; z-index:1; opacity:.14; width:340px; height:340px; pointer-events:none;
 }
-
-/* EXAMPLE BANNER (fixed: was rendering a huge unstyled icon). Usa --warn
-   (aviso), no --amber: --amber ahora es verde lima, un color de
-   marca/CTA, no de advertencia. */
 .example-banner{
   display:flex; align-items:flex-start; gap:12px; background:rgba(232,135,30,.1); border:1px solid rgba(232,135,30,.35);
   color:#92400e; padding:14px 18px; border-radius:12px; font-size:.86rem; line-height:1.5; max-width:900px;
 }
 .example-banner svg{width:20px; height:20px; flex-shrink:0; margin-top:1px; color:var(--warn);}
-
-/* ARTICLE LAYOUT (sidebar TOC + prose) */
 .article-wrap{padding:60px 0 100px; background:#fff;}
 .article-grid{display:grid; grid-template-columns:220px 1fr; gap:56px; align-items:start;}
 .article-grid--full{grid-template-columns:minmax(0,1fr);}
-/* Sin la columna .toc la prosa se queda con los 1.136 px del contenedor:
-   unos 115 caracteres por línea, el doble de lo que se lee cómodo, y
-   justificado se nota todavía más. Las hermanas que ya tienen secciones
-   propias (.ra-block, .sgi-block, .pd-block) ya la limitan en su propia
-   hoja; esto hace lo mismo para las que escriban <p> directo
-   dentro de .prose. Hoy no lo hace ninguna —compromiso-social, que era
-   la única, pasó el 2026-09-21 a secciones propias fuera de .prose—,
-   pero la regla se queda como red para la próxima. Los bloques visuales
-   (rejillas, galerías, paneles) no son <p>, así que siguen a todo lo
-   ancho. */
-/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
-   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
-   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
-   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .article-grid--full > .prose > p{max-width:54rem;}
 .toc{position:sticky; top:100px; display:flex; flex-direction:column; gap:3px; padding-right:10px; border-right:1px solid var(--line);}
 .toc span{font-family:'Poppins',sans-serif; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--steel); margin-bottom:8px;}
@@ -91,8 +51,6 @@
 }
 .prose a{color:var(--teal); font-weight:600;}
 .prose a:hover{color:var(--navy);}
-
-/* ICON GRID (reused across SGI, compromiso, ambiental) */
 .icon-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin:26px 0 10px;}
 .icon-item{display:flex; gap:14px; padding:18px; background:var(--mist); border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
 .icon-item:hover{border-color:var(--teal); transform:translateY(-2px); box-shadow:var(--shadow-soft);}
@@ -103,8 +61,6 @@
 .icon-item .icon-wrap svg{width:18px; height:18px;}
 .icon-item h4{font-size:.96rem; color:var(--navy); margin-bottom:5px;}
 .icon-item p{font-size:.84rem; color:var(--steel); line-height:1.5;}
-
-/* PROCESS FLOW (PQRSF, SGI PHVA cycle) */
 .process-flow{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin:26px 0 10px;}
 .process-step{position:relative; padding:22px 18px; background:#fff; border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
 .process-step:hover{border-color:var(--teal); box-shadow:var(--shadow-soft);}
@@ -112,29 +68,18 @@
 .step-num{font-family:'Poppins',sans-serif; font-size:.72rem; color:var(--teal); font-weight:700; letter-spacing:.02em;}
 .process-step h4{font-size:.96rem; color:var(--navy); margin:8px 0 6px;}
 .process-step p{font-size:.82rem; color:var(--steel); line-height:1.5;}
-
-/* STAT ROW */
 .stat-row{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:26px 0;}
 .stat-card{background:var(--navy); color:#fff; padding:26px 20px; border-radius:14px; text-align:center;}
 .stat-card .num{font-family:'Poppins',sans-serif; font-size:2.1rem; font-weight:800; letter-spacing:-0.01em; color:var(--teal-light);}
 .stat-card .label{font-size:.8rem; color:#cbd5e1; margin-top:6px; line-height:1.4;}
-/* DOC CARD (SGI documents list) */
 .doc-card{display:flex; gap:14px; align-items:center; padding:16px 18px; background:var(--mist); border:1px solid var(--line); border-radius:12px; margin-bottom:12px; transition:.2s ease;}
 .doc-card:hover{border-color:var(--teal);}
 .doc-card .icon-wrap{width:38px; height:38px; min-width:38px; border-radius:8px; background:var(--teal); color:#fff; display:flex; align-items:center; justify-content:center;}
 .doc-card .icon-wrap svg{width:16px; height:16px;}
 .doc-card h4{font-size:.92rem; color:var(--navy);}
 .doc-card p{font-size:.8rem; color:var(--steel); margin-top:2px;}
-
-/* CHART WRAP (responsabilidad ambiental) */
 .chart-wrap{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:22px; margin:22px 0;}
 .chart-wrap svg{width:100%; height:auto; display:block;}
-
-/* PHOTO GALLERY (compromiso social, notas de prensa)
-   Rejilla de fotos que `assets/js/gallery.js` convierte en un visor a pantalla
-   completa: envuelve cada <img> en un .photo-gallery-item (botón) y cuelga el
-   .lightbox de <body>. Sin ese script la rejilla sigue viéndose igual, solo
-   que las fotos no se amplían. */
 .photo-gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:22px 0;}
 .photo-gallery img{width:100%; height:230px; object-fit:cover; border-radius:12px; display:block; transition:transform .45s ease;}
 .photo-gallery-item{
@@ -151,7 +96,6 @@
 .photo-gallery-item:hover::after,
 .photo-gallery-item:focus-visible::after{opacity:1;}
 .photo-gallery-item:focus-visible{outline:3px solid var(--teal-light); outline-offset:3px;}
-/* Lupa: pista visual de que la foto se amplía. */
 .photo-gallery-zoom{
   position:absolute; right:10px; bottom:10px; width:34px; height:34px; border-radius:50%;
   display:flex; align-items:center; justify-content:center;
@@ -161,10 +105,6 @@
 .photo-gallery-zoom svg{width:17px; height:17px;}
 .photo-gallery-item:hover .photo-gallery-zoom,
 .photo-gallery-item:focus-visible .photo-gallery-zoom{opacity:1; transform:none;}
-
-/* ── VISOR (lightbox) ───────────────────────────────────────────────────────
-   z-index 1600: por encima del drawer (1400) y del modal de equipo de
-   quienes-somos (1500), por debajo del cursor personalizado (9998). */
 .lightbox{position:fixed; inset:0; z-index:1600; display:flex; opacity:0; transition:opacity .25s ease;}
 .lightbox.is-open{opacity:1;}
 .lightbox[hidden]{display:none;}
@@ -224,13 +164,10 @@
 .lightbox-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
 .lightbox-thumb:hover{opacity:.85;}
 .lightbox-thumb.is-active{opacity:1; border-color:var(--teal-light);}
-/* Solo para lectores de pantalla: anuncia "3 / 4 — pie de foto" al navegar. */
 .lightbox-live{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
 body.lightbox-open{overflow:hidden;}
 
 @media (max-width:640px){
-  /* En pantallas estrechas las flechas estorban al lado de la foto: van
-     ancladas sobre ella y la navegación principal es el deslizamiento. */
   .lightbox-stage{position:relative;}
   .lightbox-arrow{position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; background:rgba(8,12,65,.6);}
   .lightbox-arrow:hover{transform:translateY(-50%) scale(1.06);}
@@ -245,18 +182,10 @@ body.lightbox-open{overflow:hidden;}
   .photo-gallery-zoom{transition:none;}
   .photo-gallery-item:hover img{transform:none;}
 }
-
-/* ISO ROW (sello ISO + texto en SGI y responsabilidad ambiental). Mismo
-   diseño que .iso-row de home.css, que estas páginas no cargan: sin esta
-   regla el sello quedaba apilado encima del párrafo. */
 .iso-row{display:flex; align-items:center; gap:16px 20px; flex-wrap:wrap;}
 .iso-row img{flex-shrink:0;}
 .iso-row p{color:var(--steel); line-height:1.6; font-size:.92rem;}
-
-/* DISCLAIMER */
 .disclaimer-full{margin-top:40px; padding-top:24px; border-top:1px solid var(--line); font-size:.78rem; color:var(--steel); font-style:italic; line-height:1.6;}
-
-/* RESPONSIVE */
 @media (max-width:980px){
   .article-grid{grid-template-columns:1fr;}
   .toc{position:relative; top:0; border-right:none; border-bottom:1px solid var(--line); padding-bottom:16px; flex-direction:row; flex-wrap:wrap; gap:10px;}

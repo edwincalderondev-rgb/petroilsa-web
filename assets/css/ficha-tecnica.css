@@ -1,14 +1,6 @@
-/* ============================================
-   PRODUCT DATA SHEET (Ficha técnica de producto)
-   ============================================ */
-
-/* Hero: texto + tarjeta flotante del producto */
 .pds-hero{padding-bottom:64px;}
 .pds-hero-grid{display:flex; align-items:center; justify-content:space-between; gap:44px; flex-wrap:wrap;}
 .pds-hero-text{flex:1 1 480px; max-width:640px;}
-/* Título: "Petroil 50 10" y, en su propio renglón, la línea del producto
-   ("ULSD Premium"). Desde el 2026-10-01 va sin el guion largo que los unía
-   en una sola línea; la clase también vive en el hero.title de cada JSON. */
 .pds-title-sub{display:block; color:var(--teal-light);}
 .pds-badges{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
 .pds-badge{
@@ -35,12 +27,7 @@
 .pds-visual-mini div{text-align:center;}
 .pds-visual-mini b{display:block; font-family:'Poppins',sans-serif; font-weight:600; font-size:.92rem; color:var(--teal-light);}
 .pds-visual-mini span{font-size:.64rem; color:#9fb4c2;}
-
-/* Layout principal: contenido + barra lateral */
 .pds-layout{padding:70px 0 100px; background:#fff;}
-/* minmax(0,1fr) y no 1fr: la tabla técnica tiene min-width:660px (con
-   scroll horizontal propio) y con 1fr la columna no podía encogerse por
-   debajo de eso, desbordando toda la página en móvil. */
 .pds-grid{display:grid; grid-template-columns:minmax(0,1fr) 328px; gap:50px; align-items:start;}
 .pds-section{margin-bottom:56px;}
 .pds-section:last-child{margin-bottom:0;}
@@ -50,8 +37,6 @@
   border-radius:20px; padding:3px 11px; flex-shrink:0;
 }
 .pds-section-title h2{font-size:1.5rem; color:var(--navy);}
-
-/* Aplicaciones y beneficios */
 .pds-benefits{display:flex; flex-direction:column; gap:14px;}
 .pds-benefit{display:flex; gap:16px; padding:20px 22px; background:var(--mist); border:1px solid var(--line); border-radius:12px; transition:.2s ease;}
 .pds-benefit:hover{border-color:var(--teal-light);}
@@ -59,8 +44,6 @@
 .pds-benefit .icon-wrap svg{width:19px; height:19px;}
 .pds-benefit h4{font-size:.96rem; color:var(--navy); margin-bottom:4px;}
 .pds-benefit p{color:var(--steel); font-size:.9rem; line-height:1.55;}
-
-/* Tabla de características técnicas */
 .pds-table-wrap{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-soft);}
 .pds-table-scroll{overflow-x:auto;}
 table.pds-table{width:100%; border-collapse:collapse; min-width:660px;}
@@ -82,25 +65,16 @@ table.pds-table tbody tr.pds-group td{
 }
 table.pds-table tbody tr:not(.pds-group):hover td{background:rgba(21,71,114,.08);}
 table.pds-table tbody tr:last-child td{border-bottom:none;}
-
-/* Tarjeta de seguridad / CAS — usa --warn (aviso de precaución), no
-   --amber: --amber ahora es verde lima, un color de marca/CTA, no de
-   advertencia. Mezclarlos aquí dejaría el ícono lima y el fondo naranja. */
 .pds-safety{display:flex; gap:16px; padding:22px 24px; border-radius:14px; background:rgba(232,135,30,.09); border:1px solid rgba(232,135,30,.32);}
 .pds-safety .icon-wrap{width:42px; height:42px; min-width:42px; border-radius:12px; background:var(--warn); color:#fff; display:flex; align-items:center; justify-content:center;}
 .pds-safety .icon-wrap svg{width:20px; height:20px;}
 .pds-safety h4{color:var(--navy); font-size:.96rem; margin-bottom:6px;}
 .pds-safety p{color:var(--steel); font-size:.86rem; line-height:1.55;}
 .pds-safety .cas{font-family:'Poppins',sans-serif; font-weight:700; letter-spacing:.02em; color:var(--navy);}
-
-/* Barra lateral */
 .pds-side{display:flex; flex-direction:column; gap:16px; position:sticky; top:100px;}
 .pds-side-card{background:var(--mist); border:1px solid var(--line); border-radius:14px; padding:24px;}
 .pds-side-card h4{font-size:.94rem; color:var(--navy); margin-bottom:8px;}
 .pds-side-card p{font-size:.82rem; color:var(--steel); line-height:1.5; margin-bottom:16px;}
-/* Tarjeta de cotización (reemplaza a la antigua "Descargar PDF": por
-   decisión de dirección las fichas técnicas ya no se descargan, se
-   solicitan al área comercial desde contacto.html). */
 .pds-side-card.quote{
   background:linear-gradient(150deg, var(--navy) 0%, var(--teal) 100%); border-color:transparent; color:#fff;
   box-shadow:0 22px 40px -22px rgba(8,12,65,.6);
@@ -124,8 +98,6 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 .pds-side-list li{display:flex; justify-content:space-between; gap:10px; font-size:.82rem; color:var(--steel); padding:9px 0; border-bottom:1px dashed var(--line);}
 .pds-side-list li:last-child{border-bottom:none;}
 .pds-side-list b{color:var(--navy); font-weight:700; white-space:nowrap;}
-
-/* Franja de cotización (antes de los relacionados) */
 .pds-quote{
   position:relative; overflow:hidden; margin-top:74px; padding:40px 44px; border-radius:20px; color:#fff;
   background:linear-gradient(120deg, var(--navy) 0%, var(--navy) 45%, var(--teal) 100%);
@@ -148,11 +120,6 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 }
 .pds-quote-wa svg{width:16px; height:16px; color:#25D366;}
 .pds-quote-wa:hover{background:#fff; color:var(--navy);}
-
-/* Productos relacionados — clases propias (.pds-rel-*). Antes se
-   reutilizaban .products-grid/.product-card, pero sus estilos viven en
-   home.css / productos.css, que las fichas no cargan: las tarjetas salían
-   sin estilo (imágenes a tamaño natural apiladas). */
 .pds-related{margin-top:64px;}
 .pds-related-head{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:26px; flex-wrap:wrap;}
 .pds-related-head .eyebrow{display:block; margin-bottom:6px;}
@@ -183,8 +150,6 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
 .pds-rel-desc{font-size:.78rem; line-height:1.5; color:var(--steel); margin-top:8px;}
 .pds-rel-more{margin-top:auto; padding-top:14px; font-size:.8rem; font-weight:600; color:var(--teal);}
 .pds-rel-card:hover .pds-rel-more{color:var(--navy);}
-
-/* Fichas "comerciales" (bondades y usos, sin tabla técnica) */
 .pds-benefits--grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px;}
 .pds-benefits--grid .pds-benefit{flex-direction:column; gap:12px;}
 .pds-lead{color:var(--steel); font-size:.95rem; margin-bottom:14px;}
@@ -203,13 +168,6 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C7F547' stroke-width='3'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E");
   background-size:13px; background-repeat:no-repeat; background-position:center;
 }
-
-/* Hero con el ave emblema de fondo. Usa un recorte propio por ave
-   (assets/img/aves/hero-*.jpg, 1400x1120) con la cabeza del ave arriba y a
-   la derecha del centro: así queda sobre la tarjeta del producto y lejos del
-   texto. El velo es denso a la izquierda (texto) y ligero a la derecha.
-   Para un ave nueva, recorta la foto con ese mismo encuadre en vez de
-   ajustar object-position aquí. */
 .pds-hero--bird .page-hero-bg img{
   position:absolute; top:0; right:0; left:auto; width:72%; height:100%; object-fit:cover; object-position:center 35%;
   filter:brightness(1.12) saturate(1.2);
@@ -217,17 +175,11 @@ table.pds-table tbody tr:last-child td{border-bottom:none;}
   animation:pdsBirdIn 1.4s ease-out both;
 }
 .pds-hero--bird .page-hero-bg::after{
-  background:
-    linear-gradient(180deg, rgba(8,12,65,0) 60%, rgba(8,12,65,.85) 100%),
-    linear-gradient(90deg, rgba(8,12,65,.95) 0%, rgba(8,12,65,.86) 32%, rgba(8,12,65,.26) 56%, rgba(8,12,65,.04) 100%);
+  background:linear-gradient(180deg, rgba(8,12,65,0) 60%, rgba(8,12,65,.85) 100%), linear-gradient(90deg, rgba(8,12,65,.95) 0%, rgba(8,12,65,.86) 32%, rgba(8,12,65,.26) 56%, rgba(8,12,65,.04) 100%);
 }
 @keyframes pdsBirdIn{from{opacity:0; transform:scale(1.05);} to{opacity:1; transform:none;}}
-/* Fotos con fondo claro (cielo, fondo blanco): se oscurecen para que no
-   rompan el hero oscuro. */
 .pds-hero--light .page-hero-bg img{filter:brightness(.8) saturate(1.2);}
 @media (prefers-reduced-motion:reduce){.pds-hero--bird .page-hero-bg img{animation:none;}}
-
-/* Ave emblema del producto */
 .pds-emblem{
   margin-top:74px; display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); border-radius:20px; overflow:hidden;
   background:var(--navy); color:#fff; box-shadow:0 30px 60px -30px rgba(8,12,65,.55);

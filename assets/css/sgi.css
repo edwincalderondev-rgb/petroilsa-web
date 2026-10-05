@@ -1,41 +1,8 @@
-/* ============================================
-   SGI — sostenibilidad/sgi.html
-
-   Se carga DESPUÉS de article.css, del que esta página reutiliza
-   .page-hero, .article-wrap, .article-grid--full, .prose, .process-flow,
-   .stat-row/.stat-card, .doc-card, .iso-row y .photo-gallery (+ su visor).
-   Aquí solo viven los bloques propios: pilares certificados, alcance,
-   normas para visitantes y la rejilla de documentos.
-
-   Colores: únicamente alias de la paleta oficial declarada en base.css
-   (--brand-* y sus alias históricos). El único hex fuera de manual es
-   --warn, reservado a avisos/prohibiciones — ver CLAUDE.md.
-   ============================================ */
-
-/* Cada bloque es una parada del scroll-spy de la ruta del navbar
-   (.route-link[data-section]): por eso son <section id> y no solo <h2 id>,
-   el observador necesita una altura real que vigilar. Mismo patrón que
-   .ra-block de responsabilidad-ambiental.css. */
 .sgi-block{scroll-margin-top:150px;}
 .sgi-block + .sgi-block{margin-top:72px;}
-
-/* Medida de lectura: sin la columna del TOC (navegación duplicada del
-   navbar inferior) la prosa ocuparía los ~1.136 px del contenedor. Los
-   bloques visuales sí usan todo el ancho. */
-/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
-   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
-   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
-   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .sgi-block > p,
 .sgi-block > blockquote{max-width:54rem;}
 .prose .sgi-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
-
-/* ── INFOGRAFÍA DE PROPÓSITOS ───────────────────────────────────────────
-   La figura es también la única .photo-gallery de la página, así que
-   gallery.js la vuelve ampliable (el texto de la lámina es pequeño en
-   móvil). Con una sola imagen el visor se dibuja sin flechas ni
-   miniaturas. Estas reglas anulan la rejilla de 3 columnas y el
-   recorte a 230 px de alto que .photo-gallery aplica a las fotos. */
 .sgi-figure{margin:28px 0 8px;}
 .sgi-figure.photo-gallery{display:block;}
 .sgi-figure .photo-gallery-item{display:block; width:100%; border-radius:16px;}
@@ -46,13 +13,6 @@
 .prose .sgi-figure figcaption{
   margin-top:12px; font-size:.82rem; line-height:1.55; color:var(--steel);
 }
-
-/* ── PILARES CERTIFICADOS ───────────────────────────────────────────────
-   --c     = acento de la tarjeta (franja superior); puede ser un color
-             claro de la paleta porque solo pinta superficie.
-   --c-ink = versión legible del mismo acento, para el icono, la norma y
-             el borde de hover (lima o cielo sobre blanco no dan contraste
-             suficiente). Mismo patrón que .ra-plan y .pq-c--*. */
 .sgi-pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin:26px 0 8px;}
 .sgi-pillar{
   --c:var(--brand-petrol); --c-ink:var(--brand-petrol);
@@ -76,16 +36,11 @@
 }
 .sgi-pillar h3{font-size:1rem; line-height:1.3; color:var(--navy); margin-bottom:8px;}
 .sgi-pillar p{font-size:.84rem; line-height:1.55; color:var(--steel); margin:0;}
-/* margin-top:auto alinea el pie de las tres tarjetas aunque los textos
-   tengan distinto largo. */
 .sgi-pillar-cert{
   margin-top:auto; padding-top:14px; border-top:1px solid var(--line);
   font-size:.74rem; line-height:1.5; color:var(--steel);
 }
 .sgi-pillar-cert b{display:block; color:var(--navy); font-weight:600;}
-
-/* ── ALCANCE CERTIFICADO ────────────────────────────────────────────────
-   Cita literal del alcance que aparece en los tres certificados. */
 .sgi-scope{
   margin:18px 0 0; padding:20px 22px; border-radius:16px;
   background:var(--mist); border:1px solid var(--line);
@@ -97,17 +52,8 @@
 }
 .prose .sgi-scope p{margin:0; font-size:.9rem; line-height:1.6; color:var(--ink);}
 .prose .sgi-scope p + p{margin-top:8px; font-size:.82rem; color:var(--steel);}
-
-/* ── INDICADORES ────────────────────────────────────────────────────────
-   Tres tarjetas desde el 2026-10-01 (récord de días sin accidentes,
-   incidentes ambientales registrados y récord anual de auditorías). */
 .stat-row.sgi-stats{grid-template-columns:repeat(3,1fr);}
 .prose .sgi-stats-note{font-size:.8rem; line-height:1.55; color:var(--steel); margin:0;}
-
-/* ── NORMAS PARA VISITANTES ─────────────────────────────────────────────
-   Contenido transcrito de la cartilla SG-SGI-GUI-005 para que sea texto
-   real (buscable, traducible y legible en móvil); la lámina original se
-   ofrece aparte en .sgi-cartilla. */
 .sgi-rules{display:grid; grid-template-columns:repeat(2,1fr); align-items:start; gap:16px; margin:24px 0 0;}
 .sgi-rule{
   --c-ink:var(--brand-petrol);
@@ -122,25 +68,16 @@
 }
 .sgi-rule-ico svg{width:17px; height:17px;}
 .sgi-rule h3{font-size:.98rem; line-height:1.3; color:var(--navy);}
-/* Los dos selectores llevan .prose delante para ganarle a `.prose ul li`
-   y `.prose ul li::before` (el punto azul por defecto de la prosa). */
 .prose .sgi-rule ul{margin:0;}
 .prose .sgi-rule ul li{font-size:.86rem; line-height:1.55; margin-bottom:8px; padding-left:22px;}
 .prose .sgi-rule ul li:last-child{margin-bottom:0;}
 .prose .sgi-rule ul li::before{top:7px; width:6px; height:6px; background:var(--c-ink);}
 .sgi-rule-note{margin-top:12px; font-size:.78rem; line-height:1.5; color:var(--steel); font-style:italic;}
-/* Prohibiciones: --warn es el color reservado a avisos y precauciones,
-   ninguno de los 8 colores del manual lee como "advertencia". */
 .sgi-rule--prohibiciones{
   --c-ink:var(--warn);
   background:rgba(232,135,30,.06); border-color:rgba(232,135,30,.32);
 }
 .sgi-rule--prohibiciones h3{color:#8a4a06;}
-
-/* ── CARTILLA (lámina original) ─────────────────────────────────────────
-   La lámina es 1.483 × 3.840 px: en el visor a pantalla completa cabría
-   entera pero el texto quedaría ilegible, así que la tarjeta muestra la
-   cabecera recortada y abre la imagen a tamaño real en otra pestaña. */
 .prose a.sgi-cartilla{
   display:flex; gap:22px; align-items:center; flex-wrap:wrap;
   margin-top:20px; padding:20px; color:inherit; font-weight:400;
@@ -169,10 +106,6 @@
 }
 .prose a.sgi-cartilla:hover .sgi-cartilla-cta{gap:12px;}
 .sgi-cartilla-cta svg{width:15px; height:15px;}
-
-/* ── DOCUMENTOS DEL SISTEMA ─────────────────────────────────────────────
-   .doc-card viene de article.css; aquí solo pasa a ser enlace y a vivir
-   en una rejilla de dos columnas. */
 .sgi-docs{display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:24px 0 0;}
 .prose a.doc-card{color:inherit; font-weight:400; margin-bottom:0;}
 .prose a.doc-card:hover{color:inherit; transform:translateY(-2px); box-shadow:var(--shadow-soft);}
@@ -189,14 +122,10 @@
 .sgi-doc-arrow svg{width:15px; height:15px;}
 .prose a.doc-card:hover .sgi-doc-arrow{background:var(--teal); color:#fff;}
 .prose .sgi-docs-note{margin:16px 0 0; font-size:.78rem; line-height:1.55; color:var(--steel); font-style:italic;}
-
-/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width:1080px){
   .sgi-pillars{grid-template-columns:1fr;}
 }
 @media (max-width:980px){
-  /* article.css deja .stat-row en una sola columna a partir de aquí; las
-     tres tarjetas caben en fila hasta los 620 px. */
   .stat-row.sgi-stats{grid-template-columns:repeat(3,1fr);}
 }
 @media (max-width:820px){

@@ -1,66 +1,23 @@
-/* ============================================
-   RESPONSABILIDAD AMBIENTAL — sostenibilidad/responsabilidad-ambiental.html
-
-   Se carga DESPUÉS de article.css, del que esta página reutiliza
-   .page-hero, .article-wrap, .article-grid--full y .prose. Aquí solo
-   viven los bloques propios: criterios, instrumentos de gestión y el
-   panel de certificación.
-
-   Colores: únicamente alias de la paleta oficial declarada en base.css
-   (--brand-* y sus alias históricos). No se declara ningún hex de marca
-   suelto — ver CLAUDE.md, ya pasó 4 veces con --route-*/--pb-*/--ib-*.
-   ============================================ */
-
-/* Cada bloque es una parada del scroll-spy de la ruta del navbar
-   (.route-link[data-section]). Por eso son <section id> y no solo <h2 id>:
-   el observador necesita una altura real que vigilar, no una línea de
-   texto. scroll-margin-top deja el título por debajo del navbar fijo. */
-.ra-block{scroll-margin-top:150px;}
+--pb-*/--ib-*. ============================================ */ .ra-block{scroll-margin-top:150px;}
 .ra-block + .ra-block{margin-top:72px;}
-
-/* Medida de lectura. Al quitar la columna del TOC (navegación duplicada
-   del navbar inferior) la prosa pasa a ocupar los ~1.136 px del
-   contenedor y las líneas quedan larguísimas; los bloques visuales
-   (.ra-criteria, .ra-plans, .ra-cert) sí usan todo el ancho. */
-/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
-   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
-   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
-   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .ra-block > p,
 .ra-block > blockquote{max-width:54rem;}
 .prose .ra-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
-
-/* Este hero lleva un texto más largo que el resto de páginas internas. */
 .ra-hero p{max-width:720px;}
-
-/* Los dos paneles oscuros de la página (criterios y certificación) reusan
-   EXACTAMENTE el fondo del hero: el color base + --ph-gradient de
-   article.css. Así el degradado no se reinventa aquí y los tres bloques
-   se leen como el mismo material. El color base opaco es imprescindible:
-   --ph-gradient es semitransparente (está pensado para ir sobre la foto
-   del hero) y sin él el panel saldría lavado sobre el blanco de la prosa. */
 .ra-criteria,
 .ra-cert{
   position:relative; overflow:hidden; border-radius:18px; color:#fff;
   background-color:var(--brand-navy);
   background-image:var(--ph-gradient);
 }
-/* Trama diagonal compartida por los dos paneles — la misma de
-   .page-hero::before, para que se lean como parte del mismo sistema. */
 .ra-criteria::before,
 .ra-cert::before{
   content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
   background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);
 }
-
-/* ── CRITERIOS: prevención · control · mitigación ───────────────────────
-   Las tres palabras salen literalmente del párrafo de enfoque que
-   entregó la empresa; no son una categorización inventada. */
 .ra-criteria{
   margin:32px 0 10px; padding:26px clamp(18px,3vw,30px) 28px;
 }
-/* Todo lo que no sean las burbujas va por encima de la trama y del
-   contenedor de partículas. */
 .ra-criteria > :not(.ra-particles),
 .ra-cert > :not(.ra-particles){position:relative; z-index:1;}
 .ra-criteria-eyebrow{
@@ -83,16 +40,8 @@
 }
 .ra-criterion-ico svg{width:18px; height:18px;}
 .ra-criterion h4{font-size:.98rem; color:#fff; margin-bottom:4px;}
-/* margin:0 anula el margin-bottom:16px de .prose p */
 .ra-criterion p{font-size:.82rem; line-height:1.5; color:#c9d8e4; margin:0;}
 .ra-criteria .ra-particles .particle{--rise:280px;}
-
-/* ── INSTRUMENTOS DE GESTIÓN ────────────────────────────────────────────
-   --c     = acento de la tarjeta (franja superior); puede ser un color
-             claro de la paleta porque solo pinta superficie.
-   --c-ink = versión legible del mismo acento, para texto pequeño, el
-             icono y el borde de hover (lima o cielo sobre blanco no dan
-             contraste suficiente). Mismo patrón que .pq-c--* de pqrsf. */
 .ra-plans{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:26px 0 8px;}
 .ra-plan{
   --c:var(--brand-petrol); --c-ink:var(--brand-petrol);
@@ -117,10 +66,6 @@
 }
 .ra-plan h3{font-size:1rem; line-height:1.3; color:var(--navy); margin-bottom:8px;}
 .ra-plan p{font-size:.84rem; line-height:1.55; color:var(--steel); margin:0;}
-
-/* ── CERTIFICACIÓN AMBIENTAL ────────────────────────────────────────────
-   El sello Bureau Veritas trae su propio fondo rojo, así que va sobre una
-   placa blanca para que no se pegue al degradado azul. */
 .ra-cert{
   display:flex; flex-wrap:wrap; align-items:center;
   gap:24px 30px; margin:24px 0 0; padding:28px clamp(20px,3vw,32px);
@@ -132,8 +77,6 @@
 .ra-cert-seal img{height:64px; width:auto;}
 .ra-cert-body{flex:1; min-width:260px;}
 .ra-cert-body p{color:#d7e3ec; font-size:.95rem; line-height:1.65; margin:0 0 14px; max-width:540px;}
-/* .prose a (0,2,0) fija color y peso de todos los enlaces de la prosa:
-   este selector iguala esa especificidad para poder sobreescribirlo. */
 .prose .ra-cert-link{
   display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:.9rem;
   color:var(--brand-lime); transition:gap .2s ease, color .2s ease;
@@ -141,8 +84,6 @@
 .prose .ra-cert-link:hover{gap:12px; color:#fff;}
 .ra-cert-link svg{width:15px; height:15px;}
 .ra-cert .ra-particles .particle{--rise:320px;}
-
-/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width:1080px){
   .ra-plans{grid-template-columns:repeat(2,1fr);}
 }

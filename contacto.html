@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contacto | Solicita tu cotización | Petroil S.A.</title>
 <meta name="description" content="Solicita una cotización o información técnica de los combustibles Petroil. Déjanos tus datos y un asesor comercial te contacta por WhatsApp o correo.">
 <link rel="canonical" href="https://petroilsa.com/contacto.html">
@@ -48,7 +48,7 @@
         <a href="productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
         <a href="nosotros/quienes-somos.html" class="portal-link" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
         <a href="sostenibilidad/sgi.html" class="portal-link" data-i18n="nav.sgi" data-i18n-title="nav.sgi.title" title="Sistema de Gestión Integrado">SGI</a>
-        <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
+        
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -108,7 +108,7 @@
     <a href="#contacto" class="drawer-link" data-section="#contacto"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="route.ubicacion">Ubicación</span></a>
   </nav>
   <div class="drawer-footer">
-    <!-- Portal de clientes oculto hasta su salida a producción: <a href="portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    
     <a href="productos.html" class="drawer-portal" data-i18n="nav.productos">Productos</a>
     <a href="nosotros/quienes-somos.html" class="drawer-portal" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
     <a href="sostenibilidad/sgi.html" class="drawer-portal" data-i18n="nav.sgi">SGI</a>
@@ -146,10 +146,7 @@
 
       <div id="formulario">
         <form class="ct-form" id="contactForm" novalidate>
-          <!-- data-only="comercial" / "empleo": contacto.js muestra solo los bloques
-               del modo activo. "Trabaja con nosotros" pasa el formulario a modo
-               empleo (perfil profesional + hoja de vida adjunta en el correo); las
-               otras tres opciones son el modo comercial de siempre. -->
+          
           <div class="ct-form-head">
             <h2 data-only="comercial" data-i18n="form.head.h">Solicita tu cotización</h2>
             <h2 data-only="empleo" data-i18n="job.head.h" hidden>Trabaja con nosotros</h2>
@@ -161,7 +158,7 @@
             <legend class="ct-legend"><span class="num">01</span><span data-i18n="form.step1.legend">¿Qué necesitas?</span> <span class="req" style="color:var(--teal);">*</span></legend>
             <div class="ct-types">
               <label class="ct-chip">
-                <input type="radio" name="tipo" value="Cotización" required checked>
+                <input type="radio" name="tipo" value="Cotización" required checked="checked">
                 <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><span data-i18n="tipo.cotizacion">Cotización</span></span>
               </label>
               <label class="ct-chip">
@@ -264,12 +261,8 @@
             </div>
           </fieldset>
 
-          <!-- Modo empleo. Los fieldsets van disabled mientras no se use el modo:
-               un campo deshabilitado no se valida, así que sus "required" no
-               bloquean una cotización. contacto.js los habilita al elegir
-               "Trabaja con nosotros". Los value de los <option> van en español
-               a propósito: son lo que llega escrito en el correo. -->
-          <fieldset class="ct-step" id="ctStepPerfil" data-only="empleo" hidden disabled>
+          
+          <fieldset class="ct-step" id="ctStepPerfil" data-only="empleo" hidden disabled="disabled">
             <legend class="ct-legend"><span class="num">03</span><span data-i18n="job.step3.legend">Tu perfil profesional</span></legend>
             <div class="ct-fields">
               <div class="ct-field">
@@ -332,7 +325,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="ct-step" id="ctStepHdv" data-only="empleo" hidden disabled>
+          <fieldset class="ct-step" id="ctStepHdv" data-only="empleo" hidden disabled="disabled">
             <legend class="ct-legend"><span class="num">04</span><span data-i18n="job.step4.legend">Tu hoja de vida</span></legend>
             <div class="ct-attach">
               <span class="ct-attach-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.4 11.1l-9.2 9.2a6 6 0 01-8.5-8.5l9.2-9.2a4 4 0 015.7 5.7l-9.2 9.2a2 2 0 01-2.8-2.8l8.5-8.5"/></svg></span>
@@ -410,7 +403,7 @@
           </div>
 
           <p class="ct-review-label"><span data-only="comercial" data-i18n="review.channelLabel">¿Por dónde quieres enviarla?</span><span data-only="empleo" data-i18n="job.review.channelLabel" hidden>¿Con qué correo quieres enviarla?</span></p>
-          <!-- Sin WhatsApp en modo empleo: la hoja de vida viaja por correo. -->
+          
           <button type="button" class="ct-channel ct-channel--wa" data-channel="whatsapp" data-only="comercial" autofocus>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg>
             <span><b data-i18n="channel.wa.label">Enviar por WhatsApp</b><small data-i18n="channel.wa.desc">Respuesta más rápida · +57 311 333 7046</small></span>
@@ -511,7 +504,7 @@
         <li><a href="index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
         <li><a href="index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
         <li><a href="nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
-        <!-- Portal de clientes oculto hasta su salida a producción: <li><a href="portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+        
       </ul>
       <h4 class="footer-sub" data-i18n="footer.instalacionesHeading">Instalaciones</h4>
       <ul class="footer-links">
@@ -546,18 +539,13 @@
         <button class="map-tab" type="button" data-map="esquivensa" aria-pressed="false" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
-        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386"
-          title="Mapa de ubicación de Petroil"></iframe>
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.app.goo.gl/X6YV8dd6fGqJEsPR6" target="_blank" rel="noopener">
         <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
-      <!-- La dirección de la sede activa: footer-map.js muestra el <span> cuyo
-           data-map-address coincide con la pestaña elegida y oculta los otros dos.
-           Van los tres en el HTML (y no escritos desde el JS) para que i18n.js
-           los traduzca como cualquier otro texto. -->
+      
       <p class="map-address" id="mapAddress" aria-live="polite">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
         <span data-map-address="bogota" data-i18n="footer.address.bogota">Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span>
@@ -575,15 +563,7 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     ALA DE SABLE · asistente virtual (assets/css/aira.css + assets/js/aira.js)
-     Se llamó AIRA hasta el 2026-10-01: el código conserva el prefijo
-     aira-* / #aira / AIRA_KB para no tocar 29 páginas por un nombre.
-     Responde por coincidencia de palabras clave contra la base de
-     conocimiento de assets/js/aira-kb.js. Sin API ni backend.
-     data-base = prefijo de los enlaces de la base: '' en la raíz,
-     '../' si algún día se monta en una subcarpeta.
-     ═══════════════════════════════════════════════════════════ -->
+
 <div id="aira" data-base="">
 
   <div class="aira-teaser" id="airaTeaser">
@@ -591,9 +571,7 @@
     <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
   </div>
 
-  <button class="aira-launcher" id="airaLauncher" type="button"
-          aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil"
-          aria-expanded="false" aria-controls="airaPanel">
+  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" aria-expanded="false" aria-controls="airaPanel">
     <span class="aira-launcher-dot" aria-hidden="true"></span>
     <img class="aira-launcher-avatar" src="assets/img/ala-de-sable.webp" alt="" width="86" height="94" decoding="async">
   </button>
@@ -624,8 +602,7 @@
       <span data-i18n="aira.note">Asistente automático: responde con información publicada en este sitio.</span>
     </div>
 
-    <!-- role="log" + aria-live: los lectores de pantalla anuncian cada
-         respuesta nueva sin que el usuario pierda el foco del campo. -->
+    
     <div class="aira-log" id="airaLog" role="log" aria-live="polite" aria-relevant="additions"></div>
 
     <div class="aira-chips" id="airaChips" hidden></div>
@@ -633,9 +610,7 @@
     <div class="aira-foot">
       <form class="aira-form" id="airaForm" autocomplete="off">
         <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para Ala de Sable</label>
-        <input class="aira-input" id="airaInput" type="text" name="q"
-               placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder"
-               enterkeyhint="send" maxlength="200">
+        <input class="aira-input" id="airaInput" type="text" name="q" placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder" enterkeyhint="send" maxlength="200">
         <button class="aira-send" type="submit" aria-label="Enviar pregunta">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </button>

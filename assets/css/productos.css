@@ -1,32 +1,12 @@
-/* =====================================================================
-   PRODUCTOS (productos.html) — catálogo completo del portafolio.
-
-   PALETA: esta página usa EXCLUSIVAMENTE los colores corporativos
-   oficiales de Petroil (ver CLAUDE.md). Nada de ámbar/naranja.
-
-   Los tokens --pb-* siguen viviendo aquí (los usan ~140 reglas de este
-   archivo) pero ya NO redeclaran los hex — son alias de --brand-* en
-   base.css, la única fuente de verdad de la paleta de marca para TODO
-   el sitio. --navy/--teal/--teal-light/--amber globales ahora valen
-   exactamente lo mismo que estos --pb-*, así que en la práctica esta
-   página ya no es una excepción de paleta frente al resto del sitio;
-   los --pb-* se conservan solo por legibilidad semántica del código.
-
-   Los únicos valores que no salen literalmente del manual son tintes
-   claros derivados del azul de marca (--pb-tint, --pb-tint-2) y el
-   navy a opacidad reducida para texto de párrafo (--pb-ink): no
-   introducen tonos nuevos, solo niveles del mismo azul.
-   ===================================================================== */
-
 .prod-page{
-  --pb-navy:var(--brand-navy);      /* azul oscuro del logo */
-  --pb-blue:var(--brand-blue);      /* azul claro del logo */
-  --pb-sky:var(--brand-sky);        /* azul cielo */
-  --pb-petrol:var(--brand-petrol);  /* azul petróleo */
-  --pb-green:var(--brand-green);    /* verde institucional */
-  --pb-lime:var(--brand-lime);      /* verde lima energético */
-  --pb-white:var(--brand-white);    /* blanco en negativo */
-  --pb-gray:var(--brand-gray);      /* gris en negativo */
+  --pb-navy:var(--brand-navy);
+  --pb-blue:var(--brand-blue);
+  --pb-sky:var(--brand-sky);
+  --pb-petrol:var(--brand-petrol);
+  --pb-green:var(--brand-green);
+  --pb-lime:var(--brand-lime);
+  --pb-white:var(--brand-white);
+  --pb-gray:var(--brand-gray);
 
   --pb-ink:rgba(8,12,65,.72);
   --pb-ink-soft:rgba(8,12,65,.56);
@@ -34,14 +14,7 @@
   --pb-tint:#F2F7FB;
   --pb-tint-2:#EDF3F8;
 }
-
-/* El foco visible global ya es verde lima (base.css, también de marca);
-   aquí se prefiere azul claro para que combine mejor con el resto de la
-   página, que es predominantemente azul. */
 .prod-page #main :focus-visible{outline:3px solid var(--pb-blue); outline-offset:2px;}
-
-/* Los anclas (#catalogo, #hablemos...) deben quedar por debajo del
-   header sticky de dos franjas, no escondidas detrás de él. */
 .prod-page #portafolio,
 .prod-page #aplicaciones,
 .prod-page #catalogo,
@@ -51,26 +24,12 @@
   position:absolute; width:1px; height:1px; padding:0; margin:-1px;
   overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
 }
-
-/* =====================================================================
-   1. HERO
-   ===================================================================== */
 .prod-hero{
   position:relative; overflow:hidden; padding:186px 0 92px; color:var(--pb-white);
   background-color:var(--pb-navy);
 }
-
-/* Fondo fotográfico de las franjas oscuras (hero, aplicaciones, hablemos).
-   Es un <img> real y NO un background-image vía custom property: un url()
-   relativo pasado por var() se resuelve respecto a la hoja CSS
-   (assets/css/), no al HTML, así que la foto daba 404 y solo se veía el
-   navy de fondo. Comprobado con una página de prueba en Edge. */
 .pb-bg{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none;}
 .pb-bg img{width:100%; height:100%; object-fit:cover; object-position:center; display:block;}
-/* Degradado de vuelta al valor original (más oscuro): con la versión
-   aclarada la foto quedaba "muy directa" y el texto perdía contraste.
-   Sigue siendo más oscuro a la izquierda (donde vive el texto) y algo
-   más abierto hacia la derecha, pero sin dejar la foto en primer plano. */
 .prod-hero .pb-bg::after{
   content:''; position:absolute; inset:0;
   background:linear-gradient(100deg, rgba(8,12,65,.94) 0%, rgba(8,12,65,.86) 42%, rgba(21,71,114,.64) 100%);
@@ -111,10 +70,6 @@
   flex-shrink:0; border-left:1px solid rgba(251,254,255,.34); padding-left:24px;
   font-size:1.05rem; font-weight:500; line-height:1.4; color:var(--pb-white); max-width:210px; padding-bottom:6px;
 }
-
-/* =====================================================================
-   2. PORTAFOLIO — intro + 4 familias
-   ===================================================================== */
 .prod-portfolio{padding:92px 0 86px; background:var(--pb-tint);}
 .pb-eyebrow{
   display:block; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
@@ -151,10 +106,6 @@
 .pb-family-title svg{width:16px; height:16px; color:var(--pb-blue); flex-shrink:0; transition:transform .25s ease;}
 .pb-family:hover .pb-family-title svg{transform:translateX(4px);}
 .pb-family-body p{font-size:.83rem; line-height:1.55; color:var(--pb-ink-soft); margin:0;}
-
-/* =====================================================================
-   3. POR APLICACIÓN — franja oscura con sectores
-   ===================================================================== */
 .prod-sectors{
   position:relative; overflow:hidden; padding:86px 0; color:var(--pb-white);
   background-color:var(--pb-navy);
@@ -178,10 +129,6 @@
   box-shadow:0 14px 26px -12px rgba(52,153,204,.75);
 }
 .pb-sector span{font-size:.82rem; line-height:1.35; max-width:110px;}
-
-/* =====================================================================
-   4. CATÁLOGO — buscador, filtros, grid y paginación
-   ===================================================================== */
 .prod-catalog{padding:92px 0 96px; background:#fff;}
 .prod-catalog-head{
   display:flex; align-items:flex-end; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:30px;
@@ -227,12 +174,6 @@
 .pb-tab[aria-pressed="true"]::after{transform:scaleX(1);}
 
 .products-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:22px;}
-
-/* Tarjeta de producto. Conserva a propósito los nombres de clase
-   .product-card/.product-poster/.product-video que usa home.js para
-   reproducir el video al pasar el cursor; el diseño, en cambio, es el
-   propio de esta página (home.css no se carga aquí, así que no hay
-   choque de estilos con la versión del index). */
 .product-card{
   display:flex; flex-direction:column; background:#fff; border:1px solid var(--pb-line); border-radius:12px;
   overflow:hidden; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -252,9 +193,6 @@
   transition:transform .3s ease, opacity .35s ease;
 }
 .product-poster{opacity:1;}
-/* Solo se apaga la foto fija si la tarjeta SÍ tiene video (.has-video):
-   sin esto, las tarjetas "en desarrollo" (sin <video>) quedaban en blanco
-   al pasar el cursor, porque el cover se ocultaba y no había nada detrás. */
 .product-card.has-video:hover .product-poster,
 .product-card.has-video:focus .product-poster{opacity:0;}
 .product-video{position:absolute; top:0; left:0; right:0; bottom:0; margin:auto; opacity:0;}
@@ -295,10 +233,6 @@
 .pb-page:disabled{opacity:.3;}
 .pb-page svg{width:14px; height:14px;}
 .pb-dots{color:var(--pb-ink-soft); padding:0 2px; font-size:.85rem;}
-
-/* =====================================================================
-   5. HABLEMOS — CTA final
-   ===================================================================== */
 .prod-contact{
   position:relative; overflow:hidden; padding:84px 0; color:var(--pb-white);
   background-color:var(--pb-navy);
@@ -329,10 +263,6 @@
 }
 .pb-feature-icon svg{width:22px; height:22px;}
 .pb-feature span{font-size:.84rem; line-height:1.4; color:var(--pb-white); max-width:130px;}
-
-/* =====================================================================
-   RESPONSIVE
-   ===================================================================== */
 @media (max-width:1180px){
   .products-grid{grid-template-columns:repeat(4,1fr);}
 }

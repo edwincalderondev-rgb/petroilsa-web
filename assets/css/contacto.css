@@ -1,19 +1,7 @@
-/* ============================================
-   CONTACTO (contacto.html) — formulario de solicitud de cotización /
-   información + canales directos con el área comercial.
-   Hero: reutiliza .page-hero de article.css (misma foto + degradado que el
-   resto de páginas internas). Paleta: solo tokens de base.css; el único
-   color fuera de manual es --warn, para los mensajes de error del
-   formulario (misma excepción funcional que los avisos del sitio) y el
-   verde de WhatsApp (#25D366), que ya usa .wa-btn en footer.css.
-   ============================================ */
-
 #formulario, #canales{scroll-margin-top:210px;}
 
 .ct-wrap{padding:64px 0 100px; background:var(--mist);}
 .ct-grid{display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,.9fr); gap:32px; align-items:start;}
-
-/* ---------- Formulario ---------- */
 .ct-form, .ct-success{
   background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:36px;
   box-shadow:var(--shadow-soft);
@@ -42,8 +30,6 @@
   border:1.5px solid var(--line); border-radius:10px; padding:11px 14px; font-family:inherit; font-size:.92rem;
   color:var(--ink); background:#fff; transition:border-color .2s, box-shadow .2s; width:100%;
 }
-/* Flecha propia para que los <select> del perfil profesional se vean como
-   los demás campos y no como el control gris del sistema. */
 .ct-field select{
   appearance:none; -webkit-appearance:none; padding-right:40px; cursor:pointer;
   background:#fff url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23154772' stroke-width='2.2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 14px center/14px no-repeat;
@@ -53,12 +39,7 @@
   outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(21,71,114,.15);
 }
 .ct-field textarea{resize:vertical; min-height:110px;}
-/* Solo se marca en rojo/ámbar después de que el usuario tocó el campo */
 .ct-field input:user-invalid, .ct-field textarea:user-invalid, .ct-field select:user-invalid{border-color:var(--warn);}
-
-/* Aviso "tu hoja de vida se adjunta en el correo" (modo empleo, paso 04 y
-   diálogo de revisión). Es la respuesta a la duda de "¿dónde adjunto la HDV?"
-   ANTES de que aparezca, para que nadie deje de pulsar el botón por eso. */
 .ct-attach{
   display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding:16px 18px;
   background:linear-gradient(135deg, rgba(53,154,204,.1), rgba(29,89,73,.08));
@@ -76,14 +57,7 @@
 .ct-attach--compact .ct-attach-ico{width:32px; height:32px; border-radius:9px;}
 .ct-attach--compact p{color:var(--ink);}
 [data-ct-mode="empleo"] .ct-preview{border-left-color:var(--teal);}
-
-/* Modos comercial / empleo (contacto.js): los bloques del modo inactivo
-   llevan el atributo hidden, pero varios tienen display:flex propio
-   (.ct-field, .ct-attach, .ct-channel) que lo anularía. */
 .ct-wrap [hidden]{display:none !important;}
-
-/* Tipo de solicitud (radios) y productos (checkboxes) como "chips".
-   Cuatro opciones desde que entró "Trabaja con nosotros": rejilla 2 × 2. */
 .ct-types{display:grid; grid-template-columns:repeat(2,1fr); gap:10px;}
 .ct-chip{position:relative; cursor:pointer;}
 .ct-chip input{position:absolute; opacity:0; width:1px; height:1px;}
@@ -110,7 +84,6 @@
 .ct-family-grid .ct-chip > span{flex-direction:column; align-items:flex-start; gap:1px; padding:9px 12px;}
 .ct-chip b{font-size:.82rem; color:var(--navy);}
 .ct-chip small{font-size:.72rem; line-height:1.3;}
-/* Marca visual del check en los productos seleccionados */
 .ct-family-grid .ct-chip > span::after{
   content:''; position:absolute; top:9px; right:10px; width:14px; height:14px; border-radius:50%;
   border:1.5px solid var(--line); background:#fff; transition:.2s;
@@ -120,7 +93,6 @@
 }
 
 .ct-error{display:flex; align-items:center; gap:8px; margin-top:10px; font-size:.8rem; font-weight:500; color:#92400e;}
-/* display:flex anularía el atributo hidden: se restituye explícitamente */
 .ct-error[hidden], .ct-form[hidden], .ct-success[hidden]{display:none;}
 .ct-error svg{width:16px; height:16px; color:var(--warn); flex-shrink:0;}
 
@@ -140,8 +112,6 @@
 .ct-dot{width:8px; height:8px; border-radius:50%; display:inline-block; margin-left:6px;}
 .ct-dot.wa{background:#25D366;} .ct-dot.gm{background:#EA4335;} .ct-dot.ol{background:#0364B8;}
 .ct-note{font-size:.76rem; color:var(--steel); margin-top:16px; line-height:1.55;}
-
-/* Panel posterior al envío */
 .ct-success{text-align:center; padding:56px 32px;}
 .ct-success:not([hidden]){animation:popIn .3s ease-out;}
 .ct-success .check-circle{
@@ -156,8 +126,6 @@
 .ct-success-ref b{color:var(--teal); letter-spacing:.02em;}
 .ct-success-actions .ct-success-primary{background:var(--navy); border-color:var(--navy); color:#fff;}
 .ct-success-actions .ct-success-primary:hover{background:var(--teal); border-color:var(--teal); color:#fff;}
-
-/* ---------- Diálogo "Revisa tu solicitud" ---------- */
 .ct-review{
   border:none; padding:0; background:transparent; width:min(640px, calc(100vw - 32px)); max-height:calc(100dvh - 32px);
   overflow:visible;
@@ -211,8 +179,6 @@ body:has(.ct-review[open]){overflow:hidden;}
   font-weight:600; font-size:.86rem; transition:.2s;
 }
 .ct-success-actions button:hover{border-color:var(--teal); color:var(--teal);}
-
-/* ---------- Columna lateral: canales ---------- */
 .ct-side{display:flex; flex-direction:column; gap:16px; position:sticky; top:190px;}
 .ct-card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px;}
 .ct-card h3{font-size:1rem; color:var(--navy); margin-bottom:8px;}
@@ -242,8 +208,6 @@ body:has(.ct-review[open]){overflow:hidden;}
 .ct-card.confidential{display:flex; gap:12px; align-items:flex-start; background:rgba(21,71,114,.06); border-color:rgba(21,71,114,.2);}
 .ct-card.confidential svg{width:22px; height:22px; color:var(--teal); flex-shrink:0;}
 .ct-card.confidential p{font-size:.8rem;}
-
-/* ---------- Responsive ---------- */
 @media (max-width:1080px){
   .ct-family-grid{grid-template-columns:repeat(2,1fr);}
 }

@@ -1,15 +1,8 @@
-/* ============================================
-   CURSOR PERSONALIZADO — gota de agua con resplandor
-   No reemplaza el cursor nativo del sistema (nunca se aplica cursor:none):
-   añade una gota decorativa + un resplandor tipo "flash" que lo acompañan
-   muy de cerca (mínimo delay). Se crea y controla desde cursor.js,
-   que decide si debe existir según el dispositivo y prefers-reduced-motion.
-   ============================================ */
 .cursor-drop-wrap{
   position:fixed;
   top:0; left:0;
   width:0; height:0;
-  pointer-events:none; /* jamás intercepta clics, hover ni foco */
+  pointer-events:none;
   z-index:9999;
   opacity:0;
   transition:opacity .15s ease;
@@ -17,10 +10,6 @@
 }
 .cursor-drop-wrap.is-visible{opacity:1;}
 .cursor-drop-wrap.is-hidden{opacity:0;}
-
-/* Resplandor tipo "flash"/sol detrás de la gota: un brillo suave y difuso
-   con los colores corporativos, que se intensifica sobre elementos
-   interactivos para dar una sensación clara de "esto se puede tocar". */
 .cursor-glow{
   position:absolute;
   top:-34px; left:-34px;
@@ -34,10 +23,6 @@
   top:-50px; left:-50px; width:100px; height:100px;
   background:radial-gradient(circle, rgba(199,245,71,.65) 0%, rgba(199,245,71,.25) 45%, rgba(199,245,71,0) 74%);
 }
-
-/* La gota de agua en sí: solo el contorno (sin relleno), en azul
-   corporativo, con un leve resplandor propio que refuerza el efecto
-   "flash" ya presente en .cursor-glow. */
 .cursor-drop{
   position:absolute;
   top:-14px; left:-11px;
@@ -62,10 +47,6 @@
   stroke:var(--route-lime);
   stroke-width:1.8;
 }
-
-/* "Salpicadura" breve al hacer clic: un anillo que se expande y se
-   desvanece, en línea con el motivo líquido ya presente en el sitio
-   (barra de progreso líquida). Puramente decorativo y de vida corta. */
 .cursor-splash{
   position:fixed;
   top:0; left:0;
@@ -82,14 +63,9 @@
   0%{   transform:scale(.4); opacity:.7; }
   100%{ transform:scale(3.4); opacity:0; }
 }
-
-/* Dispositivos táctiles o sin puntero fino: nada de esto se crea desde JS,
-   pero estas reglas quedan como respaldo por si el elemento llegara a existir. */
 @media (hover:none), (pointer:coarse){
   .cursor-drop-wrap, .cursor-splash{display:none !important;}
 }
-/* Preferencia de movimiento reducido: se respeta ocultando por completo el
-   efecto (gota, resplandor y salpicadura), no solo quitando la animación. */
 @media (prefers-reduced-motion: reduce){
   .cursor-drop-wrap, .cursor-splash{display:none !important;}
 }

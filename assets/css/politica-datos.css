@@ -1,52 +1,14 @@
-/* ============================================
-   POLÍTICA DE TRATAMIENTO Y PROTECCIÓN DE DATOS — legal/politica-datos.html
-
-   Se carga DESPUÉS de article.css, del que esta página reutiliza
-   .page-hero, .article-wrap, .article-grid--full, .prose y .doc-card.
-   Aquí solo viven los bloques propios: ficha del responsable, marco
-   normativo, principios, finalidades, derechos, canales y el panel del
-   documento oficial en PDF.
-
-   Misma estructura que sgi.css y responsabilidad-ambiental.css: sin
-   columna .toc (sería la misma navegación del navbar inferior), prosa
-   acotada a la medida de lectura y bloques visuales a ancho completo.
-
-   Colores: únicamente alias de la paleta oficial declarada en base.css
-   (--brand-* y sus alias históricos). El único hex fuera de manual es
-   --warn, reservado a avisos — aquí lo usa la caja de datos sensibles,
-   menores y videovigilancia. Ver CLAUDE.md.
-   ============================================ */
-
-/* Cada bloque es una parada del scroll-spy de la ruta del navbar
-   (.route-link[data-section]): por eso son <section id> y no solo <h2 id>,
-   el observador necesita una altura real que vigilar. */
 .pd-block{scroll-margin-top:150px;}
 .pd-block + .pd-block{margin-top:72px;}
-
-/* Medida de lectura: sin la columna del TOC la prosa ocuparía los
-   ~1.136 px del contenedor. Los bloques visuales sí usan todo el ancho. */
-/* En rem y no en ch: `ch` se mide sobre la letra del propio elemento, así
-   que el lead (1.06rem) salía 70 px más ancho que el cuerpo (.98rem) y,
-   con el texto justificado, los dos márgenes derechos dejaban de coincidir.
-   54rem ≈ 864 px ≈ los mismos ~74 caracteres del cuerpo. */
 .pd-block > p,
 .pd-block > ul,
 .pd-block > ol,
 .pd-block > blockquote{max-width:54rem;}
-/* Las listas que son rejillas visuales (no prosa) sí van a ancho completo. */
 .pd-block > .pd-norms,
 .pd-block > .pd-principles,
 .pd-block > .pd-rights{max-width:none;}
 .prose .pd-lead{font-size:1.06rem; line-height:1.75; color:var(--ink);}
-
-/* Subtítulos dentro de un bloque. article.css solo estiliza .prose h2, así
-   que sin esto los h3 heredarían el tamaño del navegador y se leerían casi
-   como los h2. Se limita a los hijos directos: los h3 de las tarjetas
-   (.pd-purpose, .pd-callout) traen su propio tamaño. */
 .pd-block > h3{font-size:1.05rem; color:var(--navy); margin:36px 0 12px;}
-
-/* Aviso de que esta página es un resumen y el PDF firmado es el que manda.
-   No es un "documento de ejemplo": el contenido sí es el oficial. */
 .pd-notice{
   display:flex; gap:12px; align-items:flex-start; margin:0 0 30px;
   padding:14px 18px; border-radius:12px;
@@ -54,11 +16,6 @@
 }
 .pd-notice svg{width:17px; height:17px; min-width:17px; margin-top:2px; color:var(--teal);}
 .prose .pd-notice p{margin:0; font-size:.86rem; line-height:1.6; color:var(--steel); max-width:none;}
-
-/* ── FICHA DEL RESPONSABLE ──────────────────────────────────────────────
-   Reproduce la tabla de la página 2 del documento. Se maqueta como
-   rejilla etiqueta/valor en vez de <table> para que en móvil cada par
-   caiga apilado sin scroll horizontal. */
 .pd-id{
   margin:26px 0 8px; border:1px solid var(--line); border-radius:16px;
   overflow:hidden; background:#fff;
@@ -74,10 +31,6 @@
   text-transform:uppercase; color:var(--brand-petrol); align-self:center;
 }
 .prose .pd-id-v{margin:0; font-size:.9rem; line-height:1.6; color:var(--ink); max-width:none;}
-
-/* ── MARCO NORMATIVO ────────────────────────────────────────────────────
-   Lista de normas en dos columnas; cada una es un dato textual del
-   documento, no un enlace (no publicamos copias de las leyes). */
 .pd-norms{
   display:grid; grid-template-columns:repeat(2,1fr); gap:10px 16px;
   margin:20px 0 0; padding:0; list-style:none;
@@ -93,10 +46,6 @@
   width:7px; height:7px; min-width:7px; margin-top:7px; border-radius:50%;
   background:var(--brand-sky);
 }
-
-/* ── PRINCIPIOS ─────────────────────────────────────────────────────────
-   Los ocho principios del artículo 4 de la Ley 1581 tal como los lista
-   el documento: título en negrita + una línea de desarrollo. */
 .pd-principles{
   display:grid; grid-template-columns:repeat(4,1fr); gap:12px;
   margin:22px 0 0; padding:0; list-style:none;
@@ -111,15 +60,6 @@
   display:block; font-size:.9rem; color:var(--navy); margin-bottom:5px;
 }
 .pd-principles span{display:block; font-size:.8rem; line-height:1.5; color:var(--steel);}
-
-/* ── FINALIDADES ────────────────────────────────────────────────────────
-   Una tarjeta por fila de la tabla "Grupo / proceso — Finalidades
-   principales" del documento.
-   --c     = acento de la tarjeta (franja superior); puede ser un color
-             claro de la paleta porque solo pinta superficie.
-   --c-ink = versión legible del mismo acento, para el icono y el hover
-             (lima o cielo sobre blanco no dan contraste suficiente).
-   Mismo patrón que .ra-plan y .pq-c--*. */
 .pd-purposes{display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:26px 0 0;}
 .pd-purpose{
   --c:var(--brand-petrol); --c-ink:var(--brand-petrol);
@@ -132,7 +72,6 @@
 .pd-purpose--contrapartes{--c:var(--brand-sky); --c-ink:var(--brand-petrol);}
 .pd-purpose--cumplimiento{--c:var(--brand-petrol); --c-ink:var(--brand-petrol);}
 .pd-purpose--seguridad{--c:var(--brand-green); --c-ink:var(--brand-green);}
-/* Quinta tarjeta: ocupa la fila entera para no dejar media rejilla vacía. */
 .pd-purpose--tecnologia{--c:var(--brand-lime); --c-ink:var(--brand-green); grid-column:1/-1;}
 .pd-purpose-ico{
   width:40px; height:40px; border-radius:11px; background:var(--c-ink); color:#fff;
@@ -141,11 +80,6 @@
 .pd-purpose-ico svg{width:18px; height:18px;}
 .pd-purpose h3{font-size:.98rem; line-height:1.3; color:var(--navy); margin-bottom:7px;}
 .prose .pd-purpose p{font-size:.84rem; line-height:1.6; color:var(--steel); margin:0; max-width:none;}
-
-/* ── CAJA DE AVISO ──────────────────────────────────────────────────────
-   Datos sensibles, menores y videovigilancia: información que el titular
-   debe leer antes de entregar el dato, no una finalidad más. De ahí el
-   naranja --warn, el color reservado a avisos en todo el sitio. */
 .pd-callout{
   margin:26px 0 0; padding:20px 22px; border-radius:14px;
   background:rgba(232,135,30,.07); border:1px solid rgba(232,135,30,.32);
@@ -156,11 +90,6 @@
 .pd-callout h3{font-size:.96rem; color:var(--navy); margin:0;}
 .prose .pd-callout p{font-size:.86rem; line-height:1.65; color:var(--ink); margin:0 0 10px; max-width:none;}
 .prose .pd-callout p:last-child{margin-bottom:0;}
-
-/* ── DERECHOS ───────────────────────────────────────────────────────────
-   Los siete derechos del artículo 8 de la Ley 1581 como los enumera el
-   documento. Numerados a mano (contador CSS) para poder maquetarlos en
-   rejilla sin depender del marcador de <ol>. */
 .pd-rights{
   counter-reset:pd-right; display:grid; grid-template-columns:repeat(2,1fr);
   gap:12px; margin:24px 0 0; padding:0; list-style:none;
@@ -178,19 +107,12 @@
   font-size:.75rem; font-weight:700; margin:0;
 }
 .prose .pd-rights li:hover{border-color:var(--teal);}
-
-/* ── CANALES DE ATENCIÓN ────────────────────────────────────────────────
-   Panel oscuro que reusa EXACTAMENTE el fondo del hero: color base
-   opaco + --ph-gradient de article.css. El color base es imprescindible
-   porque el degradado es semitransparente (está pensado para ir sobre la
-   foto del hero) y sin él el panel saldría lavado sobre la prosa. */
 .pd-channels{
   position:relative; overflow:hidden; border-radius:18px; color:#fff;
   margin:26px 0 0; padding:28px clamp(18px,3vw,30px) 30px;
   background-color:var(--brand-navy);
   background-image:var(--ph-gradient);
 }
-/* Trama diagonal, la misma de .page-hero::before. */
 .pd-channels::before{
   content:''; position:absolute; inset:0; opacity:.5; pointer-events:none;
   background-image:repeating-linear-gradient(120deg, rgba(255,255,255,.035) 0 2px, transparent 2px 30px);
@@ -202,8 +124,6 @@
 }
 .prose .pd-channels > p{color:#d7e3ec; font-size:.92rem; line-height:1.65; margin:0 0 18px; max-width:62ch;}
 .pd-channel-list{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
-/* .prose a (0,2,0) fija color y peso de todos los enlaces de la prosa:
-   estos selectores igualan esa especificidad para poder sobreescribirla. */
 .prose a.pd-channel,
 .prose span.pd-channel{
   display:flex; gap:13px; align-items:flex-start; padding:16px;
@@ -226,16 +146,8 @@
 .prose .pd-channels-note{
   margin:16px 0 0; font-size:.8rem; line-height:1.6; color:#a9bccd; max-width:70ch;
 }
-/* El var(--teal) que .prose a aplica a todo enlace es ilegible sobre el
-   panel oscuro; dentro del panel los enlaces van en lima. */
 .prose .pd-channels-note a{color:var(--brand-lime);}
 .prose .pd-channels-note a:hover{color:#fff;}
-
-/* ── DOCUMENTO OFICIAL ──────────────────────────────────────────────────
-   Dos acciones sobre el MISMO archivo: abrirlo en una pestaña nueva
-   (el visor de PDF del navegador) y descargarlo. El <a download> guarda
-   sin abrir; ambas apuntan al PDF tal como lo firmó la empresa, sin
-   recomprimir, igual que los documentos del SGI. */
 .pd-doc{
   display:flex; flex-wrap:wrap; gap:22px 28px; align-items:center;
   margin:26px 0 0; padding:24px clamp(18px,3vw,28px);
@@ -270,8 +182,6 @@
 .prose .pd-doc-note{
   margin:16px 0 0; font-size:.78rem; line-height:1.55; color:var(--steel); font-style:italic;
 }
-
-/* ── RESPONSIVE ─────────────────────────────────────────────────────── */
 @media (max-width:1080px){
   .pd-principles{grid-template-columns:repeat(2,1fr);}
 }

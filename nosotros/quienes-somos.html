@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>¿Quiénes somos? | Petroil S.A. | Visión Estratégica 2031</title>
 <meta name="description" content="Petroil S.A. diseña, produce y distribuye soluciones energéticas más eficientes y limpias. Conoce nuestro propósito, valores, equipo directivo y la Visión Estratégica 2031.">
 <link rel="canonical" href="https://petroilsa.com/nosotros/quienes-somos.html">
@@ -64,7 +64,7 @@
         <a href="../productos.html" class="portal-link" data-i18n="nav.productos">Productos</a>
         <a href="../nosotros/quienes-somos.html" class="portal-link" aria-current="page" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
         <a href="../sostenibilidad/sgi.html" class="portal-link" data-i18n="nav.sgi" data-i18n-title="nav.sgi.title" title="Sistema de Gestión Integrado">SGI</a>
-        <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="portal-link" data-i18n="nav.portal">Portal de clientes</a> -->
+        
         <div class="lang-select" id="langSelect">
           <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
@@ -96,40 +96,7 @@
     <a href="#liderazgo" class="route-link" data-section="#liderazgo"><span class="route-label" data-i18n="nav.route.equipo">Equipo</span><span class="route-node" aria-hidden="true"></span></a>
   </nav></div>
 </header>
-<!-- Legacy single-row header retained for reference during the pilot.
-<header class="navbar">
-  <div class="nav-inner">
-    <a href="../index.html" class="nav-logo">
-      <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A.">
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="../productos.html">Productos</a>
-      <a href="../index.html#servicios">Servicios</a>
-      <a href="../index.html#innovacion">Innovación</a>
-      <a href="../portal-clientes/portal-clientes.html">Clientes<span class="badge-soon">Nuevo</span></a>
-      <a href="quienes-somos.html" class="current">¿Quiénes somos?</a>
-      <a href="../index.html#noticias">Noticias</a>
-    </nav>
-    <div class="nav-right">
-      <div class="lang-select" id="langSelect">
-        <button class="lang-btn" id="langBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
-          ES
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div class="lang-dropdown">
-          <a href="#">English</a>
-          <a href="#">Español</a>
-          <a href="#">Português</a>
-        </div>
-      </div>
-      <a href="../contacto.html" class="btn-contacto">Contacto</a>
-      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header> -->
+
 
 <div class="nav-overlay" id="navOverlay"></div>
 <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
@@ -149,7 +116,7 @@
     <a href="#liderazgo" class="drawer-link" data-section="#liderazgo"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.equipo">Equipo</span></a>
   </nav>
   <div class="drawer-footer">
-    <!-- Portal de clientes oculto hasta su salida a producción: <a href="../portal-clientes/portal-clientes.html" class="drawer-portal" data-i18n="nav.portal">Portal de clientes</a> -->
+    
     <a href="../productos.html" class="drawer-portal" data-i18n="nav.productos">Productos</a>
     <a href="../nosotros/quienes-somos.html" class="drawer-portal" aria-current="page" data-i18n="nav.quienesSomos">¿Quiénes somos?</a>
     <a href="../sostenibilidad/sgi.html" class="drawer-portal" data-i18n="nav.sgi">SGI</a>
@@ -171,32 +138,11 @@
 
 <main id="main">
 
-  <!-- ================= HERO ================= -->
+  
   <section class="page-hero qs-hero">
-    <!--
-      IMPORTANTE — fondo del hero:
-      Usa SIEMPRE un elemento <img> o <video> real aquí, NUNCA un
-      CSS background-image, sobre todo si el archivo es animado
-      (webp/gif). Un background-image animado se decodifica y se
-      reescala en cada frame de forma menos eficiente que un <img>,
-      y en varios navegadores (Firefox, Safari) directamente no
-      anima. Eso es lo que causaba el parpadeo en blanco intermitente.
-
-      - Fondo estático (por defecto, cero riesgo de parpadeo):
-        <img src="../assets/img/Petroil_fotosplanta_60.jpg" alt="" ...>
-
-      - Fondo animado (si lo necesitas), la opción robusta es VIDEO:
-        <video autoplay muted loop playsinline poster="img/Petroil_fotosplanta_60.jpg">
-          <source src="../assets/vids/quienes-somos.mp4" type="video/mp4">
-        </video>
-
-      - Si de verdad necesitas el .webp animado, cárgalo como <img>
-        (no como background), comprimido al tamaño real de render
-        (no más ancho que el hero en pantalla) y evita archivos de
-        varios MB — ese peso es la otra causa típica del parpadeo.
-    -->
+    
     <div class="qs-hero-media">
-      <!-- <img src="../assets/img/Petroil_fotosplanta_46.jpg" alt="" aria-hidden="true" loading="eager" fetchpriority="high" decoding="async"> -->
+      
       <video autoplay muted loop playsinline poster="../assets/img/Petroil_fotosplanta_29.jpg" aria-hidden="true">
         <source src="../assets/vids/quienes-somos.mp4" type="video/mp4">
       </video>
@@ -220,7 +166,7 @@
     <div class="qs-scroll-cue"><span class="line"></span><span data-i18n="hero.scrollCue">Descubre más</span></div>
   </section>
 
-  <!-- ================= ESENCIA: PROPÓSITO + VISIÓN ================= -->
+  
   <section class="qs-esencia reveal" id="proposito">
     <div class="container">
       <div class="section-head">
@@ -267,7 +213,7 @@
     </div>
   </section>
 
-  <!-- ================= CINCO FUERZAS ================= -->
+  
   <section class="qs-forces reveal" id="estrategia">
     <div class="container">
       <div class="section-head">
@@ -323,7 +269,7 @@
     </div>
   </section>
 
-  <!-- ================= LA RUTA A 2031 (elemento distintivo) ================= -->
+  
   <section class="qs-route reveal" id="ruta">
     <div class="hero-particles qs-particles" data-particles="26" aria-hidden="true"></div>
     <div class="container">
@@ -436,7 +382,7 @@
     </div>
   </section>
 
-  <!-- ================= LIDERAZGO ================= -->
+  
   <section class="qs-leadership reveal" id="liderazgo">
     <div class="container">
       <div class="section-head">
@@ -447,7 +393,7 @@
 
       <div class="qs-leaders-grid">
 
-        <!-- Chairman — tarjeta destacada -->
+        
         <article class="leader-card" data-leader="luis-hincapie">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/luis-alberto-hincapie-chairman.jpg" alt="Luis Alberto Hincapié Carvajal, Chairman of the Board de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -465,7 +411,7 @@
           </div>
         </article>
 
-        <!-- CEO -->
+        
         <article class="leader-card" data-leader="ramiro-sanchez">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/ramiro-hernando-sanchez-benitez.jpg" alt="Ramiro Hernando Sánchez Benítez, CEO de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -481,7 +427,7 @@
           </div>
         </article>
 
-        <!-- VP Financiera -->
+        
         <article class="leader-card" data-leader="milena-munevar">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/milena-munevar.png" alt="Adriana Milena Munévar Arciniegas, Vicepresidente Financiera de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -497,7 +443,7 @@
           </div>
         </article>
 
-        <!-- VP E&P -->
+        
         <article class="leader-card" data-leader="fernando-vargas">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/fernando-vargas.png" alt="Fernando Vargas Rubio, Vicepresidente de E&P y Nuevos Negocios de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -513,7 +459,7 @@
           </div>
         </article>
 
-        <!-- VP Operaciones -->
+        
         <article class="leader-card" data-leader="pablo-motta">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/pablo-motta.png" alt="Pablo Antonio Motta Candela, Vicepresidente de Operaciones de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -529,7 +475,7 @@
           </div>
         </article>
 
-        <!-- VP Planeación Comercial -->
+        
         <article class="leader-card" data-leader="carlos-buitrago">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/carlos-alberto-buitrago-new.png" alt="Carlos Alberto Buitrago Ferreira, Vicepresidente de Planeación Estratégica Comercial de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -545,7 +491,7 @@
           </div>
         </article>
 
-        <!-- VP Relaciones Externas -->
+        
         <article class="leader-card" data-leader="william-mcdowell">
           <div class="leader-photo"><img src="../assets/img/quienes-somos/william-mcdowell-new.png" alt="William Albert McDowell, Vicepresidente de Relaciones Externas y Negocios Internacionales de Petroil S.A." loading="lazy"></div>
           <div class="leader-body">
@@ -566,10 +512,7 @@
 
   </section>
 
-  <!-- Modal compartido de perfil (una sola instancia, se rellena por JS).
-       Va FUERA de la sección .reveal a propósito: un ancestro con transform
-       vuelve a un hijo position:fixed relativo a ese ancestro y no a la
-       pantalla (el modal se abría fuera de vista). -->
+  
     <div class="leader-modal-overlay" id="leaderModalOverlay">
       <div class="leader-modal" role="dialog" aria-modal="true" aria-labelledby="leaderModalName">
         <button class="leader-modal-close" id="leaderModalClose" type="button" aria-label="Cerrar perfil">
@@ -586,7 +529,7 @@
     </div>
 
 
-  <!-- ================= CERTIFICACIONES ================= -->
+  
   <section class="qs-iso reveal">
     <div class="container qs-iso-inner">
       <div class="qs-iso-text">
@@ -602,7 +545,7 @@
     </div>
   </section>
 
-  <!-- ================= CTA FINAL ================= -->
+  
   <section class="qs-cta reveal">
     <div class="hero-particles qs-particles" data-particles="18" aria-hidden="true"></div>
     <div class="container">
@@ -641,7 +584,7 @@
         <li><a href="../index.html#innovacion" data-i18n="nav.innovacion">Innovación</a></li>
         <li><a href="../index.html#noticias" data-i18n="nav.noticias">Noticias</a></li>
         <li><a href="../nosotros/quienes-somos.html" data-i18n="nav.quienesSomos">¿Quiénes somos?</a></li>
-        <!-- Portal de clientes oculto hasta su salida a producción: <li><a href="../portal-clientes/portal-clientes.html" data-i18n="nav.portal">Clientes</a></li> -->
+        
       </ul>
       <h4 class="footer-sub" data-i18n="footer.instalacionesHeading">Instalaciones</h4>
       <ul class="footer-links">
@@ -676,18 +619,13 @@
         <button class="map-tab" type="button" data-map="esquivensa" aria-pressed="false" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
-        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386"
-          title="Mapa de ubicación de Petroil"></iframe>
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.app.goo.gl/X6YV8dd6fGqJEsPR6" target="_blank" rel="noopener">
         <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
-      <!-- La dirección de la sede activa: footer-map.js muestra el <span> cuyo
-           data-map-address coincide con la pestaña elegida y oculta los otros dos.
-           Van los tres en el HTML (y no escritos desde el JS) para que i18n.js
-           los traduzca como cualquier otro texto. -->
+      
       <p class="map-address" id="mapAddress" aria-live="polite">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.5 7-11a7 7 0 10-14 0c0 4.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
         <span data-map-address="bogota" data-i18n="footer.address.bogota">Torre Empresarial Pacífic, Cl. 110 #9-25 Of. 1702, Bogotá, Colombia.</span>
@@ -705,15 +643,7 @@
   </div>
 </footer>
 
-<!-- ═══════════════════════════════════════════════════════════
-     ALA DE SABLE · asistente virtual (assets/css/aira.css + assets/js/aira.js)
-     Se llamó AIRA hasta el 2026-10-01: el código conserva el prefijo
-     aira-* / #aira / AIRA_KB para no tocar 29 páginas por un nombre.
-     Responde por coincidencia de palabras clave contra la base de
-     conocimiento de assets/js/aira-kb.js. Sin API ni backend.
-     data-base = prefijo de los enlaces de la base: '' en la raíz,
-     '../' si algún día se monta en una subcarpeta.
-     ═══════════════════════════════════════════════════════════ -->
+
 <div id="aira" data-base="../">
 
   <div class="aira-teaser" id="airaTeaser">
@@ -721,9 +651,7 @@
     <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
   </div>
 
-  <button class="aira-launcher" id="airaLauncher" type="button"
-          aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil"
-          aria-expanded="false" aria-controls="airaPanel">
+  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" aria-expanded="false" aria-controls="airaPanel">
     <span class="aira-launcher-dot" aria-hidden="true"></span>
     <img class="aira-launcher-avatar" src="../assets/img/ala-de-sable.webp" alt="" width="86" height="94" decoding="async">
   </button>
@@ -754,8 +682,7 @@
       <span data-i18n="aira.note">Asistente automático: responde con información publicada en este sitio.</span>
     </div>
 
-    <!-- role="log" + aria-live: los lectores de pantalla anuncian cada
-         respuesta nueva sin que el usuario pierda el foco del campo. -->
+    
     <div class="aira-log" id="airaLog" role="log" aria-live="polite" aria-relevant="additions"></div>
 
     <div class="aira-chips" id="airaChips" hidden></div>
@@ -763,9 +690,7 @@
     <div class="aira-foot">
       <form class="aira-form" id="airaForm" autocomplete="off">
         <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para Ala de Sable</label>
-        <input class="aira-input" id="airaInput" type="text" name="q"
-               placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder"
-               enterkeyhint="send" maxlength="200">
+        <input class="aira-input" id="airaInput" type="text" name="q" placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder" enterkeyhint="send" maxlength="200">
         <button class="aira-send" type="submit" aria-label="Enviar pregunta">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </button>

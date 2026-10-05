@@ -1,57 +1,26 @@
-/* ============================================
-   BASE — variables globales, reset, tipografía y
-   componentes atómicos reutilizados en todo el sitio
-   (botones .btn-primary/.btn-outline, .container, etc.)
-   Se carga primero en TODAS las páginas.
-   ============================================ */
 :root{
-  /* ============================================
-     PALETA OFICIAL DE MARCA — única fuente de verdad para todo el sitio,
-     tomada directamente del manual (logotipo en positivo/negativo +
-     secundarios). Cualquier color "de marca" nuevo debe salir de aquí;
-     no vuelvas a declarar un hex de marca suelto en otro archivo (ya
-     pasó 4 veces: --route-* aquí mismo, --pb-* en productos.css, --ib-*
-     en quienes-somos.css, y valores sueltos repetidos en media hoja de
-     estilos más — todos terminaban redeclarando estos mismos 8 colores). */
-  --brand-navy:#080C41;    /* azul oscuro (positivo) */
-  --brand-blue:#3499CC;    /* azul claro (positivo) */
-  --brand-petrol:#154772;  /* azul petróleo (secundario) */
-  --brand-green:#1D5949;   /* verde institucional (secundario) */
-  --brand-lime:#C7F547;    /* verde lima energético (secundario) */
-  --brand-sky:#359ACC;     /* azul cielo (secundario) — casi idéntico a --brand-blue; así están definidos en el manual */
-  --brand-white:#FBFEFF;   /* blanco (negativo) */
-  --brand-gray:#BEBEBE;    /* gris (negativo) */
-
-  /* Único color del sitio que NO sale del manual de marca: se reserva
-     exclusivamente para avisos/precauciones/ejemplos (fichas técnicas,
-     banners "página de ejemplo", disclaimers del chat). Ninguno de los 8
-     colores oficiales lee como "advertencia", así que aquí sí se
-     mantiene un tono ámbar deliberadamente fuera de paleta — es una
-     excepción funcional (seguridad/UX), no una decisión de marca. */
+  --brand-navy:#080C41;
+  --brand-blue:#3499CC;
+  --brand-petrol:#154772;
+  --brand-green:#1D5949;
+  --brand-lime:#C7F547;
+  --brand-sky:#359ACC;
+  --brand-white:#FBFEFF;
+  --brand-gray:#BEBEBE;
   --warn:#E8871E;
-
-  /* Alias operativos: nombres que ya usan cientos de reglas en todo el
-     sitio. NO los renombres (implicaría tocar cada CSS del proyecto) —
-     se mantiene el nombre histórico pero ahora resuelve a la paleta
-     oficial de arriba en vez de colores inventados (antes --navy era
-     #0A2A43, --teal era un turquesa #0F8C82 que no existe en el manual,
-     --amber era un naranja tampoco presente en el manual). */
   --navy:var(--brand-navy);
   --navy-deep:var(--brand-navy);
   --teal:var(--brand-petrol);
   --teal-light:var(--brand-sky);
   --amber:var(--brand-lime);
   --mist:var(--brand-white);
-  --steel:#5C6B73;   /* gris de texto secundario — neutro de UI, no es color de marca */
-  --ink:#0D1B24;     /* texto por defecto del body — neutro de UI, no es color de marca */
+  --steel:#5C6B73;
+  --ink:#0D1B24;
   --white:#FFFFFF;
-  --line:#DCE4E6;    /* gris de bordes — neutro de UI, no es color de marca */
+  --line:#DCE4E6;
   --radius:14px;
   --flow-gradient:linear-gradient(90deg,var(--navy) 0%, var(--teal) 55%, var(--amber) 100%);
   --shadow-soft:0 10px 30px -12px rgba(8,12,65,.25);
-
-  /* Compatibilidad: el navbar ya usaba estos nombres apuntando exactamente
-     a estos mismos valores — se dejan como alias, nada cambia ahí. */
   --route-navy:var(--brand-navy);
   --route-blue:var(--brand-petrol);
   --route-green:var(--brand-green);
@@ -62,15 +31,8 @@
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-/* Alinea el salto de los enlaces ancla (#servicios, #productos...) con la
-   misma línea marcadora que usa el scroll-spy de la ruta de navegación
-   (markerY = 35% del alto del viewport, en nav.js). Sin esto, el
-   navegador lleva la sección al TOPE del viewport al hacer clic, que no
-   coincide con el punto que el JS usa para decidir "current" — por eso la
-   gota quedaba corrida hacia el siguiente nodo en vez de caer justo en el
-   círculo. Si cambias el 0.35 en JS (markerY), cambia también este 35vh. */
 #servicios, #productos, #innovacion, #noticias, #nosotros{
-  scroll-margin-top: 35vh;
+  scroll-margin-top:35vh;
 }
 body{
   margin:0; font-family:'Poppins',system-ui,sans-serif; font-weight:400; color:var(--ink);
@@ -98,9 +60,6 @@ button{font-family:inherit; cursor:pointer;}
 }
 .skip-link:focus{left:0;}
 :focus-visible{outline:3px solid var(--amber); outline-offset:2px;}
-
-/* Botones genéricos — usados en nav, hero, artículos, fichas técnicas,
-   footer, chatbot... prácticamente en todas las páginas del sitio. */
 .btn-primary{
   background:var(--amber); color:#0D1B24; padding:14px 26px; border-radius:30px; font-weight:700; font-size:.94rem;
   display:inline-flex; align-items:center; gap:8px; transition:transform .18s ease, background .2s ease; border:none;
@@ -113,31 +72,12 @@ button{font-family:inherit; cursor:pointer;}
 .btn-outline.dark{border-color:var(--navy); color:var(--navy);}
 .btn-outline.dark:hover{background:var(--navy); color:#fff;}
 .btn-outline:hover{background:#fff; color:var(--navy);}
-
-/* Animación compartida por componentes independientes entre sí (tarjetas de
-   "pilares" en home.css y la tarjeta visual de ficha-tecnica.css): se define
-   una sola vez aquí para no duplicarla en cada archivo que la usa. */
 @keyframes pillarFloat{0%,100%{transform:translateY(0);} 50%{transform:translateY(-9px);}}
-
-/* Reveal on scroll — usado en index.html y nosotros/quienes-somos.html
-   (secciones, tarjetas y bloques de contenido).
-   nav.js agrega la clase .in mediante IntersectionObserver la primera vez
-   que el elemento entra en el viewport (una sola vez, nunca se revierte).
-   Solo anima opacidad/transform (compuesto por GPU, sin recalcular layout),
-   así que el costo de rendimiento es mínimo aunque haya varios elementos
-   en pantalla a la vez. */
 .reveal{
   opacity:0;
   transform:translateY(28px);
   transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);
 }
-/* transform:none y NO translateY(0): cualquier transform (aunque sea 0)
-   convierte al elemento en el bloque contenedor de sus hijos
-   position:fixed. El modal de perfiles de quienes-somos vivía dentro de
-   una sección .reveal y se posicionaba contra la sección (2.000+ px de
-   alto) en vez de contra la pantalla, así que se abría fuera de vista.
-   Visualmente es idéntico y la transición desde translateY(28px) igual
-   se anima. */
 .reveal.in{
   opacity:1;
   transform:none;
@@ -145,107 +85,7 @@ button{font-family:inherit; cursor:pointer;}
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }
 }
-
-/* ============================================
-   JUSTIFICADO DE PROSA (2026-09-21)
-   ============================================
-   Todo el texto de lectura corrida del sitio va justificado a ambos
-   márgenes. La lista vive en UN solo bloque —y no repartida por cada
-   hoja— para que el criterio se vea de un vistazo: qué se justifica y
-   qué no. Mismo motivo por el que los --brand-* viven solo aquí.
-
-   `hyphens:auto` NO es opcional. Sin partición de palabras, el español
-   justificado abre "ríos" de espacio en blanco enormes: palabras largas
-   ("responsabilidad", "almacenamiento", "internacionales") no caben al
-   final de la línea y el navegador estira los espacios de la línea
-   entera para compensar. Con partición, el hueco máximo se reparte.
-   Depende del atributo lang del <html>, que i18n.js ya reescribe al
-   cambiar de idioma (assets/js/i18n.js), así que la partición sigue al
-   idioma activo sin tocar nada más.
-
-   `hyphenate-limit-chars:6 3 3` = no partir palabras de menos de 6
-   letras, ni dejar menos de 3 letras a cada lado del guion (evita
-   "a-normal" y renglones que terminan en una sola letra). Firefox la
-   ignora y solo parte un poco más; no rompe nada.
-
-   OJO al revisar con Edge headless: ahí `hyphens:auto` NO hace nada —
-   ni en español ni en inglés. Chrome/Edge no traen los diccionarios de
-   partición compilados, los bajan por el actualizador de componentes, y
-   un perfil recién creado con --user-data-dir propio nunca los tiene.
-   Así que en las capturas las columnas estrechas salen con más hueco
-   entre palabras del que verá el usuario real. No lo "arregles"
-   quitando el justificado: comprueba en un navegador normal (es el
-   mismo tipo de artefacto que el .reveal a medio fundir, ver CLAUDE.md).
-
-   NO se justifica, a propósito:
-   - Texto centrado (.section-head, .stat-card, .pq-head, hero del home):
-     justificar y centrar a la vez no tiene sentido.
-   - Micro-copy de tarjetas (.icon-item, .process-step, .ra-plan,
-     .sgi-pillar, .pq-card, .product-desc, .qs-route-card...): menos de
-     ~40 caracteres por línea, donde cada hueco entre palabras quedaría
-     del ancho de un dedo.
-   - Citas (blockquote, .qs-quote, .pds-side-card): son de 2-3 líneas en
-     cursiva y la última queda suelta; la bandera derecha se ve mejor.
-   - Tablas, formularios, navegación y demás texto de interfaz.
-   ============================================ */
-/* Columna de lectura de artículos y páginas de contenido: noticias,
-   sostenibilidad (compromiso, ambiental, SGI), legal y la sección
-   "Descripción" de las fichas técnicas. Es `> p` a propósito: el texto
-   de las tarjetas que viven dentro de .prose se queda en bandera. */
-.prose > p,
-.ra-block > p,
-.sgi-block > p,
-.pd-block > p,
-/* Paneles y cajas de esas mismas páginas cuyo contenido sí es prosa. */
-.prose .pd-notice p,
-.prose .pd-callout p,
-.prose .pd-channels > p,
-.prose .sgi-scope p,
-.ra-cert-body p,
-.iso-row p,
-/* Entradilla de los heros de página interior (.page-hero y sus variantes
-   .pds-hero, .ra-hero, .pq-hero...). Es texto de cuerpo (1.02rem) y
-   siempre alineado a la izquierda, así que se justifica igual que la
-   prosa; el breadcrumb es un <div> y no entra.
-   Los heros grandes de index, productos y ¿quiénes somos? quedan fuera a
-   propósito: su entradilla es tipografía de presentación (1.15-1.25rem,
-   2-3 líneas) y además .hero-inner pasa a text-align:center por debajo de
-   980 px — justificar ahí chocaría con el centrado. */
-.page-hero p,
-/* Home. */
-.about-text p,
-/* Catálogo de productos. */
-.prod-portfolio-head p,
-.prod-portfolio-aside p,
-.prod-sectors p,
-.prod-contact p,
-/* ¿Quiénes somos?: tarjetas de esencia y biografías del equipo. La
-   reseña corta solo se justifica en la tarjeta destacada (la que ocupa
-   las tres columnas): en las tarjetas normales la columna es de unos 40
-   caracteres y los huecos entre palabras se ven. */
-.qs-essence-card p,
-/* Compromiso social: las tres familias de tarjetas con texto alineado a
-   la izquierda. .cs-pillar es una columna de ~34 caracteres —por debajo
-   del umbral de este bloque— pero en bandera la rejilla de cuatro se veía
-   deshilachada, así que se justifica igual y se compensa con una partición
-   de palabras más agresiva (hyphenate-limit-chars:5 2 2 en
-   compromiso-social.css). Lo que NO entra: las cabeceras .cs-head, la
-   franja del principio, los resultados, las cifras, la nota y el CTA, que
-   van centrados. */
-.cs-face p,
-.cs-pillar p,
-.cs-card p,
-.leader-card:first-child .leader-bio-short,
-.leader-modal-bio p,
-/* Fichas técnicas: ave emblema y franja de cotización. */
-.pds-emblem p,
-.pds-quote p,
-/* PQRSF: respuestas de las preguntas frecuentes. */
-.pq-faq-list details p,
-/* Instalaciones (refinería Santa Marta, Esquivensa): la columna de texto
-   junto a la foto. Las tarjetas (.inst-feature, .inst-yard) y la
-   entradilla del hero quedan en bandera, por el mismo criterio de arriba. */
-.inst-prose > p{
+.prose > p, .ra-block > p, .sgi-block > p, .pd-block > p, .prose .pd-notice p, .prose .pd-callout p, .prose .pd-channels > p, .prose .sgi-scope p, .ra-cert-body p, .iso-row p, .page-hero p, .about-text p, .prod-portfolio-head p, .prod-portfolio-aside p, .prod-sectors p, .prod-contact p, .qs-essence-card p, .cs-face p, .cs-pillar p, .cs-card p, .leader-card:first-child .leader-bio-short, .leader-modal-bio p, .pds-emblem p, .pds-quote p, .pq-faq-list details p, .inst-prose > p{
   text-align:justify;
   text-justify:inter-word;
   -webkit-hyphens:auto;
