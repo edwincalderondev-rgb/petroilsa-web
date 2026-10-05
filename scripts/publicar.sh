@@ -2,8 +2,8 @@
 # Publica el sitio desde un clon de Git del servidor hacia su carpeta web.
 # Lo ejecuta cPanel (Git Version Control → "Deploy HEAD Commit") vía .cpanel.yml.
 #
-#   ~/repositorios/petroilsa-web      →  ~/public_html                      (producción)
-#   ~/repositorios/petroilsa-pruebas  →  ~/pruebas/pruebas.petroilsa.com    (ensayo)
+#   ~/repositorios/petroilsa-web      →  ~/public_html                       (producción)
+#   ~/repositorios/petroilsa-pruebas  →  la primera que exista de 3 rutas    (ensayo, ver abajo)
 #
 # Este repo (petroilsa-web, público) ya contiene SOLO lo publicable: lo arma
 # el Action del repo privado (.github/workflows/publicar-dist.yml) con
@@ -15,11 +15,19 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 case "$(basename "$REPO")" in
-  petroilsa-web)     DESTINO="$HOME/public_html" ;;
+  petroilsa-web) DESTINO="$HOME/public_html" ;;
   petroilsa-pruebas)
-    DESTINO="$HOME/pruebas/pruebas.petroilsa.com"
-    # Variante por si cPanel exige que la raíz del subdominio esté dentro de public_html.
-    [ -d "$DESTINO" ] || DESTINO="$HOME/public_html/pruebas/pruebas.petroilsa.com" ;;
+    # Este hosting no deja (o aplana) document roots fuera de public_html, así
+    # que se prueban las tres formas que puede haber quedado el subdominio,
+    # de la más aislada a la menos, y se usa la primera que exista de verdad.
+    DESTINO=""
+    for candidato in \
+      "$HOME/pruebas/pruebas.petroilsa.com" \
+      "$HOME/public_html/pruebas/pruebas.petroilsa.com" \
+      "$HOME/public_html/pruebas.petroilsa.com"
+    do
+      if [ -d "$candidato" ]; then DESTINO="$candidato"; break; fi
+    done ;;
   *) echo "ERROR: clon no reconocido ($REPO). No se publicó nada." >&2; exit 1 ;;
 esac
 
