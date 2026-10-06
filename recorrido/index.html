@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+
+<title>Recorrido guiado · Petroil S.A.</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Una vista guiada de petroilsa.com, acompañada por Ala de Sable.">
+
+<meta property="og:site_name" content="Petroil S.A.">
+<meta property="og:locale" content="es_CO">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Un recorrido por el nuevo petroilsa.com">
+<meta property="og:description" content="Una vista guiada del sitio, preparada especialmente para usted. Ala de Sable lo acompaña por lo que cambió, y por qué.">
+<meta property="og:url" content="https://petroilsa.com/recorrido/">
+<meta property="og:image" content="https://petroilsa.com/assets/img/og/og-recorrido.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Un recorrido por el nuevo petroilsa.com">
+<meta name="twitter:description" content="Una vista guiada del sitio, preparada especialmente para usted.">
+<meta name="twitter:image" content="https://petroilsa.com/assets/img/og/og-recorrido.jpg">
+
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root { --navy:#080C41; --petrol:#154772; --sky:#359ACC; --lime:#C7F547; --white:#FBFEFF; }
+  * { box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    margin:0; font-family:'Poppins', system-ui, sans-serif;
+    background-color:var(--navy);
+    background-image:linear-gradient(135deg, rgba(8,12,65,.97) 0%, rgba(21,71,114,.94) 52%, rgba(53,154,204,.58) 100%);
+    color:var(--white);
+    display:grid; place-items:center; padding:28px; text-align:center;
+  }
+  img { width:150px; height:auto; filter:drop-shadow(0 12px 22px rgba(0,0,0,.35)); }
+  h1 { font-size:1.45rem; font-weight:700; margin:16px 0 6px; }
+  p  { margin:0 0 20px; color:rgba(251,254,255,.82); font-size:.95rem; }
+  a  {
+    display:inline-block; background:var(--lime); color:var(--navy);
+    font-weight:700; text-decoration:none; padding:12px 24px; border-radius:999px;
+  }
+  .carga { font-size:.85rem; color:rgba(251,254,255,.6); }
+</style>
+</head>
+<body>
+
+  <main>
+    <img src="../assets/recorrido/poses/saludo.webp" alt="Ala de Sable, el colibrí de Santa Marta" width="256" height="256">
+    <h1>Abriendo su recorrido…</h1>
+    <p class="carga">Un momento, por favor.</p>
+    
+    <noscript><p>Para continuar, entre a Petroil:</p><a href="../index.html">Ir a petroilsa.com</a></noscript>
+  </main>
+
+<script>
+  /* Pasa el token a la portada del sitio. Quien guarda el estado y
+     limpia la dirección es assets/recorrido/visita.js. */
+  (function () {
+    var token = '';
+    try { token = new URLSearchParams(location.search).get('i') || ''; } catch (e) { /* noop */ }
+    /* Bajo file:/// hay que nombrar el archivo; servido por HTTP se
+       prefiere la raíz limpia, que es la dirección canónica. */
+    var destino = (location.protocol === 'file:') ? '../index.html' : '../';
+    location.replace(destino + (token ? '?i=' + encodeURIComponent(token) : ''));
+  })();
+</script>
+
+</body>
+</html>
