@@ -1,8 +1,9 @@
 # Recorrido guiado — función temporal
 
-Vista guiada de petroilsa.com para un invitado concreto: Ala de Sable lo acompaña
-por 12 paradas repartidas en 4 páginas, explicando qué cambió respecto del sitio
-anterior (archivado en `anterior.petroilsa.com`) y por qué.
+Vista guiada de petroilsa.com para un invitado concreto: Ala de Sable lo recibe con
+una portada propia y lo acompaña por **13 paradas en 5 páginas**, mostrando lo más
+vistoso del sitio y explicando qué cambió respecto del anterior (archivado en
+`anterior.petroilsa.com`) y por qué.
 
 **Nace con fecha de muerte.** Está hecha para poder quitarse de un tirón, sin dejar
 rastro en el sitio. Si estás leyendo esto para darla de baja, salta al final.
@@ -15,9 +16,9 @@ rastro en el sitio. Si estás leyendo esto para darla de baja, salta al final.
 https://petroilsa.com/recorrido/?i=lah
 ```
 
-1. `recorrido/index.html` es una página puente de 20 líneas. No guarda nada: existe
-   para que el enlace tenga **su propia tarjeta de vista previa** (`og:`) en el correo
-   y en WhatsApp, y para pasarle el token a la portada del sitio.
+1. `recorrido/index.html` es una página puente. No guarda nada: existe para que el
+   enlace tenga **su propia tarjeta de vista previa** (`og:`) en el correo y en
+   WhatsApp, y para pasarle el token a la portada del sitio.
 2. El bloque del final de `assets/js/nav.js` ve el `?i=` (o un estado ya guardado) y
    solo entonces carga `visita.css` y `visita.js`. **Sin token no se descarga ni un
    byte**: un visitante normal no paga por esta función.
@@ -26,75 +27,106 @@ https://petroilsa.com/recorrido/?i=lah
    aparecer en la URL.
 
 Si el invitado copia la dirección de la barra y se la pasa a alguien, esa persona ve
-el sitio normal. **No hay ningún botón para activar el modo.** Pero conviene saberlo:
-el token no es un secreto — el JS se descarga al navegador y el repositorio es
-público. Esto es *no descubrible*, no privado.
+el sitio normal. **No hay ningún botón para encender el modo.** Sí hay uno para
+apagarlo —«Salir de la vista especial», en la pastilla y en el sello— que borra el
+token y recarga como visitante normal; después, solo el enlace vuelve a encenderlo.
 
-## Invitados y caducidad
+El token no es un secreto (el JS se descarga al navegador y el repositorio es
+público): esto es *no descubrible*, no privado.
 
-Ambas cosas, arriba del todo en `visita.js`:
+## Las 13 paradas
+
+| # | Página | Tipo | Qué muestra |
+|---|---|---|---|
+| — | Portada | portada | Saludo por su nombre, aviso de vista especial |
+| 1 | Portada | lámina | Antes/hoy de la portada, en un navegador en 3D |
+| 2 | Portada | foco | Abanico del ecosistema |
+| 3 | Portada | foco | ¿Por qué Petroil? (paneles) |
+| 4 | Portada | foco | Nuevos horizontes (mapa satelital) |
+| 5 | Portada | foco ×2 | Selector de idioma **y** título: botones para cambiarlo en vivo |
+| 6 | Productos | lámina | Antes/hoy del catálogo |
+| 7 | Productos | foco | Tarjeta del 50 10 con su video en marcha |
+| 8 | Ficha 50 10 | escena | Tucán pico de canoa y el combustible flotando |
+| 9 | Ficha 50 10 | foco | El chat, con una pregunta en vivo |
+| 10 | Refinería Santa Marta | escena | Video de dron y cifras |
+| 11 | SGI | foco | Emblema de los propósitos |
+| 12 | Portada | lámina | Antes/hoy en el celular, en un teléfono en 3D |
+| 13 | Portada | lámina | Cierre: tres botones para escribirle al ingeniero |
+
+Al terminar, el colibrí vuela hasta el lanzador del chat y la página queda en la
+portada, desde arriba, con la burbuja «Aquí me encontrará siempre».
+
+Los tipos: **foco** vela y desenfoca la página y deja nítido lo iluminado (puede
+haber varios huecos); **escena** no vela, pone una viñeta de cine y una franja de
+luz; **lámina** es pantalla completa sobre el fondo vivo.
+
+## Invitados, caducidad y WhatsApp
+
+Arriba del todo en `visita.js`:
 
 ```js
-var CADUCA = '2027-01-15';     // después de esta fecha el modo no se activa
-var INVITADOS = {
-  lah:    { trato: 'Señor', nombre: 'Luis Alberto Hincapié', corto: 'Señor Hincapié' },
-  ensayo: { trato: '', nombre: '', corto: '' }    // para probar sin usar el del jefe
+const CADUCA = '2027-01-15';                 // después de esta fecha el modo no se activa
+const WHATSAPP = '573014099377';             // destino de los botones del cierre
+const INVITADOS = {
+  lah:    { trato: 'Señor', nombre: 'Luis Alberto Hincapié', corto: 'Señor Hincapié', sello: 'el Sr. Hincapié' },
+  ensayo: { trato: '', nombre: '', corto: '', sello: 'un invitado' }   // para probar
 };
 ```
 
 Pasada la fecha, el token deja de activar nada y el estado guardado se borra solo en
 el siguiente arranque. **La función se apaga aunque nadie se acuerde de bajarla.**
-
-Para agregar otro invitado basta con otra línea en `INVITADOS`; el enlace sería
-`/recorrido/?i=<llave>`.
-
-## ⚠ Pendiente antes de enviar el enlace
-
-```js
-var WHATSAPP = 'PENDIENTE';    // ej. '573001234567' — internacional, sin signos
-```
-
-Es el destino del botón "Escribirle al ingeniero Calderón" de la última parada.
-Mientras diga `PENDIENTE`, el botón abre el correo (`CORREO`) en vez de WhatsApp,
-así que **nunca queda roto** — pero el mensaje no llega por donde se quería.
+Si `WHATSAPP` se deja en `'PENDIENTE'`, los botones del cierre abren el correo.
 
 ## Qué hay en esta carpeta
 
 | Archivo | Qué es |
 |---|---|
-| `visita.js` | Motor y guion. Las 12 paradas están en el arreglo `PARADAS`, con su texto. |
+| `visita.js` | Motor, guion (`PARADAS`), fondo WebGL y capítulo del chat. |
 | `visita.css` | Estilos. Todo con prefijo `.rg-` y bajo la clase `.rg-on` del `<html>`. |
-| `poses/` | 18 poses del colibrí ilustrado (WebP con transparencia, ~512 px de alto). |
+| `poses/` | 18 poses del colibrí ilustrado (WebP con transparencia, ~512 px). |
 | `antes/` | Las 6 capturas de las comparaciones antes/hoy. |
 
-Las capturas se tomaron del espejo del WordPress
+**El fondo vivo** es un sombreador WebGL2 propio, sin librerías: aurora en los
+colores de marca, chispas que suben y la Sierra Nevada en crestas de luz que se
+acercan. Se dibuja a menos resolución que la pantalla, a ~30 fotogramas por segundo y
+solo mientras hay una lámina, la portada o un pasaje a la vista. Sin WebGL2 queda un
+degradado de CSS; con «reducir movimiento», un fotograma quieto.
+
+**Las poses venían con un residuo blanco del recorte** (~8 px bajo el ave, invisible
+sobre blanco y muy visible sobre el fondo oscuro). Se limpiaron midiendo píxeles en
+un `<canvas>`, con decisión por fila: la «repisa» son filas anchas y casi blancas; la
+cola, filas estrechas y oscuras. Si llegan poses nuevas, revísalas sobre fondo oscuro.
+
+**Las capturas** se tomaron del espejo del WordPress
 (`Documents/PetroilWeb/Despliegue/sitio-anterior/`) y del sitio nuevo **con el mismo
-viewport y el mismo scroll**, por CDP, para que el comparador cuadre pixel a pixel.
-Las dos mitades de cada par tienen que medir exactamente lo mismo o la cortina se
-deforma.
+viewport y el mismo scroll**, por CDP. Las dos mitades de cada par tienen que medir
+exactamente lo mismo o la cortina se deforma.
 
 ## Ayudas en la consola del navegador
 
 ```js
-VISITA.ir(5)       // saltar a una parada
+VISITA.ir(5)       // saltar a una parada (0 = la primera)
 VISITA.estado()    // ver el estado guardado
-VISITA.borrar()    // apagar el modo en este navegador
+VISITA.borrar()    // salir del modo en este navegador (como el botón)
 AIRA.match('…')    // comprobar que una pregunta del recorrido gana a las del sitio
 ```
 
+Para probar idiomas o el pasaje entre páginas hay que servir por HTTP
+(`scripts/devserver.ps1`). Ese servidor atiende **de a una petición**: en la portada,
+`visita.js` llega en cola detrás de los videos y tarda varios segundos en arrancar.
+Apache no tiene ese problema.
+
 ## Lo que toca fuera de esta carpeta
 
-Son tres sitios, y nada más:
-
 1. **`assets/js/nav.js`** — el bloque del final, `RECORRIDO GUIADO (función temporal)`.
+   Además de cargar los dos archivos, si se llega desde un cambio de página del
+   recorrido tapa la página con el mismo azul con que terminó la anterior (así no se
+   ve el salto); `visita.js` la retira y, si no llegara a cargar, se retira sola a los 3 s.
 2. **`assets/js/aira.js`** — `AIRA.extend(entries, cat)` y el `KB.saludo` de `welcome()`.
    `extend()` empuja las entradas y **reconstruye `INDEX`**, porque el índice del
-   corrector de erratas se precalcula al arrancar: sin eso las entradas nuevas
-   puntúan, pero sus palabras no corrigen erratas. `KB.saludo` permite reemplazar la
-   presentación del chat sin tocar `aira.js` otra vez.
-   Es la excepción documentada a la regla de *"para enseñarle algo a AIRA se edita
-   solo `aira-kb.js`"*: el capítulo del recorrido **no puede** vivir en `aira-kb.js`,
-   porque entonces lo tendrían todos los visitantes.
+   corrector de erratas se precalcula al arrancar. Es la excepción documentada a la
+   regla de *"para enseñarle algo a AIRA se edita solo `aira-kb.js`"*: el capítulo
+   del recorrido no puede vivir ahí, porque lo tendrían todos los visitantes.
 3. **`scripts/publicar.sh`** — `recorrido` en la lista `CARPETAS`.
 
 Más `assets/img/og/og-recorrido.jpg`, la tarjeta de vista previa del enlace.
@@ -111,8 +143,8 @@ Después, a mano:
 
 - `assets/js/nav.js` — borrar el bloque final `RECORRIDO GUIADO (función temporal)`.
 - `assets/js/aira.js` — se puede dejar tal cual: `extend()` y `KB.saludo` son dos
-  ganchos genéricos de 6 líneas que no hacen nada si nadie los llama. Si se quieren
-  quitar, hay que devolver `welcome()` a su texto fijo.
+  ganchos genéricos que no hacen nada si nadie los llama. Si se quieren quitar, hay
+  que devolver `welcome()` a su texto fijo.
 - `scripts/publicar.sh` — sacar `recorrido` de `CARPETAS`.
 - `CLAUDE.md` — borrar la sección del recorrido.
 
@@ -121,4 +153,5 @@ No hace falta tocar `sitemap.xml`: la página puente lleva `noindex`, así que
 
 **Nada se rompe si queda a medias.** Si se borra la carpeta y alguien conserva la
 bandera en su `localStorage`, el cargador de `nav.js` pide un archivo que ya no
-existe, falla en silencio y la página sigue normal.
+existe, falla en silencio y la página sigue normal (y la tapa del pasaje, si la
+hubiera, se retira sola a los 3 segundos).
