@@ -13,10 +13,13 @@ rastro en el sitio. Si estás leyendo esto para darla de baja, salta al final.
 ## Cómo se enciende
 
 ```
-https://petroilsa.com/recorrido/?i=lah
+https://petroilsa.com/recorrido/lah/      ← el que se le envía al Sr. Hincapié
+https://petroilsa.com/recorrido/?i=lah    ← equivalente, genérico (sirve para cualquier invitado)
 ```
 
-1. `recorrido/index.html` es una página puente. No guarda nada: existe para que el
+1. `recorrido/lah/index.html` y `recorrido/index.html` son páginas puente. La personal
+   deja el enlace limpio y pone su nombre en la vista previa; la genérica lee el invitado
+   de `?i=`. No guarda nada: existe para que el
    enlace tenga **su propia tarjeta de vista previa** (`og:`) en el correo y en
    WhatsApp, y para pasarle el token a la portada del sitio.
 2. El bloque del final de `assets/js/nav.js` ve el `?i=` (o un estado ya guardado) y
@@ -45,15 +48,26 @@ público): esto es *no descubrible*, no privado.
 | 4 | Portada | foco | Nuevos horizontes (mapa satelital) |
 | 5 | Portada | foco ×2 | Selector de idioma **y** título: botones para cambiarlo en vivo |
 | 6 | Productos | lámina | Antes/hoy del catálogo |
-| 7 | Productos | foco | Tarjeta del 50 10 con su video en marcha |
+| 7 | Productos | foco | Tarjeta del P-500 Marine: un cursor simulado vuela hasta ella y enciende su video |
 | 8 | Ficha 50 10 | escena | Tucán pico de canoa y el combustible flotando |
 | 9 | Ficha 50 10 | foco | El chat, con una pregunta en vivo |
 | 10 | Refinería Santa Marta | escena | Video de dron y cifras |
 | 11 | SGI | foco | Emblema de los propósitos |
 | 12 | Portada | lámina | Antes/hoy en el celular, en un teléfono en 3D |
-| 13 | Portada | lámina | Cierre: tres botones para escribirle al ingeniero |
+| 13 | Portada | lámina | Despedida con aurora boreal: tres botones para escribirle al ingeniero y su hoja de vida |
 
-Al terminar, el colibrí vuela hasta el lanzador del chat y la página queda en la
+En la parada 7 el video no espera al invitado: un cursor simulado sale del colibrí y se
+posa en la tarjeta. **Ojo:** el video lo arranca `home.js` con `mouseenter`, pero lo HACE
+VISIBLE el `:hover` de `productos.css`, que un evento simulado no activa; por eso la
+clase `rg-hover` replica esas reglas en `visita.css`. Si cambian en `productos.css`,
+cámbialas también aquí: sin ellas el video corre escondido debajo de la foto fija (así
+falló la primera versión).
+
+En la parada 13 el fondo enciende la aurora boreal (`Fondo.aurora(1)`, con estrellas
+fugaces) y el texto pasa a un panel de vidrio; a su lado, una tarjeta enlaza la hoja de
+vida del ingeniero con una vista previa que pasa sola por cuatro capturas (`hdv/`). Al
+terminar, la aurora estalla (`Fondo.aurora(1.8)`) mientras el colibrí vuela hasta el
+lanzador del chat y la página queda en la
 portada, desde arriba, con la burbuja «Aquí me encontrará siempre».
 
 Los tipos: **foco** vela y desenfoca la página y deja nítido lo iluminado (puede
@@ -85,6 +99,7 @@ Si `WHATSAPP` se deja en `'PENDIENTE'`, los botones del cierre abren el correo.
 | `visita.css` | Estilos. Todo con prefijo `.rg-` y bajo la clase `.rg-on` del `<html>`. |
 | `poses/` | 18 poses del colibrí ilustrado (WebP con transparencia, ~512 px). |
 | `antes/` | Las 6 capturas de las comparaciones antes/hoy. |
+| `hdv/` | 4 capturas de la hoja de vida del ingeniero (en español), para la tarjeta del cierre. |
 
 **El fondo vivo** es un sombreador WebGL2 propio, sin librerías: aurora en los
 colores de marca, chispas que suben y la Sierra Nevada en crestas de luz que se
@@ -101,6 +116,27 @@ cola, filas estrechas y oscuras. Si llegan poses nuevas, revísalas sobre fondo 
 (`Documents/PetroilWeb/Despliegue/sitio-anterior/`) y del sitio nuevo **con el mismo
 viewport y el mismo scroll**, por CDP. Las dos mitades de cada par tienen que medir
 exactamente lo mismo o la cortina se deforma.
+
+## La vista previa del enlace (WhatsApp, correo)
+
+Las etiquetas `og:` de las páginas puente apuntan a **petroilsa.com**, y el robot de
+vista previa de WhatsApp/Facebook **va a leer la tarjeta a la dirección de `og:url`**.
+Por eso, mientras el sitio nuevo no esté publicado en petroilsa.com, **ningún enlace del
+sitio muestra vista previa** (tampoco desde pruebas.petroilsa.com, que tiene contraseña:
+el robot recibe un 401). En producción aparecen solas.
+
+Para verla antes, `scripts/prueba-vista-previa/` es una copia de la puente personal con
+las etiquetas apuntando a GitHub Pages:
+`https://edwincalderondev-rgb.github.io/PetroilSA/scripts/prueba-vista-previa/`. Vive en
+`scripts/` porque `publicar.sh` no copia esa carpeta: nunca llega al servidor.
+
+Las tarjetas (`assets/img/og/og-recorrido.jpg` y `og-recorrido-lah.jpg`) se generaron con
+el **mismo sombreador** del recorrido, leído de `visita.js`, con la aurora encendida.
+
+El correo para Outlook vive **fuera del repositorio**, en
+`Para construccion/correcciones/Funcionalidad especial LAH/correo/`: una página con el
+correo listo para copiar y pegar, con la tarjeta incrustada y enlazada (Outlook clásico
+no genera vistas previas de enlaces; así se ve igual en todos).
 
 ## Ayudas en la consola del navegador
 
@@ -129,14 +165,15 @@ Apache no tiene ese problema.
    del recorrido no puede vivir ahí, porque lo tendrían todos los visitantes.
 3. **`scripts/publicar.sh`** — `recorrido` en la lista `CARPETAS`.
 
-Más `assets/img/og/og-recorrido.jpg`, la tarjeta de vista previa del enlace.
+Más las dos tarjetas de vista previa, `assets/img/og/og-recorrido.jpg` y
+`og-recorrido-lah.jpg`, y la página de prueba `scripts/prueba-vista-previa/`.
 
 ---
 
 ## Cómo darla de baja
 
 ```bash
-rm -rf assets/recorrido recorrido assets/img/og/og-recorrido.jpg
+rm -rf assets/recorrido recorrido scripts/prueba-vista-previa \n       assets/img/og/og-recorrido.jpg assets/img/og/og-recorrido-lah.jpg
 ```
 
 Después, a mano:
@@ -148,7 +185,7 @@ Después, a mano:
 - `scripts/publicar.sh` — sacar `recorrido` de `CARPETAS`.
 - `CLAUDE.md` — borrar la sección del recorrido.
 
-No hace falta tocar `sitemap.xml`: la página puente lleva `noindex`, así que
+No hace falta tocar `sitemap.xml`: las páginas puente llevan `noindex`, así que
 `scripts/generar-sitemap.mjs` nunca la incluyó.
 
 **Nada se rompe si queda a medias.** Si se borra la carpeta y alguien conserva la
