@@ -30,6 +30,7 @@
   "benefit2.desc": { "es": "Ejemplo: describe aquí el beneficio de rendimiento o ahorro asociado al producto.", "en": "Example: describe here the performance or savings benefit associated with the product.", "pt": "Exemplo: descreva aqui o benefício de desempenho ou economia associado ao produto." },
 
   "table.parametro": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.colHead": { "es": "Petroil 40 A MAX (ejemplo)", "en": "Petroil 40 A MAX (example)", "pt": "Petroil 40 A MAX (exemplo)" },
   "table.row1": { "es": "Parámetro 1", "en": "Parameter 1", "pt": "Parâmetro 1" },
   "table.row2": { "es": "Parámetro 2", "en": "Parameter 2", "pt": "Parâmetro 2" },
   "table.row3": { "es": "Parámetro 3", "en": "Parameter 3", "pt": "Parâmetro 3" },

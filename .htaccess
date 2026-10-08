@@ -152,19 +152,13 @@ RewriteRule ^(.+)$ - [R=404,L]
     # Imágenes, video y documentos: 7 días. Tipografías: 30 días.
     # HTML, CSS, JS y JSON: el navegador siempre pregunta si cambió
     # (responde 304 si no), para que cada publicación se vea al instante.
-    <If "%{REQUEST_URI} =~ m#\.(jpe?g|png|webp|gif|svg|ico|mp4|webm|pdf)$#i">
-      Header set Cache-Control "public, max-age=604800"
-    </If>
-    <ElseIf "%{REQUEST_URI} =~ m#\.(woff2?|ttf|otf)$#i">
-      Header set Cache-Control "public, max-age=2592000"
-    </ElseIf>
-    <Else>
-      Header set Cache-Control "no-cache"
-    </Else>
+    # Condición en línea ("expr=") y no <If> anidado: con <If> la portada
+    # pedida como "/" (DirectoryIndex) salía sin estas dos cabeceras.
+    Header set Cache-Control "public, max-age=604800" "expr=%{REQUEST_URI} =~ m#\.(jpe?g|png|webp|gif|svg|ico|mp4|webm|pdf)$#i"
+    Header set Cache-Control "public, max-age=2592000" "expr=%{REQUEST_URI} =~ m#\.(woff2?|ttf|otf)$#i"
+    Header set Cache-Control "no-cache" "expr=%{REQUEST_URI} !~ m#\.(jpe?g|png|webp|gif|svg|ico|mp4|webm|pdf|woff2?|ttf|otf)$#i"
 
-    <If "%{HTTP_HOST} =~ /^pruebas\./i">
-      Header always set X-Robots-Tag "noindex, nofollow"
-    </If>
+    Header always set X-Robots-Tag "noindex, nofollow" "expr=%{HTTP_HOST} =~ /^pruebas\./i"
   </IfModule>
 
   <IfModule mod_deflate.c>

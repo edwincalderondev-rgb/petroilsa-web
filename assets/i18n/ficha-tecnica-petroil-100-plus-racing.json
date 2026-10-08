@@ -35,6 +35,7 @@
   "benefit2.desc": { "es": "Ejemplo: adecuado para motores de alta relación de compresión.", "en": "Sample: suitable for engines with a high compression ratio.", "pt": "Exemplo: adequado para motores de alta taxa de compressão." },
 
   "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.colHead": { "es": "Petroil 100+ Racing Fuel (ejemplo)", "en": "Petroil 100+ Racing Fuel (example)", "pt": "Petroil 100+ Racing Fuel (exemplo)" },
   "table.row1": { "es": "Octanaje objetivo (RON)", "en": "Target octane (RON)", "pt": "Octanagem alvo (RON)" },
   "table.row2": { "es": "Densidad, Kg/m³", "en": "Density, Kg/m³", "pt": "Densidade, Kg/m³" },
   "table.row3": { "es": "Punto de Inflamación, °C", "en": "Flash Point, °C", "pt": "Ponto de Fulgor, °C" },

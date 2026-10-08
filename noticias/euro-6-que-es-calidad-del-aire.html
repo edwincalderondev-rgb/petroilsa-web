@@ -49,7 +49,7 @@
 </style>
 </head>
 <body data-i18n-page="../assets/i18n/euro-6-que-es-calidad-del-aire.json">
-<a href="#main" class="skip-link">Saltar al contenido</a>
+<a href="#main" class="skip-link" data-i18n="nav.skip">Saltar al contenido</a>
 <div class="scroll-track" id="scrollTrack">
   <div class="scroll-progress" id="scrollProgress"></div>
 </div>
@@ -78,8 +78,9 @@
           </div>
         </div>
         <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
-          <span></span><span></span><span></span>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" data-i18n-aria="nav.menuOpen" aria-expanded="false" aria-controls="navDrawer">
+          <span class="hamburger-label" data-i18n="nav.menu">Menú</span>
+          <span class="hamburger-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
     </div>
@@ -89,7 +90,7 @@
     <a href="../index.html" class="route-logo" id="routeLogo" aria-hidden="true" tabindex="-1">
       <img src="../assets/img/Petroil-logo-blanco.png" alt="" decoding="async">
     </a>
-    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página">
+    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página" data-i18n-aria="nav.pageNav">
       <span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
       <a href="#que-es" class="route-link" data-section="#que-es">
         <span class="route-label" data-i18n="nav.euro6">Euro 6</span>
@@ -115,17 +116,17 @@
   </div>
 </header>
 <div class="nav-overlay" id="navOverlay"></div>
-<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil" data-i18n-aria="nav.drawer">
   <div class="drawer-top">
     <span class="drawer-logo-wrap">
       <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
     </span>
-    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú" data-i18n-aria="nav.menuClose">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
   </div>
 
-  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)">
+  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)" data-i18n-aria="nav.pageNavMobile">
     <span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#que-es" class="drawer-link" data-section="#que-es">
       <span class="drawer-node" aria-hidden="true"></span>
@@ -282,8 +283,8 @@
 
           <div class="article-share">
             <span data-i18n="share.label">Comparte esta noticia:</span>
-            <a href="https://api.whatsapp.com/send?text=Euro%206%3A%20%C2%BFqu%C3%A9%20es%20y%20por%20qu%C3%A9%20importa%20para%20la%20calidad%20del%20aire%3F%20https%3A%2F%2Fpetroilsa.com%2Fnoticias%2Feuro-6-que-es-calidad-del-aire.html" target="_blank" rel="noopener" aria-label="Compartir en WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpetroilsa.com%2Fnoticias%2Feuro-6-que-es-calidad-del-aire.html" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
+            <a href="https://api.whatsapp.com/send?text=Euro%206%3A%20%C2%BFqu%C3%A9%20es%20y%20por%20qu%C3%A9%20importa%20para%20la%20calidad%20del%20aire%3F%20https%3A%2F%2Fpetroilsa.com%2Fnoticias%2Feuro-6-que-es-calidad-del-aire.html" target="_blank" rel="noopener" aria-label="Compartir en WhatsApp" data-i18n-aria="share.whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.3 17L2 22l5.2-1.4A11 11 0 1020.5 3.5zM12 19.9a8 8 0 01-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1112 19.9zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.5-.8-2.1-1.5-.5-.5-.8-1.1-1-1.5-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"/></svg></a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpetroilsa.com%2Fnoticias%2Feuro-6-que-es-calidad-del-aire.html" target="_blank" rel="noopener" aria-label="Compartir en LinkedIn" data-i18n-aria="share.linkedin"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.56V21h3.38V8.5zM5.25 3a2 2 0 100 4 2 2 0 000-4zM21 21v-7.1c0-3.4-1.8-5-4.3-5-2 0-2.8 1.1-3.3 1.9V8.5h-3.4c0 .8 0 12.5 0 12.5h3.4v-7c0-.4 0-.7.1-1 .3-.7.9-1.5 2-1.5 1.5 0 2.1 1.1 2.1 2.7V21H21z"/></svg></a>
           </div>
 
           <div class="article-back">
@@ -351,7 +352,7 @@
         <button class="map-tab" type="button" data-map="esquivensa" aria-pressed="false" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
-        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil"></iframe>
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil" data-i18n-title="footer.mapTitle"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.app.goo.gl/X6YV8dd6fGqJEsPR6" target="_blank" rel="noopener">
         <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
@@ -379,16 +380,16 @@
 <div id="aira" data-base="../">
 
   <div class="aira-teaser" id="airaTeaser">
-    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso">✕</button>
+    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso" data-i18n-aria="aira.teaserClose">✕</button>
     <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
   </div>
 
-  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" aria-expanded="false" aria-controls="airaPanel">
+  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" data-i18n-aria="aira.open" aria-expanded="false" aria-controls="airaPanel">
     <span class="aira-launcher-dot" aria-hidden="true"></span>
     <img class="aira-launcher-avatar" src="../assets/img/ala-de-sable.webp" alt="" width="86" height="94" decoding="async">
   </button>
 
-  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con Ala de Sable, asistente virtual de Petroil" aria-hidden="true">
+  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con Ala de Sable, asistente virtual de Petroil" data-i18n-aria="aira.panel" aria-hidden="true">
 
     <div class="aira-head">
       <div class="aira-head-avatar">
@@ -400,10 +401,10 @@
         <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
       </div>
       <div class="aira-head-actions">
-        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" title="Reiniciar conversación">
+        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" data-i18n-aria="aira.reset" title="Reiniciar la conversación" data-i18n-title="aira.reset">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
         </button>
-        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat">
+        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat" data-i18n-aria="aira.close">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
@@ -423,7 +424,7 @@
       <form class="aira-form" id="airaForm" autocomplete="off">
         <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para Ala de Sable</label>
         <input class="aira-input" id="airaInput" type="text" name="q" placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder" enterkeyhint="send" maxlength="200">
-        <button class="aira-send" type="submit" aria-label="Enviar pregunta">
+        <button class="aira-send" type="submit" aria-label="Enviar pregunta" data-i18n-aria="aira.send">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </button>
       </form>

@@ -255,19 +255,31 @@ header.navbar.navbar-scrolled .navbar-top{
 }
 .btn-contacto:hover{background:var(--route-sky); box-shadow:0 14px 28px -10px rgba(53,154,204,.55); transform:translateY(-2px);}
 .btn-contacto:active{transform:translateY(0) scale(.97);}
-
 .hamburger{
-  display:none; background:none; border:none; padding:10px;
-  width:44px; height:44px; align-items:center; justify-content:center; border-radius:10px;
-  transition:background .2s ease, transform .15s ease;
+  display:none; align-items:center; gap:10px;
+  height:44px; padding:0 14px 0 16px; border-radius:999px;
+  background:rgba(8,12,65,.04); border:1px solid rgba(8,12,65,.14);
+  color:var(--route-navy); cursor:pointer;
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .15s ease;
 }
-.hamburger:hover{background:rgba(8,12,65,.06);}
-.hamburger:active{transform:scale(.93);}
+.hamburger:hover{background:rgba(53,154,204,.10); border-color:rgba(53,154,204,.5); box-shadow:0 8px 18px -12px rgba(8,12,65,.5);}
+.hamburger:active{transform:scale(.96);}
 .hamburger:focus-visible{outline:3px solid var(--route-sky); outline-offset:2px;}
-.hamburger span{display:block; width:22px; height:2px; background:var(--route-navy); margin:4px auto; transition:transform .25s ease, opacity .25s ease;}
-.hamburger.active span:nth-child(1){transform:translateY(6px) rotate(45deg);}
-.hamburger.active span:nth-child(2){opacity:0;}
-.hamburger.active span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.hamburger-label{font-size:.78rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; line-height:1;}
+.hamburger-bars{position:relative; display:block; width:20px; height:14px; flex:none;}
+.hamburger-bars span{
+  position:absolute; right:0; height:2px; border-radius:2px; background:var(--route-navy);
+  transition:width .3s cubic-bezier(.2,.8,.2,1), transform .3s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
+}
+.hamburger-bars span:nth-child(1){top:0; width:20px;}
+.hamburger-bars span:nth-child(2){top:6px; width:13px; background:var(--route-sky);}
+.hamburger-bars span:nth-child(3){top:12px; width:17px;}
+.hamburger:hover .hamburger-bars span,
+.hamburger:focus-visible .hamburger-bars span,
+.hamburger.active .hamburger-bars span{width:20px;}
+.hamburger.active .hamburger-bars span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.hamburger.active .hamburger-bars span:nth-child(2){opacity:0; transform:scaleX(0);}
+.hamburger.active .hamburger-bars span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 .nav-overlay{
   position:fixed; inset:0; background:rgba(8,12,65,.55); backdrop-filter:blur(2px);
   opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:1300;
@@ -386,7 +398,7 @@ header.navbar.navbar-scrolled .navbar-top{
 body.nav-drawer-open{overflow:hidden;}
 
 @media (prefers-reduced-motion: reduce){
-  .nav-drawer, .nav-overlay, .route-label, .route-node, .drawer-node, .hamburger span,
+  .nav-drawer, .nav-overlay, .route-label, .route-node, .drawer-node, .hamburger-bars span,
   header.navbar, .route-logo, .nav-links::before,
   .navbar-top, .navbar-top-inner, .nav-logo img, .nav-logo, .btn-contacto, .lang-btn,
   .portal-link, .hamburger, .drawer-close, .drawer-link,

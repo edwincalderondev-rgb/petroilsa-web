@@ -33,6 +33,9 @@
 
   "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
   "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "stat.num2": { "es": "Alto", "en": "High", "pt": "Alto" },
+  "table.colHead": { "es": "Petroil RF 110+ (ejemplo)", "en": "Petroil RF 110+ (example)", "pt": "Petroil RF 110+ (exemplo)" },
+  "value.tbc": { "es": "Por confirmar", "en": "To be confirmed", "pt": "A confirmar" },
   "table.row1": { "es": "Octanaje objetivo (RON)", "en": "Target octane rating (RON)", "pt": "Octanagem alvo (RON)" },
   "table.row2": { "es": "Densidad, Kg/m³", "en": "Density, kg/m³", "pt": "Densidade, kg/m³" },
   "table.row3": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de inflamação, °C" },

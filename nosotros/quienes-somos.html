@@ -49,7 +49,7 @@
 </head>
 <body data-i18n-page="../assets/i18n/quienes-somos.json">
 
-<a href="#main" class="skip-link">Saltar al contenido</a>
+<a href="#main" class="skip-link" data-i18n="nav.skip">Saltar al contenido</a>
 <div class="scroll-track" id="scrollTrack">
   <div class="scroll-progress" id="scrollProgress"></div>
 </div>
@@ -78,8 +78,9 @@
           </div>
         </div>
         <a href="../contacto.html" class="btn-contacto" data-i18n="nav.contacto">Contacto</a>
-        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="navDrawer">
-          <span></span><span></span><span></span>
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" data-i18n-aria="nav.menuOpen" aria-expanded="false" aria-controls="navDrawer">
+          <span class="hamburger-label" data-i18n="nav.menu">Menú</span>
+          <span class="hamburger-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
       </div>
     </div>
@@ -89,7 +90,7 @@
     <a href="../index.html" class="route-logo" id="routeLogo" aria-hidden="true" tabindex="-1">
       <img src="../assets/img/Petroil-logo-blanco.png" alt="" decoding="async">
     </a>
-    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página"><span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
+    <nav class="nav-links" id="navLinks" aria-label="Navegación de esta página" data-i18n-aria="nav.pageNav"><span class="route-fill-line" id="routeFillLine" aria-hidden="true"></span>
     <a href="#proposito" class="route-link" data-section="#proposito"><span class="route-label" data-i18n="nav.route.proposito">Propósito</span><span class="route-node" aria-hidden="true"></span></a>
     <a href="#historia" class="route-link" data-section="#historia"><span class="route-label" data-i18n="nav.route.historia">Historia</span><span class="route-node" aria-hidden="true"></span></a>
     <a href="#estrategia" class="route-link" data-section="#estrategia"><span class="route-label" data-i18n="nav.route.estrategia">Estrategia</span><span class="route-node" aria-hidden="true"></span></a>
@@ -100,17 +101,17 @@
 
 
 <div class="nav-overlay" id="navOverlay"></div>
-<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+<aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menú de navegación móvil" data-i18n-aria="nav.drawer">
   <div class="drawer-top">
     <span class="drawer-logo-wrap">
       <img src="../assets/img/cropped-logo-petroil.png" alt="Petroil S.A." class="drawer-logo">
     </span>
-    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú">
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar menú" data-i18n-aria="nav.menuClose">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
   </div>
 
-  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
+  <nav class="drawer-route" aria-label="Navegación de esta página (móvil)" data-i18n-aria="nav.pageNavMobile"><span class="route-fill-line-v" id="routeFillLineV" aria-hidden="true"></span>
     <a href="#proposito" class="drawer-link" data-section="#proposito"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.proposito">Propósito</span></a>
     <a href="#historia" class="drawer-link" data-section="#historia"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.historia">Historia</span></a>
     <a href="#estrategia" class="drawer-link" data-section="#estrategia"><span class="drawer-node" aria-hidden="true"></span><span data-i18n="nav.route.estrategia">Estrategia</span></a>
@@ -613,7 +614,7 @@
   
     <div class="leader-modal-overlay" id="leaderModalOverlay">
       <div class="leader-modal" role="dialog" aria-modal="true" aria-labelledby="leaderModalName">
-        <button class="leader-modal-close" id="leaderModalClose" type="button" aria-label="Cerrar perfil">
+        <button class="leader-modal-close" id="leaderModalClose" type="button" aria-label="Cerrar perfil" data-i18n-aria="leader.modalClose">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
         <div class="leader-modal-photo"><img id="leaderModalPhoto" alt=""></div>
@@ -717,7 +718,7 @@
         <button class="map-tab" type="button" data-map="esquivensa" aria-pressed="false" data-i18n="footer.mapTab.esquivensa">Aliado Barranquilla</button>
       </div>
       <div class="map-frame-wrap">
-        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil"></iframe>
+        <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0486%2C4.6808%2C-74.0286%2C4.7008&amp;layer=mapnik&amp;marker=4.6908%2C-74.0386" title="Mapa de ubicación de Petroil" data-i18n-title="footer.mapTitle"></iframe>
       </div>
       <a class="map-gmaps-link" id="gmapsLink" href="https://maps.app.goo.gl/X6YV8dd6fGqJEsPR6" target="_blank" rel="noopener">
         <span data-i18n="footer.gmaps">Abrir en Google Maps</span>
@@ -745,16 +746,16 @@
 <div id="aira" data-base="../">
 
   <div class="aira-teaser" id="airaTeaser">
-    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso">✕</button>
+    <button class="aira-teaser-x" type="button" aria-label="Cerrar aviso" data-i18n-aria="aira.teaserClose">✕</button>
     <span data-i18n-html="aira.teaser">¿Buscas un combustible o una <b>cotización</b>? Pregúntame.</span>
   </div>
 
-  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" aria-expanded="false" aria-controls="airaPanel">
+  <button class="aira-launcher" id="airaLauncher" type="button" aria-label="Abrir el chat con Ala de Sable, asistente virtual de Petroil" data-i18n-aria="aira.open" aria-expanded="false" aria-controls="airaPanel">
     <span class="aira-launcher-dot" aria-hidden="true"></span>
     <img class="aira-launcher-avatar" src="../assets/img/ala-de-sable.webp" alt="" width="86" height="94" decoding="async">
   </button>
 
-  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con Ala de Sable, asistente virtual de Petroil" aria-hidden="true">
+  <div class="aira-panel" id="airaPanel" role="dialog" aria-label="Chat con Ala de Sable, asistente virtual de Petroil" data-i18n-aria="aira.panel" aria-hidden="true">
 
     <div class="aira-head">
       <div class="aira-head-avatar">
@@ -766,10 +767,10 @@
         <span data-i18n="chat.status">Asistente virtual de Petroil · En línea</span>
       </div>
       <div class="aira-head-actions">
-        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" title="Reiniciar conversación">
+        <button class="aira-icon-btn" id="airaReset" type="button" aria-label="Reiniciar la conversación" data-i18n-aria="aira.reset" title="Reiniciar la conversación" data-i18n-title="aira.reset">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
         </button>
-        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat">
+        <button class="aira-icon-btn" id="airaClose" type="button" aria-label="Cerrar el chat" data-i18n-aria="aira.close">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         </button>
       </div>
@@ -789,7 +790,7 @@
       <form class="aira-form" id="airaForm" autocomplete="off">
         <label class="aira-sr" for="airaInput" data-i18n="aira.label">Escribe tu pregunta para Ala de Sable</label>
         <input class="aira-input" id="airaInput" type="text" name="q" placeholder="Escribe tu pregunta…" data-i18n-placeholder="aira.placeholder" enterkeyhint="send" maxlength="200">
-        <button class="aira-send" type="submit" aria-label="Enviar pregunta">
+        <button class="aira-send" type="submit" aria-label="Enviar pregunta" data-i18n-aria="aira.send">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
         </button>
       </form>

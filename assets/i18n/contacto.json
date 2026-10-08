@@ -27,6 +27,10 @@
   "form.correo": { "es": "Correo electrónico", "en": "Email address", "pt": "E-mail" },
   "form.telefono": { "es": "Teléfono / celular", "en": "Phone / mobile", "pt": "Telefone / celular" },
   "form.telefono.ph": { "es": "Ej: +57 300 000 0000", "en": "E.g.: +57 300 000 0000", "pt": "Ex: +57 300 000 0000" },
+  "form.telefono.title": { "es": "Solo números, espacios y los signos + ( ) -", "en": "Numbers, spaces and the + ( ) - signs only", "pt": "Apenas números, espaços e os sinais + ( ) -" },
+  "form.correo.ph": { "es": "nombre@empresa.com", "en": "name@company.com", "pt": "nome@empresa.com" },
+  "review.closeEdit": { "es": "Cerrar y seguir editando", "en": "Close and keep editing", "pt": "Fechar e continuar editando" },
+  "side.aria": { "es": "Canales de contacto directo", "en": "Direct contact channels", "pt": "Canais de contato direto" },
   "form.ciudad": { "es": "Ciudad / lugar de entrega", "en": "City / delivery location", "pt": "Cidade / local de entrega" },
   "form.ciudad.ph": { "es": "Ej: Santa Marta, Magdalena", "en": "E.g.: Santa Marta, Magdalena", "pt": "Ex: Santa Marta, Magdalena" },
 
@@ -52,6 +56,7 @@
   "success.notOpened": { "es": "¿No se abrió nada? Puede que tu navegador haya bloqueado la ventana nueva: usa los botones de abajo.", "en": "Nothing opened? Your browser may have blocked the new window — use the buttons below.", "pt": "Nada abriu? Seu navegador pode ter bloqueado a nova janela: use os botões abaixo." },
   "success.reopen": { "es": "Abrir de nuevo", "en": "Open again", "pt": "Abrir novamente" },
   "success.reopenWith": { "es": "Abrir {channel} de nuevo", "en": "Open {channel} again", "pt": "Abrir {channel} novamente" },
+  "channel.mailto.short": { "es": "tu aplicación de correo", "en": "your email app", "pt": "seu app de e-mail" },
   "success.otherChannel": { "es": "Elegir otro canal", "en": "Choose another channel", "pt": "Escolher outro canal" },
   "success.reset": { "es": "Hacer otra solicitud", "en": "Make another request", "pt": "Fazer outra solicitação" },
 

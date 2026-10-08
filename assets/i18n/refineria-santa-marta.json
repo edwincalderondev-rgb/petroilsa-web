@@ -91,5 +91,7 @@
   "sm.cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
   "sm.next.kicker": { "es": "También en Instalaciones", "en": "Also in Facilities", "pt": "Também em Instalações" },
   "sm.next.title": { "es": "Esquivensa · Barranquilla", "en": "Esquivensa · Barranquilla", "pt": "Esquivensa · Barranquilla" },
-  "sm.next.desc": { "es": "Terminal logístico, planta de rectificación y laboratorio en la Zona Franca de Barranquilla.", "en": "Logistics terminal, rectification plant and laboratory in the Barranquilla Free Trade Zone.", "pt": "Terminal logístico, planta de retificação e laboratório na Zona Franca de Barranquilla." }
+  "sm.next.desc": { "es": "Terminal logístico, planta de rectificación y laboratorio en la Zona Franca de Barranquilla.", "en": "Logistics terminal, rectification plant and laboratory in the Barranquilla Free Trade Zone.", "pt": "Terminal logístico, planta de retificação e laboratório na Zona Franca de Barranquilla." },
+  "sm.film.aria": { "es": "Recorrido aéreo por la refinería de Petroil en Santa Marta", "en": "Aerial tour of the Petroil refinery in Santa Marta", "pt": "Passeio aéreo pela refinaria da Petroil em Santa Marta" },
+  "sm.mapFrame.title": { "es": "Mapa de la refinería de Petroil en Santa Marta", "en": "Map of the Petroil refinery in Santa Marta", "pt": "Mapa da refinaria da Petroil em Santa Marta" }
 }

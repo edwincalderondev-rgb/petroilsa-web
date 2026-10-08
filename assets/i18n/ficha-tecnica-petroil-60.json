@@ -1,6 +1,6 @@
 {
   "breadcrumb.inicio": { "es": "Inicio", "en": "Home", "pt": "Início" },
-  "breadcrumb.current": { "es": "Petroil 60 · Nafta Virgen", "en": "Petroil 60 · Nafta Virgen", "pt": "Petroil 60 · Nafta Virgem" },
+  "breadcrumb.current": { "es": "Petroil 60 · Nafta Virgen", "en": "Petroil 60 · Virgin Naphtha", "pt": "Petroil 60 · Nafta Virgem" },
 
   "hero.badge1": { "es": "Nafta Virgen", "en": "Virgin Naphtha", "pt": "Nafta Virgem" },
   "hero.badge2": { "es": "Uso Industrial", "en": "Industrial use", "pt": "Uso industrial" },
@@ -30,6 +30,8 @@
 
   "section.techTitle": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
   "table.paramHeader": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.typical": { "es": "Típico 28", "en": "Typical 28", "pt": "Típico 28" },
+  "quick.value4": { "es": "Típico 28 °C", "en": "Typical 28 °C", "pt": "Típico 28 °C" },
   "table.row1": { "es": "API", "en": "API", "pt": "API" },
   "table.row2": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de inflamação, °C" },
   "table.row3": { "es": "Densidad, Kg/m³ (dato de ejemplo)", "en": "Density, kg/m³ (sample data)", "pt": "Densidade, kg/m³ (dado de exemplo)" },

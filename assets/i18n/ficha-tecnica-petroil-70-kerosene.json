@@ -35,6 +35,7 @@
 
   "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
   "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.colHead": { "es": "Petroil 70 Kerosene (ejemplo)", "en": "Petroil 70 Kerosene (example)", "pt": "Petroil 70 Querosene (exemplo)" },
   "table.row1": { "es": "Gravedad API", "en": "API gravity", "pt": "Gravidade API" },
   "table.row2": { "es": "Punto de Inflamación, °C", "en": "Flash point, °C", "pt": "Ponto de inflamação, °C" },
   "table.row3": { "es": "Contenido de Azufre (ppm)", "en": "Sulfur content (ppm)", "pt": "Teor de enxofre (ppm)" },

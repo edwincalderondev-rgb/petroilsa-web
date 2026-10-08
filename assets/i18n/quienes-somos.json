@@ -169,5 +169,6 @@
 
   "cta.desc": { "es": "Conoce nuestros productos y servicios, o escríbenos directamente para explorar oportunidades de negocio con Petroil.", "en": "Discover our products and services, or write to us directly to explore business opportunities with Petroil.", "pt": "Conheça nossos produtos e serviços, ou escreva diretamente para explorar oportunidades de negócio com a Petroil." },
   "cta.btnProducts": { "es": "Ver productos", "en": "View products", "pt": "Ver produtos" },
-  "cta.btnTalk": { "es": "Hablemos", "en": "Let's talk", "pt": "Vamos conversar" }
+  "cta.btnTalk": { "es": "Hablemos", "en": "Let's talk", "pt": "Vamos conversar" },
+  "leader.modalClose": { "es": "Cerrar perfil", "en": "Close profile", "pt": "Fechar perfil" }
 }

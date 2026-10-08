@@ -1,9 +1,10 @@
 {
   "breadcrumb.home": { "es": "Inicio", "en": "Home", "pt": "Início" },
+  "breadcrumb.current": { "es": "Petroil 87 R · Gasolina Corriente", "en": "Petroil 87 R · Regular Gasoline", "pt": "Petroil 87 R · Gasolina Comum" },
 
   "hero.badge1": { "es": "Gasolina Corriente", "en": "Regular Gasoline", "pt": "Gasolina Comum" },
   "hero.badge3": { "es": "Primera en Colombia", "en": "First in Colombia", "pt": "Primeira na Colômbia" },
-  "hero.title": { "es": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>", "en": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>", "pt": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>" },
+  "hero.title": { "es": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Corriente</span>", "en": "Petroil 87 R <span class=\"pds-title-sub\">Regular Gasoline</span>", "pt": "Petroil 87 R <span class=\"pds-title-sub\">Gasolina Comum</span>" },
   "hero.lead": { "es": "Primera Gasolina Corriente producida en Colombia, con RON 87.", "en": "The first regular gasoline produced in Colombia, with RON 87.", "pt": "Primeira gasolina comum produzida na Colômbia, com RON 87." },
 
   "cta.quote": { "es": "Solicitar cotización", "en": "Request a quote", "pt": "Solicitar cotação" },
@@ -32,6 +33,7 @@
 
   "section.specs": { "es": "Características técnicas", "en": "Technical characteristics", "pt": "Características técnicas" },
   "table.paramHead": { "es": "Parámetro", "en": "Parameter", "pt": "Parâmetro" },
+  "table.normHead": { "es": "Norma 40444", "en": "Standard 40444", "pt": "Norma 40444" },
   "table.row1": { "es": "Octanaje (RON)", "en": "Octane rating (RON)", "pt": "Octanagem (RON)" },
   "table.row2": { "es": "Contenido de Azufre (ppm) (ejemplo)", "en": "Sulfur content (ppm) (sample)", "pt": "Teor de enxofre (ppm) (exemplo)" },
 

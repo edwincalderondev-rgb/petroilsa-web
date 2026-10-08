@@ -95,5 +95,6 @@
   "eq.cta.products": { "es": "Ver el portafolio", "en": "View the portfolio", "pt": "Ver o portfólio" },
   "eq.next.kicker": { "es": "También en Instalaciones", "en": "Also in Facilities", "pt": "Também em Instalações" },
   "eq.next.title": { "es": "Refinería Santa Marta", "en": "Santa Marta refinery", "pt": "Refinaria Santa Marta" },
-  "eq.next.desc": { "es": "La Planta Mamatoco, donde Petroil refina y formula sus combustibles de transición.", "en": "The Mamatoco Plant, where Petroil refines and formulates its transition fuels.", "pt": "A Planta Mamatoco, onde a Petroil refina e formula seus combustíveis de transição." }
+  "eq.next.desc": { "es": "La Planta Mamatoco, donde Petroil refina y formula sus combustibles de transición.", "en": "The Mamatoco Plant, where Petroil refines and formulates its transition fuels.", "pt": "A Planta Mamatoco, onde a Petroil refina e formula seus combustíveis de transição." },
+  "eq.mapFrame.title": { "es": "Mapa de Esquivensa en la Zona Franca de Barranquilla", "en": "Map of Esquivensa in the Barranquilla Free Trade Zone", "pt": "Mapa da Esquivensa na Zona Franca de Barranquilla" }
 }

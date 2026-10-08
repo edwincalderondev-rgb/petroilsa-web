@@ -46,13 +46,13 @@
 <main class="nf-main">
   <div class="container">
     <div class="nf-code" aria-hidden="true">404</div>
-    <h1>No encontramos esta página</h1>
-    <p>Puede que la dirección haya cambiado con el nuevo sitio de Petroil o que ya no esté disponible.</p>
-    <p lang="en">This page could not be found.</p>
+    <h1 data-t="h1">No encontramos esta página</h1>
+    <p data-t="p">Puede que la dirección haya cambiado con el nuevo sitio de Petroil o que ya no esté disponible.</p>
+    <p lang="en" id="nfAlt">This page could not be found.</p>
     <div class="nf-actions">
-      <a class="btn-primary" href="/">Ir al inicio</a>
-      <a class="btn-outline" href="/productos.html">Ver productos</a>
-      <a class="btn-outline" href="/contacto.html">Contacto</a>
+      <a class="btn-primary" href="/" data-t="home">Ir al inicio</a>
+      <a class="btn-outline" href="/productos.html" data-t="prod">Ver productos</a>
+      <a class="btn-outline" href="/contacto.html" data-t="contact">Contacto</a>
     </div>
   </div>
 </main>
@@ -62,6 +62,25 @@
     Petroil S.A. · <a href="mailto:contacto@petroilsa.com">contacto@petroilsa.com</a>
   </div>
 </footer>
+
+<script>
+  // Mismo idioma que el resto del sitio. Esta página no carga i18n.js: Apache la
+  // sirve a cualquier profundidad y no lleva diccionario.
+  (function () {
+    var T = {
+      en: { title: 'Page not found | Petroil S.A.', h1: 'We couldn’t find this page', p: 'The address may have changed with the new Petroil website, or the page is no longer available.', home: 'Go to home', prod: 'View products', contact: 'Contact' },
+      pt: { title: 'Página não encontrada | Petroil S.A.', h1: 'Não encontramos esta página', p: 'O endereço pode ter mudado com o novo site da Petroil ou a página não está mais disponível.', home: 'Ir para o início', prod: 'Ver produtos', contact: 'Contato' }
+    };
+    var lang;
+    try { lang = localStorage.getItem('petroil-lang'); } catch (e) {}
+    var t = T[lang];
+    if (!t) return;
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = t[el.getAttribute('data-t')]; });
+    document.getElementById('nfAlt').hidden = true;
+  })();
+</script>
 
 </body>
 </html>
