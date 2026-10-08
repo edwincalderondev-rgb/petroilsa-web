@@ -23,7 +23,6 @@
   "nav.pageNavMobile": { "es": "Navegación de esta página (móvil)", "en": "Navigation for this page (mobile)", "pt": "Navegação desta página (celular)" },
   "nav.mainNav": { "es": "Navegación principal", "en": "Main navigation", "pt": "Navegação principal" },
   "nav.mainNavMobile": { "es": "Navegación principal móvil", "en": "Main navigation (mobile)", "pt": "Navegação principal (celular)" },
-  "nav.menu": { "es": "Menú", "en": "Menu", "pt": "Menu" },
   "nav.breadcrumb": { "es": "Ruta de navegación", "en": "Breadcrumb", "pt": "Trilha de navegação" },
   "share.whatsapp": { "es": "Compartir en WhatsApp", "en": "Share on WhatsApp", "pt": "Compartilhar no WhatsApp" },
   "share.linkedin": { "es": "Compartir en LinkedIn", "en": "Share on LinkedIn", "pt": "Compartilhar no LinkedIn" },
