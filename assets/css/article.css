@@ -2,7 +2,7 @@
   --ph-gradient:linear-gradient(135deg, rgba(8,12,65,.93) 0%, rgba(21,71,114,.85) 55%, rgba(53,154,204,.42) 100%);
 }
 .page-hero{
-  position:relative; overflow:hidden; padding:158px 0 74px; color:#fff;
+  position:relative; overflow:hidden; padding:56px 0 74px; color:#fff;
   background-color:#080C41;
   background-image:var(--ph-gradient);
   background-size:cover; background-position:center;
@@ -198,7 +198,7 @@ body.lightbox-open{overflow:hidden;}
   .photo-gallery{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:720px){
-  .page-hero{padding:130px 0 56px;}
+  .page-hero{padding:48px 0 56px;}
   .process-flow{grid-template-columns:1fr;}
   .process-step::after{display:none;}
   .photo-gallery{grid-template-columns:1fr;}

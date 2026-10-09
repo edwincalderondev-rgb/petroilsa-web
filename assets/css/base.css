@@ -86,7 +86,7 @@ button{font-family:inherit; cursor:pointer;}
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity:1; transform:none; transition:none; }
 }
-.prose > p, .ra-block > p, .sgi-block > p, .pd-block > p, .prose .pd-notice p, .prose .pd-callout p, .prose .pd-channels > p, .prose .sgi-scope p, .ra-cert-body p, .iso-row p, .page-hero p, .about-text p, .ally-lead, .inno-desc, .horizons-desc, .prod-portfolio-head p, .prod-portfolio-aside p, .prod-sectors p, .prod-contact p, .qs-essence-card p, .qs-vision-text p, .cs-face p, .cs-pillar p, .cs-card p, .leader-card:first-child .leader-bio-short, .leader-modal-bio p, .pds-emblem p, .pds-quote p, .pq-faq-list details p, .inst-prose > p{
+.prose > p, .ra-block > p, .sgi-block > p, .pd-block > p, .prose .pd-notice p, .prose .pd-callout p, .prose .pd-channels > p, .prose .sgi-scope p, .ra-cert-body p, .iso-row p, .page-hero p, .about-text p, .ally-lead, .inno-desc, .horizons-desc, .prod-intro-text p, .prod-sectors-head p, .qs-essence-card p, .qs-vision-text p, .cs-face p, .cs-pillar p, .cs-card p, .leader-card:first-child .leader-bio-short, .leader-modal-bio p, .pds-emblem p, .pds-quote p, .fp-prose > p, .fp-emblem-why p, .fp-quote p, .pq-faq-list details p, .inst-prose > p{
   text-align:justify;
   text-justify:inter-word;
   -webkit-hyphens:auto;

@@ -1,10 +1,10 @@
 .hero{
   position:relative;
   overflow:hidden;
-  min-height:88vh;
+  min-height:max(540px, calc(100svh - 194px));
   display:flex;
   align-items:center;
-  padding:110px 0 60px;
+  padding:48px 0 56px;
   background:var(--navy-deep);
   color:#fff;
 }
@@ -85,4 +85,7 @@
   .hero-inner{justify-content:center; text-align:center;}
   .hero-content{max-width:100%;}
   .hero-ctas{justify-content:center;}
+}
+@media (max-width:720px){
+  .hero{min-height:max(500px, calc(100svh - 88px)); padding:40px 0 48px;}
 }

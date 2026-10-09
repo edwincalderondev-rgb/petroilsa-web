@@ -734,13 +734,15 @@ html.rg-sin-gl .rg-fondo{
 }
 .rg-hdv:hover .rg-hdv-cta{ transform:translateX(3px); }
 .rg-on .product-card.rg-hover{
-  transform:translateY(-6px); border-color:var(--pb-blue, #3499CC);
-  box-shadow:0 18px 38px -18px rgba(8, 12, 65, .34);
+  transform:translateY(-6px); border-color:var(--teal-light, #359ACC);
+  box-shadow:0 30px 60px -30px rgba(8, 12, 65, .5);
 }
 .rg-on .product-card.has-video.rg-hover .product-poster{ opacity:0; }
 .rg-on .product-card.has-video.rg-hover .product-video{ opacity:1; }
 .rg-on .product-card.rg-hover .product-img-wrap img,
 .rg-on .product-card.rg-hover .product-img-wrap .product-video{ transform:scale(1.07); }
+.rg-on .product-card.rg-hover .product-arrow{ color:var(--navy, #080C41); }
+.rg-on .product-card.rg-hover .product-arrow svg{ transform:translateX(4px); }
 .rg-cursor{
   position:fixed; left:0; top:0; z-index:1340;
   width:26px; height:30px; pointer-events:none;

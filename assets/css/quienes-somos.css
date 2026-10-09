@@ -18,7 +18,7 @@
 .qs-breadcrumb a{color:#cfe3ea; transition:color .2s;}
 .qs-breadcrumb a:hover{color:var(--teal-light);}
 .qs-breadcrumb svg{width:12px; height:12px; opacity:.6;}
-.qs-hero{min-height:82vh; padding:120px 0 90px; position:relative;}
+.qs-hero{min-height:calc(100svh - 194px); padding:56px 0 90px; position:relative;}
 .qs-hero .hero-inner{display:block;}
 .qs-hero-content{max-width:820px; position:relative; z-index:2;}
 .qs-hero-media{position:absolute; inset:0; z-index:0; overflow:hidden;}
@@ -402,7 +402,7 @@
   .qs-vision{padding:36px 24px; margin-top:64px;}
   .qs-vision-grid{grid-template-columns:1fr;}
   .qs-history-foot{flex-direction:column; align-items:flex-start;}
-  .qs-hero{padding:130px 0 70px;}
+  .qs-hero{padding:48px 0 70px;}
   .qs-essence-card{padding:32px 26px;}
   .qs-forces-grid{grid-template-columns:1fr;}
   .qs-summit-grid{grid-template-columns:1fr;}

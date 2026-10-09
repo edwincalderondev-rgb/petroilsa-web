@@ -8,6 +8,8 @@
 
   "hero.lead": { "es": "Combustibles y soluciones diseñadas para impulsar industrias en movimiento.", "en": "Fuels and solutions designed to power industries in motion.", "pt": "Combustíveis e soluções projetados para impulsionar indústrias em movimento." },
   "hero.note": { "es": "Un portafolio confiable, eficiente y adaptable a las necesidades de cada operación.", "en": "A reliable, efficient portfolio that adapts to the needs of every operation.", "pt": "Um portfólio confiável, eficiente e adaptável às necessidades de cada operação." },
+  "hero.title": { "es": "Productos <b>Petroil</b>", "en": "Petroil <b>products</b>", "pt": "Produtos <b>Petroil</b>" },
+  "hero.ctaCatalog": { "es": "Explorar el catálogo", "en": "Explore the catalog", "pt": "Explorar o catálogo" },
   "hero.tag": { "es": "Energía que impulsa el progreso", "en": "Energy that drives progress", "pt": "Energia que impulsiona o progresso" },
 
   "portfolio.eyebrow": { "es": "Nuestro portafolio", "en": "Our portfolio", "pt": "Nosso portfólio" },
@@ -23,6 +25,7 @@
   "family.marine.desc": { "es": "Soluciones para el sector marítimo.", "en": "Solutions for the marine sector.", "pt": "Soluções para o setor marítimo." },
   "family.especializados": { "es": "Especializados", "en": "Specialized", "pt": "Especializados" },
   "family.especializados.desc": { "es": "Aditivos y mejoradores para un mayor desempeño.", "en": "Additives and improvers for greater performance.", "pt": "Aditivos e melhoradores para maior desempenho." },
+  "family.cta": { "es": "Ver productos", "en": "View products", "pt": "Ver produtos" },
   "family.todos": { "es": "Todos", "en": "All", "pt": "Todos" },
 
   "sectors.eyebrow": { "es": "Por aplicación", "en": "By application", "pt": "Por aplicação" },
@@ -54,11 +57,11 @@
   "catalog.page.next": { "es": "Página siguiente", "en": "Next page", "pt": "Próxima página" },
   "catalog.page.goto": { "es": "Ir a la página {n}", "en": "Go to page {n}", "pt": "Ir para a página {n}" },
 
-  "products.viewProduct": { "es": "Ver producto →", "en": "View product →", "pt": "Ver produto →" },
+  "products.viewProduct": { "es": "Ver producto", "en": "View product", "pt": "Ver produto" },
   "products.inDevelopment": { "es": "En desarrollo", "en": "In development", "pt": "Em desenvolvimento" },
 
-  "products.p40.name": { "es": "Petroil 40 A MAX", "en": "Petroil 40 A MAX", "pt": "Petroil 40 A MAX" },
-  "products.p40.desc": { "es": "Diésel de uso general con base orgánica renovable.", "en": "General-use diesel with a renewable organic base.", "pt": "Diesel de uso geral com base orgânica renovável." },
+  "products.p40.name": { "es": "A MAX Diesel Alternativo", "en": "A MAX Alternative Diesel", "pt": "A MAX Diesel Alternativo" },
+  "products.p40.desc": { "es": "Destilado medio especial para aplicaciones industriales, blending y procesos térmicos.", "en": "Special middle distillate for industrial applications, blending and thermal processes.", "pt": "Destilado médio especial para aplicações industriais, blending e processos térmicos." },
 
   "products.p5010.name": { "es": "ULSD Premium", "en": "ULSD Premium", "pt": "ULSD Premium" },
   "products.p5010.desc": { "es": "Diésel ultra bajo en azufre de alto desempeño.", "en": "High-performance ultra-low sulfur diesel.", "pt": "Diesel de ultrabaixo teor de enxofre e alto desempenho." },
