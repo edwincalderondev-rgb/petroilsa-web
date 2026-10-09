@@ -5,10 +5,13 @@
 #   ~/repositorios/petroilsa-web      →  ~/public_html                       (producción)
 #   ~/repositorios/petroilsa-pruebas  →  la primera que exista de 3 rutas    (ensayo, ver abajo)
 #
-# Este repo (petroilsa-web, público) ya contiene SOLO lo publicable: lo arma
-# el Action del repo privado (.github/workflows/publicar-dist.yml) con
-# `git archive` + export-ignore, así que aquí no hace falta filtrar por
-# nombre de archivo — se copia todo el árbol menos .git/.cpanel.yml/scripts.
+# Este repo (petroilsa-web) ya trae SOLO lo publicable. Pero public_html es
+# COMPARTIDO: ahí viven las apps de otro técnico, los subdominios (pruebas,
+# anterior…), .well-known y cgi-bin. Por eso en la raíz del destino NUNCA se
+# borra nada: cada carpeta del sitio se sincroniza por su lado con
+# rsync --delete, los archivos de la raíz se copian sin tocar los ajenos, y
+# index.html y .htaccess van al final, en ese orden, para que el sitio anterior
+# siga respondiendo hasta el último instante.
 
 set -euo pipefail
 
@@ -35,18 +38,41 @@ if [ ! -d "$DESTINO" ]; then
   echo "ERROR: no existe $DESTINO. No se publicó nada." >&2
   exit 1
 fi
+command -v rsync >/dev/null 2>&1 || { echo "ERROR: se necesita rsync en el servidor. No se publicó nada." >&2; exit 1; }
 
 cd "$REPO"
 
-if command -v rsync >/dev/null 2>&1; then
-  # --delete: lo que se borra en el repo dist se borra en el servidor.
-  rsync -rlt --delete --chmod=D755,F644 \
-    --exclude='.git' --exclude='.cpanel.yml' --exclude='scripts' \
-    "$REPO/" "$DESTINO/"
-else
-  echo "ERROR: se necesita rsync en el servidor." >&2
-  exit 1
-fi
+# Carpetas del sitio = las de primer nivel del repo. Se valida todo antes de
+# copiar nada: una carpeta con punto en el nombre (las de dominios ajenos) o
+# con nombre de sistema/subdominio nunca puede recibir un --delete.
+CARPETAS=()
+for c in */; do
+  c="${c%/}"
+  [ "$c" = "scripts" ] && continue
+  if [[ ! "$c" =~ ^[a-z0-9][a-z0-9-]*$ ]] || [[ "$c" =~ ^(pruebas|anterior|repositorios|cgi-bin|wp-.*)$ ]]; then
+    echo "ERROR: carpeta no permitida en el sitio: '$c'. No se publicó nada." >&2
+    exit 1
+  fi
+  CARPETAS+=("$c")
+done
+
+ARCHIVOS=()
+for a in *; do
+  [ -f "$a" ] || continue
+  [ "$a" = "index.html" ] && continue
+  ARCHIVOS+=("$a")
+done
+for a in index.html .htaccess; do
+  [ -f "$a" ] || { echo "ERROR: falta $a en el repositorio. No se publicó nada." >&2; exit 1; }
+done
+
+for c in "${CARPETAS[@]}"; do
+  rsync -rlt --delete --chmod=D755,F644 --exclude='.*' "$c/" "$DESTINO/$c/"
+done
+for a in "${ARCHIVOS[@]}" index.html .htaccess; do
+  cp -f "$a" "$DESTINO/$a"
+  chmod 644 "$DESTINO/$a"
+done
 
 COMMIT="$(git rev-parse --short HEAD 2>/dev/null || echo '?')"
 LINEA="$(date '+%Y-%m-%d %H:%M:%S') | $(basename "$REPO") | commit $COMMIT | → $DESTINO"
