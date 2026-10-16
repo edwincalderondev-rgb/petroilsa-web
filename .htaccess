@@ -86,10 +86,12 @@ RewriteRule ^ https://petroilsa.com%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 
-# 1.4  Nada que empiece por punto, ni archivos de trabajo o registros.
+# 1.4  Nada que empiece por punto, ni archivos de trabajo, copias o registros
+#      (también en mayúsculas: Linux distingue BACKUP.ZIP de backup.zip).
 RewriteRule (^|/)\. - [R=404,L]
 RewriteRule (^|/)error_log$ - [R=404,L]
-RewriteRule \.(md|sh|ps1|bat|yml|yaml|log|sql|bak|zip|tar|gz|ini)$ - [R=404,L]
+RewriteRule \.(md|sh|ps1|bat|cmd|yml|yaml|log|sql|bak|bk|old|orig|save|swp|tmp|zip|rar|7z|tar|gz|tgz|bz2|xz|ini|inc|conf|env)$ - [R=404,L,NC]
+RewriteRule ~$ - [R=404,L]
 RewriteRule ^(pruebas|anterior|repositorios)(/|$) - [R=404,L]
 RewriteRule ^0x\.txt$ - [R=404,L]
 
@@ -119,13 +121,15 @@ RewriteRule ^(en/)?(productos|products)/petroil-60-(nafta-virgen|virgin-naphtha)
 RewriteRule ^(en/)?(productos|products)(/.*)?$ /productos.html [R=301,L,QSD]
 
 # 2.4  Páginas institucionales
-RewriteRule ^(quienes-somos|conocenos|about-us)/?$ /nosotros/quienes-somos.html [R=301,L,QSD]
-RewriteRule ^(contacto|contactanos|contact|precios|prices)/?$ /contacto.html [R=301,L,QSD]
-RewriteRule ^pqrs/?$ /legal/pqrsf.html [R=301,L,QSD]
-RewriteRule ^(politica-de-proteccion-de-datos|politica-de-cookies-y-privacidad|cookie-and-privacy-preferences)/?$ /legal/politica-datos.html [R=301,L,QSD]
-RewriteRule ^petroil-english/?$ / [R=301,L,QSD]
-RewriteRule ^(servicios|services)/?$ /#servicios [R=301,L,NE,QSD]
-RewriteRule ^(innovacion|innovation)/?$ /#innovacion [R=301,L,NE,QSD]
+#      (con o sin el /en/ que el WordPress anteponía a la versión en inglés;
+#      /petroil/ y /petroil-english/ eran portadas alternativas)
+RewriteRule ^(en/)?(quienes-somos|conocenos|about-us)/?$ /nosotros/quienes-somos.html [R=301,L,QSD]
+RewriteRule ^(en/)?(contacto|contactanos|contact|precios|prices)/?$ /contacto.html [R=301,L,QSD]
+RewriteRule ^(en/)?pqrs/?$ /legal/pqrsf.html [R=301,L,QSD]
+RewriteRule ^(en/)?(politica-de-proteccion-de-datos|politica-de-cookies-y-privacidad|cookie-and-privacy-preferences)/?$ /legal/politica-datos.html [R=301,L,QSD]
+RewriteRule ^(en|petroil|petroil-english)/?$ / [R=301,L,QSD]
+RewriteRule ^(en/)?(servicios|services)/?$ /#servicios [R=301,L,NE,QSD]
+RewriteRule ^(en/)?(innovacion|innovation)/?$ /#innovacion [R=301,L,NE,QSD]
 
 # 2.5  Secciones y categorías de noticias
 RewriteRule ^(noticias|category)/responsabilidad-ambiental(/page/[0-9]+)?/?$ /sostenibilidad/responsabilidad-ambiental.html [R=301,L,QSD]
@@ -146,7 +150,32 @@ RewriteRule ^(dia-de-los-ninos-2024|el-valor-de-nuestro-equipo-construyendo-junt
 
 RewriteRule ^(comunicado-febrero-2024|alianza-con-primax|alianza-con-biomax|alianza-comercial-con-codis|alternative-environmental-technologies-agrega-socio-de-distribucion-para-paises-seleccionados-de-america-latina|normatividad-en-combustibles-liquidos-derivados-del-petroleo)/?$ /nosotros/quienes-somos.html [R=301,L,QSD]
 
-# 2.7  Rutas internas de WordPress: ya no existen (410 Gone)
+# 2.7  Archivos del WordPress anterior que hoy tienen equivalente. Cada PDF
+#      va a la página nueva que equivale a la vieja que lo enlazaba (el sitio
+#      ya no publica fichas en PDF: se piden desde la ficha); cada imagen que
+#      el sitio conserva con el mismo nombre, a su copia de assets/img (p. ej.
+#      el logo de una firma de correo). Nunca a la portada: Google lo tomaría
+#      por un 404 disfrazado. Lo demás de /wp-content/ sigue en 410 (2.8).
+RewriteRule ^wp-content/uploads/2023/01/8_PETROIL-50-10_CERTIFICADO-DE-ANALISIS-COCNG-22-01708_v2\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-50-10.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/01/1_Petroil-100-FO-4-ISO-8217-2017-F-RMA-10-mejorador-de-IFO-Sample-Nr-13585938\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-100-mifos.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/01/Petroil-250-Fuel-Oil-No-4-Uso-Industrial-Sample-Nr-13956054_16_11_2022-\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-250.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/01/4_Petroil-300-VLSFO-ISO-8217-2017-Sample-Nr-13670696\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-300.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/01/2_Petroil-500-Marine-DMA_MGO-FO-4_ISO-8217-2017-Sample-Nr-13903616-1\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-500.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2024/09/Petroil_800_HC-G\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-800-hc.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/01/7_PETROIL-800-HC-G-Combustible-Industrial-2-Sample-Nr-13643580\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-800-g.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2024/09/Petroil_40A_Max_TM2\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-40-a-max.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/08/10_PETROIL_90_Gasolina_Premium_COCNG-23-02102_10_07_2023\.pdf$ /fichas-tecnicas/ficha-tecnica-petroil-90.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2023/05/Brochure-Combustibles-Liquidos\.pdf$ /productos.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/(2023/04/3_Fusion_of_Immiscible_Substances_Technology_-_FISTech|2023/08/Resolucion_0065[01]_[^/]+|2025/05/Resolucion-5-2025-000(385|490))\.pdf$ /instalaciones/refineria-santa-marta.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2024/07/Infografia-Un-Museo\.pdf$ /sostenibilidad/responsabilidad-ambiental.html [R=301,L,QSD]
+RewriteRule ^wp-content/uploads/2022/09/cropped-favicon-petroil-[0-9]+x[0-9]+\.png$ /assets/img/cropped-favicon-petroil-270x270.png [R=301,L,QSD]
+#      La imagen con su nombre, o una de sus copias reducidas (nombre-300x168.jpg).
+RewriteCond %{DOCUMENT_ROOT}/assets/img/$1 -f
+RewriteRule ^wp-content/uploads/[0-9]{4}/[0-9]{2}/([^/]+\.(png|jpe?g|webp|gif))$ /assets/img/$1 [R=301,L,QSD,NC]
+RewriteCond %{DOCUMENT_ROOT}/assets/img/$1.$2 -f
+RewriteRule ^wp-content/uploads/[0-9]{4}/[0-9]{2}/([^/]+)-[0-9]+x[0-9]+\.(png|jpe?g|webp|gif)$ /assets/img/$1.$2 [R=301,L,QSD,NC]
+
+# 2.8  Rutas internas de WordPress: ya no existen (410 Gone)
 #      (/index.php solo si el visitante lo pidió: nunca la búsqueda interna de portada)
 RewriteCond %{THE_REQUEST} ^[A-Z]+\s/+index\.php[\s?/]
 RewriteRule ^index\.php$ / [R=301,L,QSD]
@@ -155,6 +184,17 @@ RewriteRule ^(wp-[^/]*|xmlrpc)\.php$ - [G]
 RewriteRule ^(readme\.html|license\.txt)$ - [G]
 RewriteRule (^|/)(feed|comments/feed|trackback|embed)/?$ - [G]
 RewriteRule ^(author|tag)/ - [G]
+
+# 2.9  Del resto de lo que haya en public_html, por este sitio solo se sirven
+#      los tipos de archivo que el sitio usa. Una copia, un comprimido, una
+#      nota o un PHP que alguien deje ahí (p. ej. wordfence-waf.php, que
+#      PHP ejecutaría) responde 404. Si el sitio estrena un tipo de archivo,
+#      agrégalo aquí: scripts/plantilla-dist/probar-htaccess.mjs pide todos
+#      los archivos publicados y falla si alguno no responde 200.
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !\.(html|css|js|json|xml|webp|avif|jpe?g|png|gif|svg|ico|mp4|webm|pdf|woff2?)$ [NC]
+RewriteCond %{REQUEST_URI} !^/robots\.txt$
+RewriteRule ^ - [R=404,L]
 
 # ---------------------------------------------------------------------
 #  3. Carpetas sin página de inicio: 404 en lugar de un listado.
@@ -181,6 +221,7 @@ RewriteRule ^(.+)$ - [R=404,L]
 
   <IfModule mime_module>
     AddType image/webp .webp
+    AddType image/avif .avif
     AddType video/webm .webm
     AddType video/mp4 .mp4
     AddType font/woff2 .woff2
@@ -194,16 +235,33 @@ RewriteRule ^(.+)$ - [R=404,L]
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
     Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+
+    # Política de seguridad de contenido (CSP): el navegador solo ejecuta los scripts del
+    # propio sitio —ninguno en línea ni inyectado, que es lo que se le coló al WordPress— y
+    # solo carga tipografías, mapas y videos de donde el sitio los usa (Google Fonts,
+    # YouTube, OpenStreetMap). Los estilos en línea sí se permiten: el sitio los usa y no
+    # ejecutan código. Ninguna otra web puede enmarcar estas páginas ni recibir sus
+    # formularios. La noticia de la Embajada, además, el script de Instagram que muestra
+    # su publicación (solo esa página). Si el sitio empieza a usar otro servicio externo,
+    # hay que agregarlo aquí o el navegador lo bloquea: se nota en la consola (F12).
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src https://www.youtube.com https://www.openstreetmap.org; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" "expr=%{REQUEST_URI} != '/noticias/petroil-visita-embajada-estados-unidos-santa-marta.html'"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://www.instagram.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src https://www.youtube.com https://www.openstreetmap.org https://www.instagram.com; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" "expr=%{REQUEST_URI} == '/noticias/petroil-visita-embajada-estados-unidos-santa-marta.html'"
     Header unset X-Powered-By
+
+    # Las 301 caducan al día en el navegador: sin fecha se guardan para
+    # siempre y una redirección equivocada ya no se corrige para quien la
+    # siguió. A Google no le cambia nada (la 301 sigue siendo permanente).
+    # "always": las cabeceras normales no llegan a una redirección.
+    Header always set Cache-Control "max-age=86400" "expr=%{REQUEST_STATUS} -eq 301"
 
     # Imágenes, video y documentos: 7 días. Tipografías: 30 días.
     # HTML, CSS, JS y JSON: el navegador siempre pregunta si cambió
     # (responde 304 si no), para que cada publicación se vea al instante.
     # Condición en línea ("expr=") y no <If> anidado: con <If> la portada
     # pedida como "/" (DirectoryIndex) salía sin estas dos cabeceras.
-    Header set Cache-Control "public, max-age=604800" "expr=%{REQUEST_URI} =~ m#\.(jpe?g|png|webp|gif|svg|ico|mp4|webm|pdf)$#i"
+    Header set Cache-Control "public, max-age=604800" "expr=%{REQUEST_URI} =~ m#\.(jpe?g|png|webp|avif|gif|svg|ico|mp4|webm|pdf)$#i"
     Header set Cache-Control "public, max-age=2592000" "expr=%{REQUEST_URI} =~ m#\.(woff2?|ttf|otf)$#i"
-    Header set Cache-Control "no-cache" "expr=%{REQUEST_URI} !~ m#\.(jpe?g|png|webp|gif|svg|ico|mp4|webm|pdf|woff2?|ttf|otf)$#i"
+    Header set Cache-Control "no-cache" "expr=%{REQUEST_URI} !~ m#\.(jpe?g|png|webp|avif|gif|svg|ico|mp4|webm|pdf|woff2?|ttf|otf)$#i"
 
     Header always set X-Robots-Tag "noindex, nofollow" "expr=%{HTTP_HOST} =~ /^pruebas\./i || %{DOCUMENT_ROOT} =~ m#/pruebas/pruebas\.petroilsa\.com/?$#"
   </IfModule>

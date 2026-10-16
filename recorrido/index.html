@@ -63,18 +63,8 @@
     <noscript><p>Para continuar, entre a Petroil:</p><a href="../index.html">Ir a petroilsa.com</a></noscript>
   </main>
 
-<script>
-  /* Pasa el token a la portada del sitio. Quien guarda el estado y
-     limpia la dirección es assets/recorrido/visita.js. */
-  (function () {
-    var token = '';
-    try { token = new URLSearchParams(location.search).get('i') || ''; } catch (e) { /* noop */ }
-    /* Bajo file:/// hay que nombrar el archivo; servido por HTTP se
-       prefiere la raíz limpia, que es la dirección canónica. */
-    var destino = (location.protocol === 'file:') ? '../index.html' : '../';
-    location.replace(destino + (token ? '?i=' + encodeURIComponent(token) : ''));
-  })();
-</script>
+
+<script src="../assets/recorrido/entrada.js" data-raiz="../"></script>
 
 </body>
 </html>
