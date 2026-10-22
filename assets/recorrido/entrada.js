@@ -1,1 +1,0 @@
-(function(){var s=document.currentScript;var raiz=s&&s.getAttribute("data-raiz")||"../";var token=s&&s.getAttribute("data-invitado")||"";if(!token){try{token=new URLSearchParams(location.search).get("i")||""}catch(e){}}var destino=location.protocol==="file:"?raiz+"index.html":raiz;location.replace(destino+(token?"?i="+encodeURIComponent(token):""))})();
