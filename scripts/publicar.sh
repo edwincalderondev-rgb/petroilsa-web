@@ -17,10 +17,17 @@
 #     carpetas del sitio, y solo si son del sitio: llevan la marca
 #     .sitio-petroilsa, estaban vacías o no existían.
 #  5. No sigue enlaces simbólicos, ni del destino ni del repositorio.
-#  6. No cambia la configuración de PHP de cPanel: los bloques "cPanel-generated"
-#     del .htaccess nuevo y del actual tienen que ser idénticos.
-#  7. Respalda el .htaccess actual, deja index.html y .htaccess para el final
-#     y cambia cada archivo de la raíz de golpe (sin instantes a medio escribir).
+#  6. No cambia la configuración de PHP de cPanel: si el .htaccess se reemplaza,
+#     los bloques "cPanel-generated" del nuevo y del actual tienen que ser idénticos.
+#  7. El .htaccess solo se reemplaza cuando cambia de verdad (se compara sin los
+#     bloques de cPanel, que cPanel reescribe y cambia de sitio por su cuenta) y,
+#     en producción, solo con la habilitación ~/repositorios/<clon>.HTACCESS-AUTORIZADO,
+#     que lleva el mismo commit y también se gasta. Si cambia y no está habilitado,
+#     no se despliega nada y el informe muestra qué líneas cambiarían. En pruebas se
+#     actualiza solo cuando cambia (es donde se ensaya).
+#  8. Los archivos de la raíz que no cambian no se tocan. Antes de reemplazar el
+#     .htaccess lo respalda; index.html y .htaccess van al final y cada archivo de
+#     la raíz se cambia de golpe (sin instantes a medio escribir).
 
 set -euo pipefail
 umask 022
@@ -30,6 +37,7 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 NOMBRE="$(basename "$REPO")"
 BASE="$HOME/repositorios"
 AUTORIZACION="$BASE/$NOMBRE.AUTORIZADO"
+HABILITACION="$BASE/$NOMBRE.HTACCESS-AUTORIZADO"
 INFORME="$BASE/$NOMBRE-informe.txt"
 MARCA=".sitio-petroilsa"
 NOMBRE_VALIDO='^[a-z0-9][a-z0-9-]*$'
@@ -74,13 +82,22 @@ COMMIT_COMPLETO=''
 if [ -n "$GIT" ]; then COMMIT_COMPLETO="$(cd "$REPO" && "$GIT" rev-parse HEAD 2>/dev/null)" || COMMIT_COMPLETO=''; fi
 COMMIT="${COMMIT_COMPLETO:0:7}"
 
+# Lo primero con forma de commit (7 a 40 cifras hexadecimales); tolera espacios, saltos de línea y BOM.
+commit_de() { grep -oE '[0-9a-fA-F]{7,40}' "$1" | sed -n 1p | tr 'A-F' 'a-f'; }
+# ¿El commit escrito ($1) es el del clon? Vale el de 7 cifras o el completo.
+es_este_commit() { [ -n "$1" ] && [ -n "$COMMIT_COMPLETO" ] && [ "${COMMIT_COMPLETO#"$1"}" != "$COMMIT_COMPLETO" ]; }
 AUTORIZA=''
 if [ -f "$AUTORIZACION" ]; then
   MODO=REAL
-  # Lo primero con forma de commit (7 a 40 cifras hexadecimales); tolera espacios, saltos de línea y BOM.
-  AUTORIZA="$(grep -oE '[0-9a-fA-F]{7,40}' "$AUTORIZACION" | sed -n 1p | tr 'A-F' 'a-f')" || AUTORIZA=''
+  AUTORIZA="$(commit_de "$AUTORIZACION")" || AUTORIZA=''
 else
   MODO=ENSAYO
+fi
+HABILITADA=0
+HABILITA=''
+if [ "$PRODUCCION" = 1 ] && [ -f "$HABILITACION" ]; then
+  HABILITADA=1
+  HABILITA="$(commit_de "$HABILITACION")" || HABILITA=''
 fi
 
 nota "Commit ${COMMIT:-?} → $DESTINO"
@@ -134,7 +151,7 @@ else
   fi
 fi
 if [ "$MODO" = REAL ] && [ "$PRODUCCION" = 1 ]; then
-  if [ -z "$AUTORIZA" ] || [ -z "$COMMIT_COMPLETO" ] || [ "${COMMIT_COMPLETO#"$AUTORIZA"}" = "$COMMIT_COMPLETO" ]; then
+  if ! es_este_commit "$AUTORIZA"; then
     problema "la autorización (${AUTORIZA:-vacía}) no corresponde al commit del clon (${COMMIT:-?}): solo se despliega el commit autorizado. Revisa este informe y, si es lo que quieres publicar, escribe ${COMMIT:-el commit} en $AUTORIZACION."
   fi
 fi
@@ -180,8 +197,58 @@ lista_bloques() { while IFS= read -r linea; do nota "      $linea"; done < <(pri
 B_REPO="$(bloques_cpanel .htaccess)"
 if [ -z "$B_REPO" ]; then fallo "el .htaccess del repositorio no trae el bloque de PHP de cPanel."; fi
 nota "PHP en el .htaccess nuevo: $(grep -m1 -oE 'ea-php[0-9]+' .htaccess || echo 'sin versión')"
+
+# ---- ¿Hace falta cambiar el .htaccess? ----
+# Se compara sin los bloques "cPanel-generated" (cPanel los reescribe y los cambia de sitio por
+# su cuenta: el 2026-10-21 MultiPHP pasó el de PHP al final), sin retornos de carro, espacios
+# finales ni líneas en blanco. Los bloques de cPanel se comparan aparte, justo debajo.
+#   HT=igual        byte a byte                        → no se toca
+#   HT=equivalente  solo difieren bloques de cPanel o blancos → no se toca
+#   HT=cambia       cambia una regla                   → en producción, solo con la habilitación
+#   HT=nuevo        no hay .htaccess en el destino     → en producción es un PROBLEMA
+sin_cpanel() {
+  awk -v ini="$CPANEL_INICIO" -v fin="$CPANEL_FIN" '
+    { l = $0; sub(/\r$/, "", l); sub(/[ \t]+$/, "", l) }
+    l ~ ini { dentro = 1 }
+    !dentro && l != "" { print l }
+    dentro && l ~ fin { dentro = 0 }
+  ' "$1"
+}
+# Las líneas (sin bloques de cPanel) que trae $2 y no trae $1, en su orden; como mucho 40.
+lineas_de_mas() {
+  local lista total
+  lista="$(awk 'FILENAME == ARGV[1] { v[$0] = 1; next } !($0 in v)' <(sin_cpanel "$1") <(sin_cpanel "$2"))" || lista=''
+  total="$(printf '%s' "$lista" | grep -c . || true)"
+  if [ "$total" = 0 ]; then nota "      (ninguna)"; return 0; fi
+  while IFS= read -r l; do nota "      $3 $l"; done < <(printf '%s\n' "$lista" | sed -n '1,40p')
+  if [ "$total" -gt 40 ]; then nota "      … y $((total - 40)) línea(s) más"; fi
+}
 H="$DESTINO/.htaccess"
+HT=nuevo
 if [ -f "$H" ] && [ ! -L "$H" ]; then
+  if [ "$(cksum < .htaccess)" = "$(cksum < "$H")" ]; then
+    HT=igual
+  elif [ "$(sin_cpanel .htaccess | cksum)" = "$(sin_cpanel "$H" | cksum)" ]; then
+    HT=equivalente
+  else
+    HT=cambia
+  fi
+fi
+HT_TOCAR=0
+case "$HT" in cambia|nuevo) HT_TOCAR=1 ;; esac
+HT_HABILITADO=0
+if [ "$HABILITADA" = 1 ] && es_este_commit "$HABILITA"; then HT_HABILITADO=1; fi
+
+# Los bloques de cPanel solo importan si el .htaccess se va a reemplazar: si no se toca, una
+# diferencia de PHP no la causa este despliegue (queda como AVISO para igualar el repositorio).
+php_distinto() {
+  if [ "$HT_TOCAR" = 1 ]; then
+    problema "$1 (cambiaría el PHP de todo lo que cuelga de esta carpeta):"
+  else
+    nota "AVISO: $1. No afecta a este despliegue (el .htaccess no se toca), pero hay que igualar el repositorio antes de la próxima vez que cambie el .htaccess:"
+  fi
+}
+if [ "$HT" != nuevo ]; then
   nota "PHP en el .htaccess actual: $(grep -m1 -oE 'ea-php[0-9]+' "$H" || echo 'sin versión')"
   B_DEST="$(bloques_cpanel "$H")"
   NB_DEST="$(printf '%s' "$B_DEST" | grep -c . || true)"
@@ -191,19 +258,51 @@ if [ -f "$H" ] && [ ! -L "$H" ]; then
   if [ -n "$B_DEST" ]; then
     FALTAN="$(comm -23 <(printf '%s\n' "$B_DEST" | sort -u) <(printf '%s\n' "$B_REPO" | sort -u))"
     if [ -n "$FALTAN" ]; then
-      problema "el .htaccess actual trae configuración de cPanel que el nuevo no trae idéntica (cambiaría el PHP de todo lo que cuelga de esta carpeta):"
+      php_distinto "el .htaccess actual trae configuración de cPanel que el nuevo no trae idéntica"
       lista_bloques "$FALTAN"
     fi
     SOBRAN="$(comm -13 <(printf '%s\n' "$B_DEST" | sort -u) <(printf '%s\n' "$B_REPO" | sort -u))"
     if [ -n "$SOBRAN" ]; then
-      problema "el .htaccess nuevo trae configuración de cPanel que el actual no tiene (cambiaría el PHP de todo lo que cuelga de esta carpeta):"
+      php_distinto "el .htaccess nuevo trae configuración de cPanel que el actual no tiene"
       lista_bloques "$SOBRAN"
     fi
   elif [ "$PRODUCCION" = 1 ]; then
-    problema "el .htaccess actual no trae el bloque de PHP de cPanel: no se puede saber qué versión de PHP usan las demás apps."
+    if [ "$HT_TOCAR" = 1 ]; then
+      problema "el .htaccess actual no trae el bloque de PHP de cPanel: no se puede saber qué versión de PHP usan las demás apps."
+    else
+      nota "AVISO: el .htaccess actual no trae el bloque de PHP de cPanel. No afecta a este despliegue (el .htaccess no se toca)."
+    fi
   fi
 elif [ "$PRODUCCION" = 1 ]; then
   problema "no hay .htaccess en el destino (o es un enlace)."
+fi
+
+nota ""
+case "$HT" in
+  igual) nota ".htaccess: igual al del servidor: no se toca." ;;
+  equivalente) nota ".htaccess: no cambia ninguna regla (solo el lugar del bloque de PHP de cPanel o líneas en blanco): no se toca." ;;
+  cambia)
+    if [ "$PRODUCCION" = 1 ]; then
+      nota ".htaccess: CAMBIA. Este despliegue NECESITA la habilitación del .htaccess, además de la autorización."
+    else
+      nota ".htaccess: cambia; en pruebas se actualiza solo."
+    fi
+    nota "  Líneas que tiene el del servidor y el nuevo no (se quitarían):"
+    lineas_de_mas .htaccess "$H" "-"
+    nota "  Líneas que trae el nuevo y el del servidor no (se agregarían):"
+    lineas_de_mas "$H" .htaccess "+"
+    ;;
+  nuevo) nota ".htaccess: no hay en el destino; se crea." ;;
+esac
+if [ "$PRODUCCION" = 1 ] && [ "$HT" = cambia ] && [ "$MODO" = REAL ] && [ "$HT_HABILITADO" = 0 ]; then
+  if [ "$HABILITADA" = 0 ]; then
+    problema "el .htaccess cambia y no está habilitado. Revisa las líneas de arriba y, si es lo que quieres publicar, crea $HABILITACION con el texto ${COMMIT:-el commit}."
+  else
+    problema "la habilitación del .htaccess (${HABILITA:-vacía}) no corresponde al commit del clon (${COMMIT:-?}). Si es lo que quieres publicar, escribe ${COMMIT:-el commit} en $HABILITACION."
+  fi
+fi
+if [ "$HABILITADA" = 1 ] && [ "$HT" != cambia ]; then
+  nota "La habilitación del .htaccess sobra: el .htaccess no cambia.$(if [ "$MODO" = REAL ]; then echo ' No se usa y se borra al terminar.'; fi)"
 fi
 
 es_del_sitio() {
@@ -223,6 +322,17 @@ done
 nota "No se tocan: ${AJENOS[*]-(nada)}"
 
 # ---- Plan (ENSAYO) o ejecución (REAL) ----
+# Qué pasa con cada archivo de la raíz: igual (no se toca), cambia o nuevo.
+estado_raiz() {
+  local f="$DESTINO/$1"
+  if [ "$1" = .htaccess ]; then
+    case "$HT" in igual|equivalente) echo igual ;; nuevo) echo nuevo ;; *) echo cambia ;; esac
+  elif [ -f "$f" ] && [ ! -L "$f" ]; then
+    if [ "$(cksum < "$1")" = "$(cksum < "$f")" ]; then echo igual; else echo cambia; fi
+  else
+    echo nuevo
+  fi
+}
 resumen() {
   local c="$1" salida="$2" nuevos cambian borran
   nuevos="$(printf '%s\n' "$salida" | grep -c '^>f+' || true)"
@@ -253,13 +363,15 @@ if [ "$MODO" = ENSAYO ] || [ "$NPROBLEMAS" -gt 0 ]; then
   done
   for c in ${ADOPTAR[@]+"${ADOPTAR[@]}"}; do nota "  $c/: existe sin marca y vacía (o es de pruebas): se le pone la marca."; done
   nota ""
-  nota "Archivos de la raíz, en este orden (index.html y .htaccess al final):"
+  nota "Archivos de la raíz (los que no cambian no se tocan; index.html y .htaccess van al final):"
   for a in "${RAIZ[@]}"; do
-    f="$DESTINO/$a"
-    if [ -f "$f" ] && [ ! -L "$f" ]; then
-      if [ "$(cksum < "$a")" = "$(cksum < "$f")" ]; then q="igual al actual"; else q="REEMPLAZA al actual"; fi
-    else
-      q="nuevo"
+    case "$(estado_raiz "$a")" in
+      igual) q="igual al actual: no se toca" ;;
+      nuevo) q="nuevo" ;;
+      *) q="REEMPLAZA al actual" ;;
+    esac
+    if [ "$a" = .htaccess ] && [ "$PRODUCCION" = 1 ] && [ "$HT" = cambia ]; then
+      if [ "$HT_HABILITADO" = 1 ]; then q="REEMPLAZA al actual (habilitado)"; else q="CAMBIA: solo con la habilitación del .htaccess (ver arriba)"; fi
     fi
     nota "  $a: $q"
   done
@@ -269,10 +381,21 @@ if [ "$MODO" = ENSAYO ] || [ "$NPROBLEMAS" -gt 0 ]; then
     exit 1
   fi
   nota "ENSAYO terminado: no se cambió nada."
+  if [ "$PRODUCCION" = 1 ]; then
+    nota ""
+    nota "PARA DESPLEGAR ESTE COMMIT (${COMMIT:-?}) DE VERDAD:"
+    nota "  1. Crea $AUTORIZACION con el texto ${COMMIT:-?}"
+    if [ "$HT" = cambia ]; then
+      nota "  2. El .htaccess CAMBIA (ver arriba): crea también $HABILITACION con el texto ${COMMIT:-?}"
+    else
+      nota "  2. El .htaccess no cambia: NO hace falta $HABILITACION."
+    fi
+    nota "  3. Vuelve a pulsar Deploy HEAD Commit, sin Update from Remote antes (traería otro commit)."
+  fi
   exit 0
 fi
 
-if [ -f "$DESTINO/.htaccess" ]; then
+if [ "$HT_TOCAR" = 1 ] && [ -f "$DESTINO/.htaccess" ]; then
   mkdir -p -- "$BASE/respaldos-htaccess"
   RESPALDO="$BASE/respaldos-htaccess/$NOMBRE-$(date '+%Y%m%d-%H%M%S')-$$.htaccess"
   cp -p -- "$DESTINO/.htaccess" "$RESPALDO"
@@ -292,19 +415,27 @@ for c in "${CARPETAS[@]}"; do
 done
 nota ""
 nota "Archivos de la raíz:"
+HT_HECHO="no se tocó"
 for a in "${RAIZ[@]}"; do
+  e="$(estado_raiz "$a")"
+  if [ "$e" = igual ]; then nota "  $a: igual al actual, no se toca"; continue; fi
   t="$DESTINO/.$a.publicando"
   cp -- "$a" "$t"
   chmod 644 -- "$t"
   mv -f -- "$t" "$DESTINO/$a"
-  nota "  $a"
+  if [ "$e" = nuevo ]; then nota "  $a: nuevo"; else nota "  $a: reemplazado"; fi
+  if [ "$a" = .htaccess ]; then HT_HECHO="reemplazado"; fi
 done
 CAMBIANDO=2
 
 if [ "$PRODUCCION" = 1 ]; then
   rm -f -- "$AUTORIZACION"
   nota "Autorización gastada: el próximo despliegue a producción necesita una nueva."
+  if [ "$HABILITADA" = 1 ]; then
+    rm -f -- "$HABILITACION"
+    if [ "$HT_HECHO" = reemplazado ]; then nota "Habilitación del .htaccess gastada."; else nota "Habilitación del .htaccess borrada sin usar (no hacía falta)."; fi
+  fi
 fi
-printf '%s\n' "$(date '+%Y-%m-%d %H:%M:%S') | $NOMBRE | commit ${COMMIT:-?} | → $DESTINO" >> "$BASE/publicaciones.log" 2>/dev/null || true
+printf '%s\n' "$(date '+%Y-%m-%d %H:%M:%S') | $NOMBRE | commit ${COMMIT:-?} | .htaccess $HT_HECHO | → $DESTINO" >> "$BASE/publicaciones.log" 2>/dev/null || true
 nota ""
 nota "Listo: desplegado ${COMMIT:-?} en $DESTINO."
