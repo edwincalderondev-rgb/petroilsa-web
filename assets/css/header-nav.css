@@ -385,7 +385,8 @@ header.navbar.navbar-scrolled .navbar-top{
 }
 .drawer-portal{color:#dbe6ec; font-size:.92rem; font-weight:600; transition:color .2s ease;}
 .drawer-portal:hover, .drawer-portal:focus-visible{color:#7fc4e3;}
-.drawer-footer .btn-contacto{text-align:center;}
+.drawer-footer .btn-contacto{text-align:center; background:var(--brand-lime); color:var(--brand-navy) !important;}
+.drawer-footer .btn-contacto:hover{background:#fff; color:var(--brand-navy) !important;}
 .drawer-lang .lang-btn{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#fff; width:100%; justify-content:space-between;}
 .drawer-lang .lang-btn:hover{border-color:var(--route-sky); box-shadow:none;}
 .drawer-lang .lang-dropdown{
@@ -413,8 +414,10 @@ body.nav-drawer-open{overflow:hidden;}
   .navbar-route{display:none;}
   .scroll-track{display:block;}
   .nav-utility .portal-link,
-  .nav-utility .lang-select,
-  .nav-utility .btn-contacto{display:none;}
+  .nav-utility .lang-select{display:none;}
+  .nav-utility{gap:10px;}
+  .nav-utility .btn-contacto{padding:10px 16px; font-size:.82rem; line-height:1.2;}
+  header.navbar.navbar-scrolled .nav-utility .btn-contacto{padding:8px 14px;}
   .navbar-top-inner{padding:14px 20px;}
   .nav-logo img{height:58px;}
   header.navbar.navbar-scrolled .navbar-top-inner{padding:6px 20px;}
